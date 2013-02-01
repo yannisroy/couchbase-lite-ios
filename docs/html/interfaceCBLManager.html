@@ -109,6 +109,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as -databaseNamed:.  <a href="#a068f9fcdeb48b49baa28794271552b67"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a0649abf3a3eb8b434a8bc3c548e058b5">createDatabaseNamed:error:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the database with the given name, creating it if it didn't already exist.  <a href="#a0649abf3a3eb8b434a8bc3c548e058b5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#ac6ac00c66002cf03ee341f8ece5dbb9d">replaceDatabaseNamed:withDatabaseFile:withAttachments:error:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces or installs a database from a file.  <a href="#ac6ac00c66002cf03ee341f8ece5dbb9d"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLManager.html">CBLManager</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceCBLManager.html#a4b931241dd38bf8531e72189ffdded95">sharedInstance</a></td></tr>
@@ -293,6 +295,58 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ac6ac00c66002cf03ee341f8ece5dbb9d"></a><!-- doxytag: member="CBLManager::replaceDatabaseNamed:withDatabaseFile:withAttachments:error:" ref="ac6ac00c66002cf03ee341f8ece5dbb9d" args="(NSString *databaseName,[withDatabaseFile] NSString *databasePath,[withAttachments] NSString *attachmentsPath,[error] NSError **outError)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (BOOL) replaceDatabaseNamed: </td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>databaseName</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">withDatabaseFile:</td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>databasePath</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">withAttachments:</td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>attachmentsPath</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">error:</td>
+          <td></td>
+          <td class="paramtype">(NSError **)&#160;</td>
+          <td class="paramname"><em>outError</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Replaces or installs a database from a file. </p>
+<p>This is primarily used to install a canned database on first launch of an app, in which case you should first check .exists to avoid replacing the database if it exists already. The canned database would have been copied into your app bundle at build time. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">databaseName</td><td>The name of the database to replace. </td></tr>
+    <tr><td class="paramname">databasePath</td><td>Path of the database file that should replace it. </td></tr>
+    <tr><td class="paramname">attachmentsPath</td><td>Path of the associated attachments directory, or nil if there are no attachments. </td></tr>
+    <tr><td class="paramname">outError</td><td>If an error occurs, it will be stored into this parameter on return. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>YES if the database was copied, NO if an error occurred. </dd></dl>
+
+</div>
+</div>
 <hr/><h2>Property Documentation</h2>
 <a class="anchor" id="ac8ceb154c7e6a854b4d1cb47e8a8388b"></a><!-- doxytag: member="CBLManager::allDatabaseNames" ref="ac8ceb154c7e6a854b4d1cb47e8a8388b" args="" -->
 <div class="memitem">
@@ -333,7 +387,7 @@ Properties</h2></td></tr>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="interfaceCBLManager.html">CBLManager</a>      </li>
-      <li class="footer">Generated on Fri Feb 1 2013 10:13:15 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Fri Feb 1 2013 14:32:40 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

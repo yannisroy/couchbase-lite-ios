@@ -103,32 +103,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00029"></a>00029 <span class="preprocessor"></span><span class="preprocessor">#define REDUCEBLOCK(BLOCK) ^id(NSArray* keys, NSArray* values, BOOL rereduce){BLOCK}</span>
 <a name="l00030"></a>00030 <span class="preprocessor"></span>
 <a name="l00031"></a>00031 
-<a name="l00034"></a><a class="code" href="interfaceCBLView.html">00034</a> <span class="keyword">@interface </span><a class="code" href="interfaceCBLView.html" title="A &quot;view&quot; in a CouchbaseLite database -- essentially a persistent index managed by map/reduce...">CBLView</a> : NSObject
-<a name="l00035"></a>00035 
-<a name="l00037"></a><a class="code" href="interfaceCBLView.html#ae8b25fbdafde7f03b1b12c01d2e158ec">00037</a> @property (readonly) <a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a>* <a class="code" href="interfaceCBLView.html#ae8b25fbdafde7f03b1b12c01d2e158ec" title="The database that owns this view.">database</a>;
+<a name="l00033"></a><a class="code" href="protocolCBLViewCompiler-p.html">00033</a> <span class="keyword">@protocol </span><a class="code" href="protocolCBLViewCompiler-p.html" title="An external object that knows how to map source code of some sort into executable functions...">CBLViewCompiler</a> &lt;NSObject&gt;
+<a name="l00034"></a>00034 - (CBLMapBlock) compileMapFunction: (NSString*)mapSource language: (NSString*)language;
+<a name="l00035"></a>00035 - (CBLReduceBlock) compileReduceFunction: (NSString*)reduceSource language: (NSString*)language;
+<a name="l00036"></a>00036 <span class="keyword">@end</span>
+<a name="l00037"></a>00037 
 <a name="l00038"></a>00038 
-<a name="l00040"></a><a class="code" href="interfaceCBLView.html#aeccd0e3db8047111f0fdd5738c910a59">00040</a> @property (readonly) NSString* <a class="code" href="interfaceCBLView.html#aeccd0e3db8047111f0fdd5738c910a59" title="The name of the view.">name</a>;
-<a name="l00041"></a>00041 
-<a name="l00043"></a><a class="code" href="interfaceCBLView.html#ab8f3671f29a616264f5aaff5d9ea0769">00043</a> @property (readonly) CBLMapBlock <a class="code" href="interfaceCBLView.html#ab8f3671f29a616264f5aaff5d9ea0769" title="The map function that controls how index rows are created from documents.">mapBlock</a>;
-<a name="l00044"></a>00044 
-<a name="l00046"></a><a class="code" href="interfaceCBLView.html#a6b68872edd92ff2b57f482c1f61f10b1">00046</a> @property (readonly) CBLReduceBlock <a class="code" href="interfaceCBLView.html#a6b68872edd92ff2b57f482c1f61f10b1" title="The optional reduce function, which aggregates together multiple rows.">reduceBlock</a>;
-<a name="l00047"></a>00047 
-<a name="l00053"></a>00053 - (BOOL) setMapBlock: (CBLMapBlock)mapBlock
-<a name="l00054"></a>00054          reduceBlock: (CBLReduceBlock)reduceBlock
-<a name="l00055"></a>00055              version: (NSString*)version;
-<a name="l00056"></a>00056 
-<a name="l00059"></a>00059 - (BOOL) setMapBlock: (CBLMapBlock)mapBlock
-<a name="l00060"></a>00060              version: (NSString*)version;
-<a name="l00061"></a>00061 
-<a name="l00063"></a>00063 - (CBLQuery*) <a class="code" href="interfaceCBLView.html#a9eba2ddac8526ac02b4d79163085bd53" title="Creates a new query object for this view.">query</a>;
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 <span class="keyword">@end</span>
+<a name="l00041"></a><a class="code" href="interfaceCBLView.html">00041</a> <span class="keyword">@interface </span><a class="code" href="interfaceCBLView.html" title="A &quot;view&quot; in a CouchbaseLite database -- essentially a persistent index managed by map/reduce...">CBLView</a> : NSObject
+<a name="l00042"></a>00042 
+<a name="l00044"></a><a class="code" href="interfaceCBLView.html#ae8b25fbdafde7f03b1b12c01d2e158ec">00044</a> @property (readonly) <a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a>* <a class="code" href="interfaceCBLView.html#ae8b25fbdafde7f03b1b12c01d2e158ec" title="The database that owns this view.">database</a>;
+<a name="l00045"></a>00045 
+<a name="l00047"></a><a class="code" href="interfaceCBLView.html#aeccd0e3db8047111f0fdd5738c910a59">00047</a> @property (readonly) NSString* <a class="code" href="interfaceCBLView.html#aeccd0e3db8047111f0fdd5738c910a59" title="The name of the view.">name</a>;
+<a name="l00048"></a>00048 
+<a name="l00050"></a><a class="code" href="interfaceCBLView.html#ab8f3671f29a616264f5aaff5d9ea0769">00050</a> @property (readonly) CBLMapBlock <a class="code" href="interfaceCBLView.html#ab8f3671f29a616264f5aaff5d9ea0769" title="The map function that controls how index rows are created from documents.">mapBlock</a>;
+<a name="l00051"></a>00051 
+<a name="l00053"></a><a class="code" href="interfaceCBLView.html#a6b68872edd92ff2b57f482c1f61f10b1">00053</a> @property (readonly) CBLReduceBlock <a class="code" href="interfaceCBLView.html#a6b68872edd92ff2b57f482c1f61f10b1" title="The optional reduce function, which aggregates together multiple rows.">reduceBlock</a>;
+<a name="l00054"></a>00054 
+<a name="l00060"></a>00060 - (BOOL) setMapBlock: (CBLMapBlock)mapBlock
+<a name="l00061"></a>00061          reduceBlock: (CBLReduceBlock)reduceBlock
+<a name="l00062"></a>00062              version: (NSString*)version;
+<a name="l00063"></a>00063 
+<a name="l00066"></a>00066 - (BOOL) setMapBlock: (CBLMapBlock)mapBlock
+<a name="l00067"></a>00067              version: (NSString*)version;
+<a name="l00068"></a>00068 
+<a name="l00070"></a>00070 - (CBLQuery*) <a class="code" href="interfaceCBLView.html#a9eba2ddac8526ac02b4d79163085bd53" title="Creates a new query object for this view.">query</a>;
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 + (void) setCompiler: (<span class="keywordtype">id</span>&lt;<a class="code" href="protocolCBLViewCompiler-p.html" title="An external object that knows how to map source code of some sort into executable functions...">CBLViewCompiler</a>&gt;)compiler;
+<a name="l00073"></a>00073 + (id&lt;<a class="code" href="protocolCBLViewCompiler-p.html" title="An external object that knows how to map source code of some sort into executable functions...">CBLViewCompiler</a>&gt;) compiler;
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075 <span class="keyword">@end</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><b>CBLView.h</b>      </li>
-      <li class="footer">Generated on Fri Feb 1 2013 10:13:15 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Fri Feb 1 2013 14:32:40 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

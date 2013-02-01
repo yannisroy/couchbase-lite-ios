@@ -21,7 +21,8 @@ var NAVTREE =
       [ "<CBLUITableDelegate>", "protocolCBLUITableDelegate-p.html", null ],
       [ "CBLUITableSource", "interfaceCBLUITableSource.html", null ],
       [ "<CBLValidationContext>", "protocolCBLValidationContext-p.html", null ],
-      [ "CBLView", "interfaceCBLView.html", null ]
+      [ "CBLView", "interfaceCBLView.html", null ],
+      [ "<CBLViewCompiler>", "protocolCBLViewCompiler-p.html", null ]
     ] ],
     [ "Class Index", "classes.html", null ],
     [ "Class Hierarchy", "hierarchy.html", [
@@ -48,7 +49,8 @@ var NAVTREE =
       [ "<CBLUITableDelegate>", "protocolCBLUITableDelegate-p.html", null ],
       [ "CBLUITableSource", "interfaceCBLUITableSource.html", null ],
       [ "<CBLValidationContext>", "protocolCBLValidationContext-p.html", null ],
-      [ "CBLView", "interfaceCBLView.html", null ]
+      [ "CBLView", "interfaceCBLView.html", null ],
+      [ "<CBLViewCompiler>", "protocolCBLViewCompiler-p.html", null ]
     ] ],
     [ "Class Members", "functions.html", null ],
     [ "File List", "files.html", [
