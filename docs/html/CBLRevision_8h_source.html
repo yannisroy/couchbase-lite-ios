@@ -106,15 +106,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00035"></a>00035 
 <a name="l00038"></a><a class="code" href="interfaceCBLRevisionBase.html#a0c0f62730cf72e45d2d2db73bf872013">00038</a> @property (readonly, copy) NSDictionary* <a class="code" href="interfaceCBLRevisionBase.html#a0c0f62730cf72e45d2d2db73bf872013" title="The user-defined properties, without the ones reserved by CouchbaseLite.">userProperties</a>;
 <a name="l00039"></a>00039 
-<a name="l00041"></a>00041 - (id) propertyForKey: (NSString*)key;
+<a name="l00041"></a>00041 - (id) propertyForKey: (NSString*)key                                   __attribute__((nonnull));
 <a name="l00042"></a>00042 
-<a name="l00044"></a>00044 - (id) objectForKeyedSubscript: (NSString*)key;
+<a name="l00044"></a>00044 - (id) objectForKeyedSubscript: (NSString*)key                          __attribute__((nonnull));
 <a name="l00045"></a>00045 
 <a name="l00046"></a>00046 <span class="preprocessor">#pragma mark ATTACHMENTS</span>
 <a name="l00047"></a>00047 <span class="preprocessor"></span>
 <a name="l00049"></a><a class="code" href="interfaceCBLRevisionBase.html#aa81bb99e1d3a04e724030753a1064a39">00049</a> <span class="keyword">@property</span> (readonly) NSArray* <a class="code" href="interfaceCBLRevisionBase.html#aa81bb99e1d3a04e724030753a1064a39" title="The names of all attachments (an array of strings).">attachmentNames</a>;
 <a name="l00050"></a>00050 
-<a name="l00052"></a>00052 - (CBLAttachment*) attachmentNamed: (NSString*)name;
+<a name="l00052"></a>00052 - (CBLAttachment*) attachmentNamed: (NSString*)name                     __attribute__((nonnull));
 <a name="l00053"></a>00053 
 <a name="l00055"></a><a class="code" href="interfaceCBLRevisionBase.html#ab03a271a609121109bc42c7d9079d4d8">00055</a> <span class="keyword">@property</span> (readonly) NSArray* <a class="code" href="interfaceCBLRevisionBase.html#ab03a271a609121109bc42c7d9079d4d8" title="All attachments, as CBLAttachment objects.">attachments</a>;
 <a name="l00056"></a>00056 
@@ -153,17 +153,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00101"></a>00101 
 <a name="l00106"></a>00106 - (<a class="code" href="interfaceCBLRevision.html" title="An existing revision of a CBLDocument.">CBLRevision</a>*) save: (NSError**)outError;
 <a name="l00107"></a>00107 
-<a name="l00112"></a>00112 - (void) addAttachment: (CBLAttachment*)attachment named: (NSString*)name;
-<a name="l00113"></a>00113 
-<a name="l00116"></a>00116 - (void) removeAttachmentNamed: (NSString*)name;
-<a name="l00117"></a>00117 
-<a name="l00118"></a>00118 <span class="keyword">@end</span>
+<a name="l00112"></a>00112 - (void) addAttachment: (CBLAttachment*)attachment
+<a name="l00113"></a>00113                  named: (NSString*)name                                 __attribute__((nonnull(2)));
+<a name="l00114"></a>00114 
+<a name="l00117"></a>00117 - (void) removeAttachmentNamed: (NSString*)name                         __attribute__((nonnull));
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119 <span class="keyword">@end</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><b>CBLRevision.h</b>      </li>
-      <li class="footer">Generated on Fri Feb 1 2013 14:32:40 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

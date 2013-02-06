@@ -96,8 +96,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLAttachment.html#a733231c45a28c69876ed31487c68fc2e">initWithContentType:body:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new attachment that doesn't belong to any revision.  <a href="#a733231c45a28c69876ed31487c68fc2e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLAttachment.html#a1d3fd6070c3dc064573e498d94f36596">initWithContentType:body:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new attachment that doesn't belong to any revision.  <a href="#a1d3fd6070c3dc064573e498d94f36596"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLRevision.html">CBLRevision</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLAttachment.html#ad8ea63438182678bbba792d281b25fb1">updateBody:contentType:error:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the body, creating a new document revision in the process.  <a href="#ad8ea63438182678bbba792d281b25fb1"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="properties"></a>
@@ -123,26 +123,16 @@ Properties</h2></td></tr>
 <div class="textblock"><p>A binary attachment to a document revision. </p>
 <p>Existing attachments can be gotten from -[<a class="el" href="interfaceCBLRevision.html" title="An existing revision of a CBLDocument.">CBLRevision</a> attachmentNamed:]. To add a new attachment, call -initWithContentType:body: and then put the attachment object as a value in the "_attachments" dictionary of the properties when you create a new revision. </p>
 </div><hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a733231c45a28c69876ed31487c68fc2e"></a><!-- doxytag: member="CBLAttachment::initWithContentType:body:" ref="a733231c45a28c69876ed31487c68fc2e" args="(NSString *contentType,[body] id body)" -->
+<a class="anchor" id="a1d3fd6070c3dc064573e498d94f36596"></a><!-- doxytag: member="CBLAttachment::initWithContentType:body:" ref="a1d3fd6070c3dc064573e498d94f36596" args="(NSString *contentType,[body](nonnull __attribute__)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (id) initWithContentType: </td>
+          <td class="memname">- (instancetype) initWithContentType: </td>
           <td></td>
           <td class="paramtype">(NSString *)&#160;</td>
           <td class="paramname"><em>contentType</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">body:</td>
           <td></td>
-          <td class="paramtype">(id)&#160;</td>
-          <td class="paramname"><em>body</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
         </tr>
       </table>
 </div>
@@ -193,6 +183,14 @@ Properties</h2></td></tr>
 
 <p>Updates the body, creating a new document revision in the process. </p>
 <p>If all you need to do to a document is update a single attachment this is an easy way to do it; but if you need to change multiple attachments, or change other body properties, do them in one step by calling -putProperties:error: on the revision or document. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">body</td><td>The new body, or nil to delete the attachment. </td></tr>
+    <tr><td class="paramname">contentType</td><td>The new content type, or nil to leave it the same. </td></tr>
+    <tr><td class="paramname">outError</td><td>On return, the error (if any). </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -326,7 +324,7 @@ Properties</h2></td></tr>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="interfaceCBLAttachment.html">CBLAttachment</a>      </li>
-      <li class="footer">Generated on Fri Feb 1 2013 14:32:40 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

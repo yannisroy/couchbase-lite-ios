@@ -109,11 +109,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00036"></a>00036 
 <a name="l00038"></a>00038 - (CBLQueryRow*) rowAtIndex: (NSUInteger)index;
 <a name="l00039"></a>00039 
-<a name="l00041"></a>00041 - (NSIndexPath*) indexPathForDocument: (<a class="code" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.)">CBLDocument</a>*)document;
+<a name="l00041"></a>00041 - (NSIndexPath*) indexPathForDocument: (<a class="code" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.)">CBLDocument</a>*)document           __attribute__((nonnull));
 <a name="l00042"></a>00042 
-<a name="l00044"></a>00044 - (CBLQueryRow*) rowAtIndexPath: (NSIndexPath*)path;
+<a name="l00044"></a>00044 - (CBLQueryRow*) rowAtIndexPath: (NSIndexPath*)path                     __attribute__((nonnull));
 <a name="l00045"></a>00045 
-<a name="l00047"></a>00047 - (<a class="code" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.)">CBLDocument</a>*) documentAtIndexPath: (NSIndexPath*)path;
+<a name="l00047"></a>00047 - (<a class="code" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.)">CBLDocument</a>*) documentAtIndexPath: (NSIndexPath*)path                __attribute__((nonnull));
 <a name="l00048"></a>00048 
 <a name="l00049"></a>00049 
 <a name="l00050"></a>00050 <span class="preprocessor">#pragma mark Displaying The Table:</span>
@@ -158,7 +158,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><b>CBLUITableSource.h</b>      </li>
-      <li class="footer">Generated on Fri Feb 1 2013 14:32:40 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

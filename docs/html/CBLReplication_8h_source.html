@@ -92,82 +92,82 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00010"></a>00010 <span class="keyword">@class</span> <a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a>;
 <a name="l00011"></a>00011 
 <a name="l00012"></a>00012 
-<a name="l00013"></a>00013 <span class="keyword">typedef</span> <span class="keyword">enum</span> {
-<a name="l00014"></a>00014     kCBLReplicationStopped,
-<a name="l00015"></a>00015     kCBLReplicationOffline,
-<a name="l00016"></a>00016     kCBLReplicationIdle,
-<a name="l00017"></a>00017     kCBLReplicationActive
-<a name="l00018"></a>00018 } CBLReplicationMode;
-<a name="l00019"></a>00019 
+<a name="l00014"></a>00014 <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00015"></a>00015     kCBLReplicationStopped, 
+<a name="l00016"></a>00016     kCBLReplicationOffline, 
+<a name="l00017"></a>00017     kCBLReplicationIdle,    
+<a name="l00018"></a>00018     kCBLReplicationActive   
+<a name="l00019"></a>00019 } CBLReplicationMode;
 <a name="l00020"></a>00020 
-<a name="l00024"></a><a class="code" href="interfaceCBLReplication.html">00024</a> <span class="keyword">@interface </span><a class="code" href="interfaceCBLReplication.html" title="A &#39;push&#39; or &#39;pull&#39; replication between a local and a remote database.">CBLReplication</a> : <a class="code" href="interfaceCBLModel.html" title="Generic model class for CouchbaseLite documents.">CBLModel</a>
-<a name="l00025"></a>00025 
-<a name="l00027"></a><a class="code" href="interfaceCBLReplication.html#ad1d851b2c94a8ba6ab3d713d941f61bb">00027</a> @property (nonatomic, readonly) <a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a>* <a class="code" href="interfaceCBLReplication.html#ad1d851b2c94a8ba6ab3d713d941f61bb" title="The local database being replicated to/from.">localDatabase</a>;
-<a name="l00028"></a>00028 
-<a name="l00030"></a><a class="code" href="interfaceCBLReplication.html#a4fa63690302188686778c700b08081a8">00030</a> @property (nonatomic, readonly) NSURL* <a class="code" href="interfaceCBLReplication.html#a4fa63690302188686778c700b08081a8" title="The URL of the remote database.">remoteURL</a>;
-<a name="l00031"></a>00031 
-<a name="l00033"></a><a class="code" href="interfaceCBLReplication.html#a62d10188839715f7d1f84d0f2c9d2e36">00033</a> @property (nonatomic, readonly) bool <a class="code" href="interfaceCBLReplication.html#a62d10188839715f7d1f84d0f2c9d2e36" title="Does the replication pull from (as opposed to push to) the target?">pull</a>;
-<a name="l00034"></a>00034 
+<a name="l00021"></a>00021 
+<a name="l00025"></a><a class="code" href="interfaceCBLReplication.html">00025</a> <span class="keyword">@interface </span><a class="code" href="interfaceCBLReplication.html" title="A &#39;push&#39; or &#39;pull&#39; replication between a local and a remote database.">CBLReplication</a> : <a class="code" href="interfaceCBLModel.html" title="Generic model class for CouchbaseLite documents.">CBLModel</a>
+<a name="l00026"></a>00026 
+<a name="l00028"></a><a class="code" href="interfaceCBLReplication.html#ad1d851b2c94a8ba6ab3d713d941f61bb">00028</a> @property (nonatomic, readonly) <a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a>* <a class="code" href="interfaceCBLReplication.html#ad1d851b2c94a8ba6ab3d713d941f61bb" title="The local database being replicated to/from.">localDatabase</a>;
+<a name="l00029"></a>00029 
+<a name="l00031"></a><a class="code" href="interfaceCBLReplication.html#a4fa63690302188686778c700b08081a8">00031</a> @property (nonatomic, readonly) NSURL* <a class="code" href="interfaceCBLReplication.html#a4fa63690302188686778c700b08081a8" title="The URL of the remote database.">remoteURL</a>;
+<a name="l00032"></a>00032 
+<a name="l00034"></a><a class="code" href="interfaceCBLReplication.html#a62d10188839715f7d1f84d0f2c9d2e36">00034</a> @property (nonatomic, readonly) bool <a class="code" href="interfaceCBLReplication.html#a62d10188839715f7d1f84d0f2c9d2e36" title="Does the replication pull from (as opposed to push to) the target?">pull</a>;
 <a name="l00035"></a>00035 
-<a name="l00036"></a>00036 <span class="preprocessor">#pragma mark - OPTIONS:</span>
-<a name="l00037"></a>00037 <span class="preprocessor"></span>
-<a name="l00041"></a><a class="code" href="interfaceCBLReplication.html#a7c92baae7f3cd1b6b6741ce12209a86a">00041</a> @property bool <a class="code" href="interfaceCBLReplication.html#a7c92baae7f3cd1b6b6741ce12209a86a" title="Is this replication remembered persistently in the _replicator database? Persistent continuous replic...">persistent</a>;
-<a name="l00042"></a>00042 
-<a name="l00044"></a><a class="code" href="interfaceCBLReplication.html#ae3d340f6c6304cf26189eaf59546b2dd">00044</a> @property (nonatomic) bool <a class="code" href="interfaceCBLReplication.html#ae3d340f6c6304cf26189eaf59546b2dd" title="Should the target database be created if it doesn&#39;t already exist? (Defaults to NO).">create_target</a>;
-<a name="l00045"></a>00045 
-<a name="l00047"></a><a class="code" href="interfaceCBLReplication.html#a054fb8ca8588fa7b2ec7721bf848b651">00047</a> @property (nonatomic) bool <a class="code" href="interfaceCBLReplication.html#a054fb8ca8588fa7b2ec7721bf848b651" title="Should the replication operate continuously, copying changes as soon as the source database is modifi...">continuous</a>;
-<a name="l00048"></a>00048 
-<a name="l00052"></a><a class="code" href="interfaceCBLReplication.html#a48feca3b817405417f31f6e4cdf3fbb6">00052</a> @property (nonatomic, copy) NSString* <a class="code" href="interfaceCBLReplication.html#a48feca3b817405417f31f6e4cdf3fbb6" title="Path of an optional filter function to run on the source server.">filter</a>;
-<a name="l00053"></a>00053 
-<a name="l00056"></a><a class="code" href="interfaceCBLReplication.html#a8e02e71fae893debf2ab2de8ab11d1b8">00056</a> @property (nonatomic, copy) NSDictionary* <a class="code" href="interfaceCBLReplication.html#a8e02e71fae893debf2ab2de8ab11d1b8" title="Parameters to pass to the filter function.">query_params</a>;
-<a name="l00057"></a>00057 
-<a name="l00059"></a><a class="code" href="interfaceCBLReplication.html#a04b38f4a587fa5072a15c44a7e199c5f">00059</a> @property (copy) NSArray *<a class="code" href="interfaceCBLReplication.html#a04b38f4a587fa5072a15c44a7e199c5f" title="Sets the documents to specify as part of the replication.">doc_ids</a>;
-<a name="l00060"></a>00060 
-<a name="l00063"></a><a class="code" href="interfaceCBLReplication.html#a4a73d619968a3aa2e691920c3506992a">00063</a> @property (nonatomic, copy) NSDictionary* <a class="code" href="interfaceCBLReplication.html#a4a73d619968a3aa2e691920c3506992a" title="Extra HTTP headers to send in all requests to the remote server.">headers</a>;
-<a name="l00064"></a>00064 
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 <span class="preprocessor">#pragma mark - OPTIONS:</span>
+<a name="l00038"></a>00038 <span class="preprocessor"></span>
+<a name="l00042"></a><a class="code" href="interfaceCBLReplication.html#a7c92baae7f3cd1b6b6741ce12209a86a">00042</a> @property bool <a class="code" href="interfaceCBLReplication.html#a7c92baae7f3cd1b6b6741ce12209a86a" title="Is this replication remembered persistently in the _replicator database? Persistent continuous replic...">persistent</a>;
+<a name="l00043"></a>00043 
+<a name="l00045"></a><a class="code" href="interfaceCBLReplication.html#ae3d340f6c6304cf26189eaf59546b2dd">00045</a> @property (nonatomic) bool <a class="code" href="interfaceCBLReplication.html#ae3d340f6c6304cf26189eaf59546b2dd" title="Should the target database be created if it doesn&#39;t already exist? (Defaults to NO).">create_target</a>;
+<a name="l00046"></a>00046 
+<a name="l00048"></a><a class="code" href="interfaceCBLReplication.html#a054fb8ca8588fa7b2ec7721bf848b651">00048</a> @property (nonatomic) bool <a class="code" href="interfaceCBLReplication.html#a054fb8ca8588fa7b2ec7721bf848b651" title="Should the replication operate continuously, copying changes as soon as the source database is modifi...">continuous</a>;
+<a name="l00049"></a>00049 
+<a name="l00053"></a><a class="code" href="interfaceCBLReplication.html#a48feca3b817405417f31f6e4cdf3fbb6">00053</a> @property (nonatomic, copy) NSString* <a class="code" href="interfaceCBLReplication.html#a48feca3b817405417f31f6e4cdf3fbb6" title="Path of an optional filter function to run on the source server.">filter</a>;
+<a name="l00054"></a>00054 
+<a name="l00057"></a><a class="code" href="interfaceCBLReplication.html#a8e02e71fae893debf2ab2de8ab11d1b8">00057</a> @property (nonatomic, copy) NSDictionary* <a class="code" href="interfaceCBLReplication.html#a8e02e71fae893debf2ab2de8ab11d1b8" title="Parameters to pass to the filter function.">query_params</a>;
+<a name="l00058"></a>00058 
+<a name="l00060"></a><a class="code" href="interfaceCBLReplication.html#a04b38f4a587fa5072a15c44a7e199c5f">00060</a> @property (copy) NSArray *<a class="code" href="interfaceCBLReplication.html#a04b38f4a587fa5072a15c44a7e199c5f" title="Sets the documents to specify as part of the replication.">doc_ids</a>;
+<a name="l00061"></a>00061 
+<a name="l00064"></a><a class="code" href="interfaceCBLReplication.html#a4a73d619968a3aa2e691920c3506992a">00064</a> @property (nonatomic, copy) NSDictionary* <a class="code" href="interfaceCBLReplication.html#a4a73d619968a3aa2e691920c3506992a" title="Extra HTTP headers to send in all requests to the remote server.">headers</a>;
 <a name="l00065"></a>00065 
-<a name="l00066"></a>00066 <span class="preprocessor">#pragma mark - AUTHENTICATION:</span>
-<a name="l00067"></a>00067 <span class="preprocessor"></span>
-<a name="l00071"></a><a class="code" href="interfaceCBLReplication.html#a1c1ec294be3d20ad016dd4402fe9509f">00071</a> @property NSURLCredential* <a class="code" href="interfaceCBLReplication.html#a1c1ec294be3d20ad016dd4402fe9509f" title="The credential (generally username+password) to use to authenticate to the remote database...">credential</a>;
-<a name="l00072"></a>00072 
-<a name="l00076"></a><a class="code" href="interfaceCBLReplication.html#a2762b1ead186bfe1a948b760f7fc0aa5">00076</a> @property (nonatomic, copy) NSDictionary* <a class="code" href="interfaceCBLReplication.html#a2762b1ead186bfe1a948b760f7fc0aa5" title="OAuth parameters that the replicator should use when authenticating to the remote database...">OAuth</a>;
-<a name="l00077"></a>00077 
-<a name="l00079"></a><a class="code" href="interfaceCBLReplication.html#aa50049898a922d74f5cffae2ea67f9c9">00079</a> @property (readonly) NSURL* <a class="code" href="interfaceCBLReplication.html#aa50049898a922d74f5cffae2ea67f9c9" title="The base URL of the remote server, for use as the &quot;origin&quot; parameter when requesting BrowserID authen...">browserIDOrigin</a>;
-<a name="l00080"></a>00080 
-<a name="l00085"></a><a class="code" href="interfaceCBLReplication.html#af23beb6ec89c7cb89d5be87783e54cff">00085</a> @property (nonatomic, copy) NSString* <a class="code" href="interfaceCBLReplication.html#af23beb6ec89c7cb89d5be87783e54cff" title="Email address for remote login with BrowserID (aka Persona).">browserIDEmailAddress</a>;
-<a name="l00086"></a>00086 
-<a name="l00094"></a>00094 - (bool) registerBrowserIDAssertion: (NSString*)assertion;
-<a name="l00095"></a>00095 
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 <span class="preprocessor">#pragma mark - AUTHENTICATION:</span>
+<a name="l00068"></a>00068 <span class="preprocessor"></span>
+<a name="l00072"></a><a class="code" href="interfaceCBLReplication.html#a1c1ec294be3d20ad016dd4402fe9509f">00072</a> @property NSURLCredential* <a class="code" href="interfaceCBLReplication.html#a1c1ec294be3d20ad016dd4402fe9509f" title="The credential (generally username+password) to use to authenticate to the remote database...">credential</a>;
+<a name="l00073"></a>00073 
+<a name="l00077"></a><a class="code" href="interfaceCBLReplication.html#a2762b1ead186bfe1a948b760f7fc0aa5">00077</a> @property (nonatomic, copy) NSDictionary* <a class="code" href="interfaceCBLReplication.html#a2762b1ead186bfe1a948b760f7fc0aa5" title="OAuth parameters that the replicator should use when authenticating to the remote database...">OAuth</a>;
+<a name="l00078"></a>00078 
+<a name="l00080"></a><a class="code" href="interfaceCBLReplication.html#aa50049898a922d74f5cffae2ea67f9c9">00080</a> @property (readonly) NSURL* <a class="code" href="interfaceCBLReplication.html#aa50049898a922d74f5cffae2ea67f9c9" title="The base URL of the remote server, for use as the &quot;origin&quot; parameter when requesting BrowserID authen...">browserIDOrigin</a>;
+<a name="l00081"></a>00081 
+<a name="l00086"></a><a class="code" href="interfaceCBLReplication.html#af23beb6ec89c7cb89d5be87783e54cff">00086</a> @property (nonatomic, copy) NSString* <a class="code" href="interfaceCBLReplication.html#af23beb6ec89c7cb89d5be87783e54cff" title="Email address for remote login with BrowserID (aka Persona).">browserIDEmailAddress</a>;
+<a name="l00087"></a>00087 
+<a name="l00095"></a>00095 - (bool) registerBrowserIDAssertion: (NSString*)assertion               __attribute__((nonnull));
 <a name="l00096"></a>00096 
-<a name="l00097"></a>00097 <span class="preprocessor">#pragma mark - STATUS:</span>
-<a name="l00098"></a>00098 <span class="preprocessor"></span>
-<a name="l00100"></a>00100 - (void) <a class="code" href="interfaceCBLReplication.html#a51da675e48e61504ef2168b5716c359d" title="Starts the replication, asynchronously.">start</a>;
-<a name="l00101"></a>00101 
-<a name="l00103"></a>00103 - (void) <a class="code" href="interfaceCBLReplication.html#ad5766602f43c44048f574e0b35de63d0" title="Stops replication, asynchronously.">stop</a>;
-<a name="l00104"></a>00104 
-<a name="l00106"></a>00106 - (void) <a class="code" href="interfaceCBLReplication.html#a384b433411def1bd3759c83b1a7d94e0" title="Restarts a completed or failed replication.">restart</a>;
-<a name="l00107"></a>00107 
-<a name="l00109"></a><a class="code" href="interfaceCBLReplication.html#a656c5977a9624723b1f2a48305542b58">00109</a> <span class="keyword">@property</span> (nonatomic, readonly) CBLReplicationMode <a class="code" href="interfaceCBLReplication.html#a656c5977a9624723b1f2a48305542b58" title="The replication&#39;s current state, one of {stopped, offline, idle, active}.">mode</a>;
-<a name="l00110"></a>00110 
-<a name="l00114"></a><a class="code" href="interfaceCBLReplication.html#a3993b9a91a41ed86d843a5eaf74ecbd4">00114</a> <span class="keyword">@property</span> (nonatomic, readonly) <span class="keywordtype">bool</span> <a class="code" href="interfaceCBLReplication.html#a3993b9a91a41ed86d843a5eaf74ecbd4" title="YES while the replication is running, NO if it&#39;s stopped.">running</a>;
-<a name="l00115"></a>00115 
-<a name="l00117"></a><a class="code" href="interfaceCBLReplication.html#a988c9933c4a9d7c5b22eed2d9a9af30f">00117</a> <span class="keyword">@property</span> (nonatomic, readonly, retain) NSError* <a class="code" href="interfaceCBLReplication.html#a988c9933c4a9d7c5b22eed2d9a9af30f" title="The error status of the replication, or nil if there have not been any errors since it started...">error</a>;
-<a name="l00118"></a>00118 
-<a name="l00120"></a><a class="code" href="interfaceCBLReplication.html#ab207c19c16d5dbe8183a7c25c152ffed">00120</a> <span class="keyword">@property</span> (nonatomic, readonly) <span class="keywordtype">unsigned</span> <a class="code" href="interfaceCBLReplication.html#ab207c19c16d5dbe8183a7c25c152ffed" title="The number of completed changes processed, if the task is active, else 0 (observable).">completed</a>;
-<a name="l00121"></a>00121 
-<a name="l00123"></a><a class="code" href="interfaceCBLReplication.html#a70b0772148f76b9f5a00c6465614a940">00123</a> <span class="keyword">@property</span> (nonatomic, readonly) <span class="keywordtype">unsigned</span> <a class="code" href="interfaceCBLReplication.html#a70b0772148f76b9f5a00c6465614a940" title="The total number of changes to be processed, if the task is active, else 0 (observable).">total</a>;
-<a name="l00124"></a>00124 
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 <span class="preprocessor">#pragma mark - STATUS:</span>
+<a name="l00099"></a>00099 <span class="preprocessor"></span>
+<a name="l00101"></a>00101 - (void) <a class="code" href="interfaceCBLReplication.html#a51da675e48e61504ef2168b5716c359d" title="Starts the replication, asynchronously.">start</a>;
+<a name="l00102"></a>00102 
+<a name="l00104"></a>00104 - (void) <a class="code" href="interfaceCBLReplication.html#ad5766602f43c44048f574e0b35de63d0" title="Stops replication, asynchronously.">stop</a>;
+<a name="l00105"></a>00105 
+<a name="l00107"></a>00107 - (void) <a class="code" href="interfaceCBLReplication.html#a384b433411def1bd3759c83b1a7d94e0" title="Restarts a completed or failed replication.">restart</a>;
+<a name="l00108"></a>00108 
+<a name="l00110"></a><a class="code" href="interfaceCBLReplication.html#a656c5977a9624723b1f2a48305542b58">00110</a> <span class="keyword">@property</span> (nonatomic, readonly) CBLReplicationMode <a class="code" href="interfaceCBLReplication.html#a656c5977a9624723b1f2a48305542b58" title="The replication&#39;s current state, one of {stopped, offline, idle, active}.">mode</a>;
+<a name="l00111"></a>00111 
+<a name="l00115"></a><a class="code" href="interfaceCBLReplication.html#a3993b9a91a41ed86d843a5eaf74ecbd4">00115</a> <span class="keyword">@property</span> (nonatomic, readonly) <span class="keywordtype">bool</span> <a class="code" href="interfaceCBLReplication.html#a3993b9a91a41ed86d843a5eaf74ecbd4" title="YES while the replication is running, NO if it&#39;s stopped.">running</a>;
+<a name="l00116"></a>00116 
+<a name="l00118"></a><a class="code" href="interfaceCBLReplication.html#a988c9933c4a9d7c5b22eed2d9a9af30f">00118</a> <span class="keyword">@property</span> (nonatomic, readonly, retain) NSError* <a class="code" href="interfaceCBLReplication.html#a988c9933c4a9d7c5b22eed2d9a9af30f" title="The error status of the replication, or nil if there have not been any errors since it started...">error</a>;
+<a name="l00119"></a>00119 
+<a name="l00121"></a><a class="code" href="interfaceCBLReplication.html#ab207c19c16d5dbe8183a7c25c152ffed">00121</a> <span class="keyword">@property</span> (nonatomic, readonly) <span class="keywordtype">unsigned</span> <a class="code" href="interfaceCBLReplication.html#ab207c19c16d5dbe8183a7c25c152ffed" title="The number of completed changes processed, if the task is active, else 0 (observable).">completed</a>;
+<a name="l00122"></a>00122 
+<a name="l00124"></a><a class="code" href="interfaceCBLReplication.html#a70b0772148f76b9f5a00c6465614a940">00124</a> <span class="keyword">@property</span> (nonatomic, readonly) <span class="keywordtype">unsigned</span> <a class="code" href="interfaceCBLReplication.html#a70b0772148f76b9f5a00c6465614a940" title="The total number of changes to be processed, if the task is active, else 0 (observable).">total</a>;
 <a name="l00125"></a>00125 
-<a name="l00126"></a>00126 <span class="keyword">@end</span>
-<a name="l00127"></a>00127 
+<a name="l00126"></a>00126 
+<a name="l00127"></a>00127 <span class="keyword">@end</span>
 <a name="l00128"></a>00128 
-<a name="l00132"></a>00132 <span class="keyword">extern</span> NSString* <span class="keyword">const</span> kCBLReplicationChangeNotification;
+<a name="l00129"></a>00129 
+<a name="l00133"></a>00133 <span class="keyword">extern</span> NSString* <span class="keyword">const</span> kCBLReplicationChangeNotification;
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><b>CBLReplication.h</b>      </li>
-      <li class="footer">Generated on Fri Feb 1 2013 14:32:40 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

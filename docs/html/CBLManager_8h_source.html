@@ -100,40 +100,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00019"></a>00019 
 <a name="l00025"></a><a class="code" href="interfaceCBLManager.html">00025</a> <span class="keyword">@interface </span><a class="code" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a> : NSObject &lt;NSCopying&gt;
 <a name="l00026"></a>00026 
-<a name="l00028"></a>00028 + (<a class="code" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a>*) <a class="code" href="interfaceCBLManager.html#a4b931241dd38bf8531e72189ffdded95" title="A shared per-process instance.">sharedInstance</a>;
+<a name="l00028"></a>00028 + (instancetype) <a class="code" href="interfaceCBLManager.html#a99bc0653f4e07b605ab416270891bc12" title="A shared per-process instance.">sharedInstance</a>;
 <a name="l00029"></a>00029 
-<a name="l00031"></a>00031 - (id)<a class="code" href="interfaceCBLManager.html#a9a2ea25aadcc8ed8b1839a6b6e5e03bb" title="Default initializer.">init</a>;
-<a name="l00032"></a>00032 
-<a name="l00037"></a>00037 - (id) initWithDirectory: (NSString*)directory
-<a name="l00038"></a>00038                  options: (const <a class="code" href="structCBLManagerOptions.html" title="Option flags for CBLManager initialization.">CBLManagerOptions</a>*)options
-<a name="l00039"></a>00039                    error: (NSError**)outError;
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041 
-<a name="l00043"></a>00043 - (void) <a class="code" href="interfaceCBLManager.html#a6c239ed5a76947899839bc9448b7d296" title="Releases all resources used by the CBLManager instance and closes all its databases.">close</a>;
-<a name="l00044"></a>00044 
-<a name="l00047"></a>00047 - (<a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a>*) databaseNamed: (NSString*)name;
+<a name="l00032"></a>00032 + (BOOL) isValidDatabaseName: (NSString*)name                           __attribute__((nonnull));
+<a name="l00033"></a>00033 
+<a name="l00035"></a>00035 + (NSString*) <a class="code" href="interfaceCBLManager.html#af48ae92af310092c5338158896bfbbee" title="The default directory to use for a CBLManager.">defaultDirectory</a>;
+<a name="l00036"></a>00036 
+<a name="l00038"></a>00038 - (instancetype) <a class="code" href="interfaceCBLManager.html#a6dbe729f05e5b2e73da4ae92d7ff5703" title="Default initializer.">init</a>;
+<a name="l00039"></a>00039 
+<a name="l00044"></a>00044 - (instancetype) initWithDirectory: (NSString*)directory
+<a name="l00045"></a>00045                            options: (const <a class="code" href="structCBLManagerOptions.html" title="Option flags for CBLManager initialization.">CBLManagerOptions</a>*)options
+<a name="l00046"></a>00046                              error: (NSError**)outError
+<a name="l00047"></a>00047     __attribute__((nonnull(1)));
 <a name="l00048"></a>00048 
-<a name="l00050"></a>00050 - (<a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a>*) objectForKeyedSubscript: (NSString*)key;
-<a name="l00051"></a>00051 
-<a name="l00055"></a>00055 - (<a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a>*) createDatabaseNamed: (NSString*)name error: (NSError**)outError;
-<a name="l00056"></a>00056 
-<a name="l00058"></a><a class="code" href="interfaceCBLManager.html#ac8ceb154c7e6a854b4d1cb47e8a8388b">00058</a> <span class="keyword">@property</span> (readonly) NSArray* <a class="code" href="interfaceCBLManager.html#ac8ceb154c7e6a854b4d1cb47e8a8388b" title="An array of the names of all existing databases.">allDatabaseNames</a>;
+<a name="l00049"></a>00049 
+<a name="l00051"></a>00051 - (void) <a class="code" href="interfaceCBLManager.html#a6c239ed5a76947899839bc9448b7d296" title="Releases all resources used by the CBLManager instance and closes all its databases.">close</a>;
+<a name="l00052"></a>00052 
+<a name="l00054"></a><a class="code" href="interfaceCBLManager.html#a82ff30172b89284eb3ff564f623b39fd">00054</a> <span class="keyword">@property</span> (readonly) NSString* <a class="code" href="interfaceCBLManager.html#a82ff30172b89284eb3ff564f623b39fd" title="The root directory of this manager (as specified at initialization time.)">directory</a>;
+<a name="l00055"></a>00055 
+<a name="l00058"></a>00058 - (<a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a>*) databaseNamed: (NSString*)name __attribute__((nonnull));
 <a name="l00059"></a>00059 
-<a name="l00062"></a><a class="code" href="interfaceCBLManager.html#aa949c5be7c40d7c4b062788f17526a5e">00062</a> <span class="keyword">@property</span> (readonly) NSURL* <a class="code" href="interfaceCBLManager.html#aa949c5be7c40d7c4b062788f17526a5e" title="The &#39;cbl:&#39; URL of the database manager&#39;s REST API.">internalURL</a>;
-<a name="l00063"></a>00063 
-<a name="l00071"></a>00071 - (BOOL) replaceDatabaseNamed: (NSString*)databaseName
-<a name="l00072"></a>00072              withDatabaseFile: (NSString*)databasePath
-<a name="l00073"></a>00073               withAttachments: (NSString*)attachmentsPath
-<a name="l00074"></a>00074                         error: (NSError**)outError;
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076 
-<a name="l00077"></a>00077 <span class="keyword">@end</span>
+<a name="l00061"></a>00061 - (<a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a>*) objectForKeyedSubscript: (NSString*)key __attribute__((nonnull));
+<a name="l00062"></a>00062 
+<a name="l00066"></a>00066 - (<a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a>*) createDatabaseNamed: (NSString*)name error: (NSError**)outError
+<a name="l00067"></a>00067                                                                     __attribute__((nonnull(1)));
+<a name="l00068"></a>00068 
+<a name="l00070"></a><a class="code" href="interfaceCBLManager.html#ac8ceb154c7e6a854b4d1cb47e8a8388b">00070</a> <span class="keyword">@property</span> (readonly) NSArray* <a class="code" href="interfaceCBLManager.html#ac8ceb154c7e6a854b4d1cb47e8a8388b" title="An array of the names of all existing databases.">allDatabaseNames</a>;
+<a name="l00071"></a>00071 
+<a name="l00076"></a><a class="code" href="interfaceCBLManager.html#aa949c5be7c40d7c4b062788f17526a5e">00076</a> <span class="keyword">@property</span> (readonly) NSURL* <a class="code" href="interfaceCBLManager.html#aa949c5be7c40d7c4b062788f17526a5e" title="The base URL of the database manager&#39;s REST API.">internalURL</a>;
+<a name="l00077"></a>00077 
+<a name="l00085"></a>00085 - (BOOL) replaceDatabaseNamed: (NSString*)databaseName
+<a name="l00086"></a>00086              withDatabaseFile: (NSString*)databasePath
+<a name="l00087"></a>00087               withAttachments: (NSString*)attachmentsPath
+<a name="l00088"></a>00088                         error: (NSError**)outError                  __attribute__((nonnull(1,2)));
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 <span class="keyword">@end</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><b>CBLManager.h</b>      </li>
-      <li class="footer">Generated on Fri Feb 1 2013 14:32:39 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

@@ -6,6 +6,7 @@ var NAVTREE =
       [ "CBLDatabase", "interfaceCBLDatabase.html", null ],
       [ "CBLDocument", "interfaceCBLDocument.html", null ],
       [ "<CBLDocumentModel>", "protocolCBLDocumentModel-p.html", null ],
+      [ "<CBLFilterCompiler>", "protocolCBLFilterCompiler-p.html", null ],
       [ "CBLLiveQuery", "interfaceCBLLiveQuery.html", null ],
       [ "CBLManager", "interfaceCBLManager.html", null ],
       [ "CBLManagerOptions", "structCBLManagerOptions.html", null ],
@@ -34,6 +35,7 @@ var NAVTREE =
           [ "CBLReplication", "interfaceCBLReplication.html", null ]
         ] ]
       ] ],
+      [ "<CBLFilterCompiler>", "protocolCBLFilterCompiler-p.html", null ],
       [ "CBLManager", "interfaceCBLManager.html", null ],
       [ "CBLManagerOptions", "structCBLManagerOptions.html", null ],
       [ "CBLModelFactory", "interfaceCBLModelFactory.html", null ],

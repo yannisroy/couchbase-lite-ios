@@ -97,16 +97,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLView.html#a3c5491ed7aae0d4c0fab3d3314e51e66">setMapBlock:reduceBlock:version:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines or deletes a view.  <a href="#a3c5491ed7aae0d4c0fab3d3314e51e66"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLView.html#af9955f6cefbfbc6ad0820e78f201cd94">setMapBlock:version:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines or deletes a view that has no reduce function.  <a href="#af9955f6cefbfbc6ad0820e78f201cd94"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLView.html#a1aefb4c448b91a517742edfc9ad47ecd">setMapBlock:reduceBlock:version:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines a view's functions.  <a href="#a1aefb4c448b91a517742edfc9ad47ecd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLView.html#a4a18484f5329cef9793a6081852317e0">setMapBlock:version:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines a view that has no reduce function.  <a href="#a4a18484f5329cef9793a6081852317e0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLView.html#a39953c0a0e82022a55f0632d46836fec">removeIndex</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the view's persistent index.  <a href="#a39953c0a0e82022a55f0632d46836fec"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLView.html#a327fc1988a559452f3341a07ac593946">deleteView</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the view, persistently.  <a href="#a327fc1988a559452f3341a07ac593946"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLQuery.html">CBLQuery</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLView.html#a9eba2ddac8526ac02b4d79163085bd53">query</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new query object for this view.  <a href="#a9eba2ddac8526ac02b4d79163085bd53"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe26ed16a8fbf91e60980dea1eb89a3d"></a><!-- doxytag: member="CBLView::setCompiler:" ref="abe26ed16a8fbf91e60980dea1eb89a3d" args="(id&lt; CBLViewCompiler &gt; compiler)" -->
-(void)&#160;</td><td class="memItemRight" valign="bottom">+ <b>setCompiler:</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(NSNumber *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceCBLView.html#a29c9a1a03125cbc89eb75a20bc1c30a4">totalValues:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility function to use in reduce blocks.  <a href="#a29c9a1a03125cbc89eb75a20bc1c30a4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceCBLView.html#abe26ed16a8fbf91e60980dea1eb89a3d">setCompiler:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers an object that can compile map/reduce functions from source code.  <a href="#abe26ed16a8fbf91e60980dea1eb89a3d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9782be8c8c994eaa685176fd8bce1b0a"></a><!-- doxytag: member="CBLView::compiler" ref="a9782be8c8c994eaa685176fd8bce1b0a" args="()" -->
 (id&lt; <a class="el" href="protocolCBLViewCompiler-p.html">CBLViewCompiler</a> &gt;)&#160;</td><td class="memItemRight" valign="bottom">+ <b>compiler</b></td></tr>
 <tr><td colspan="2"><h2><a name="properties"></a>
@@ -119,12 +125,17 @@ Properties</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The map function that controls how index rows are created from documents.  <a href="#ab8f3671f29a616264f5aaff5d9ea0769"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">CBLReduceBlock&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLView.html#a6b68872edd92ff2b57f482c1f61f10b1">reduceBlock</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The optional reduce function, which aggregates together multiple rows.  <a href="#a6b68872edd92ff2b57f482c1f61f10b1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9054cf28c3b8e4c2a0c25505b0169bb9"></a><!-- doxytag: member="CBLView::stale" ref="a9054cf28c3b8e4c2a0c25505b0169bb9" args="" -->
+BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLView.html#a9054cf28c3b8e4c2a0c25505b0169bb9">stale</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the view's index currently out of date? <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SInt64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLView.html#a14c358544fd4c923bf79f07b93e51655">lastSequenceIndexed</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The last sequence number indexed so far.  <a href="#a14c358544fd4c923bf79f07b93e51655"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A "view" in a CouchbaseLite database -- essentially a persistent index managed by map/reduce. </p>
 <p>The view can be queried using a <a class="el" href="interfaceCBLQuery.html" title="Represents a query of a CouchbaseLite &#39;view&#39;, or of a view-like resource like _all_documents.">CBLQuery</a>. </p>
 </div><hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a3c5491ed7aae0d4c0fab3d3314e51e66"></a><!-- doxytag: member="CBLView::setMapBlock:reduceBlock:version:" ref="a3c5491ed7aae0d4c0fab3d3314e51e66" args="(CBLMapBlock mapBlock,[reduceBlock] CBLReduceBlock reduceBlock,[version] NSString *version)" -->
+<a class="anchor" id="a1aefb4c448b91a517742edfc9ad47ecd"></a><!-- doxytag: member="CBLView::setMapBlock:reduceBlock:version:" ref="a1aefb4c448b91a517742edfc9ad47ecd" args="(CBLMapBlock mapBlock,[reduceBlock] CBLReduceBlock reduceBlock,[version](nonnull(1, 3 __attribute__)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -138,13 +149,7 @@ Properties</h2></td></tr>
           <td class="paramkey">reduceBlock:</td>
           <td></td>
           <td class="paramtype">(CBLReduceBlock)&#160;</td>
-          <td class="paramname"><em>reduceBlock</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">version:</td>
-          <td></td>
-          <td class="paramtype">(NSString *)&#160;</td>
-          <td class="paramname"><em>version</em>&#160;</td>
+          <td class="paramname"><em>reduceBlock</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -155,12 +160,12 @@ Properties</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Defines or deletes a view. </p>
+<p>Defines a view's functions. </p>
 <p>The view's definition is given as an Objective-C block (or NULL to delete the view). The body of the block should call the 'emit' block (passed in as a paramter) for every key/value pair it wants to write to the view. Since the function itself is obviously not stored in the database (only a unique string idenfitying it), you must re-define the view on every launch of the app! If the database needs to rebuild the view but the function hasn't been defined yet, it will fail and the view will be empty, causing weird problems later on. It is very important that this block be a law-abiding map function! As in other languages, it must be a "pure" function, with no side effects, that always emits the same values given the same input document. That means that it should not access or change any external state; be careful, since blocks make that so easy that you might do it inadvertently! The block may be called on any thread, or on multiple threads simultaneously. This won't be a problem if the code is "pure" as described above, since it will as a consequence also be thread-safe. </p>
 
 </div>
 </div>
-<a class="anchor" id="af9955f6cefbfbc6ad0820e78f201cd94"></a><!-- doxytag: member="CBLView::setMapBlock:version:" ref="af9955f6cefbfbc6ad0820e78f201cd94" args="(CBLMapBlock mapBlock,[version] NSString *version)" -->
+<a class="anchor" id="a4a18484f5329cef9793a6081852317e0"></a><!-- doxytag: member="CBLView::setMapBlock:version:" ref="a4a18484f5329cef9793a6081852317e0" args="(CBLMapBlock mapBlock,[version](nonnull(1, 2 __attribute__)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -169,24 +174,51 @@ Properties</h2></td></tr>
           <td></td>
           <td class="paramtype">(CBLMapBlock)&#160;</td>
           <td class="paramname"><em>mapBlock</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">version:</td>
           <td></td>
-          <td class="paramtype">(NSString *)&#160;</td>
-          <td class="paramname"><em>version</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Defines or deletes a view that has no reduce function. </p>
+<p>Defines a view that has no reduce function. </p>
 <p>See -setMapBlock:reduceBlock:version: for more details. </p>
+
+</div>
+</div>
+<a class="anchor" id="a39953c0a0e82022a55f0632d46836fec"></a><!-- doxytag: member="CBLView::removeIndex" ref="a39953c0a0e82022a55f0632d46836fec" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) removeIndex </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Deletes the view's persistent index. </p>
+<p>It will be regenerated on the next query. </p>
+
+</div>
+</div>
+<a class="anchor" id="a327fc1988a559452f3341a07ac593946"></a><!-- doxytag: member="CBLView::deleteView" ref="a327fc1988a559452f3341a07ac593946" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) deleteView </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Deletes the view, persistently. </p>
 
 </div>
 </div>
@@ -206,6 +238,45 @@ Properties</h2></td></tr>
 
 <p>Creates a new query object for this view. </p>
 <p>The query can be customized and then executed. </p>
+
+</div>
+</div>
+<a class="anchor" id="a29c9a1a03125cbc89eb75a20bc1c30a4"></a><!-- doxytag: member="CBLView::totalValues:" ref="a29c9a1a03125cbc89eb75a20bc1c30a4" args="(NSArray *values)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (NSNumber*) totalValues: </td>
+          <td></td>
+          <td class="paramtype">(NSArray *)&#160;</td>
+          <td class="paramname"><em>values</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Utility function to use in reduce blocks. </p>
+<p>Totals an array of NSNumbers. </p>
+
+</div>
+</div>
+<a class="anchor" id="abe26ed16a8fbf91e60980dea1eb89a3d"></a><!-- doxytag: member="CBLView::setCompiler:" ref="abe26ed16a8fbf91e60980dea1eb89a3d" args="(id&lt; CBLViewCompiler &gt; compiler)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (void) setCompiler: </td>
+          <td></td>
+          <td class="paramtype">(id&lt; <a class="el" href="protocolCBLViewCompiler-p.html">CBLViewCompiler</a> &gt;)&#160;</td>
+          <td class="paramname"><em>compiler</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Registers an object that can compile map/reduce functions from source code. </p>
 
 </div>
 </div>
@@ -270,6 +341,21 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a14c358544fd4c923bf79f07b93e51655"></a><!-- doxytag: member="CBLView::lastSequenceIndexed" ref="a14c358544fd4c923bf79f07b93e51655" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (SInt64) lastSequenceIndexed<code> [read, assign]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The last sequence number indexed so far. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Source/API/<a class="el" href="CBLView_8h_source.html">CBLView.h</a></li>
 </ul>
@@ -278,7 +364,7 @@ Properties</h2></td></tr>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="interfaceCBLView.html">CBLView</a>      </li>
-      <li class="footer">Generated on Fri Feb 1 2013 14:32:40 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

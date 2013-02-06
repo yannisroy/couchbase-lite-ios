@@ -97,41 +97,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a9a2ea25aadcc8ed8b1839a6b6e5e03bb">init</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Default initializer.  <a href="#a9a2ea25aadcc8ed8b1839a6b6e5e03bb"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a952cc33cad91bf7279f4c3e034f5d41c">initWithDirectory:options:error:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a CouchbaseLite manager that stores its data at the given path.  <a href="#a952cc33cad91bf7279f4c3e034f5d41c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a6dbe729f05e5b2e73da4ae92d7ff5703">init</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Default initializer.  <a href="#a6dbe729f05e5b2e73da4ae92d7ff5703"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#acdb4cf136955f8cff6dd10d2f38bdd9e">initWithDirectory:options:error:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a CouchbaseLite manager that stores its data at the given path.  <a href="#acdb4cf136955f8cff6dd10d2f38bdd9e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a6c239ed5a76947899839bc9448b7d296">close</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases all resources used by the <a class="el" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a> instance and closes all its databases.  <a href="#a6c239ed5a76947899839bc9448b7d296"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a2480f887922246391492d8fff82d0add">databaseNamed:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the database with the given name, or nil if it doesn't exist.  <a href="#a2480f887922246391492d8fff82d0add"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a068f9fcdeb48b49baa28794271552b67">objectForKeyedSubscript:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as -databaseNamed:.  <a href="#a068f9fcdeb48b49baa28794271552b67"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a0649abf3a3eb8b434a8bc3c548e058b5">createDatabaseNamed:error:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the database with the given name, creating it if it didn't already exist.  <a href="#a0649abf3a3eb8b434a8bc3c548e058b5"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#ac6ac00c66002cf03ee341f8ece5dbb9d">replaceDatabaseNamed:withDatabaseFile:withAttachments:error:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces or installs a database from a file.  <a href="#ac6ac00c66002cf03ee341f8ece5dbb9d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#af437c0ce45feaf837315b6881ca82c0c">databaseNamed:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the database with the given name, or nil if it doesn't exist.  <a href="#af437c0ce45feaf837315b6881ca82c0c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#ad6b0032cff9c5a04c7747fe34cc876d6">objectForKeyedSubscript:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as -databaseNamed:.  <a href="#ad6b0032cff9c5a04c7747fe34cc876d6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#abd7f485a26cbb7d5cc4e65a55a72ffc6">createDatabaseNamed:error:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the database with the given name, creating it if it didn't already exist.  <a href="#abd7f485a26cbb7d5cc4e65a55a72ffc6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a92975dcb84535cd49e5059a10321cc97">replaceDatabaseNamed:withDatabaseFile:withAttachments:error:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces or installs a database from a file.  <a href="#a92975dcb84535cd49e5059a10321cc97"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLManager.html">CBLManager</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceCBLManager.html#a4b931241dd38bf8531e72189ffdded95">sharedInstance</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A shared per-process instance.  <a href="#a4b931241dd38bf8531e72189ffdded95"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceCBLManager.html#a99bc0653f4e07b605ab416270891bc12">sharedInstance</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A shared per-process instance.  <a href="#a99bc0653f4e07b605ab416270891bc12"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceCBLManager.html#a3a004b408926ceacc7a223a95632c1a6">isValidDatabaseName:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns YES if the given name is a valid database name.  <a href="#a3a004b408926ceacc7a223a95632c1a6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(NSString *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceCBLManager.html#af48ae92af310092c5338158896bfbbee">defaultDirectory</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The default directory to use for a <a class="el" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a>.  <a href="#af48ae92af310092c5338158896bfbbee"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="properties"></a>
 Properties</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82ff30172b89284eb3ff564f623b39fd"></a><!-- doxytag: member="CBLManager::directory" ref="a82ff30172b89284eb3ff564f623b39fd" args="" -->
+NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLManager.html#a82ff30172b89284eb3ff564f623b39fd">directory</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The root directory of this manager (as specified at initialization time.) <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLManager.html#ac8ceb154c7e6a854b4d1cb47e8a8388b">allDatabaseNames</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">An array of the names of all existing databases.  <a href="#ac8ceb154c7e6a854b4d1cb47e8a8388b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">NSURL *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLManager.html#aa949c5be7c40d7c4b062788f17526a5e">internalURL</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The 'cbl:' URL of the database manager's REST API.  <a href="#aa949c5be7c40d7c4b062788f17526a5e"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The base URL of the database manager's REST API.  <a href="#aa949c5be7c40d7c4b062788f17526a5e"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does. </p>
 <p>A <a class="el" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a> and all the objects descending from it may only be used on a single thread. To work with databases on another thread, create a new <a class="el" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a> instance for that thread (and be sure to use the .noReplicator option.) The easist way to do this is simply to call -copy on the existing manager. </p>
 </div><hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a4b931241dd38bf8531e72189ffdded95"></a><!-- doxytag: member="CBLManager::sharedInstance" ref="a4b931241dd38bf8531e72189ffdded95" args="()" -->
+<a class="anchor" id="a99bc0653f4e07b605ab416270891bc12"></a><!-- doxytag: member="CBLManager::sharedInstance" ref="a99bc0653f4e07b605ab416270891bc12" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">+ (<a class="el" href="interfaceCBLManager.html">CBLManager</a>*) sharedInstance </td>
+          <td class="memname">+ (instancetype) sharedInstance </td>
           <td></td>
           <td class="paramname"></td>
           <td></td>
@@ -145,12 +152,50 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9a2ea25aadcc8ed8b1839a6b6e5e03bb"></a><!-- doxytag: member="CBLManager::init" ref="a9a2ea25aadcc8ed8b1839a6b6e5e03bb" args="()" -->
+<a class="anchor" id="a3a004b408926ceacc7a223a95632c1a6"></a><!-- doxytag: member="CBLManager::isValidDatabaseName:" ref="a3a004b408926ceacc7a223a95632c1a6" args="((nonnull __attribute__)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (id) init </td>
+          <td class="memname">+ (BOOL) isValidDatabaseName: </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns YES if the given name is a valid database name. </p>
+<p>(Only the characters in "abcdefghijklmnopqrstuvwxyz0123456789_$()+-/" are allowed.) </p>
+
+</div>
+</div>
+<a class="anchor" id="af48ae92af310092c5338158896bfbbee"></a><!-- doxytag: member="CBLManager::defaultDirectory" ref="af48ae92af310092c5338158896bfbbee" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (NSString*) defaultDirectory </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The default directory to use for a <a class="el" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a>. </p>
+<p>This is in the Application Support directory. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6dbe729f05e5b2e73da4ae92d7ff5703"></a><!-- doxytag: member="CBLManager::init" ref="a6dbe729f05e5b2e73da4ae92d7ff5703" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (instancetype) init </td>
           <td></td>
           <td class="paramname"></td>
           <td></td>
@@ -160,16 +205,16 @@ Properties</h2></td></tr>
 <div class="memdoc">
 
 <p>Default initializer. </p>
-<p>Stores databases in the default Application Support directory. </p>
+<p>Stores databases in the default directory. </p>
 
 </div>
 </div>
-<a class="anchor" id="a952cc33cad91bf7279f4c3e034f5d41c"></a><!-- doxytag: member="CBLManager::initWithDirectory:options:error:" ref="a952cc33cad91bf7279f4c3e034f5d41c" args="(NSString *directory,[options] const CBLManagerOptions *options,[error] NSError **outError)" -->
+<a class="anchor" id="acdb4cf136955f8cff6dd10d2f38bdd9e"></a><!-- doxytag: member="CBLManager::initWithDirectory:options:error:" ref="acdb4cf136955f8cff6dd10d2f38bdd9e" args="(NSString *directory,[options] const CBLManagerOptions *options,[error](nonnull(1 __attribute__)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (id) initWithDirectory: </td>
+          <td class="memname">- (instancetype) initWithDirectory: </td>
           <td></td>
           <td class="paramtype">(NSString *)&#160;</td>
           <td class="paramname"><em>directory</em></td>
@@ -178,13 +223,7 @@ Properties</h2></td></tr>
           <td class="paramkey">options:</td>
           <td></td>
           <td class="paramtype">(const <a class="el" href="structCBLManagerOptions.html">CBLManagerOptions</a> *)&#160;</td>
-          <td class="paramname"><em>options</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">error:</td>
-          <td></td>
-          <td class="paramtype">(NSError **)&#160;</td>
-          <td class="paramname"><em>outError</em>&#160;</td>
+          <td class="paramname"><em>options</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -225,15 +264,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2480f887922246391492d8fff82d0add"></a><!-- doxytag: member="CBLManager::databaseNamed:" ref="a2480f887922246391492d8fff82d0add" args="(NSString *name)" -->
+<a class="anchor" id="af437c0ce45feaf837315b6881ca82c0c"></a><!-- doxytag: member="CBLManager::databaseNamed:" ref="af437c0ce45feaf837315b6881ca82c0c" args="((nonnull __attribute__)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">- (<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a>*) databaseNamed: </td>
           <td></td>
-          <td class="paramtype">(NSString *)&#160;</td>
-          <td class="paramname"><em>name</em></td>
+          <td class="paramname"></td>
           <td></td>
         </tr>
       </table>
@@ -245,15 +283,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a068f9fcdeb48b49baa28794271552b67"></a><!-- doxytag: member="CBLManager::objectForKeyedSubscript:" ref="a068f9fcdeb48b49baa28794271552b67" args="(NSString *key)" -->
+<a class="anchor" id="ad6b0032cff9c5a04c7747fe34cc876d6"></a><!-- doxytag: member="CBLManager::objectForKeyedSubscript:" ref="ad6b0032cff9c5a04c7747fe34cc876d6" args="((nonnull __attribute__)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">- (<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a>*) objectForKeyedSubscript: </td>
           <td></td>
-          <td class="paramtype">(NSString *)&#160;</td>
-          <td class="paramname"><em>key</em></td>
+          <td class="paramname"></td>
           <td></td>
         </tr>
       </table>
@@ -265,7 +302,7 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a0649abf3a3eb8b434a8bc3c548e058b5"></a><!-- doxytag: member="CBLManager::createDatabaseNamed:error:" ref="a0649abf3a3eb8b434a8bc3c548e058b5" args="(NSString *name,[error] NSError **outError)" -->
+<a class="anchor" id="abd7f485a26cbb7d5cc4e65a55a72ffc6"></a><!-- doxytag: member="CBLManager::createDatabaseNamed:error:" ref="abd7f485a26cbb7d5cc4e65a55a72ffc6" args="(NSString *name,[error](nonnull(1 __attribute__)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -274,17 +311,7 @@ Properties</h2></td></tr>
           <td></td>
           <td class="paramtype">(NSString *)&#160;</td>
           <td class="paramname"><em>name</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">error:</td>
           <td></td>
-          <td class="paramtype">(NSError **)&#160;</td>
-          <td class="paramname"><em>outError</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
         </tr>
       </table>
 </div>
@@ -295,7 +322,7 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac6ac00c66002cf03ee341f8ece5dbb9d"></a><!-- doxytag: member="CBLManager::replaceDatabaseNamed:withDatabaseFile:withAttachments:error:" ref="ac6ac00c66002cf03ee341f8ece5dbb9d" args="(NSString *databaseName,[withDatabaseFile] NSString *databasePath,[withAttachments] NSString *attachmentsPath,[error] NSError **outError)" -->
+<a class="anchor" id="a92975dcb84535cd49e5059a10321cc97"></a><!-- doxytag: member="CBLManager::replaceDatabaseNamed:withDatabaseFile:withAttachments:error:" ref="a92975dcb84535cd49e5059a10321cc97" args="(NSString *databaseName,[withDatabaseFile] NSString *databasePath,[withAttachments] NSString *attachmentsPath,[error](nonnull(1, 2 __attribute__)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -315,13 +342,7 @@ Properties</h2></td></tr>
           <td class="paramkey">withAttachments:</td>
           <td></td>
           <td class="paramtype">(NSString *)&#160;</td>
-          <td class="paramname"><em>attachmentsPath</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">error:</td>
-          <td></td>
-          <td class="paramtype">(NSError **)&#160;</td>
-          <td class="paramname"><em>outError</em>&#160;</td>
+          <td class="paramname"><em>attachmentsPath</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -374,8 +395,8 @@ Properties</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>The 'cbl:' URL of the database manager's REST API. </p>
-<p>Only available if you've linked with the CouchbaseLiteListener framework. </p>
+<p>The base URL of the database manager's REST API. </p>
+<p>You can access this URL within this process, using NSURLConnection or other APIs that use that (such as XMLHTTPRequest inside a WebView), but it isn't available outside the process. This method is only available if you've linked with the CouchbaseLiteListener framework. </p>
 
 </div>
 </div>
@@ -387,7 +408,7 @@ Properties</h2></td></tr>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="interfaceCBLManager.html">CBLManager</a>      </li>
-      <li class="footer">Generated on Fri Feb 1 2013 14:32:40 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

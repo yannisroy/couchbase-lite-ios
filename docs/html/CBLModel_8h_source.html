@@ -95,11 +95,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00013"></a>00013 
 <a name="l00020"></a><a class="code" href="interfaceCBLModel.html">00020</a> <span class="keyword">@interface </span><a class="code" href="interfaceCBLModel.html" title="Generic model class for CouchbaseLite documents.">CBLModel</a> : MYDynamicObject &lt;<a class="code" href="protocolCBLDocumentModel-p.html" title="Protocol that CBLDocument model objects must implement.">CBLDocumentModel</a>&gt;
 <a name="l00021"></a>00021 
-<a name="l00026"></a>00026 + (id) modelForDocument: (CBLDocument*)document;
+<a name="l00026"></a>00026 + (instancetype) modelForDocument: (CBLDocument*)document               __attribute__((nonnull));
 <a name="l00027"></a>00027 
-<a name="l00030"></a>00030 - (id) initWithNewDocumentInDatabase: (CBLDatabase*)database;
+<a name="l00030"></a>00030 - (instancetype) initWithNewDocumentInDatabase: (CBLDatabase*)database  __attribute__((nonnull));
 <a name="l00031"></a>00031 
-<a name="l00035"></a>00035 - (id) <a class="code" href="interfaceCBLModel.html#a1eb61eaced66e2a13a0215d7bdca4a7e" title="Creates a new &quot;untitled&quot; model object with no document or database at all yet.">init</a>;
+<a name="l00035"></a>00035 - (instancetype) <a class="code" href="interfaceCBLModel.html#ae48ba5fb16eaba8041962ab9475bcd08" title="Creates a new &quot;untitled&quot; model object with no document or database at all yet.">init</a>;
 <a name="l00036"></a>00036 
 <a name="l00038"></a><a class="code" href="interfaceCBLModel.html#ac2bed1bf2976d2c156d3dc0c54c02650">00038</a> <span class="keyword">@property</span> (readonly, retain) CBLDocument* document;
 <a name="l00039"></a>00039 
@@ -123,55 +123,58 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00072"></a>00072 
 <a name="l00075"></a><a class="code" href="interfaceCBLModel.html#a500a89994f33b0042584da078aaeac8f">00075</a> <span class="keyword">@property</span> (readonly) NSTimeInterval <a class="code" href="interfaceCBLModel.html#a500a89994f33b0042584da078aaeac8f" title="The time interval since the document was last changed externally (e.g.">timeSinceExternallyChanged</a>;
 <a name="l00076"></a>00076 
-<a name="l00083"></a>00083 + (BOOL) saveModels: (NSArray*)models error: (NSError**)outError;
-<a name="l00084"></a>00084 
-<a name="l00086"></a>00086 - (void) <a class="code" href="interfaceCBLModel.html#af35e50f35de893c497eeeaddee9ccca6" title="Resets the timeSinceExternallyChanged property to zero.">markExternallyChanged</a>;
-<a name="l00087"></a>00087 
-<a name="l00088"></a>00088 <span class="preprocessor">#pragma mark - PROPERTIES &amp; ATTACHMENTS:</span>
-<a name="l00089"></a>00089 <span class="preprocessor"></span>
-<a name="l00092"></a>00092 - (id) getValueOfProperty: (NSString*)property;
-<a name="l00093"></a>00093 
-<a name="l00096"></a>00096 - (BOOL) setValue: (<span class="keywordtype">id</span>)value ofProperty: (NSString*)property;
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098 
-<a name="l00101"></a><a class="code" href="interfaceCBLModel.html#ad01c3dfaba339ca1a2657f413c20c402">00101</a> <span class="keyword">@property</span> (readonly) NSArray* <a class="code" href="interfaceCBLModel.html#ad01c3dfaba339ca1a2657f413c20c402" title="The names of all attachments (array of strings).">attachmentNames</a>;
-<a name="l00102"></a>00102 
-<a name="l00104"></a>00104 - (<a class="code" href="interfaceCBLAttachment.html" title="A binary attachment to a document revision.">CBLAttachment</a>*) attachmentNamed: (NSString*)name;
+<a name="l00084"></a>00084 + (BOOL) saveModels: (NSArray*)models
+<a name="l00085"></a>00085               error: (NSError**)outError;
+<a name="l00086"></a>00086 
+<a name="l00088"></a>00088 - (void) <a class="code" href="interfaceCBLModel.html#af35e50f35de893c497eeeaddee9ccca6" title="Resets the timeSinceExternallyChanged property to zero.">markExternallyChanged</a>;
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090 <span class="preprocessor">#pragma mark - PROPERTIES &amp; ATTACHMENTS:</span>
+<a name="l00091"></a>00091 <span class="preprocessor"></span>
+<a name="l00094"></a>00094 - (id) getValueOfProperty: (NSString*)property                          __attribute__((nonnull));
+<a name="l00095"></a>00095 
+<a name="l00098"></a>00098 - (BOOL) setValue: (<span class="keywordtype">id</span>)value
+<a name="l00099"></a>00099        ofProperty: (NSString*)property                                  __attribute__((nonnull(2)));
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101 
+<a name="l00104"></a><a class="code" href="interfaceCBLModel.html#ad01c3dfaba339ca1a2657f413c20c402">00104</a> <span class="keyword">@property</span> (readonly) NSArray* <a class="code" href="interfaceCBLModel.html#ad01c3dfaba339ca1a2657f413c20c402" title="The names of all attachments (array of strings).">attachmentNames</a>;
 <a name="l00105"></a>00105 
-<a name="l00110"></a>00110 - (void) addAttachment: (<a class="code" href="interfaceCBLAttachment.html" title="A binary attachment to a document revision.">CBLAttachment</a>*)attachment named: (NSString*)name;
-<a name="l00111"></a>00111 
-<a name="l00114"></a>00114 - (void) removeAttachmentNamed: (NSString*)name;
+<a name="l00107"></a>00107 - (<a class="code" href="interfaceCBLAttachment.html" title="A binary attachment to a document revision.">CBLAttachment</a>*) attachmentNamed: (NSString*)name                     __attribute__((nonnull));
+<a name="l00108"></a>00108 
+<a name="l00113"></a>00113 - (void) addAttachment: (<a class="code" href="interfaceCBLAttachment.html" title="A binary attachment to a document revision.">CBLAttachment</a>*)attachment
+<a name="l00114"></a>00114                  named: (NSString*)name                                 __attribute__((nonnull(2)));
 <a name="l00115"></a>00115 
-<a name="l00116"></a>00116 
-<a name="l00117"></a>00117 <span class="preprocessor">#pragma mark - PROTECTED (FOR SUBCLASSES TO OVERRIDE)</span>
-<a name="l00118"></a>00118 <span class="preprocessor"></span>
-<a name="l00121"></a>00121 - (id) initWithDocument: (CBLDocument*)document;
-<a name="l00122"></a>00122 
-<a name="l00125"></a>00125 - (NSString*) idForNewDocumentInDatabase: (CBLDatabase*)db;
+<a name="l00118"></a>00118 - (void) removeAttachmentNamed: (NSString*)name                         __attribute__((nonnull));
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121 <span class="preprocessor">#pragma mark - PROTECTED (FOR SUBCLASSES TO OVERRIDE)</span>
+<a name="l00122"></a>00122 <span class="preprocessor"></span>
+<a name="l00125"></a>00125 - (instancetype) initWithDocument: (CBLDocument*)document;
 <a name="l00126"></a>00126 
-<a name="l00129"></a>00129 - (void) <a class="code" href="interfaceCBLModel.html#a06f08eaa3d07b894a4dde5b2ab5b23da" title="Called when the model&#39;s properties are reloaded from the document.">didLoadFromDocument</a>;
+<a name="l00129"></a>00129 - (NSString*) idForNewDocumentInDatabase: (CBLDatabase*)db              __attribute__((nonnull));
 <a name="l00130"></a>00130 
-<a name="l00133"></a>00133 - (CBLDatabase*) databaseForModelProperty: (NSString*)propertyName;
+<a name="l00133"></a>00133 - (void) <a class="code" href="interfaceCBLModel.html#a06f08eaa3d07b894a4dde5b2ab5b23da" title="Called when the model&#39;s properties are reloaded from the document.">didLoadFromDocument</a>;
 <a name="l00134"></a>00134 
-<a name="l00135"></a>00135 <span class="keyword">@end</span>
-<a name="l00136"></a>00136 
-<a name="l00137"></a>00137 
+<a name="l00137"></a>00137 - (CBLDatabase*) databaseForModelProperty: (NSString*)propertyName      __attribute__((nonnull));
 <a name="l00138"></a>00138 
-<a name="l00140"></a>00140 <span class="keyword">@interface </span>CBLDatabase (<a class="code" href="interfaceCBLModel.html" title="Generic model class for CouchbaseLite documents.">CBLModel</a>)
+<a name="l00139"></a>00139 <span class="keyword">@end</span>
+<a name="l00140"></a>00140 
 <a name="l00141"></a>00141 
-<a name="l00143"></a><a class="code" href="interfaceCBLDatabase.html#aa91dd21496d2c5edbf9fb69a872acccf">00143</a> <span class="keyword">@property</span> (readonly) NSArray* <a class="code" href="interfaceCBLDatabase.html#aa91dd21496d2c5edbf9fb69a872acccf" title="All CBLModels associated with this database whose needsSave is true.">unsavedModels</a>;
-<a name="l00144"></a>00144 
-<a name="l00146"></a>00146 - (BOOL) saveAllModels: (NSError**)outError;
-<a name="l00147"></a>00147 
-<a name="l00151"></a>00151 - (BOOL) autosaveAllModels: (NSError**)outError;
-<a name="l00152"></a>00152 
-<a name="l00153"></a>00153 <span class="keyword">@end</span>
+<a name="l00142"></a>00142 
+<a name="l00144"></a>00144 <span class="keyword">@interface </span>CBLDatabase (<a class="code" href="interfaceCBLModel.html" title="Generic model class for CouchbaseLite documents.">CBLModel</a>)
+<a name="l00145"></a>00145 
+<a name="l00147"></a><a class="code" href="interfaceCBLDatabase.html#aa91dd21496d2c5edbf9fb69a872acccf">00147</a> <span class="keyword">@property</span> (readonly) NSArray* <a class="code" href="interfaceCBLDatabase.html#aa91dd21496d2c5edbf9fb69a872acccf" title="All CBLModels associated with this database whose needsSave is true.">unsavedModels</a>;
+<a name="l00148"></a>00148 
+<a name="l00150"></a>00150 - (BOOL) saveAllModels: (NSError**)outError;
+<a name="l00151"></a>00151 
+<a name="l00155"></a>00155 - (BOOL) autosaveAllModels: (NSError**)outError;
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157 <span class="keyword">@end</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><b>CBLModel.h</b>      </li>
-      <li class="footer">Generated on Fri Feb 1 2013 14:32:39 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>
