@@ -106,10 +106,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience accessor to return the query row at a given index path.  <a href="#a1635aac8cbbe472fca2cdbb2f32393ba"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDocument.html">CBLDocument</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLUITableSource.html#a7bfd70f01c5fa77e0f7fd5c970f2e393">documentAtIndexPath:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience accessor to return the document at a given index path.  <a href="#a7bfd70f01c5fa77e0f7fd5c970f2e393"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLUITableSource.html#ada02464605a8da2931de928f8854359e">deleteDocumentsAtIndexes:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously deletes the documents at the given row indexes, animating the removal from the table.  <a href="#ada02464605a8da2931de928f8854359e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLUITableSource.html#a2fe378f8c4590f45f3be250ff39f8a50">deleteDocuments:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously deletes the given documents, animating the removal from the table.  <a href="#a2fe378f8c4590f45f3be250ff39f8a50"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLUITableSource.html#a65c1fb9ff25651b44ba3db358fb6988d">deleteDocumentsAtIndexes:error:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the documents at the given row indexes, animating the removal from the table.  <a href="#a65c1fb9ff25651b44ba3db358fb6988d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLUITableSource.html#a71092b82f501cb9f57c925fafcec64f0">deleteDocuments:error:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously deletes the given documents, animating the removal from the table.  <a href="#a71092b82f501cb9f57c925fafcec64f0"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="properties"></a>
 Properties</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">IBOutlet UITableView *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLUITableSource.html#a52bbaaa40a38a5cf12c27592c4277bac">tableView</a></td></tr>
@@ -219,12 +219,12 @@ BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 
 </div>
 </div>
-<a class="anchor" id="ada02464605a8da2931de928f8854359e"></a><!-- doxytag: member="CBLUITableSource::deleteDocumentsAtIndexes:" ref="ada02464605a8da2931de928f8854359e" args="(NSArray *indexPaths)" -->
+<a class="anchor" id="a65c1fb9ff25651b44ba3db358fb6988d"></a><!-- doxytag: member="CBLUITableSource::deleteDocumentsAtIndexes:error:" ref="a65c1fb9ff25651b44ba3db358fb6988d" args="(NSArray *indexPaths,[error](nonnull(1 __attribute__)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (void) deleteDocumentsAtIndexes: </td>
+          <td class="memname">- (BOOL) deleteDocumentsAtIndexes: </td>
           <td></td>
           <td class="paramtype">(NSArray *)&#160;</td>
           <td class="paramname"><em>indexPaths</em></td>
@@ -234,16 +234,16 @@ BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 </div>
 <div class="memdoc">
 
-<p>Asynchronously deletes the documents at the given row indexes, animating the removal from the table. </p>
+<p>Deletes the documents at the given row indexes, animating the removal from the table. </p>
 
 </div>
 </div>
-<a class="anchor" id="a2fe378f8c4590f45f3be250ff39f8a50"></a><!-- doxytag: member="CBLUITableSource::deleteDocuments:" ref="a2fe378f8c4590f45f3be250ff39f8a50" args="(NSArray *documents)" -->
+<a class="anchor" id="a71092b82f501cb9f57c925fafcec64f0"></a><!-- doxytag: member="CBLUITableSource::deleteDocuments:error:" ref="a71092b82f501cb9f57c925fafcec64f0" args="(NSArray *documents,[error](nonnull(1 __attribute__)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (void) deleteDocuments: </td>
+          <td class="memname">- (BOOL) deleteDocuments: </td>
           <td></td>
           <td class="paramtype">(NSArray *)&#160;</td>
           <td class="paramname"><em>documents</em></td>
@@ -327,7 +327,7 @@ BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="interfaceCBLUITableSource.html">CBLUITableSource</a>      </li>
-      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Mon Mar 25 2013 16:46:34 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

@@ -109,6 +109,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends the query to the server and returns an enumerator over the result rows (Synchronous).  <a href="#a428d1e72f05e4f1941e74b4a7e448790"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLQueryEnumerator.html">CBLQueryEnumerator</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLQuery.html#ae01371f57ad128e0050bc1bbd004ce6f">rowsIfChanged</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as -rows, except returns nil if the query results have not changed since the last time it was evaluated (Synchronous).  <a href="#ae01371f57ad128e0050bc1bbd004ce6f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLQuery.html#afeb15de3dbe5773666b69709851d0004">runAsync:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts an asynchronous query.  <a href="#afeb15de3dbe5773666b69709851d0004"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLLiveQuery.html">CBLLiveQuery</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLQuery.html#ad9755f035d1ee6731b703a7a39faf41c">asLiveQuery</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a live query with the same parameters.  <a href="#ad9755f035d1ee6731b703a7a39faf41c"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="properties"></a>
@@ -133,6 +135,8 @@ Properties</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If set, the view will not be updated for this query, even if the database has changed.  <a href="#a8d3f87071e700e1097ceae60432c5e8b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQuery.html#a0f1d7f8f62d04e6ee016d7d518d4dbcb">keys</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-nil, the query will fetch only the rows with the given keys.  <a href="#a0f1d7f8f62d04e6ee016d7d518d4dbcb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQuery.html#a63d088a7ca9177eb9b962531b8319063">mapOnly</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to YES, disables use of the reduce function.  <a href="#a63d088a7ca9177eb9b962531b8319063"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">NSUInteger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQuery.html#a4acc937246eac2750cc2cf4f7ad02fe4">groupLevel</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-zero, enables grouping of results, in views that have reduce functions.  <a href="#a4acc937246eac2750cc2cf4f7ad02fe4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQuery.html#af7d2bf0c4dc3d514965e5ec0054aec18">prefetch</a></td></tr>
@@ -160,6 +164,7 @@ Properties</h2></td></tr>
 <div class="memdoc">
 
 <p>Sends the query to the server and returns an enumerator over the result rows (Synchronous). </p>
+<p>If the query fails, this method returns nil and sets the query's .error property. </p>
 
 </div>
 </div>
@@ -178,6 +183,25 @@ Properties</h2></td></tr>
 <div class="memdoc">
 
 <p>Same as -rows, except returns nil if the query results have not changed since the last time it was evaluated (Synchronous). </p>
+
+</div>
+</div>
+<a class="anchor" id="afeb15de3dbe5773666b69709851d0004"></a><!-- doxytag: member="CBLQuery::runAsync:" ref="afeb15de3dbe5773666b69709851d0004" args="((nonnull __attribute__)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) runAsync: </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Starts an asynchronous query. </p>
+<p>Returns immediately, then calls the onComplete block when the query completes, passing it the row enumerator. If the query fails, the block will receive a non-nil enumerator but its .error property will be set to a value reflecting the error. The originating CBLQuery's .error property will NOT change. </p>
 
 </div>
 </div>
@@ -355,6 +379,22 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a63d088a7ca9177eb9b962531b8319063"></a><!-- doxytag: member="CBLQuery::mapOnly" ref="a63d088a7ca9177eb9b962531b8319063" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (BOOL) mapOnly<code> [read, write, assign]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>If set to YES, disables use of the reduce function. </p>
+<p>(Equivalent to setting "?reduce=false" in the REST API.) </p>
+
+</div>
+</div>
 <a class="anchor" id="a4acc937246eac2750cc2cf4f7ad02fe4"></a><!-- doxytag: member="CBLQuery::groupLevel" ref="a4acc937246eac2750cc2cf4f7ad02fe4" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -425,7 +465,7 @@ Properties</h2></td></tr>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="interfaceCBLQuery.html">CBLQuery</a>      </li>
-      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Mon Mar 25 2013 16:46:34 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

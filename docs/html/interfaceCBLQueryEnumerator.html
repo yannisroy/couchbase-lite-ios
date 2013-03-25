@@ -106,8 +106,10 @@ Properties</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6834feae6d133bca6163506f17b85be5"></a><!-- doxytag: member="CBLQueryEnumerator::count" ref="a6834feae6d133bca6163506f17b85be5" args="" -->
 NSUInteger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQueryEnumerator.html#a6834feae6d133bca6163506f17b85be5">count</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of rows returned in this enumerator. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">NSUInteger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQueryEnumerator.html#ad3ced86a691fb7590fca4daab0af5f18">sequenceNumber</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The database's current sequenceNumber at the time the view was generated.  <a href="#ad3ced86a691fb7590fca4daab0af5f18"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">UInt64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQueryEnumerator.html#a54f8cb6aaef49abf53ccb1670557fdf9">sequenceNumber</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The database's current sequenceNumber at the time the view was generated.  <a href="#a54f8cb6aaef49abf53ccb1670557fdf9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">NSError *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQueryEnumerator.html#a9dfde86fdff31ffa3315607bee949df8">error</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Error, if the query failed.  <a href="#a9dfde86fdff31ffa3315607bee949df8"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Enumerator on a CBLQuery's result rows. </p>
@@ -133,18 +135,34 @@ NSUInteger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 </div>
 </div>
 <hr/><h2>Property Documentation</h2>
-<a class="anchor" id="ad3ced86a691fb7590fca4daab0af5f18"></a><!-- doxytag: member="CBLQueryEnumerator::sequenceNumber" ref="ad3ced86a691fb7590fca4daab0af5f18" args="" -->
+<a class="anchor" id="a54f8cb6aaef49abf53ccb1670557fdf9"></a><!-- doxytag: member="CBLQueryEnumerator::sequenceNumber" ref="a54f8cb6aaef49abf53ccb1670557fdf9" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSUInteger) sequenceNumber<code> [read, assign]</code></td>
+          <td class="memname">- (UInt64) sequenceNumber<code> [read, assign]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>The database's current sequenceNumber at the time the view was generated. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9dfde86fdff31ffa3315607bee949df8"></a><!-- doxytag: member="CBLQueryEnumerator::error" ref="a9dfde86fdff31ffa3315607bee949df8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (NSError*) error<code> [read, assign]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Error, if the query failed. </p>
+<p>NOTE: This will only ever be set in an enumerator returned from an _asynchronous_ query. The <a class="el" href="interfaceCBLQuery.html#a428d1e72f05e4f1941e74b4a7e448790" title="Sends the query to the server and returns an enumerator over the result rows (Synchronous).">rows (CBLQuery)</a> method returns nil on error.) </p>
 
 </div>
 </div>
@@ -156,7 +174,7 @@ NSUInteger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="interfaceCBLQueryEnumerator.html">CBLQueryEnumerator</a>      </li>
-      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Mon Mar 25 2013 16:46:34 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

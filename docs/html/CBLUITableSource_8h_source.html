@@ -89,7 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00007"></a>00007 <span class="comment">//</span>
 <a name="l00008"></a>00008 
 <a name="l00009"></a>00009 <span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span>
-<a name="l00010"></a>00010 <span class="keyword">@class</span> <a class="code" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.)">CBLDocument</a>, <a class="code" href="interfaceCBLLiveQuery.html" title="A CBLQuery subclass that automatically refreshes the result rows every time the database changes...">CBLLiveQuery</a>, <a class="code" href="interfaceCBLQueryRow.html" title="A result row from a CouchbaseLite view query.">CBLQueryRow</a>, RESTOperation;
+<a name="l00010"></a>00010 <span class="keyword">@class</span> <a class="code" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.)">CBLDocument</a>, <a class="code" href="interfaceCBLLiveQuery.html" title="A CBLQuery subclass that automatically refreshes the result rows every time the database changes...">CBLLiveQuery</a>, <a class="code" href="interfaceCBLQueryRow.html" title="A result row from a CouchbaseLite view query.">CBLQueryRow</a>;
 <a name="l00011"></a>00011 
 <a name="l00017"></a><a class="code" href="interfaceCBLUITableSource.html">00017</a> <span class="keyword">@interface </span><a class="code" href="interfaceCBLUITableSource.html" title="A UITableView data source driven by a CBLLiveQuery.">CBLUITableSource</a> : NSObject &lt;UITableViewDataSource
 <a name="l00018"></a>00018 <span class="preprocessor">#if (defined(__IPHONE_OS_VERSION_MIN_REQUIRED) &amp;&amp; __IPHONE_OS_VERSION_MIN_REQUIRED &gt;= 60000)</span>
@@ -125,40 +125,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00059"></a>00059 <span class="preprocessor"></span>
 <a name="l00061"></a><a class="code" href="interfaceCBLUITableSource.html#a891ed31753af52cda0f5f730701ccbb0">00061</a> <span class="keyword">@property</span> (nonatomic) BOOL <a class="code" href="interfaceCBLUITableSource.html#a891ed31753af52cda0f5f730701ccbb0" title="Is the user allowed to delete rows by UI gestures? (Defaults to YES.)">deletionAllowed</a>;
 <a name="l00062"></a>00062 
-<a name="l00064"></a>00064 - (void) deleteDocumentsAtIndexes: (NSArray*)indexPaths;
-<a name="l00065"></a>00065 
-<a name="l00067"></a>00067 - (void) deleteDocuments: (NSArray*)documents;
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069 <span class="keyword">@end</span>
+<a name="l00064"></a>00064 - (BOOL) deleteDocumentsAtIndexes: (NSArray*)indexPaths
+<a name="l00065"></a>00065                             error: (NSError**)outError                  __attribute__((nonnull(1)));
+<a name="l00066"></a>00066 
+<a name="l00068"></a>00068 - (BOOL) deleteDocuments: (NSArray*)documents
+<a name="l00069"></a>00069                    error: (NSError**)outError                           __attribute__((nonnull(1)));
 <a name="l00070"></a>00070 
-<a name="l00071"></a>00071 
-<a name="l00073"></a><a class="code" href="protocolCBLUITableDelegate-p.html">00073</a> <span class="keyword">@protocol </span><a class="code" href="protocolCBLUITableDelegate-p.html" title="Additional methods for the table view&#39;s delegate, that will be invoked by the CBLUITableSource.">CBLUITableDelegate</a> &lt;UITableViewDelegate&gt;
-<a name="l00074"></a>00074 <span class="keyword">@optional</span>
-<a name="l00075"></a>00075 
-<a name="l00078"></a>00078 - (UITableViewCell *)couchTableSource:(<a class="code" href="interfaceCBLUITableSource.html" title="A UITableView data source driven by a CBLLiveQuery.">CBLUITableSource</a>*)source
-<a name="l00079"></a>00079                 cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-<a name="l00080"></a>00080 
-<a name="l00082"></a>00082 - (void)couchTableSource:(<a class="code" href="interfaceCBLUITableSource.html" title="A UITableView data source driven by a CBLLiveQuery.">CBLUITableSource</a>*)source
-<a name="l00083"></a>00083      willUpdateFromQuery:(CBLLiveQuery*)query;
-<a name="l00084"></a>00084 
-<a name="l00086"></a>00086 - (void)couchTableSource:(<a class="code" href="interfaceCBLUITableSource.html" title="A UITableView data source driven by a CBLLiveQuery.">CBLUITableSource</a>*)source
-<a name="l00087"></a>00087          updateFromQuery:(CBLLiveQuery*)query
-<a name="l00088"></a>00088             previousRows:(NSArray *)previousRows;
-<a name="l00089"></a>00089 
-<a name="l00091"></a>00091 - (void)couchTableSource:(<a class="code" href="interfaceCBLUITableSource.html" title="A UITableView data source driven by a CBLLiveQuery.">CBLUITableSource</a>*)source
-<a name="l00092"></a>00092              willUseCell:(UITableViewCell*)cell
-<a name="l00093"></a>00093                   forRow:(CBLQueryRow*)row;
-<a name="l00094"></a>00094 
-<a name="l00096"></a>00096 - (void)couchTableSource:(<a class="code" href="interfaceCBLUITableSource.html" title="A UITableView data source driven by a CBLLiveQuery.">CBLUITableSource</a>*)source
-<a name="l00097"></a>00097          operationFailed:(RESTOperation*)op;
-<a name="l00098"></a>00098 
-<a name="l00099"></a>00099 <span class="keyword">@end</span>
+<a name="l00071"></a>00071 <span class="keyword">@end</span>
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 
+<a name="l00075"></a><a class="code" href="protocolCBLUITableDelegate-p.html">00075</a> <span class="keyword">@protocol </span><a class="code" href="protocolCBLUITableDelegate-p.html" title="Additional methods for the table view&#39;s delegate, that will be invoked by the CBLUITableSource.">CBLUITableDelegate</a> &lt;UITableViewDelegate&gt;
+<a name="l00076"></a>00076 <span class="keyword">@optional</span>
+<a name="l00077"></a>00077 
+<a name="l00080"></a>00080 - (UITableViewCell *)couchTableSource:(<a class="code" href="interfaceCBLUITableSource.html" title="A UITableView data source driven by a CBLLiveQuery.">CBLUITableSource</a>*)source
+<a name="l00081"></a>00081                 cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+<a name="l00082"></a>00082 
+<a name="l00084"></a>00084 - (void)couchTableSource:(<a class="code" href="interfaceCBLUITableSource.html" title="A UITableView data source driven by a CBLLiveQuery.">CBLUITableSource</a>*)source
+<a name="l00085"></a>00085      willUpdateFromQuery:(CBLLiveQuery*)query;
+<a name="l00086"></a>00086 
+<a name="l00088"></a>00088 - (void)couchTableSource:(<a class="code" href="interfaceCBLUITableSource.html" title="A UITableView data source driven by a CBLLiveQuery.">CBLUITableSource</a>*)source
+<a name="l00089"></a>00089          updateFromQuery:(CBLLiveQuery*)query
+<a name="l00090"></a>00090             previousRows:(NSArray *)previousRows;
+<a name="l00091"></a>00091 
+<a name="l00093"></a>00093 - (void)couchTableSource:(<a class="code" href="interfaceCBLUITableSource.html" title="A UITableView data source driven by a CBLLiveQuery.">CBLUITableSource</a>*)source
+<a name="l00094"></a>00094              willUseCell:(UITableViewCell*)cell
+<a name="l00095"></a>00095                   forRow:(CBLQueryRow*)row;
+<a name="l00096"></a>00096 
+<a name="l00103"></a>00103 - (bool)couchTableSource:(<a class="code" href="interfaceCBLUITableSource.html" title="A UITableView data source driven by a CBLLiveQuery.">CBLUITableSource</a>*)source
+<a name="l00104"></a>00104                deleteRow:(CBLQueryRow*)row;
+<a name="l00105"></a>00105 
+<a name="l00107"></a>00107 - (void)couchTableSource:(<a class="code" href="interfaceCBLUITableSource.html" title="A UITableView data source driven by a CBLLiveQuery.">CBLUITableSource</a>*)source
+<a name="l00108"></a>00108             deleteFailed:(NSError*)error;
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110 <span class="keyword">@end</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><b>CBLUITableSource.h</b>      </li>
-      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Mon Mar 25 2013 16:46:34 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

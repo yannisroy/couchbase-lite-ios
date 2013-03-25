@@ -103,14 +103,16 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a CouchbaseLite manager that stores its data at the given path.  <a href="#acdb4cf136955f8cff6dd10d2f38bdd9e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a6c239ed5a76947899839bc9448b7d296">close</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases all resources used by the <a class="el" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a> instance and closes all its databases.  <a href="#a6c239ed5a76947899839bc9448b7d296"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#af437c0ce45feaf837315b6881ca82c0c">databaseNamed:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the database with the given name, or nil if it doesn't exist.  <a href="#af437c0ce45feaf837315b6881ca82c0c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#af4289070a1c4c1e9fb29971365cbc7e4">databaseNamed:error:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the database with the given name, or nil if it doesn't exist.  <a href="#af4289070a1c4c1e9fb29971365cbc7e4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#ad6b0032cff9c5a04c7747fe34cc876d6">objectForKeyedSubscript:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as -databaseNamed:.  <a href="#ad6b0032cff9c5a04c7747fe34cc876d6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#abd7f485a26cbb7d5cc4e65a55a72ffc6">createDatabaseNamed:error:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the database with the given name, creating it if it didn't already exist.  <a href="#abd7f485a26cbb7d5cc4e65a55a72ffc6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a92975dcb84535cd49e5059a10321cc97">replaceDatabaseNamed:withDatabaseFile:withAttachments:error:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces or installs a database from a file.  <a href="#a92975dcb84535cd49e5059a10321cc97"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#ae9e99a765c225895ede1d11e3b3f63e3">asyncTellDatabaseNamed:to:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously dispatches a block to run on a background thread.  <a href="#ae9e99a765c225895ede1d11e3b3f63e3"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceCBLManager.html#a99bc0653f4e07b605ab416270891bc12">sharedInstance</a></td></tr>
@@ -264,14 +266,15 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 
 </div>
 </div>
-<a class="anchor" id="af437c0ce45feaf837315b6881ca82c0c"></a><!-- doxytag: member="CBLManager::databaseNamed:" ref="af437c0ce45feaf837315b6881ca82c0c" args="((nonnull __attribute__)" -->
+<a class="anchor" id="af4289070a1c4c1e9fb29971365cbc7e4"></a><!-- doxytag: member="CBLManager::databaseNamed:error:" ref="af4289070a1c4c1e9fb29971365cbc7e4" args="(NSString *name,[error](nonnull(1 __attribute__)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">- (<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a>*) databaseNamed: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>name</em></td>
           <td></td>
         </tr>
       </table>
@@ -279,7 +282,7 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 <div class="memdoc">
 
 <p>Returns the database with the given name, or nil if it doesn't exist. </p>
-<p>Multiple calls with the same name will return the same CouchDatabase instance. </p>
+<p>Multiple calls with the same name will return the same <a class="el" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a> instance. </p>
 
 </div>
 </div>
@@ -318,7 +321,7 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 <div class="memdoc">
 
 <p>Returns the database with the given name, creating it if it didn't already exist. </p>
-<p>Multiple calls with the same name will return the same CouchDatabase instance. NOTE: Database names may not contain capital letters! </p>
+<p>Multiple calls with the same name will return the same <a class="el" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a> instance. NOTE: Database names may not contain capital letters! </p>
 
 </div>
 </div>
@@ -368,6 +371,36 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 
 </div>
 </div>
+<a class="anchor" id="ae9e99a765c225895ede1d11e3b3f63e3"></a><!-- doxytag: member="CBLManager::asyncTellDatabaseNamed:to:" ref="ae9e99a765c225895ede1d11e3b3f63e3" args="(NSString *dbName,[to] CBLDatabase *block)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) asyncTellDatabaseNamed: </td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>dbName</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">to:</td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td>
+          <td class="paramname"><em>block</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Asynchronously dispatches a block to run on a background thread. </p>
+<p>The block will be given a <a class="el" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a> instance to use; <em>it must use that database instead of any CBL objects that are in use on the surrounding code's thread.</em> Otherwise thread-safety will be violated, and Really Bad Things that are intermittent and hard to debug can happen. </p>
+
+</div>
+</div>
 <hr/><h2>Property Documentation</h2>
 <a class="anchor" id="ac8ceb154c7e6a854b4d1cb47e8a8388b"></a><!-- doxytag: member="CBLManager::allDatabaseNames" ref="ac8ceb154c7e6a854b4d1cb47e8a8388b" args="" -->
 <div class="memitem">
@@ -408,7 +441,7 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="interfaceCBLManager.html">CBLManager</a>      </li>
-      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Mon Mar 25 2013 16:46:34 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

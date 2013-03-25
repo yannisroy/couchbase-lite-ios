@@ -19,6 +19,8 @@ var NAVTREE =
       [ "CBLReplication", "interfaceCBLReplication.html", null ],
       [ "CBLRevision", "interfaceCBLRevision.html", null ],
       [ "CBLRevisionBase", "interfaceCBLRevisionBase.html", null ],
+      [ "<CBLUICollectionDelegate>", "protocolCBLUICollectionDelegate-p.html", null ],
+      [ "CBLUICollectionSource", "interfaceCBLUICollectionSource.html", null ],
       [ "<CBLUITableDelegate>", "protocolCBLUITableDelegate-p.html", null ],
       [ "CBLUITableSource", "interfaceCBLUITableSource.html", null ],
       [ "<CBLValidationContext>", "protocolCBLValidationContext-p.html", null ],
@@ -48,6 +50,8 @@ var NAVTREE =
         [ "CBLNewRevision", "interfaceCBLNewRevision.html", null ],
         [ "CBLRevision", "interfaceCBLRevision.html", null ]
       ] ],
+      [ "<CBLUICollectionDelegate>", "protocolCBLUICollectionDelegate-p.html", null ],
+      [ "CBLUICollectionSource", "interfaceCBLUICollectionSource.html", null ],
       [ "<CBLUITableDelegate>", "protocolCBLUITableDelegate-p.html", null ],
       [ "CBLUITableSource", "interfaceCBLUITableSource.html", null ],
       [ "<CBLValidationContext>", "protocolCBLValidationContext-p.html", null ],
@@ -65,6 +69,7 @@ var NAVTREE =
       [ "Source/API/CBLQuery.h", null, null ],
       [ "Source/API/CBLReplication.h", null, null ],
       [ "Source/API/CBLRevision.h", null, null ],
+      [ "Source/API/CBLUICollectionSource.h", null, null ],
       [ "Source/API/CBLUITableSource.h", null, null ],
       [ "Source/API/CBLView.h", null, null ],
       [ "Source/API/CouchbaseLite.h", null, null ]

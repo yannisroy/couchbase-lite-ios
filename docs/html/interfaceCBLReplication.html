@@ -106,8 +106,12 @@ Inheritance diagram for CBLReplication:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLReplication.html#aeaf81894fcf166da08ceca3d9a5c8f9f">registerBrowserIDAssertion:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a BrowserID 'assertion' (ID verification) string that will be used on the next login to the remote server.  <a href="#aeaf81894fcf166da08ceca3d9a5c8f9f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLReplication.html#ab5a6f53dcd2e966ebaa28e31544bb39f">initPullFromSourceURL:toDatabase:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new pull replication.  <a href="#ab5a6f53dcd2e966ebaa28e31544bb39f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLReplication.html#a66de1a19a2fa618ac51b34dd4ea45028">initPushFromDatabase:toTargetURL:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new push replication.  <a href="#a66de1a19a2fa618ac51b34dd4ea45028"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLReplication.html#ad36fc3c42ba8887a10de73945c8a9f7a">registerPersonaAssertion:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a Persona 'assertion' (ID verification) string that will be used on the next login to the remote server.  <a href="#ad36fc3c42ba8887a10de73945c8a9f7a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLReplication.html#a51da675e48e61504ef2168b5716c359d">start</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the replication, asynchronously.  <a href="#a51da675e48e61504ef2168b5716c359d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLReplication.html#ad5766602f43c44048f574e0b35de63d0">stop</a></td></tr>
@@ -141,10 +145,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The credential (generally username+password) to use to authenticate to the remote database.  <a href="#a1c1ec294be3d20ad016dd4402fe9509f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">NSDictionary *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLReplication.html#a2762b1ead186bfe1a948b760f7fc0aa5">OAuth</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">OAuth parameters that the replicator should use when authenticating to the remote database.  <a href="#a2762b1ead186bfe1a948b760f7fc0aa5"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">NSURL *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLReplication.html#aa50049898a922d74f5cffae2ea67f9c9">browserIDOrigin</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The base URL of the remote server, for use as the "origin" parameter when requesting BrowserID authentication.  <a href="#aa50049898a922d74f5cffae2ea67f9c9"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLReplication.html#af23beb6ec89c7cb89d5be87783e54cff">browserIDEmailAddress</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Email address for remote login with BrowserID (aka Persona).  <a href="#af23beb6ec89c7cb89d5be87783e54cff"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">NSURL *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLReplication.html#ab1b927c753699c9d10208f2594dabe2b">personaOrigin</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The base URL of the remote server, for use as the "origin" parameter when requesting Persona authentication.  <a href="#ab1b927c753699c9d10208f2594dabe2b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLReplication.html#a9ceb7012d6d1fd99bf3d20e0a83b5261">personaEmailAddress</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Email address for remote login with Persona (aka BrowserID).  <a href="#a9ceb7012d6d1fd99bf3d20e0a83b5261"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">CBLReplicationMode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLReplication.html#a656c5977a9624723b1f2a48305542b58">mode</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The replication's current state, one of {stopped, offline, idle, active}.  <a href="#a656c5977a9624723b1f2a48305542b58"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLReplication.html#a3993b9a91a41ed86d843a5eaf74ecbd4">running</a></td></tr>
@@ -160,12 +164,52 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <div class="textblock"><p>A 'push' or 'pull' replication between a local and a remote database. </p>
 <p>Replications can be one-shot, continuous or persistent. <a class="el" href="interfaceCBLReplication.html" title="A &#39;push&#39; or &#39;pull&#39; replication between a local and a remote database.">CBLReplication</a> is a model class representing a document in the _replicator database, but unless saved an instance has only a temporary existence. Saving it makes it persistent. </p>
 </div><hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="aeaf81894fcf166da08ceca3d9a5c8f9f"></a><!-- doxytag: member="CBLReplication::registerBrowserIDAssertion:" ref="aeaf81894fcf166da08ceca3d9a5c8f9f" args="((nonnull __attribute__)" -->
+<a class="anchor" id="ab5a6f53dcd2e966ebaa28e31544bb39f"></a><!-- doxytag: member="CBLReplication::initPullFromSourceURL:toDatabase:" ref="ab5a6f53dcd2e966ebaa28e31544bb39f" args="(NSURL *source,[toDatabase](nonnull __attribute__)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (bool) registerBrowserIDAssertion: </td>
+          <td class="memname">- (instancetype) initPullFromSourceURL: </td>
+          <td></td>
+          <td class="paramtype">(NSURL *)&#160;</td>
+          <td class="paramname"><em>source</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Creates a new pull replication. </p>
+<p>It is non-persistent, unless you immediately set its .persistent property. It's more common to call -[<a class="el" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a> pullFromURL:] instead, as that will return an existing replication if possible. But if you intentionally want to create multiple replications from the same source database (e.g. with different filters), use this. </p>
+
+</div>
+</div>
+<a class="anchor" id="a66de1a19a2fa618ac51b34dd4ea45028"></a><!-- doxytag: member="CBLReplication::initPushFromDatabase:toTargetURL:" ref="a66de1a19a2fa618ac51b34dd4ea45028" args="(CBLDatabase *database,[toTargetURL](nonnull __attribute__)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (instancetype) initPushFromDatabase: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td>
+          <td class="paramname"><em>database</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Creates a new push replication. </p>
+<p>It is non-persistent, unless you immediately set its .persistent property. It's more common to call -[<a class="el" href="interfaceCBLDatabase.html" title="A CouchbaseLite database.">CBLDatabase</a> pushToURL:] instead, as that will return an existing replication if possible. But if you intentionally want to create multiple replications to the same source database (e.g. with different filters), use this. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad36fc3c42ba8887a10de73945c8a9f7a"></a><!-- doxytag: member="CBLReplication::registerPersonaAssertion:" ref="ad36fc3c42ba8887a10de73945c8a9f7a" args="((nonnull __attribute__)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (bool) registerPersonaAssertion: </td>
           <td></td>
           <td class="paramname"></td>
           <td></td>
@@ -174,8 +218,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 </div>
 <div class="memdoc">
 
-<p>Registers a BrowserID 'assertion' (ID verification) string that will be used on the next login to the remote server. </p>
-<p>This also sets browserIDEmailAddress. Note: An assertion is a type of certificate and typically has a very short lifespan (like, a few minutes.) For this reason it's not stored in the replication document, but instead kept in an in-memory registry private to the BrowserID authorizer. You should initiate a replication immediately after registering the assertion, so that the replicator engine can use it to authenticate before it expires. After that, the replicator will have a login session cookie that should last significantly longer before needing to be renewed. </p>
+<p>Registers a Persona 'assertion' (ID verification) string that will be used on the next login to the remote server. </p>
+<p>This also sets personaEmailAddress. Note: An assertion is a type of certificate and typically has a very short lifespan (like, a few minutes.) For this reason it's not stored in the replication document, but instead kept in an in-memory registry private to the Persona authorizer. You should initiate a replication immediately after registering the assertion, so that the replicator engine can use it to authenticate before it expires. After that, the replicator will have a login session cookie that should last significantly longer before needing to be renewed. </p>
 
 </div>
 </div>
@@ -404,34 +448,34 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 
 </div>
 </div>
-<a class="anchor" id="aa50049898a922d74f5cffae2ea67f9c9"></a><!-- doxytag: member="CBLReplication::browserIDOrigin" ref="aa50049898a922d74f5cffae2ea67f9c9" args="" -->
+<a class="anchor" id="ab1b927c753699c9d10208f2594dabe2b"></a><!-- doxytag: member="CBLReplication::personaOrigin" ref="ab1b927c753699c9d10208f2594dabe2b" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSURL*) browserIDOrigin<code> [read, assign]</code></td>
+          <td class="memname">- (NSURL*) personaOrigin<code> [read, assign]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>The base URL of the remote server, for use as the "origin" parameter when requesting BrowserID authentication. </p>
+<p>The base URL of the remote server, for use as the "origin" parameter when requesting Persona authentication. </p>
 
 </div>
 </div>
-<a class="anchor" id="af23beb6ec89c7cb89d5be87783e54cff"></a><!-- doxytag: member="CBLReplication::browserIDEmailAddress" ref="af23beb6ec89c7cb89d5be87783e54cff" args="" -->
+<a class="anchor" id="a9ceb7012d6d1fd99bf3d20e0a83b5261"></a><!-- doxytag: member="CBLReplication::personaEmailAddress" ref="a9ceb7012d6d1fd99bf3d20e0a83b5261" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSString*) browserIDEmailAddress<code> [read, write, copy]</code></td>
+          <td class="memname">- (NSString*) personaEmailAddress<code> [read, write, copy]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Email address for remote login with BrowserID (aka Persona). </p>
-<p>This is stored persistently in the replication document, but it's not sufficient for login (you also need to go through the BrowserID protocol to get a signed assertion, which you then pass to the -registerBrowserIDAssertion: method.) </p>
+<p>Email address for remote login with Persona (aka BrowserID). </p>
+<p>This is stored persistently in the replication document, but it's not sufficient for login (you also need to go through the Persona protocol to get a signed assertion, which you then pass to the -registerPersonaAssertion: method.) </p>
 
 </div>
 </div>
@@ -519,7 +563,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="interfaceCBLReplication.html">CBLReplication</a>      </li>
-      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Mon Mar 25 2013 16:46:34 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

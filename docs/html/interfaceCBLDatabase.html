@@ -111,26 +111,38 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the already-instantiated cached <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.)">CBLDocument</a> with the given ID, or nil if none is yet cached.  <a href="#a0cdf0c9373b1084d0abb71b8dbef847d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a762aa95a4cbe444cc5b1fb63d753d38a">clearDocumentCache</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Empties the cache of recently used <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.)">CBLDocument</a> objects.  <a href="#a762aa95a4cbe444cc5b1fb63d753d38a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(NSDictionary *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#ad85144c1f1efba1593a96753bbe95ef9">getLocalDocumentWithID:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the contents of the local document with the given ID, or nil if none exists.  <a href="#ad85144c1f1efba1593a96753bbe95ef9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#ae98ebd4e03b0d36354164fa869a50435">putLocalDocument:withID:error:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the contents of the local document with the given ID.  <a href="#ae98ebd4e03b0d36354164fa869a50435"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a05e409e06475fbd764e045c12c228456">deleteLocalDocumentWithID:error:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the local document with the given ID.  <a href="#a05e409e06475fbd764e045c12c228456"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLQuery.html">CBLQuery</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a2e38c907f33a7a87870bc65fdfec3804">queryAllDocuments</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a query that matches all documents in the database.  <a href="#a2e38c907f33a7a87870bc65fdfec3804"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLQuery.html">CBLQuery</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#afbbb677df7000fba6bcba81d857e4b4f">slowQueryWithMap:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a one-shot query with the given map function.  <a href="#afbbb677df7000fba6bcba81d857e4b4f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLView.html">CBLView</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a25f3f9ef31f9c2e8609d5816930f7834">viewNamed:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <a class="el" href="interfaceCBLView.html" title="A &quot;view&quot; in a CouchbaseLite database -- essentially a persistent index managed by map/reduce...">CBLView</a> object for the view with the given name.  <a href="#a25f3f9ef31f9c2e8609d5816930f7834"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad0a13e308646bdf4132076a4c2274f65"></a><!-- doxytag: member="CBLDatabase::existingViewNamed:" ref="ad0a13e308646bdf4132076a4c2274f65" args="((nonnull __attribute__)" -->
+(<a class="el" href="interfaceCBLView.html">CBLView</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <b>existingViewNamed:</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a37075ef42a07ea67b9a1a11309e69233">defineValidation:asBlock:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines or clears a named document validation function.  <a href="#a37075ef42a07ea67b9a1a11309e69233"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a746fd307c37815b27688155b7a3995cb"></a><!-- doxytag: member="CBLDatabase::validationNamed:" ref="a746fd307c37815b27688155b7a3995cb" args="((nonnull __attribute__)" -->
+(CBLValidationBlock)&#160;</td><td class="memItemRight" valign="bottom">- <b>validationNamed:</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a7f168010cd3f2df68bdff02b322cfa01">defineFilter:asBlock:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines or clears a named filter function.  <a href="#a7f168010cd3f2df68bdff02b322cfa01"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a408f4e55f063f6e609f6ea62ae40cb15"></a><!-- doxytag: member="CBLDatabase::filterNamed:" ref="a408f4e55f063f6e609f6ea62ae40cb15" args="((nonnull __attribute__)" -->
+(CBLFilterBlock)&#160;</td><td class="memItemRight" valign="bottom">- <b>filterNamed:</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#ab033d994608b7516d04affad9a777ac4">inTransaction:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the block within a transaction.  <a href="#ab033d994608b7516d04affad9a777ac4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a66ed1e344744579c257651278ba77a43">allReplications</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an array of all current CBLReplications involving this database.  <a href="#a66ed1e344744579c257651278ba77a43"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLReplication.html">CBLReplication</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#acdc7c9367522407dde7beb33e5a2740d">pushToURL:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a replication that will 'push' to a database at the given URL.  <a href="#acdc7c9367522407dde7beb33e5a2740d"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a replication that will 'push' to a database at the given URL, or returns an existing such replication if there already is one.  <a href="#acdc7c9367522407dde7beb33e5a2740d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLReplication.html">CBLReplication</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a9f67dcac6976fe2e7fc709ed0d302eb3">pullFromURL:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a replication that will 'pull' from a database at the given URL.  <a href="#a9f67dcac6976fe2e7fc709ed0d302eb3"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a replication that will 'pull' from a database at the given URL, or returns an existing such replication if there already is one.  <a href="#a9f67dcac6976fe2e7fc709ed0d302eb3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a2362525fbe2a5d1622e45efe6307d7a4">replicateWithURL:exclusively:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a pair of replications to both pull and push to database at the given URL.  <a href="#a2362525fbe2a5d1622e45efe6307d7a4"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a pair of replications to both pull and push to database at the given URL, or returns existing replications if there are any.  <a href="#a2362525fbe2a5d1622e45efe6307d7a4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a71ffcca8b354f02a0da8401b8d92eb44">saveAllModels:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves changes to all CBLModels associated with this database whose needsSave is true.  <a href="#a71ffcca8b354f02a0da8401b8d92eb44"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a0743163e74fecc3a538d062aa4b361b3">autosaveAllModels:</a></td></tr>
@@ -153,8 +165,6 @@ Properties</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The latest sequence number used.  <a href="#a1062e63d1e7788b53362cef1d320f8ec"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">NSURL *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLDatabase.html#a78f33f7c7af03c43f4581d43f9883f4a">internalURL</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The URL of the database in the REST API.  <a href="#a78f33f7c7af03c43f4581d43f9883f4a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLDatabase.html#af79ac643a9841bec563fa5d13d614359">allViews</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">An array of all existing views.  <a href="#af79ac643a9841bec563fa5d13d614359"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLDatabase.html#aa91dd21496d2c5edbf9fb69a872acccf">unsavedModels</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">All CBLModels associated with this database whose needsSave is true.  <a href="#aa91dd21496d2c5edbf9fb69a872acccf"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfaceCBLModelFactory.html">CBLModelFactory</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLDatabase.html#ab33fbcdf8f06a2e01da3f214568e362e">modelFactory</a></td></tr>
@@ -292,6 +302,73 @@ Properties</h2></td></tr>
 
 <p>Empties the cache of recently used <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.)">CBLDocument</a> objects. </p>
 <p>API calls will now instantiate and return new instances. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad85144c1f1efba1593a96753bbe95ef9"></a><!-- doxytag: member="CBLDatabase::getLocalDocumentWithID:" ref="ad85144c1f1efba1593a96753bbe95ef9" args="((nonnull __attribute__)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (NSDictionary*) getLocalDocumentWithID: </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the contents of the local document with the given ID, or nil if none exists. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae98ebd4e03b0d36354164fa869a50435"></a><!-- doxytag: member="CBLDatabase::putLocalDocument:withID:error:" ref="ae98ebd4e03b0d36354164fa869a50435" args="(NSDictionary *properties,[withID] NSString *localDocID,[error](nonnull(2 __attribute__)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (BOOL) putLocalDocument: </td>
+          <td></td>
+          <td class="paramtype">(NSDictionary *)&#160;</td>
+          <td class="paramname"><em>properties</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">withID:</td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>localDocID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sets the contents of the local document with the given ID. </p>
+<p>Unlike CouchDB, no revision-ID checking is done; the put always succeeds. If the properties dictionary is nil, the document will be deleted. </p>
+
+</div>
+</div>
+<a class="anchor" id="a05e409e06475fbd764e045c12c228456"></a><!-- doxytag: member="CBLDatabase::deleteLocalDocumentWithID:error:" ref="a05e409e06475fbd764e045c12c228456" args="(NSString *localDocID,[error](nonnull(1 __attribute__)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (BOOL) deleteLocalDocumentWithID: </td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>localDocID</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Deletes the local document with the given ID. </p>
 
 </div>
 </div>
@@ -480,7 +557,7 @@ Properties</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Creates a replication that will 'push' to a database at the given URL. </p>
+<p>Creates a replication that will 'push' to a database at the given URL, or returns an existing such replication if there already is one. </p>
 <p>It will initially be non-persistent; set its .persistent property to YES to make it persist. </p>
 
 </div>
@@ -499,7 +576,7 @@ Properties</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Creates a replication that will 'pull' from a database at the given URL. </p>
+<p>Creates a replication that will 'pull' from a database at the given URL, or returns an existing such replication if there already is one. </p>
 <p>It will initially be non-persistent; set its .persistent property to YES to make it persist. </p>
 
 </div>
@@ -529,7 +606,7 @@ Properties</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Creates a pair of replications to both pull and push to database at the given URL. </p>
+<p>Creates a pair of replications to both pull and push to database at the given URL, or returns existing replications if there are any. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">otherDbURL</td><td>The URL of the remote database, or nil for none. </td></tr>
@@ -658,21 +735,6 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af79ac643a9841bec563fa5d13d614359"></a><!-- doxytag: member="CBLDatabase::allViews" ref="af79ac643a9841bec563fa5d13d614359" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (NSArray*) allViews<code> [read, assign]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>An array of all existing views. </p>
-
-</div>
-</div>
 <a class="anchor" id="aa91dd21496d2c5edbf9fb69a872acccf"></a><!-- doxytag: member="CBLDatabase::unsavedModels" ref="aa91dd21496d2c5edbf9fb69a872acccf" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -712,7 +774,7 @@ Properties</h2></td></tr>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a>      </li>
-      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Mon Mar 25 2013 16:46:34 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

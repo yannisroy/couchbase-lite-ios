@@ -125,9 +125,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>asLiveQuery
 : <a class="el" href="interfaceCBLQuery.html#ad9755f035d1ee6731b703a7a39faf41c">CBLQuery</a>
 </li>
+<li>asyncTellDatabaseNamed:to:
+: <a class="el" href="interfaceCBLManager.html#ae9e99a765c225895ede1d11e3b3f63e3">CBLManager</a>
+</li>
 <li>attachmentNamed:
-: <a class="el" href="interfaceCBLModel.html#aa42a67857cc42800b9bbacd6fb99a0f3">CBLModel</a>
-, <a class="el" href="interfaceCBLRevisionBase.html#a3202bb85a68ed05231d6f2ce8b028ff1">CBLRevisionBase</a>
+: <a class="el" href="interfaceCBLRevisionBase.html#a3202bb85a68ed05231d6f2ce8b028ff1">CBLRevisionBase</a>
+, <a class="el" href="interfaceCBLModel.html#aa42a67857cc42800b9bbacd6fb99a0f3">CBLModel</a>
 </li>
 <li>autosaveAllModels:
 : <a class="el" href="interfaceCBLDatabase.html#a0743163e74fecc3a538d062aa4b361b3">CBLDatabase</a>
@@ -154,11 +157,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>compact:
 : <a class="el" href="interfaceCBLDatabase.html#ad1c59ff4111681f32f8bf4975625f1bf">CBLDatabase</a>
 </li>
+<li>couchCollectionSource:cellForRowAtIndexPath:
+: <a class="el" href="protocolCBLUICollectionDelegate-p.html#a834496d22650ab1bbe4aa0e7d0f38865">&lt;CBLUICollectionDelegate&gt;</a>
+</li>
+<li>couchCollectionSource:updateFromQuery:previousRows:
+: <a class="el" href="protocolCBLUICollectionDelegate-p.html#abbc6f9933ee30eab80c885e18bedb564">&lt;CBLUICollectionDelegate&gt;</a>
+</li>
+<li>couchCollectionSource:willUpdateFromQuery:
+: <a class="el" href="protocolCBLUICollectionDelegate-p.html#a2cd42850c4bc4be1f3ea04aa4697895e">&lt;CBLUICollectionDelegate&gt;</a>
+</li>
+<li>couchCollectionSource:willUseCell:forRow:
+: <a class="el" href="protocolCBLUICollectionDelegate-p.html#a943b728be27bc988814128d677abe93e">&lt;CBLUICollectionDelegate&gt;</a>
+</li>
 <li>couchTableSource:cellForRowAtIndexPath:
 : <a class="el" href="protocolCBLUITableDelegate-p.html#a0f0322a00a95e08e73d32093510e270f">&lt;CBLUITableDelegate&gt;</a>
 </li>
-<li>couchTableSource:operationFailed:
-: <a class="el" href="protocolCBLUITableDelegate-p.html#af9bfbc17a341fa4505b2c3a00311f15e">&lt;CBLUITableDelegate&gt;</a>
+<li>couchTableSource:deleteFailed:
+: <a class="el" href="protocolCBLUITableDelegate-p.html#a0f78844894f2f336db9bb3eccc7f28b2">&lt;CBLUITableDelegate&gt;</a>
+</li>
+<li>couchTableSource:deleteRow:
+: <a class="el" href="protocolCBLUITableDelegate-p.html#a12e6ba7ed14656e2f1a5d5ac6faed634">&lt;CBLUITableDelegate&gt;</a>
 </li>
 <li>couchTableSource:updateFromQuery:previousRows:
 : <a class="el" href="protocolCBLUITableDelegate-p.html#a3c353417fe97b1a18fd51f00dd2f220f">&lt;CBLUITableDelegate&gt;</a>
@@ -179,8 +197,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>databaseForModelProperty:
 : <a class="el" href="interfaceCBLModel.html#a8762c93748626129709edf0eaef0ba77">CBLModel</a>
 </li>
-<li>databaseNamed:
-: <a class="el" href="interfaceCBLManager.html#af437c0ce45feaf837315b6881ca82c0c">CBLManager</a>
+<li>databaseNamed:error:
+: <a class="el" href="interfaceCBLManager.html#af4289070a1c4c1e9fb29971365cbc7e4">CBLManager</a>
 </li>
 <li>defaultDirectory
 : <a class="el" href="interfaceCBLManager.html#af48ae92af310092c5338158896bfbbee">CBLManager</a>
@@ -199,11 +217,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="interfaceCBLRevision.html#ae4782dabfe1aecfa2e8ff90b7303a1e9">CBLRevision</a>
 , <a class="el" href="interfaceCBLDocument.html#a4cabdf508a2c305ae094ebd45b558fb5">CBLDocument</a>
 </li>
-<li>deleteDocuments:
-: <a class="el" href="interfaceCBLUITableSource.html#a2fe378f8c4590f45f3be250ff39f8a50">CBLUITableSource</a>
+<li>deleteDocuments:error:
+: <a class="el" href="interfaceCBLUICollectionSource.html#ab645584d15fccb456a2b3310269855d0">CBLUICollectionSource</a>
+, <a class="el" href="interfaceCBLUITableSource.html#a71092b82f501cb9f57c925fafcec64f0">CBLUITableSource</a>
 </li>
-<li>deleteDocumentsAtIndexes:
-: <a class="el" href="interfaceCBLUITableSource.html#ada02464605a8da2931de928f8854359e">CBLUITableSource</a>
+<li>deleteDocumentsAtIndexes:error:
+: <a class="el" href="interfaceCBLUITableSource.html#a65c1fb9ff25651b44ba3db358fb6988d">CBLUITableSource</a>
+, <a class="el" href="interfaceCBLUICollectionSource.html#ae71c703ff90c514428399a4cdcff6077">CBLUICollectionSource</a>
+</li>
+<li>deleteLocalDocumentWithID:error:
+: <a class="el" href="interfaceCBLDatabase.html#a05e409e06475fbd764e045c12c228456">CBLDatabase</a>
 </li>
 <li>deleteView
 : <a class="el" href="interfaceCBLView.html#a327fc1988a559452f3341a07ac593946">CBLView</a>
@@ -215,7 +238,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="protocolCBLValidationContext-p.html#a73b7f2a55bb88317a496a58aee1004ac">&lt;CBLValidationContext&gt;</a>
 </li>
 <li>documentAtIndexPath:
-: <a class="el" href="interfaceCBLUITableSource.html#a7bfd70f01c5fa77e0f7fd5c970f2e393">CBLUITableSource</a>
+: <a class="el" href="interfaceCBLUICollectionSource.html#a5b2e466706257b8e56c4d7de3d769eff">CBLUICollectionSource</a>
+, <a class="el" href="interfaceCBLUITableSource.html#a7bfd70f01c5fa77e0f7fd5c970f2e393">CBLUITableSource</a>
 </li>
 <li>documentWithID:
 : <a class="el" href="interfaceCBLDatabase.html#a617d56f31aeeac548d08c7fa0a00d98a">CBLDatabase</a>
@@ -244,9 +268,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>getLeafRevisions:
 : <a class="el" href="interfaceCBLDocument.html#a830d39c1d8245739fe2c36fd2c6c86c9">CBLDocument</a>
 </li>
+<li>getLocalDocumentWithID:
+: <a class="el" href="interfaceCBLDatabase.html#ad85144c1f1efba1593a96753bbe95ef9">CBLDatabase</a>
+</li>
 <li>getRevisionHistory:
-: <a class="el" href="interfaceCBLRevision.html#a958326ba3786c943ffacbd4b16456ac1">CBLRevision</a>
-, <a class="el" href="interfaceCBLDocument.html#a36b5f4471922270f63ffbcf31cd5a9d6">CBLDocument</a>
+: <a class="el" href="interfaceCBLDocument.html#a36b5f4471922270f63ffbcf31cd5a9d6">CBLDocument</a>
+, <a class="el" href="interfaceCBLRevision.html#a958326ba3786c943ffacbd4b16456ac1">CBLRevision</a>
 </li>
 <li>getValueOfProperty:
 : <a class="el" href="interfaceCBLModel.html#ae6809d9792c826058c1eb065383b4811">CBLModel</a>
@@ -259,11 +286,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="interfaceCBLModel.html#a8f792413ccce4d33027dadf31e44741c">CBLModel</a>
 </li>
 <li>indexPathForDocument:
-: <a class="el" href="interfaceCBLUITableSource.html#a773375e66f6b2a99b2270042dcef51f6">CBLUITableSource</a>
+: <a class="el" href="interfaceCBLUICollectionSource.html#ae485c02b110a4052587fb49b05a552d0">CBLUICollectionSource</a>
+, <a class="el" href="interfaceCBLUITableSource.html#a773375e66f6b2a99b2270042dcef51f6">CBLUITableSource</a>
 </li>
 <li>init
-: <a class="el" href="interfaceCBLModel.html#ae48ba5fb16eaba8041962ab9475bcd08">CBLModel</a>
-, <a class="el" href="interfaceCBLManager.html#a6dbe729f05e5b2e73da4ae92d7ff5703">CBLManager</a>
+: <a class="el" href="interfaceCBLManager.html#a6dbe729f05e5b2e73da4ae92d7ff5703">CBLManager</a>
+, <a class="el" href="interfaceCBLModel.html#ae48ba5fb16eaba8041962ab9475bcd08">CBLModel</a>
+</li>
+<li>initPullFromSourceURL:toDatabase:
+: <a class="el" href="interfaceCBLReplication.html#ab5a6f53dcd2e966ebaa28e31544bb39f">CBLReplication</a>
+</li>
+<li>initPushFromDatabase:toTargetURL:
+: <a class="el" href="interfaceCBLReplication.html#a66de1a19a2fa618ac51b34dd4ea45028">CBLReplication</a>
 </li>
 <li>initWithContentType:body:
 : <a class="el" href="interfaceCBLAttachment.html#a1d3fd6070c3dc064573e498d94f36596">CBLAttachment</a>
@@ -342,9 +376,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>pushToURL:
 : <a class="el" href="interfaceCBLDatabase.html#acdc7c9367522407dde7beb33e5a2740d">CBLDatabase</a>
 </li>
+<li>putLocalDocument:withID:error:
+: <a class="el" href="interfaceCBLDatabase.html#ae98ebd4e03b0d36354164fa869a50435">CBLDatabase</a>
+</li>
 <li>putProperties:error:
-: <a class="el" href="interfaceCBLRevision.html#a45b58f860b1010c4417bed9622754544">CBLRevision</a>
-, <a class="el" href="interfaceCBLDocument.html#ad36f07c0105acf9bd7d7c3b8a06520d3">CBLDocument</a>
+: <a class="el" href="interfaceCBLDocument.html#ad36f07c0105acf9bd7d7c3b8a06520d3">CBLDocument</a>
+, <a class="el" href="interfaceCBLRevision.html#a45b58f860b1010c4417bed9622754544">CBLRevision</a>
 </li>
 </ul>
 
@@ -360,14 +397,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
-<li>registerBrowserIDAssertion:
-: <a class="el" href="interfaceCBLReplication.html#aeaf81894fcf166da08ceca3d9a5c8f9f">CBLReplication</a>
-</li>
 <li>registerClass:forDocumentType:
 : <a class="el" href="interfaceCBLModelFactory.html#a04ae9f190c6f2616550377d367737ba6">CBLModelFactory</a>
 </li>
+<li>registerPersonaAssertion:
+: <a class="el" href="interfaceCBLReplication.html#ad36fc3c42ba8887a10de73945c8a9f7a">CBLReplication</a>
+</li>
 <li>reloadFromQuery
 : <a class="el" href="interfaceCBLUITableSource.html#ad18ae9ccda092ac69153f4a2e04d542b">CBLUITableSource</a>
+, <a class="el" href="interfaceCBLUICollectionSource.html#a64cfeff382a0b38dc12772d5412d7fd7">CBLUICollectionSource</a>
 </li>
 <li>removeAttachmentNamed:
 : <a class="el" href="interfaceCBLModel.html#a92859cc899f56fd55d843e3381a191fa">CBLModel</a>
@@ -390,16 +428,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>rowAtIndex:
 : <a class="el" href="interfaceCBLQueryEnumerator.html#aeed3e6a7d4f497fc0b8acfdeaefc4903">CBLQueryEnumerator</a>
+, <a class="el" href="interfaceCBLUICollectionSource.html#a31b5777ca6161ffa9b6c12b48c80943b">CBLUICollectionSource</a>
 , <a class="el" href="interfaceCBLUITableSource.html#a4d367d1dca6bd56149f5da489ced583d">CBLUITableSource</a>
 </li>
 <li>rowAtIndexPath:
-: <a class="el" href="interfaceCBLUITableSource.html#a1635aac8cbbe472fca2cdbb2f32393ba">CBLUITableSource</a>
+: <a class="el" href="interfaceCBLUICollectionSource.html#af6ec0ffc1fe116f2ddf3e187e9540ecb">CBLUICollectionSource</a>
+, <a class="el" href="interfaceCBLUITableSource.html#a1635aac8cbbe472fca2cdbb2f32393ba">CBLUITableSource</a>
 </li>
 <li>rows
 : <a class="el" href="interfaceCBLQuery.html#a428d1e72f05e4f1941e74b4a7e448790">CBLQuery</a>
 </li>
 <li>rowsIfChanged
 : <a class="el" href="interfaceCBLQuery.html#ae01371f57ad128e0050bc1bbd004ce6f">CBLQuery</a>
+</li>
+<li>runAsync:
+: <a class="el" href="interfaceCBLQuery.html#afeb15de3dbe5773666b69709851d0004">CBLQuery</a>
 </li>
 </ul>
 
@@ -438,10 +481,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="interfaceCBLDatabase.html#afbbb677df7000fba6bcba81d857e4b4f">CBLDatabase</a>
 </li>
 <li>start
-: <a class="el" href="interfaceCBLReplication.html#a51da675e48e61504ef2168b5716c359d">CBLReplication</a>
+: <a class="el" href="interfaceCBLLiveQuery.html#a1d98b35f5d2cdef73d09c6259291ce18">CBLLiveQuery</a>
+, <a class="el" href="interfaceCBLReplication.html#a51da675e48e61504ef2168b5716c359d">CBLReplication</a>
 </li>
 <li>stop
-: <a class="el" href="interfaceCBLReplication.html#ad5766602f43c44048f574e0b35de63d0">CBLReplication</a>
+: <a class="el" href="interfaceCBLLiveQuery.html#a89b751c5f89b14e5fec18eaccbe98592">CBLLiveQuery</a>
+, <a class="el" href="interfaceCBLReplication.html#ad5766602f43c44048f574e0b35de63d0">CBLReplication</a>
 </li>
 </ul>
 
@@ -475,7 +520,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="footer">Generated on Wed Feb 6 2013 13:01:29 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Mon Mar 25 2013 16:46:34 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>
