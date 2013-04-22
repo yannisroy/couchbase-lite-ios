@@ -123,16 +123,16 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a one-shot query with the given map function.  <a href="#afbbb677df7000fba6bcba81d857e4b4f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLView.html">CBLView</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a25f3f9ef31f9c2e8609d5816930f7834">viewNamed:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <a class="el" href="interfaceCBLView.html" title="A &quot;view&quot; in a CouchbaseLite database -- essentially a persistent index managed by map/reduce...">CBLView</a> object for the view with the given name.  <a href="#a25f3f9ef31f9c2e8609d5816930f7834"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad0a13e308646bdf4132076a4c2274f65"></a><!-- doxytag: member="CBLDatabase::existingViewNamed:" ref="ad0a13e308646bdf4132076a4c2274f65" args="((nonnull __attribute__)" -->
-(<a class="el" href="interfaceCBLView.html">CBLView</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <b>existingViewNamed:</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLView.html">CBLView</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#ad0a13e308646bdf4132076a4c2274f65">existingViewNamed:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the existing <a class="el" href="interfaceCBLView.html" title="A &quot;view&quot; in a CouchbaseLite database -- essentially a persistent index managed by map/reduce...">CBLView</a> with the given name, or nil if none.  <a href="#ad0a13e308646bdf4132076a4c2274f65"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a37075ef42a07ea67b9a1a11309e69233">defineValidation:asBlock:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines or clears a named document validation function.  <a href="#a37075ef42a07ea67b9a1a11309e69233"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a746fd307c37815b27688155b7a3995cb"></a><!-- doxytag: member="CBLDatabase::validationNamed:" ref="a746fd307c37815b27688155b7a3995cb" args="((nonnull __attribute__)" -->
-(CBLValidationBlock)&#160;</td><td class="memItemRight" valign="bottom">- <b>validationNamed:</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(CBLValidationBlock)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a746fd307c37815b27688155b7a3995cb">validationNamed:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the existing document validation function (block) registered with the given name.  <a href="#a746fd307c37815b27688155b7a3995cb"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a7f168010cd3f2df68bdff02b322cfa01">defineFilter:asBlock:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines or clears a named filter function.  <a href="#a7f168010cd3f2df68bdff02b322cfa01"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a408f4e55f063f6e609f6ea62ae40cb15"></a><!-- doxytag: member="CBLDatabase::filterNamed:" ref="a408f4e55f063f6e609f6ea62ae40cb15" args="((nonnull __attribute__)" -->
-(CBLFilterBlock)&#160;</td><td class="memItemRight" valign="bottom">- <b>filterNamed:</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(CBLFilterBlock)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a408f4e55f063f6e609f6ea62ae40cb15">filterNamed:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the existing filter function (block) registered with the given name.  <a href="#a408f4e55f063f6e609f6ea62ae40cb15"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#ab033d994608b7516d04affad9a777ac4">inTransaction:</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the block within a transaction.  <a href="#ab033d994608b7516d04affad9a777ac4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a66ed1e344744579c257651278ba77a43">allReplications</a></td></tr>
@@ -429,6 +429,24 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ad0a13e308646bdf4132076a4c2274f65"></a><!-- doxytag: member="CBLDatabase::existingViewNamed:" ref="ad0a13e308646bdf4132076a4c2274f65" args="((nonnull __attribute__)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="interfaceCBLView.html">CBLView</a>*) existingViewNamed: </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the existing <a class="el" href="interfaceCBLView.html" title="A &quot;view&quot; in a CouchbaseLite database -- essentially a persistent index managed by map/reduce...">CBLView</a> with the given name, or nil if none. </p>
+
+</div>
+</div>
 <a class="anchor" id="a37075ef42a07ea67b9a1a11309e69233"></a><!-- doxytag: member="CBLDatabase::defineValidation:asBlock:" ref="a37075ef42a07ea67b9a1a11309e69233" args="(NSString *validationName,[asBlock](nonnull(1 __attribute__)" -->
 <div class="memitem">
 <div class="memproto">
@@ -449,6 +467,25 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a746fd307c37815b27688155b7a3995cb"></a><!-- doxytag: member="CBLDatabase::validationNamed:" ref="a746fd307c37815b27688155b7a3995cb" args="((nonnull __attribute__)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (CBLValidationBlock) validationNamed: </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the existing document validation function (block) registered with the given name. </p>
+<p>Note that validations are not persistent -- you have to re-register them on every launch. </p>
+
+</div>
+</div>
 <a class="anchor" id="a7f168010cd3f2df68bdff02b322cfa01"></a><!-- doxytag: member="CBLDatabase::defineFilter:asBlock:" ref="a7f168010cd3f2df68bdff02b322cfa01" args="(NSString *filterName,[asBlock](nonnull(1 __attribute__)" -->
 <div class="memitem">
 <div class="memproto">
@@ -466,6 +503,25 @@ Properties</h2></td></tr>
 
 <p>Defines or clears a named filter function. </p>
 <p>Filters are used by push replications to choose which documents to send. </p>
+
+</div>
+</div>
+<a class="anchor" id="a408f4e55f063f6e609f6ea62ae40cb15"></a><!-- doxytag: member="CBLDatabase::filterNamed:" ref="a408f4e55f063f6e609f6ea62ae40cb15" args="((nonnull __attribute__)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (CBLFilterBlock) filterNamed: </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the existing filter function (block) registered with the given name. </p>
+<p>Note that filters are not persistent -- you have to re-register them on every launch. </p>
 
 </div>
 </div>
@@ -521,7 +577,7 @@ Properties</h2></td></tr>
 <div class="memdoc">
 
 <p>Runs the block within a transaction. </p>
-<p>If the block returns NO, the transaction is rolled back. Use this when performing bulk operations like multiple inserts/updates; it saves the overhead of multiple SQLite commits. </p>
+<p>If the block returns NO, the transaction is rolled back. Use this when performing bulk write operations like multiple inserts/updates; it saves the overhead of multiple SQLite commits, greatly improving performance. </p>
 
 </div>
 </div>
@@ -774,7 +830,7 @@ Properties</h2></td></tr>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a>      </li>
-      <li class="footer">Generated on Mon Mar 25 2013 16:46:34 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Mon Apr 22 2013 15:58:13 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>
