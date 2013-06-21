@@ -1,0 +1,13 @@
+{
+  "name": "couchbase-lite-tests",
+  "version": "0.0.0",
+  "description": "run this with a path to LiteServ on a mac",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap *test.js"
+  },
+  "dependencies" : ["coax", "async", "tap"],
+  "repository": "",
+  "author": "",
+  "license": "Apache 2"
+}
