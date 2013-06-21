@@ -116,10 +116,7 @@ test("verify the pull target", function(t){ // assumes "can pull replicate LiteS
 })
 
 test("can push replicate LiteServ to LiteServ", function(t){
-  var //source = coax([ph.servers[0], "phalanx-test"])
-    target = coax([ph.servers[2], "phalanx-test"])
-    // replicator = coax([, "_replicate"])
-
+  var target = coax([ph.servers[2], "phalanx-test"])
   coax(ph.servers[0]).post("_replicate", {
     target : target.pax.toString(),
     source : "phalanx-test"
