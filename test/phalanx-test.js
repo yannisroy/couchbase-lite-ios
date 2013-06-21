@@ -107,8 +107,30 @@ test("can pull replicate LiteServ to LiteServ", function(t){
 })
 
 
-test("verify the target", function(t){ // assumes "can pull replicate LiteServ to LiteServ" just ran
+test("verify the pull target", function(t){ // assumes "can pull replicate LiteServ to LiteServ" just ran
   var db = coax([ph.servers[1], "phalanx-test"])
+  verifyDb(db, 50, function(err, ok){
+    t.equals(err, null, "all replicated")
+    t.end()
+  })
+})
+
+test("can push replicate LiteServ to LiteServ", function(t){
+  var //source = coax([ph.servers[0], "phalanx-test"])
+    target = coax([ph.servers[2], "phalanx-test"])
+    // replicator = coax([, "_replicate"])
+
+  coax(ph.servers[0]).post("_replicate", {
+    target : target.pax.toString(),
+    source : "phalanx-test"
+  }, function(err, ok){
+    t.equals(err, null, "replicating")
+    t.end()
+  })
+})
+
+test("verify the push target", function(t){ // assumes "can pull replicate LiteServ to LiteServ" just ran
+  var db = coax([ph.servers[2], "phalanx-test"])
   verifyDb(db, 50, function(err, ok){
     t.equals(err, null, "all replicated")
     t.end()
