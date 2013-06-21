@@ -1,8 +1,11 @@
 How to run these tests:
 
-cd into this directory (`test`)
+First edit `config.js` to point to your build of LiteServ (found via "Products" in Xcode).
+Then cd into this directory (`test`).
 
 Get the dependencies with `npm install`. (It reads `package.json` to know what to get.)
+
+Make a tmp directory `mkdir tmp`
 
 Run the tests with `npm test`.
 
