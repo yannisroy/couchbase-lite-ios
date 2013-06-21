@@ -93,20 +93,26 @@ test("verify the database", function(t){ // assumes "load a test database" just 
 })
 
 test("can pull replicate LiteServ to LiteServ", function(t){
-  var source = coax([ph.servers[0], "phalanx-test"]),
-    target = coax([ph.servers[1], "phalanx-test"]),
-    replicator = coax([ph.servers[1], "_replicate"])
+  var source = coax([ph.servers[0], "phalanx-test"])
+    // target = coax([ph.servers[1], "phalanx-test"]),
+    // replicator = coax([, "_replicate"])
 
-  replicator.post({
-    source : source.pax,
+  coax(ph.servers[1]).post("_replicate", {
+    source : source.pax.toString(),
     target : "phalanx-test"
   }, function(err, ok){
-    console.log("done", err, ok)
+    t.equals(err, null, "replicating")
     t.end()
-
   })
+})
 
 
+test("verify the target", function(t){ // assumes "can pull replicate LiteServ to LiteServ" just ran
+  var db = coax([ph.servers[1], "phalanx-test"])
+  verifyDb(db, 50, function(err, ok){
+    t.equals(err, null, "all replicated")
+    t.end()
+  })
 })
 
 test("exit", function(t){
