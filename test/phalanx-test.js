@@ -1,5 +1,5 @@
 var phalanx = require("./lib/phalanx"),
-  rmdir = require("./rmdir"),
+  rmdir = require("./lib/rmdir"),
   async = require("async"),
   coax = require("coax"),
   config = require("./config"),
