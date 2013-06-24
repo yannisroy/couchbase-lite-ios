@@ -3,7 +3,7 @@ var launcher = require("./lib/launcher"),
   config = require("./config"),
   test = require("tap").test;
 
-var serve, port = 59840, server = "http://localhost:"+port+"/"
+var serve, port = 59850, server = "http://localhost:"+port+"/"
 
 test("can launch a LiteServ", function(t) {
   serve = launcher.launchLiteServ({
