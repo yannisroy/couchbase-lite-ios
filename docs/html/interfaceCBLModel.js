@@ -1,0 +1,27 @@
+var interfaceCBLModel =
+[
+    [ "initWithNewDocumentInDatabase:", "interfaceCBLModel.html#aca796bb5a7374edf74adcfdf8553f31a", null ],
+    [ "init", "interfaceCBLModel.html#ae48ba5fb16eaba8041962ab9475bcd08", null ],
+    [ "save:", "interfaceCBLModel.html#a18cce248d5d5da51a8e12185a0f0faa0", null ],
+    [ "propertiesToSave", "interfaceCBLModel.html#af23f00f3eeda9fd4ad638fb2f608e570", null ],
+    [ "deleteDocument:", "interfaceCBLModel.html#a54662b4ee1f06374a565cd73403db8bc", null ],
+    [ "markExternallyChanged", "interfaceCBLModel.html#af35e50f35de893c497eeeaddee9ccca6", null ],
+    [ "getValueOfProperty:", "interfaceCBLModel.html#ae6809d9792c826058c1eb065383b4811", null ],
+    [ "setValue:ofProperty:", "interfaceCBLModel.html#a67887be961f9ce2d0d3b07db4fc3db5b", null ],
+    [ "attachmentNamed:", "interfaceCBLModel.html#aa42a67857cc42800b9bbacd6fb99a0f3", null ],
+    [ "addAttachment:named:", "interfaceCBLModel.html#a951a4ba31c80a4233b5265d141a36385", null ],
+    [ "removeAttachmentNamed:", "interfaceCBLModel.html#a92859cc899f56fd55d843e3381a191fa", null ],
+    [ "initWithDocument:", "interfaceCBLModel.html#a1e810a8c0d5f3159ab4a0719c4bf6277", null ],
+    [ "idForNewDocumentInDatabase:", "interfaceCBLModel.html#a8f792413ccce4d33027dadf31e44741c", null ],
+    [ "didLoadFromDocument", "interfaceCBLModel.html#a06f08eaa3d07b894a4dde5b2ab5b23da", null ],
+    [ "databaseForModelProperty:", "interfaceCBLModel.html#a8762c93748626129709edf0eaef0ba77", null ],
+    [ "markNeedsSave", "interfaceCBLModel.html#a70d23afc60a86270573501a7402ff44b", null ],
+    [ "document", "interfaceCBLModel.html#ac2bed1bf2976d2c156d3dc0c54c02650", null ],
+    [ "database", "interfaceCBLModel.html#a62965efbba85ae78acdef42db75a08f3", null ],
+    [ "isNew", "interfaceCBLModel.html#a569f28df599e6ac07b9aebdd0fc96696", null ],
+    [ "autosaves", "interfaceCBLModel.html#aaf4b85bb777ee43bd17615b387046cb9", null ],
+    [ "autosaveDelay", "interfaceCBLModel.html#ac3806bf33283b921f530a4c5f75e957a", null ],
+    [ "needsSave", "interfaceCBLModel.html#a313193094d8374a10fec7f18aa6b5384", null ],
+    [ "timeSinceExternallyChanged", "interfaceCBLModel.html#a500a89994f33b0042584da078aaeac8f", null ],
+    [ "attachmentNames", "interfaceCBLModel.html#ad01c3dfaba339ca1a2657f413c20c402", null ]
+];

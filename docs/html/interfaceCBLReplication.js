@@ -1,0 +1,28 @@
+var interfaceCBLReplication =
+[
+    [ "initPullFromSourceURL:toDatabase:", "interfaceCBLReplication.html#ab5a6f53dcd2e966ebaa28e31544bb39f", null ],
+    [ "initPushFromDatabase:toTargetURL:", "interfaceCBLReplication.html#a66de1a19a2fa618ac51b34dd4ea45028", null ],
+    [ "registerPersonaAssertion:", "interfaceCBLReplication.html#ad36fc3c42ba8887a10de73945c8a9f7a", null ],
+    [ "start", "interfaceCBLReplication.html#a51da675e48e61504ef2168b5716c359d", null ],
+    [ "stop", "interfaceCBLReplication.html#ad5766602f43c44048f574e0b35de63d0", null ],
+    [ "restart", "interfaceCBLReplication.html#a384b433411def1bd3759c83b1a7d94e0", null ],
+    [ "localDatabase", "interfaceCBLReplication.html#ad1d851b2c94a8ba6ab3d713d941f61bb", null ],
+    [ "remoteURL", "interfaceCBLReplication.html#a4fa63690302188686778c700b08081a8", null ],
+    [ "pull", "interfaceCBLReplication.html#a62d10188839715f7d1f84d0f2c9d2e36", null ],
+    [ "persistent", "interfaceCBLReplication.html#a7c92baae7f3cd1b6b6741ce12209a86a", null ],
+    [ "create_target", "interfaceCBLReplication.html#ae3d340f6c6304cf26189eaf59546b2dd", null ],
+    [ "continuous", "interfaceCBLReplication.html#a054fb8ca8588fa7b2ec7721bf848b651", null ],
+    [ "filter", "interfaceCBLReplication.html#a48feca3b817405417f31f6e4cdf3fbb6", null ],
+    [ "query_params", "interfaceCBLReplication.html#a8e02e71fae893debf2ab2de8ab11d1b8", null ],
+    [ "doc_ids", "interfaceCBLReplication.html#a04b38f4a587fa5072a15c44a7e199c5f", null ],
+    [ "headers", "interfaceCBLReplication.html#a4a73d619968a3aa2e691920c3506992a", null ],
+    [ "credential", "interfaceCBLReplication.html#a1c1ec294be3d20ad016dd4402fe9509f", null ],
+    [ "OAuth", "interfaceCBLReplication.html#a2762b1ead186bfe1a948b760f7fc0aa5", null ],
+    [ "personaOrigin", "interfaceCBLReplication.html#ab1b927c753699c9d10208f2594dabe2b", null ],
+    [ "personaEmailAddress", "interfaceCBLReplication.html#a9ceb7012d6d1fd99bf3d20e0a83b5261", null ],
+    [ "mode", "interfaceCBLReplication.html#a656c5977a9624723b1f2a48305542b58", null ],
+    [ "running", "interfaceCBLReplication.html#a3993b9a91a41ed86d843a5eaf74ecbd4", null ],
+    [ "error", "interfaceCBLReplication.html#a988c9933c4a9d7c5b22eed2d9a9af30f", null ],
+    [ "completed", "interfaceCBLReplication.html#ab207c19c16d5dbe8183a7c25c152ffed", null ],
+    [ "total", "interfaceCBLReplication.html#a70b0772148f76b9f5a00c6465614a940", null ]
+];
