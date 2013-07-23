@@ -143,6 +143,8 @@ Properties</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to YES, the results will include the entire document contents of the associated rows.  <a href="#af7d2bf0c4dc3d514965e5ec0054aec18"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQuery.html#aac0b26cead34bf8c05443d5cc18d64b2">sequences</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to YES, every row in the result will have a "_local_seq" property containing the sequence ID of the revision it's from.  <a href="#aac0b26cead34bf8c05443d5cc18d64b2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQuery.html#a99bb2a73e18789b3eee82eccaf005ee7">includeDeleted</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to YES, queries created by -queryAllDocuments will include deleted documents.  <a href="#a99bb2a73e18789b3eee82eccaf005ee7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">NSError *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQuery.html#aff35cb50c8b2e2fe3deb0bc8e5c75692">error</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-nil, the error of the last execution of the query.  <a href="#aff35cb50c8b2e2fe3deb0bc8e5c75692"></a><br/></td></tr>
 </table>
@@ -441,6 +443,22 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a99bb2a73e18789b3eee82eccaf005ee7"></a><!-- doxytag: member="CBLQuery::includeDeleted" ref="a99bb2a73e18789b3eee82eccaf005ee7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (BOOL) includeDeleted<code> [read, write, assign]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>If set to YES, queries created by -queryAllDocuments will include deleted documents. </p>
+<p>This property has no effect in other types of queries. </p>
+
+</div>
+</div>
 <a class="anchor" id="aff35cb50c8b2e2fe3deb0bc8e5c75692"></a><!-- doxytag: member="CBLQuery::error" ref="aff35cb50c8b2e2fe3deb0bc8e5c75692" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -465,7 +483,7 @@ Properties</h2></td></tr>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="interfaceCBLQuery.html">CBLQuery</a>      </li>
-      <li class="footer">Generated on Mon Apr 22 2013 15:58:13 for Couchbase Lite by&#160;
+      <li class="footer">Generated on Mon Jul 22 2013 21:41:22 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

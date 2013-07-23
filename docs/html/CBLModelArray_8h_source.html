@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>Couchbase Lite: Class Members</title>
+<title>Couchbase Lite: Source/API/CBLModelArray.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -36,8 +36,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -58,43 +58,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
-      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
-      <li class="current"><a href="functions.html"><span>Class&#160;Members</span></a></li>
-    </ul>
-  </div>
-  <div id="navrow3" class="tabs2">
-    <ul class="tablist">
-      <li class="current"><a href="functions.html"><span>All</span></a></li>
-      <li><a href="functions_func.html"><span>Functions</span></a></li>
-      <li><a href="functions_vars.html"><span>Variables</span></a></li>
-      <li><a href="functions_prop.html"><span>Properties</span></a></li>
-    </ul>
-  </div>
-  <div id="navrow4" class="tabs3">
-    <ul class="tablist">
-      <li><a href="functions.html#index_a"><span>a</span></a></li>
-      <li><a href="functions_0x62.html#index_b"><span>b</span></a></li>
-      <li><a href="functions_0x63.html#index_c"><span>c</span></a></li>
-      <li><a href="functions_0x64.html#index_d"><span>d</span></a></li>
-      <li><a href="functions_0x65.html#index_e"><span>e</span></a></li>
-      <li><a href="functions_0x66.html#index_f"><span>f</span></a></li>
-      <li><a href="functions_0x67.html#index_g"><span>g</span></a></li>
-      <li><a href="functions_0x68.html#index_h"><span>h</span></a></li>
-      <li><a href="functions_0x69.html#index_i"><span>i</span></a></li>
-      <li><a href="functions_0x6b.html#index_k"><span>k</span></a></li>
-      <li><a href="functions_0x6c.html#index_l"><span>l</span></a></li>
-      <li><a href="functions_0x6d.html#index_m"><span>m</span></a></li>
-      <li><a href="functions_0x6e.html#index_n"><span>n</span></a></li>
-      <li><a href="functions_0x6f.html#index_o"><span>o</span></a></li>
-      <li><a href="functions_0x70.html#index_p"><span>p</span></a></li>
-      <li class="current"><a href="functions_0x71.html#index_q"><span>q</span></a></li>
-      <li><a href="functions_0x72.html#index_r"><span>r</span></a></li>
-      <li><a href="functions_0x73.html#index_s"><span>s</span></a></li>
-      <li><a href="functions_0x74.html#index_t"><span>t</span></a></li>
-      <li><a href="functions_0x75.html#index_u"><span>u</span></a></li>
-      <li><a href="functions_0x76.html#index_v"><span>v</span></a></li>
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
     </ul>
   </div>
 </div>
@@ -108,28 +72,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-  initNavTree('functions.html','');
+  initNavTree('CBLModelArray_8h.html','');
 </script>
 <div id="doc-content">
-<div class="contents">
-<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
-
-<h3><a class="anchor" id="index_q"></a>- q -</h3><ul>
-<li>query
-: <a class="el" href="interfaceCBLUITableSource.html#a03f6b97032681694875b3faf7dc676df">CBLUITableSource</a>
-, <a class="el" href="interfaceCBLView.html#a9eba2ddac8526ac02b4d79163085bd53">CBLView</a>
-</li>
-<li>query_params
-: <a class="el" href="interfaceCBLReplication.html#a8e02e71fae893debf2ab2de8ab11d1b8">CBLReplication</a>
-</li>
-<li>queryAllDocuments
-: <a class="el" href="interfaceCBLDatabase.html#a2e38c907f33a7a87870bc65fdfec3804">CBLDatabase</a>
-</li>
-</ul>
+<div class="header">
+  <div class="headertitle">
+<div class="title">Source/API/CBLModelArray.h</div>  </div>
 </div>
+<div class="contents">
+<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//</span>
+<a name="l00002"></a>00002 <span class="comment">//  CBLModelArray.h</span>
+<a name="l00003"></a>00003 <span class="comment">//  CouchbaseLite</span>
+<a name="l00004"></a>00004 <span class="comment">//</span>
+<a name="l00005"></a>00005 <span class="comment">//  Created by Jens Alfke on 6/12/13.</span>
+<a name="l00006"></a>00006 <span class="comment">//</span>
+<a name="l00007"></a>00007 <span class="comment">//</span>
+<a name="l00008"></a>00008 
+<a name="l00009"></a>00009 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
+<a name="l00010"></a>00010 <span class="keyword">@class</span> <a class="code" href="interfaceCBLModel.html" title="Generic model class for CouchbaseLite documents.">CBLModel</a>;
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 
+<a name="l00017"></a><a class="code" href="interfaceCBLModelArray.html">00017</a> <span class="keyword">@interface </span><a class="code" href="interfaceCBLModelArray.html" title="An array of CBLModel objects, that&#39;s actually backed by document IDs.">CBLModelArray</a> : NSArray
+<a name="l00018"></a>00018 
+<a name="l00021"></a>00021 - (instancetype) initWithOwner: (<a class="code" href="interfaceCBLModel.html" title="Generic model class for CouchbaseLite documents.">CBLModel</a>*)owner
+<a name="l00022"></a>00022                       property: (NSString*)property
+<a name="l00023"></a>00023                      itemClass: (Class)itemClass
+<a name="l00024"></a>00024                         docIDs: (NSArray*)docIDs;
+<a name="l00025"></a>00025 
+<a name="l00027"></a>00027 - (instancetype) initWithOwner: (<a class="code" href="interfaceCBLModel.html" title="Generic model class for CouchbaseLite documents.">CBLModel</a>*)owner
+<a name="l00028"></a>00028                       property: (NSString*)property
+<a name="l00029"></a>00029                      itemClass: (Class)itemClass
+<a name="l00030"></a>00030                         models: (NSArray*)models;
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 <span class="keyword">@property</span> (readonly) NSArray* docIDs;
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 <span class="keyword">@end</span>
+</pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
+      <li class="navelem"><b>CBLModelArray.h</b>      </li>
       <li class="footer">Generated on Mon Jul 22 2013 21:41:21 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>

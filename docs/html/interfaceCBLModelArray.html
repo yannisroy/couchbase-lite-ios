@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>Couchbase Lite: CBLLiveQuery Class Reference</title>
+<title>Couchbase Lite: CBLModelArray Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -75,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-  initNavTree('interfaceCBLLiveQuery.html','');
+  initNavTree('interfaceCBLModelArray.html','');
 </script>
 <div id="doc-content">
 <div class="header">
@@ -83,105 +83,124 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a>  </div>
   <div class="headertitle">
-<div class="title">CBLLiveQuery Class Reference</div>  </div>
+<div class="title">CBLModelArray Class Reference</div>  </div>
 </div>
 <div class="contents">
-<!-- doxytag: class="CBLLiveQuery" --><!-- doxytag: inherits="CBLQuery" -->
-<p>A <a class="el" href="interfaceCBLQuery.html" title="Represents a query of a CouchbaseLite &#39;view&#39;, or of a view-like resource like _all_documents.">CBLQuery</a> subclass that automatically refreshes the result rows every time the database changes.  
- <a href="interfaceCBLLiveQuery.html#details">More...</a></p>
+<!-- doxytag: class="CBLModelArray" -->
+<p>An array of <a class="el" href="interfaceCBLModel.html" title="Generic model class for CouchbaseLite documents.">CBLModel</a> objects, that's actually backed by document IDs.  
+ <a href="interfaceCBLModelArray.html#details">More...</a></p>
 
-<p><code>#import &lt;<a class="el" href="CBLQuery_8h_source.html">CBLQuery.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for CBLLiveQuery:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="interfaceCBLLiveQuery.png" usemap="#CBLLiveQuery_map" alt=""/>
-  <map id="CBLLiveQuery_map" name="CBLLiveQuery_map">
-<area href="interfaceCBLQuery.html" title="Represents a query of a CouchbaseLite &#39;view&#39;, or of a view-like resource like _all_documents." alt="CBLQuery" shape="rect" coords="0,0,96,24"/>
-</map>
- </div></div>
+<p><code>#import &lt;<a class="el" href="CBLModelArray_8h_source.html">CBLModelArray.h</a>&gt;</code></p>
 
-<p><a href="classCBLLiveQuery-members.html">List of all members.</a></p>
+<p><a href="classCBLModelArray-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLLiveQuery.html#a1d98b35f5d2cdef73d09c6259291ce18">start</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts observing database changes.  <a href="#a1d98b35f5d2cdef73d09c6259291ce18"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLLiveQuery.html#a89b751c5f89b14e5fec18eaccbe98592">stop</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops observing database changes.  <a href="#a89b751c5f89b14e5fec18eaccbe98592"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLModelArray.html#adffcc0ea2dd7943c735fca0211bd81c8">initWithOwner:property:itemClass:docIDs:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a model array from an array of document ID strings.  <a href="#adffcc0ea2dd7943c735fca0211bd81c8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLModelArray.html#a92aa277ee42e1d98446ef741c0a69710">initWithOwner:property:itemClass:models:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a model array from an array of CBLModels.  <a href="#a92aa277ee42e1d98446ef741c0a69710"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="properties"></a>
 Properties</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfaceCBLQueryEnumerator.html">CBLQueryEnumerator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLLiveQuery.html#ab87a80e8251262e02e12fc6b9b12ae56">rows</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">In <a class="el" href="interfaceCBLLiveQuery.html" title="A CBLQuery subclass that automatically refreshes the result rows every time the database changes...">CBLLiveQuery</a> the -rows accessor is now a non-blocking property that can be observed using KVO.  <a href="#ab87a80e8251262e02e12fc6b9b12ae56"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2343564c23492db08295798db59425b0"></a><!-- doxytag: member="CBLModelArray::docIDs" ref="a2343564c23492db08295798db59425b0" args="" -->
+NSArray *&#160;</td><td class="memItemRight" valign="bottom"><b>docIDs</b></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>A <a class="el" href="interfaceCBLQuery.html" title="Represents a query of a CouchbaseLite &#39;view&#39;, or of a view-like resource like _all_documents.">CBLQuery</a> subclass that automatically refreshes the result rows every time the database changes. </p>
-<p>All you need to do is use KVO to observe changes to the .rows property. </p>
+<div class="textblock"><p>An array of <a class="el" href="interfaceCBLModel.html" title="Generic model class for CouchbaseLite documents.">CBLModel</a> objects, that's actually backed by document IDs. </p>
+<p>It looks up the model dynamically as each item is accessed. This class is used by <a class="el" href="interfaceCBLModel.html" title="Generic model class for CouchbaseLite documents.">CBLModel</a> for array-valued properties whose item type is a subclass of <a class="el" href="interfaceCBLModel.html" title="Generic model class for CouchbaseLite documents.">CBLModel</a>. </p>
 </div><hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a1d98b35f5d2cdef73d09c6259291ce18"></a><!-- doxytag: member="CBLLiveQuery::start" ref="a1d98b35f5d2cdef73d09c6259291ce18" args="()" -->
+<a class="anchor" id="adffcc0ea2dd7943c735fca0211bd81c8"></a><!-- doxytag: member="CBLModelArray::initWithOwner:property:itemClass:docIDs:" ref="adffcc0ea2dd7943c735fca0211bd81c8" args="(CBLModel *owner,[property] NSString *property,[itemClass] Class itemClass,[docIDs] NSArray *docIDs)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (void) start </td>
+          <td class="memname">- (instancetype) initWithOwner: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(<a class="el" href="interfaceCBLModel.html">CBLModel</a> *)&#160;</td>
+          <td class="paramname"><em>owner</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">property:</td>
           <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>property</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">itemClass:</td>
+          <td></td>
+          <td class="paramtype">(Class)&#160;</td>
+          <td class="paramname"><em>itemClass</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">docIDs:</td>
+          <td></td>
+          <td class="paramtype">(NSArray *)&#160;</td>
+          <td class="paramname"><em>docIDs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Starts observing database changes. </p>
-<p>The .rows property will now update automatically. (You usually don't need to call this yourself, since accessing or observing the .rows property will call -start for you.) </p>
+<p>Initializes a model array from an array of document ID strings. </p>
+<p>Returns nil if docIDs contains items that are non-strings, or invalid document IDs. </p>
 
 </div>
 </div>
-<a class="anchor" id="a89b751c5f89b14e5fec18eaccbe98592"></a><!-- doxytag: member="CBLLiveQuery::stop" ref="a89b751c5f89b14e5fec18eaccbe98592" args="()" -->
+<a class="anchor" id="a92aa277ee42e1d98446ef741c0a69710"></a><!-- doxytag: member="CBLModelArray::initWithOwner:property:itemClass:models:" ref="a92aa277ee42e1d98446ef741c0a69710" args="(CBLModel *owner,[property] NSString *property,[itemClass] Class itemClass,[models] NSArray *models)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (void) stop </td>
+          <td class="memname">- (instancetype) initWithOwner: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(<a class="el" href="interfaceCBLModel.html">CBLModel</a> *)&#160;</td>
+          <td class="paramname"><em>owner</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">property:</td>
           <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>property</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">itemClass:</td>
+          <td></td>
+          <td class="paramtype">(Class)&#160;</td>
+          <td class="paramname"><em>itemClass</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">models:</td>
+          <td></td>
+          <td class="paramtype">(NSArray *)&#160;</td>
+          <td class="paramname"><em>models</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Stops observing database changes. </p>
-<p>Calling -start or .rows will restart it. </p>
-
-</div>
-</div>
-<hr/><h2>Property Documentation</h2>
-<a class="anchor" id="ab87a80e8251262e02e12fc6b9b12ae56"></a><!-- doxytag: member="CBLLiveQuery::rows" ref="ab87a80e8251262e02e12fc6b9b12ae56" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (<a class="el" href="interfaceCBLQueryEnumerator.html">CBLQueryEnumerator</a>*) rows<code> [read, retain]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>In <a class="el" href="interfaceCBLLiveQuery.html" title="A CBLQuery subclass that automatically refreshes the result rows every time the database changes...">CBLLiveQuery</a> the -rows accessor is now a non-blocking property that can be observed using KVO. </p>
-<p>Its value will be nil until the initial query finishes. </p>
+<p>Initializes a model array from an array of CBLModels. </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>Source/API/<a class="el" href="CBLQuery_8h_source.html">CBLQuery.h</a></li>
+<li>Source/API/<a class="el" href="CBLModelArray_8h_source.html">CBLModelArray.h</a></li>
 </ul>
 </div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="navelem"><a class="el" href="interfaceCBLLiveQuery.html">CBLLiveQuery</a>      </li>
-      <li class="footer">Generated on Mon Jul 22 2013 21:41:21 for Couchbase Lite by&#160;
+      <li class="navelem"><a class="el" href="interfaceCBLModelArray.html">CBLModelArray</a>      </li>
+      <li class="footer">Generated on Mon Jul 22 2013 21:41:22 for Couchbase Lite by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>
