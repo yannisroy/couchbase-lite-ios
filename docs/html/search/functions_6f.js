@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['objectforkeyedsubscript_3a',['objectForKeyedSubscript:',['../interfaceCBLDatabase.html#a7c2182037afb2a2266cb757c41a4a177',1,'CBLDatabase::objectForKeyedSubscript:()'],['../interfaceCBLDocument.html#af60450f93744c6d9fc22f42611c9a4d4',1,'CBLDocument::objectForKeyedSubscript:()'],['../interfaceCBLManager.html#ad6b0032cff9c5a04c7747fe34cc876d6',1,'CBLManager::objectForKeyedSubscript:()'],['../interfaceCBLRevisionBase.html#a24cbb8e6e0cffe8dfba6f382f3658e4e',1,'CBLRevisionBase::objectForKeyedSubscript:()']]]
+  ['objectforkeyedsubscript_3a',['objectForKeyedSubscript:',['../interfaceCBLDatabase.html#a8b438ed8d146298d4beefcac03f3241b',1,'CBLDatabase::objectForKeyedSubscript:()'],['../interfaceCBLDocument.html#ade59fb115bfa4c72e7c335b1b94ce502',1,'CBLDocument::objectForKeyedSubscript:()'],['../interfaceCBLManager.html#a068f9fcdeb48b49baa28794271552b67',1,'CBLManager::objectForKeyedSubscript:()'],['../interfaceCBLRevision.html#a31d37a69570c19733db5711b763507c1',1,'CBLRevision::objectForKeyedSubscript:()']]]
 ];

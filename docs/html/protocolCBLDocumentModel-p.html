@@ -129,28 +129,40 @@ Inheritance diagram for &lt;CBLDocumentModel&gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:aa8b40d8f5bf4ae6d5f36d8dede14cc7f"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolCBLDocumentModel-p.html#aa8b40d8f5bf4ae6d5f36d8dede14cc7f">tdDocumentChanged:</a></td></tr>
-<tr class="memdesc:aa8b40d8f5bf4ae6d5f36d8dede14cc7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">If a <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a>'s modelObject implements this method, it will be called whenever the document posts a kCBLDocumentChangeNotification.  <a href="#aa8b40d8f5bf4ae6d5f36d8dede14cc7f">More...</a><br/></td></tr>
-<tr class="separator:aa8b40d8f5bf4ae6d5f36d8dede14cc7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a41c2f49bee0a3613e94f7624e47ff4"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolCBLDocumentModel-p.html#a4a41c2f49bee0a3613e94f7624e47ff4">CBLDocument:didChange:</a></td></tr>
+<tr class="memdesc:a4a41c2f49bee0a3613e94f7624e47ff4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called whenever a new revision is added to the document.  <a href="#a4a41c2f49bee0a3613e94f7624e47ff4">More...</a><br/></td></tr>
+<tr class="separator:a4a41c2f49bee0a3613e94f7624e47ff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Protocol that <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a> model objects must implement. </p>
 <p>See the <a class="el" href="interfaceCBLModel.html" title="Generic model class for CouchbaseLite documents. ">CBLModel</a> class. </p>
 </div><h2 class="groupheader">Method Documentation</h2>
-<a class="anchor" id="aa8b40d8f5bf4ae6d5f36d8dede14cc7f"></a>
+<a class="anchor" id="a4a41c2f49bee0a3613e94f7624e47ff4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (void) tdDocumentChanged: </td>
+          <td class="memname">- (void) CBLDocument: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(<a class="el" href="interfaceCBLDocument.html">CBLDocument</a> *)&#160;</td>
+          <td class="paramname"><em>doc</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">didChange:</td>
           <td></td>
+          <td class="paramtype">(CBLDatabaseChange *)&#160;</td>
+          <td class="paramname"><em>change</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>If a <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a>'s modelObject implements this method, it will be called whenever the document posts a kCBLDocumentChangeNotification. </p>
+<p>Called whenever a new revision is added to the document. </p>
+<p>(Equivalent to kCBLDocumentChangeNotification.) </p>
 
 </div>
 </div>

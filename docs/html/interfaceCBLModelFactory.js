@@ -1,7 +1,7 @@
 var interfaceCBLModelFactory =
 [
-    [ "modelForDocument:", "interfaceCBLModelFactory.html#a9c2eeada5f6bf7c1110557e979c29252", null ],
-    [ "registerClass:forDocumentType:", "interfaceCBLModelFactory.html#a04ae9f190c6f2616550377d367737ba6", null ],
-    [ "classForDocument:", "interfaceCBLModelFactory.html#ae42a08491970234c0a406a16f3f89c0e", null ],
-    [ "classForDocumentType:", "interfaceCBLModelFactory.html#ac7ce14e69759dfea95e7e2a9d74e4556", null ]
+    [ "modelForDocument:", "interfaceCBLModelFactory.html#ac654410f9ee0d321ddb9ad8ddd186255", null ],
+    [ "registerClass:forDocumentType:", "interfaceCBLModelFactory.html#a87bc57a7e6451f503c0e145d3aa98fae", null ],
+    [ "classForDocument:", "interfaceCBLModelFactory.html#a8415cecd46e362a9c216d6dc31138ecc", null ],
+    [ "classForDocumentType:", "interfaceCBLModelFactory.html#a319916a30a882fd0ac8cdcc384ce4213", null ]
 ];

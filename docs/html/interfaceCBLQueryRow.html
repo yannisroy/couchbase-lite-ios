@@ -123,6 +123,8 @@ Inheritance diagram for CBLQueryRow:</div>
  <div class="center">
   <img src="interfaceCBLQueryRow.png" usemap="#CBLQueryRow_map" alt=""/>
   <map id="CBLQueryRow_map" name="CBLQueryRow_map">
+<area href="interfaceCBLFullTextQueryRow.html" title="A result row from a full-text query. " alt="CBLFullTextQueryRow" shape="rect" coords="0,112,140,136"/>
+<area href="interfaceCBLGeoQueryRow.html" title="A result row from a CouchbaseLite geo-query. " alt="CBLGeoQueryRow" shape="rect" coords="150,112,290,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -149,6 +151,9 @@ Properties</h2></td></tr>
 <tr class="memitem:a90e727249c402a4833212ec56a128c41"><td class="memItemLeft" align="right" valign="top">NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQueryRow.html#a90e727249c402a4833212ec56a128c41">documentRevision</a></td></tr>
 <tr class="memdesc:a90e727249c402a4833212ec56a128c41"><td class="mdescLeft">&#160;</td><td class="mdescRight">The revision ID of the document this row was mapped from.  <a href="#a90e727249c402a4833212ec56a128c41">More...</a><br/></td></tr>
 <tr class="separator:a90e727249c402a4833212ec56a128c41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d597147e910541f5c9d5de70ca98b06"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d597147e910541f5c9d5de70ca98b06"></a>
+<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>database</b></td></tr>
+<tr class="separator:a0d597147e910541f5c9d5de70ca98b06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6010aefc17f4c0ba18f8e7e611b1253c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfaceCBLDocument.html">CBLDocument</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQueryRow.html#a6010aefc17f4c0ba18f8e7e611b1253c">document</a></td></tr>
 <tr class="memdesc:a6010aefc17f4c0ba18f8e7e611b1253c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The document this row was mapped from.  <a href="#a6010aefc17f4c0ba18f8e7e611b1253c">More...</a><br/></td></tr>
 <tr class="separator:a6010aefc17f4c0ba18f8e7e611b1253c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,12 +172,16 @@ id&#160;</td><td class="memItemRight" valign="bottom"><b>key2</b></td></tr>
 <tr class="memitem:a6e6f3250304057135398b84ecc8b9a69"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e6f3250304057135398b84ecc8b9a69"></a>
 id&#160;</td><td class="memItemRight" valign="bottom"><b>key3</b></td></tr>
 <tr class="separator:a6e6f3250304057135398b84ecc8b9a69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefa261137e2dddcef98833defa6af0ac"><td class="memItemLeft" align="right" valign="top">UInt64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQueryRow.html#aefa261137e2dddcef98833defa6af0ac">localSequence</a></td></tr>
-<tr class="memdesc:aefa261137e2dddcef98833defa6af0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local sequence number of the associated doc/revision.  <a href="#aefa261137e2dddcef98833defa6af0ac">More...</a><br/></td></tr>
-<tr class="separator:aefa261137e2dddcef98833defa6af0ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad175f1210f0016d79cdae2ff2360293c"><td class="memItemLeft" align="right" valign="top">UInt64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQueryRow.html#ad175f1210f0016d79cdae2ff2360293c">sequenceNumber</a></td></tr>
+<tr class="memdesc:ad175f1210f0016d79cdae2ff2360293c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The database sequence number of the associated doc/revision.  <a href="#ad175f1210f0016d79cdae2ff2360293c">More...</a><br/></td></tr>
+<tr class="separator:ad175f1210f0016d79cdae2ff2360293c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af99af9d79e1b04c7c2f8c4dc4626eb9f"><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQueryRow.html#af99af9d79e1b04c7c2f8c4dc4626eb9f">conflictingRevisions</a></td></tr>
+<tr class="memdesc:af99af9d79e1b04c7c2f8c4dc4626eb9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns all conflicting revisions of the document, as an array of <a class="el" href="interfaceCBLRevision.html" title="A revision of a CBLDocument. ">CBLRevision</a>, or nil if the document is not in conflict.  <a href="#af99af9d79e1b04c7c2f8c4dc4626eb9f">More...</a><br/></td></tr>
+<tr class="separator:af99af9d79e1b04c7c2f8c4dc4626eb9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A result row from a CouchbaseLite view query. </p>
+<p>Full-text and geo queries return subclasses &ndash; see <a class="el" href="interfaceCBLFullTextQueryRow.html" title="A result row from a full-text query. ">CBLFullTextQueryRow</a> and <a class="el" href="interfaceCBLGeoQueryRow.html" title="A result row from a CouchbaseLite geo-query. ">CBLGeoQueryRow</a>. </p>
 </div><h2 class="groupheader">Method Documentation</h2>
 <a class="anchor" id="ab92bba371c49c45545e5d6f72aea2297"></a>
 <div class="memitem">
@@ -348,7 +357,7 @@ id&#160;</td><td class="memItemRight" valign="bottom"><b>key3</b></td></tr>
 </div><div class="memdoc">
 
 <p>The properties of the document this row was mapped from. </p>
-<p>To get this, you must have set the -prefetch property on the query; else this will be nil. </p>
+<p>To get this, you must have set the .prefetch property on the query; else this will be nil. (You can still get the document properties via the .document property, of course. But it takes a separate call to the database. So if you're doing it for every row, using .prefetch and .documentProperties is faster.) </p>
 
 </div>
 </div>
@@ -375,7 +384,7 @@ id&#160;</td><td class="memItemRight" valign="bottom"><b>key3</b></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aefa261137e2dddcef98833defa6af0ac"></a>
+<a class="anchor" id="ad175f1210f0016d79cdae2ff2360293c"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -383,7 +392,7 @@ id&#160;</td><td class="memItemRight" valign="bottom"><b>key3</b></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">- (UInt64) localSequence</td>
+          <td class="memname">- (UInt64) sequenceNumber</td>
         </tr>
       </table>
   </td>
@@ -393,8 +402,30 @@ id&#160;</td><td class="memItemRight" valign="bottom"><b>key3</b></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The local sequence number of the associated doc/revision. </p>
-<p>Valid only if the 'sequences' and 'prefetch' properties were set in the query; otherwise returns 0. </p>
+<p>The database sequence number of the associated doc/revision. </p>
+
+</div>
+</div>
+<a class="anchor" id="af99af9d79e1b04c7c2f8c4dc4626eb9f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (NSArray*) conflictingRevisions</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">atomic</span><span class="mlabel">assign</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns all conflicting revisions of the document, as an array of <a class="el" href="interfaceCBLRevision.html" title="A revision of a CBLDocument. ">CBLRevision</a>, or nil if the document is not in conflict. </p>
+<p>The first object in the array will be the default "winning" revision that shadows the others. This is only valid in an allDocuments query whose allDocsMode is set to kCBLShowConflicts or kCBLOnlyConflicts; otherwise it returns nil. </p>
 
 </div>
 </div>

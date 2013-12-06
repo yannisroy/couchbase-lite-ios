@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['newrevision',['newRevision',['../interfaceCBLDocument.html#ad3d336a0050fcd6b557baa3f1c93a882',1,'CBLDocument::newRevision()'],['../interfaceCBLRevision.html#a47d27dbcbcc41369eb61ffcb56a2bfa6',1,'CBLRevision::newRevision()']]],
+  ['newrevision',['newRevision',['../interfaceCBLDocument.html#acde3fb68d776f0c285458b3e21fce5be',1,'CBLDocument']]],
   ['nextrow',['nextRow',['../interfaceCBLQueryEnumerator.html#a48047f9e53ce898c9b709086b8af6074',1,'CBLQueryEnumerator']]]
 ];

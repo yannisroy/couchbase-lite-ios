@@ -130,74 +130,80 @@ Inheritance diagram for CBLDatabase:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
 <tr class="memitem:ad1c59ff4111681f32f8bf4975625f1bf"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#ad1c59ff4111681f32f8bf4975625f1bf">compact:</a></td></tr>
-<tr class="memdesc:ad1c59ff4111681f32f8bf4975625f1bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compacts the database file by purging non-current revisions, deleting unused attachment files, and running a SQLite "VACUUM" command.  <a href="#ad1c59ff4111681f32f8bf4975625f1bf">More...</a><br/></td></tr>
+<tr class="memdesc:ad1c59ff4111681f32f8bf4975625f1bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compacts the database file by purging non-current JSON bodies, pruning revisions older than the maxRevTreeDepth, deleting unused attachment files, and vacuuming the SQLite database.  <a href="#ad1c59ff4111681f32f8bf4975625f1bf">More...</a><br/></td></tr>
 <tr class="separator:ad1c59ff4111681f32f8bf4975625f1bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e6b7c966f7786ecee2b2e5480e64c59"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a8e6b7c966f7786ecee2b2e5480e64c59">deleteDatabase:</a></td></tr>
 <tr class="memdesc:a8e6b7c966f7786ecee2b2e5480e64c59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the database.  <a href="#a8e6b7c966f7786ecee2b2e5480e64c59">More...</a><br/></td></tr>
 <tr class="separator:a8e6b7c966f7786ecee2b2e5480e64c59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a617d56f31aeeac548d08c7fa0a00d98a"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDocument.html">CBLDocument</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a617d56f31aeeac548d08c7fa0a00d98a">documentWithID:</a></td></tr>
-<tr class="memdesc:a617d56f31aeeac548d08c7fa0a00d98a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a> object with the given ID.  <a href="#a617d56f31aeeac548d08c7fa0a00d98a">More...</a><br/></td></tr>
-<tr class="separator:a617d56f31aeeac548d08c7fa0a00d98a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c2182037afb2a2266cb757c41a4a177"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDocument.html">CBLDocument</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a7c2182037afb2a2266cb757c41a4a177">objectForKeyedSubscript:</a></td></tr>
-<tr class="memdesc:a7c2182037afb2a2266cb757c41a4a177"><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as -documentWithID:.  <a href="#a7c2182037afb2a2266cb757c41a4a177">More...</a><br/></td></tr>
-<tr class="separator:a7c2182037afb2a2266cb757c41a4a177"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a337f8fdbe42fa4e4ef2fcd493e7dea22"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDocument.html">CBLDocument</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a337f8fdbe42fa4e4ef2fcd493e7dea22">untitledDocument</a></td></tr>
-<tr class="memdesc:a337f8fdbe42fa4e4ef2fcd493e7dea22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a> object with no current ID.  <a href="#a337f8fdbe42fa4e4ef2fcd493e7dea22">More...</a><br/></td></tr>
-<tr class="separator:a337f8fdbe42fa4e4ef2fcd493e7dea22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cdf0c9373b1084d0abb71b8dbef847d"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDocument.html">CBLDocument</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a0cdf0c9373b1084d0abb71b8dbef847d">cachedDocumentWithID:</a></td></tr>
-<tr class="memdesc:a0cdf0c9373b1084d0abb71b8dbef847d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the already-instantiated cached <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a> with the given ID, or nil if none is yet cached.  <a href="#a0cdf0c9373b1084d0abb71b8dbef847d">More...</a><br/></td></tr>
-<tr class="separator:a0cdf0c9373b1084d0abb71b8dbef847d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a762aa95a4cbe444cc5b1fb63d753d38a"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a762aa95a4cbe444cc5b1fb63d753d38a">clearDocumentCache</a></td></tr>
-<tr class="memdesc:a762aa95a4cbe444cc5b1fb63d753d38a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empties the cache of recently used <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a> objects.  <a href="#a762aa95a4cbe444cc5b1fb63d753d38a">More...</a><br/></td></tr>
-<tr class="separator:a762aa95a4cbe444cc5b1fb63d753d38a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad85144c1f1efba1593a96753bbe95ef9"><td class="memItemLeft" align="right" valign="top">(NSDictionary *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#ad85144c1f1efba1593a96753bbe95ef9">getLocalDocumentWithID:</a></td></tr>
-<tr class="memdesc:ad85144c1f1efba1593a96753bbe95ef9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the contents of the local document with the given ID, or nil if none exists.  <a href="#ad85144c1f1efba1593a96753bbe95ef9">More...</a><br/></td></tr>
-<tr class="separator:ad85144c1f1efba1593a96753bbe95ef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae98ebd4e03b0d36354164fa869a50435"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#ae98ebd4e03b0d36354164fa869a50435">putLocalDocument:withID:error:</a></td></tr>
-<tr class="memdesc:ae98ebd4e03b0d36354164fa869a50435"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the contents of the local document with the given ID.  <a href="#ae98ebd4e03b0d36354164fa869a50435">More...</a><br/></td></tr>
-<tr class="separator:ae98ebd4e03b0d36354164fa869a50435"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05e409e06475fbd764e045c12c228456"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a05e409e06475fbd764e045c12c228456">deleteLocalDocumentWithID:error:</a></td></tr>
-<tr class="memdesc:a05e409e06475fbd764e045c12c228456"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the local document with the given ID.  <a href="#a05e409e06475fbd764e045c12c228456">More...</a><br/></td></tr>
-<tr class="separator:a05e409e06475fbd764e045c12c228456"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e38c907f33a7a87870bc65fdfec3804"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLQuery.html">CBLQuery</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a2e38c907f33a7a87870bc65fdfec3804">queryAllDocuments</a></td></tr>
-<tr class="memdesc:a2e38c907f33a7a87870bc65fdfec3804"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a query that matches all documents in the database.  <a href="#a2e38c907f33a7a87870bc65fdfec3804">More...</a><br/></td></tr>
-<tr class="separator:a2e38c907f33a7a87870bc65fdfec3804"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbbb677df7000fba6bcba81d857e4b4f"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLQuery.html">CBLQuery</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#afbbb677df7000fba6bcba81d857e4b4f">slowQueryWithMap:</a></td></tr>
-<tr class="memdesc:afbbb677df7000fba6bcba81d857e4b4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a one-shot query with the given map function.  <a href="#afbbb677df7000fba6bcba81d857e4b4f">More...</a><br/></td></tr>
-<tr class="separator:afbbb677df7000fba6bcba81d857e4b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25f3f9ef31f9c2e8609d5816930f7834"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLView.html">CBLView</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a25f3f9ef31f9c2e8609d5816930f7834">viewNamed:</a></td></tr>
-<tr class="memdesc:a25f3f9ef31f9c2e8609d5816930f7834"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <a class="el" href="interfaceCBLView.html" title="A &quot;view&quot; in a CouchbaseLite database – essentially a persistent index managed by map/reduce. ">CBLView</a> object for the view with the given name.  <a href="#a25f3f9ef31f9c2e8609d5816930f7834">More...</a><br/></td></tr>
-<tr class="separator:a25f3f9ef31f9c2e8609d5816930f7834"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0a13e308646bdf4132076a4c2274f65"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLView.html">CBLView</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#ad0a13e308646bdf4132076a4c2274f65">existingViewNamed:</a></td></tr>
-<tr class="memdesc:ad0a13e308646bdf4132076a4c2274f65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the existing <a class="el" href="interfaceCBLView.html" title="A &quot;view&quot; in a CouchbaseLite database – essentially a persistent index managed by map/reduce. ">CBLView</a> with the given name, or nil if none.  <a href="#ad0a13e308646bdf4132076a4c2274f65">More...</a><br/></td></tr>
-<tr class="separator:ad0a13e308646bdf4132076a4c2274f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37075ef42a07ea67b9a1a11309e69233"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a37075ef42a07ea67b9a1a11309e69233">defineValidation:asBlock:</a></td></tr>
-<tr class="memdesc:a37075ef42a07ea67b9a1a11309e69233"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines or clears a named document validation function.  <a href="#a37075ef42a07ea67b9a1a11309e69233">More...</a><br/></td></tr>
-<tr class="separator:a37075ef42a07ea67b9a1a11309e69233"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a746fd307c37815b27688155b7a3995cb"><td class="memItemLeft" align="right" valign="top">(CBLValidationBlock)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a746fd307c37815b27688155b7a3995cb">validationNamed:</a></td></tr>
-<tr class="memdesc:a746fd307c37815b27688155b7a3995cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the existing document validation function (block) registered with the given name.  <a href="#a746fd307c37815b27688155b7a3995cb">More...</a><br/></td></tr>
-<tr class="separator:a746fd307c37815b27688155b7a3995cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f168010cd3f2df68bdff02b322cfa01"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a7f168010cd3f2df68bdff02b322cfa01">defineFilter:asBlock:</a></td></tr>
-<tr class="memdesc:a7f168010cd3f2df68bdff02b322cfa01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines or clears a named filter function.  <a href="#a7f168010cd3f2df68bdff02b322cfa01">More...</a><br/></td></tr>
-<tr class="separator:a7f168010cd3f2df68bdff02b322cfa01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a408f4e55f063f6e609f6ea62ae40cb15"><td class="memItemLeft" align="right" valign="top">(CBLFilterBlock)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a408f4e55f063f6e609f6ea62ae40cb15">filterNamed:</a></td></tr>
-<tr class="memdesc:a408f4e55f063f6e609f6ea62ae40cb15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the existing filter function (block) registered with the given name.  <a href="#a408f4e55f063f6e609f6ea62ae40cb15">More...</a><br/></td></tr>
-<tr class="separator:a408f4e55f063f6e609f6ea62ae40cb15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab033d994608b7516d04affad9a777ac4"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#ab033d994608b7516d04affad9a777ac4">inTransaction:</a></td></tr>
-<tr class="memdesc:ab033d994608b7516d04affad9a777ac4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the block within a transaction.  <a href="#ab033d994608b7516d04affad9a777ac4">More...</a><br/></td></tr>
-<tr class="separator:ab033d994608b7516d04affad9a777ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af73b6de8ce4fa0175dade135959c2bfc"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#af73b6de8ce4fa0175dade135959c2bfc">replaceUUIDs:</a></td></tr>
+<tr class="memdesc:af73b6de8ce4fa0175dade135959c2bfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the database's unique IDs to new random values.  <a href="#af73b6de8ce4fa0175dade135959c2bfc">More...</a><br/></td></tr>
+<tr class="separator:af73b6de8ce4fa0175dade135959c2bfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66748f94941562eb04004dae6f6aa420"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDocument.html">CBLDocument</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a66748f94941562eb04004dae6f6aa420">documentWithID:</a></td></tr>
+<tr class="memdesc:a66748f94941562eb04004dae6f6aa420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a> object with the given ID.  <a href="#a66748f94941562eb04004dae6f6aa420">More...</a><br/></td></tr>
+<tr class="separator:a66748f94941562eb04004dae6f6aa420"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9483f82a5cc0677c46ab21fed54ad3a0"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDocument.html">CBLDocument</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a9483f82a5cc0677c46ab21fed54ad3a0">existingDocumentWithID:</a></td></tr>
+<tr class="memdesc:a9483f82a5cc0677c46ab21fed54ad3a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a> object with the given ID.  <a href="#a9483f82a5cc0677c46ab21fed54ad3a0">More...</a><br/></td></tr>
+<tr class="separator:a9483f82a5cc0677c46ab21fed54ad3a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b438ed8d146298d4beefcac03f3241b"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDocument.html">CBLDocument</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a8b438ed8d146298d4beefcac03f3241b">objectForKeyedSubscript:</a></td></tr>
+<tr class="memdesc:a8b438ed8d146298d4beefcac03f3241b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as -documentWithID:.  <a href="#a8b438ed8d146298d4beefcac03f3241b">More...</a><br/></td></tr>
+<tr class="separator:a8b438ed8d146298d4beefcac03f3241b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a160c956b3809bff18b32f8befef2a678"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDocument.html">CBLDocument</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a160c956b3809bff18b32f8befef2a678">createDocument</a></td></tr>
+<tr class="memdesc:a160c956b3809bff18b32f8befef2a678"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a> object with no properties and a new (random) UUID.  <a href="#a160c956b3809bff18b32f8befef2a678">More...</a><br/></td></tr>
+<tr class="separator:a160c956b3809bff18b32f8befef2a678"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31912eba5c339a07355951180c82325d"><td class="memItemLeft" align="right" valign="top">(NSDictionary *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a31912eba5c339a07355951180c82325d">existingLocalDocumentWithID:</a></td></tr>
+<tr class="memdesc:a31912eba5c339a07355951180c82325d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the contents of the local document with the given ID, or nil if none exists.  <a href="#a31912eba5c339a07355951180c82325d">More...</a><br/></td></tr>
+<tr class="separator:a31912eba5c339a07355951180c82325d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d49dd530aebf3eefe0d1bad460b2664"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a2d49dd530aebf3eefe0d1bad460b2664">putLocalDocument:withID:error:</a></td></tr>
+<tr class="memdesc:a2d49dd530aebf3eefe0d1bad460b2664"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the contents of the local document with the given ID.  <a href="#a2d49dd530aebf3eefe0d1bad460b2664">More...</a><br/></td></tr>
+<tr class="separator:a2d49dd530aebf3eefe0d1bad460b2664"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b52530d5ba77823d9ea6d106fb19afb"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a0b52530d5ba77823d9ea6d106fb19afb">deleteLocalDocumentWithID:error:</a></td></tr>
+<tr class="memdesc:a0b52530d5ba77823d9ea6d106fb19afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the local document with the given ID.  <a href="#a0b52530d5ba77823d9ea6d106fb19afb">More...</a><br/></td></tr>
+<tr class="separator:a0b52530d5ba77823d9ea6d106fb19afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a360d0a1226fd28a7691629dc8ac5af5d"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLQuery.html">CBLQuery</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a360d0a1226fd28a7691629dc8ac5af5d">createAllDocumentsQuery</a></td></tr>
+<tr class="memdesc:a360d0a1226fd28a7691629dc8ac5af5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a query that matches all documents in the database.  <a href="#a360d0a1226fd28a7691629dc8ac5af5d">More...</a><br/></td></tr>
+<tr class="separator:a360d0a1226fd28a7691629dc8ac5af5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e6f4c6e7157a9ac73d0a85f672a39b6"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLQuery.html">CBLQuery</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a4e6f4c6e7157a9ac73d0a85f672a39b6">slowQueryWithMap:</a></td></tr>
+<tr class="memdesc:a4e6f4c6e7157a9ac73d0a85f672a39b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a one-shot query with the given map function.  <a href="#a4e6f4c6e7157a9ac73d0a85f672a39b6">More...</a><br/></td></tr>
+<tr class="separator:a4e6f4c6e7157a9ac73d0a85f672a39b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef183b0ade463e4927634125a16fb00c"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLView.html">CBLView</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#aef183b0ade463e4927634125a16fb00c">viewNamed:</a></td></tr>
+<tr class="memdesc:aef183b0ade463e4927634125a16fb00c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <a class="el" href="interfaceCBLView.html" title="A &quot;view&quot; in a CouchbaseLite database – essentially a persistent index managed by map/reduce. ">CBLView</a> object for the view with the given name.  <a href="#aef183b0ade463e4927634125a16fb00c">More...</a><br/></td></tr>
+<tr class="separator:aef183b0ade463e4927634125a16fb00c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0b00dfedba2a1a27078262abbbedd71"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLView.html">CBLView</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#ad0b00dfedba2a1a27078262abbbedd71">existingViewNamed:</a></td></tr>
+<tr class="memdesc:ad0b00dfedba2a1a27078262abbbedd71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the existing <a class="el" href="interfaceCBLView.html" title="A &quot;view&quot; in a CouchbaseLite database – essentially a persistent index managed by map/reduce. ">CBLView</a> with the given name, or nil if none.  <a href="#ad0b00dfedba2a1a27078262abbbedd71">More...</a><br/></td></tr>
+<tr class="separator:ad0b00dfedba2a1a27078262abbbedd71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7b01f94fd8468ed143d05250bc5ae3b"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#af7b01f94fd8468ed143d05250bc5ae3b">setValidationNamed:asBlock:</a></td></tr>
+<tr class="memdesc:af7b01f94fd8468ed143d05250bc5ae3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines or clears a named document validation function.  <a href="#af7b01f94fd8468ed143d05250bc5ae3b">More...</a><br/></td></tr>
+<tr class="separator:af7b01f94fd8468ed143d05250bc5ae3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a992cb1cbe19091333b90460ad4b18c5b"><td class="memItemLeft" align="right" valign="top">(CBLValidationBlock)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a992cb1cbe19091333b90460ad4b18c5b">validationNamed:</a></td></tr>
+<tr class="memdesc:a992cb1cbe19091333b90460ad4b18c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the existing document validation function (block) registered with the given name.  <a href="#a992cb1cbe19091333b90460ad4b18c5b">More...</a><br/></td></tr>
+<tr class="separator:a992cb1cbe19091333b90460ad4b18c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b1d9e8714b35a3a056a73b25c03017b"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a9b1d9e8714b35a3a056a73b25c03017b">setFilterNamed:asBlock:</a></td></tr>
+<tr class="memdesc:a9b1d9e8714b35a3a056a73b25c03017b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines or clears a named filter function.  <a href="#a9b1d9e8714b35a3a056a73b25c03017b">More...</a><br/></td></tr>
+<tr class="separator:a9b1d9e8714b35a3a056a73b25c03017b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36ddcad4a3f76a0bc158dbbf9b76a39a"><td class="memItemLeft" align="right" valign="top">(CBLFilterBlock)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a36ddcad4a3f76a0bc158dbbf9b76a39a">filterNamed:</a></td></tr>
+<tr class="memdesc:a36ddcad4a3f76a0bc158dbbf9b76a39a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the existing filter function (block) registered with the given name.  <a href="#a36ddcad4a3f76a0bc158dbbf9b76a39a">More...</a><br/></td></tr>
+<tr class="separator:a36ddcad4a3f76a0bc158dbbf9b76a39a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7054213967b153b8f9319cde68506f6d"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a7054213967b153b8f9319cde68506f6d">inTransaction:</a></td></tr>
+<tr class="memdesc:a7054213967b153b8f9319cde68506f6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the block within a transaction.  <a href="#a7054213967b153b8f9319cde68506f6d">More...</a><br/></td></tr>
+<tr class="separator:a7054213967b153b8f9319cde68506f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a821229658d9d7ac1d6e82a1854db8e71"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a821229658d9d7ac1d6e82a1854db8e71">doAsync:</a></td></tr>
+<tr class="memdesc:a821229658d9d7ac1d6e82a1854db8e71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the block asynchronously on the database's dispatch queue or thread.  <a href="#a821229658d9d7ac1d6e82a1854db8e71">More...</a><br/></td></tr>
+<tr class="separator:a821229658d9d7ac1d6e82a1854db8e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd6ec866f9d06dc740c649c3a4834a6d"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#abd6ec866f9d06dc740c649c3a4834a6d">doSync:</a></td></tr>
+<tr class="memdesc:abd6ec866f9d06dc740c649c3a4834a6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the block <em>synchronously</em> on the database's dispatch queue or thread: this method does not return until after the block has completed.  <a href="#abd6ec866f9d06dc740c649c3a4834a6d">More...</a><br/></td></tr>
+<tr class="separator:abd6ec866f9d06dc740c649c3a4834a6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66ed1e344744579c257651278ba77a43"><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a66ed1e344744579c257651278ba77a43">allReplications</a></td></tr>
 <tr class="memdesc:a66ed1e344744579c257651278ba77a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an array of all current CBLReplications involving this database.  <a href="#a66ed1e344744579c257651278ba77a43">More...</a><br/></td></tr>
 <tr class="separator:a66ed1e344744579c257651278ba77a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdc7c9367522407dde7beb33e5a2740d"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLReplication.html">CBLReplication</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#acdc7c9367522407dde7beb33e5a2740d">pushToURL:</a></td></tr>
-<tr class="memdesc:acdc7c9367522407dde7beb33e5a2740d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a replication that will 'push' to a database at the given URL, or returns an existing such replication if there already is one.  <a href="#acdc7c9367522407dde7beb33e5a2740d">More...</a><br/></td></tr>
-<tr class="separator:acdc7c9367522407dde7beb33e5a2740d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f67dcac6976fe2e7fc709ed0d302eb3"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLReplication.html">CBLReplication</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a9f67dcac6976fe2e7fc709ed0d302eb3">pullFromURL:</a></td></tr>
-<tr class="memdesc:a9f67dcac6976fe2e7fc709ed0d302eb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a replication that will 'pull' from a database at the given URL, or returns an existing such replication if there already is one.  <a href="#a9f67dcac6976fe2e7fc709ed0d302eb3">More...</a><br/></td></tr>
-<tr class="separator:a9f67dcac6976fe2e7fc709ed0d302eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2362525fbe2a5d1622e45efe6307d7a4"><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a2362525fbe2a5d1622e45efe6307d7a4">replicateWithURL:exclusively:</a></td></tr>
-<tr class="memdesc:a2362525fbe2a5d1622e45efe6307d7a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a pair of replications to both pull and push to database at the given URL, or returns existing replications if there are any.  <a href="#a2362525fbe2a5d1622e45efe6307d7a4">More...</a><br/></td></tr>
-<tr class="separator:a2362525fbe2a5d1622e45efe6307d7a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c64510435202b7f6e76b623b766f7ee"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLReplication.html">CBLReplication</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a7c64510435202b7f6e76b623b766f7ee">replicationToURL:</a></td></tr>
+<tr class="memdesc:a7c64510435202b7f6e76b623b766f7ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a replication that will 'push' to a database at the given URL, or returns an existing such replication if there already is one.  <a href="#a7c64510435202b7f6e76b623b766f7ee">More...</a><br/></td></tr>
+<tr class="separator:a7c64510435202b7f6e76b623b766f7ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7147c9fbd58772df8bd5d621a9aafa6e"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLReplication.html">CBLReplication</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a7147c9fbd58772df8bd5d621a9aafa6e">replicationFromURL:</a></td></tr>
+<tr class="memdesc:a7147c9fbd58772df8bd5d621a9aafa6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a replication that will 'pull' from a database at the given URL, or returns an existing such replication if there already is one.  <a href="#a7147c9fbd58772df8bd5d621a9aafa6e">More...</a><br/></td></tr>
+<tr class="separator:a7147c9fbd58772df8bd5d621a9aafa6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7be0ea4bb7e68d4b6e5bcbee04b02e21"><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a7be0ea4bb7e68d4b6e5bcbee04b02e21">replicationsWithURL:exclusively:</a></td></tr>
+<tr class="memdesc:a7be0ea4bb7e68d4b6e5bcbee04b02e21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a pair of replications to both pull and push to database at the given URL, or returns existing replications if there are any.  <a href="#a7be0ea4bb7e68d4b6e5bcbee04b02e21">More...</a><br/></td></tr>
+<tr class="separator:a7be0ea4bb7e68d4b6e5bcbee04b02e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71ffcca8b354f02a0da8401b8d92eb44"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLDatabase.html#a71ffcca8b354f02a0da8401b8d92eb44">saveAllModels:</a></td></tr>
 <tr class="memdesc:a71ffcca8b354f02a0da8401b8d92eb44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves changes to all CBLModels associated with this database whose needsSave is true.  <a href="#a71ffcca8b354f02a0da8401b8d92eb44">More...</a><br/></td></tr>
 <tr class="separator:a71ffcca8b354f02a0da8401b8d92eb44"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -231,6 +237,9 @@ Properties</h2></td></tr>
 <tr class="memitem:a78f33f7c7af03c43f4581d43f9883f4a"><td class="memItemLeft" align="right" valign="top">NSURL *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLDatabase.html#a78f33f7c7af03c43f4581d43f9883f4a">internalURL</a></td></tr>
 <tr class="memdesc:a78f33f7c7af03c43f4581d43f9883f4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The URL of the database in the REST API.  <a href="#a78f33f7c7af03c43f4581d43f9883f4a">More...</a><br/></td></tr>
 <tr class="separator:a78f33f7c7af03c43f4581d43f9883f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ad6d7f24ee1de9dee373cfddf711da6"><td class="memItemLeft" align="right" valign="top">NSUInteger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLDatabase.html#a5ad6d7f24ee1de9dee373cfddf711da6">maxRevTreeDepth</a></td></tr>
+<tr class="memdesc:a5ad6d7f24ee1de9dee373cfddf711da6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum depth of a document's revision tree (or, max length of its revision history.) Revisions older than this limit will be deleted during a -compact: operation.  <a href="#a5ad6d7f24ee1de9dee373cfddf711da6">More...</a><br/></td></tr>
+<tr class="separator:a5ad6d7f24ee1de9dee373cfddf711da6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa91dd21496d2c5edbf9fb69a872acccf"><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLDatabase.html#aa91dd21496d2c5edbf9fb69a872acccf">unsavedModels</a></td></tr>
 <tr class="memdesc:aa91dd21496d2c5edbf9fb69a872acccf"><td class="mdescLeft">&#160;</td><td class="mdescRight">All CBLModels associated with this database whose needsSave is true.  <a href="#aa91dd21496d2c5edbf9fb69a872acccf">More...</a><br/></td></tr>
 <tr class="separator:aa91dd21496d2c5edbf9fb69a872acccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -255,7 +264,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Compacts the database file by purging non-current revisions, deleting unused attachment files, and running a SQLite "VACUUM" command. </p>
+<p>Compacts the database file by purging non-current JSON bodies, pruning revisions older than the maxRevTreeDepth, deleting unused attachment files, and vacuuming the SQLite database. </p>
 
 </div>
 </div>
@@ -277,14 +286,34 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a617d56f31aeeac548d08c7fa0a00d98a"></a>
+<a class="anchor" id="af73b6de8ce4fa0175dade135959c2bfc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (BOOL) replaceUUIDs: </td>
+          <td></td>
+          <td class="paramtype">(NSError **)&#160;</td>
+          <td class="paramname"><em>outError</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Changes the database's unique IDs to new random values. </p>
+<p>Ordinarily you should never need to call this method; it's only made public to fix databases that are already affected by bug github.com/couchbase/couchbase-lite-ios/issues/145 . Make sure you only call this once, to fix that problem, because every call has the side effect of resetting all replications, making them run slow the next time. </p>
+
+</div>
+</div>
+<a class="anchor" id="a66748f94941562eb04004dae6f6aa420"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">- (<a class="el" href="interfaceCBLDocument.html">CBLDocument</a>*) documentWithID: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>docID</em></td>
           <td></td>
         </tr>
       </table>
@@ -295,14 +324,34 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a7c2182037afb2a2266cb757c41a4a177"></a>
+<a class="anchor" id="a9483f82a5cc0677c46ab21fed54ad3a0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="interfaceCBLDocument.html">CBLDocument</a>*) existingDocumentWithID: </td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>docID</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Instantiates a <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a> object with the given ID. </p>
+<p>Unlike -documentWithID: this method loads the document from the database, and returns nil if no such document exists. CBLDocuments are cached, so there will never be more than one instance (in this database) at a time with the same documentID. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8b438ed8d146298d4beefcac03f3241b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">- (<a class="el" href="interfaceCBLDocument.html">CBLDocument</a>*) objectForKeyedSubscript: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>key</em></td>
           <td></td>
         </tr>
       </table>
@@ -313,12 +362,12 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a337f8fdbe42fa4e4ef2fcd493e7dea22"></a>
+<a class="anchor" id="a160c956b3809bff18b32f8befef2a678"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (<a class="el" href="interfaceCBLDocument.html">CBLDocument</a>*) untitledDocument </td>
+          <td class="memname">- (<a class="el" href="interfaceCBLDocument.html">CBLDocument</a>*) createDocument </td>
           <td></td>
           <td class="paramname"></td>
           <td></td>
@@ -326,54 +375,20 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Creates a <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a> object with no current ID. </p>
-<p>The first time you PUT to that document, it will be created on the server (via a POST). </p>
+<p>Creates a new <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a> object with no properties and a new (random) UUID. </p>
+<p>The document will be saved to the database when you call -putProperties: on it. </p>
 
 </div>
 </div>
-<a class="anchor" id="a0cdf0c9373b1084d0abb71b8dbef847d"></a>
+<a class="anchor" id="a31912eba5c339a07355951180c82325d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (<a class="el" href="interfaceCBLDocument.html">CBLDocument</a>*) cachedDocumentWithID: </td>
+          <td class="memname">- (NSDictionary*) existingLocalDocumentWithID: </td>
           <td></td>
-          <td class="paramname"></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the already-instantiated cached <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a> with the given ID, or nil if none is yet cached. </p>
-
-</div>
-</div>
-<a class="anchor" id="a762aa95a4cbe444cc5b1fb63d753d38a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (void) clearDocumentCache </td>
-          <td></td>
-          <td class="paramname"></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Empties the cache of recently used <a class="el" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a> objects. </p>
-<p>API calls will now instantiate and return new instances. </p>
-
-</div>
-</div>
-<a class="anchor" id="ad85144c1f1efba1593a96753bbe95ef9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (NSDictionary*) getLocalDocumentWithID: </td>
-          <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>localDocID</em></td>
           <td></td>
         </tr>
       </table>
@@ -383,7 +398,7 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ae98ebd4e03b0d36354164fa869a50435"></a>
+<a class="anchor" id="a2d49dd530aebf3eefe0d1bad460b2664"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -397,7 +412,13 @@ Properties</h2></td></tr>
           <td class="paramkey">withID:</td>
           <td></td>
           <td class="paramtype">(NSString *)&#160;</td>
-          <td class="paramname"><em>localDocID</em>&#160;</td>
+          <td class="paramname"><em>localDocID</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">error:</td>
+          <td></td>
+          <td class="paramtype">(NSError **)&#160;</td>
+          <td class="paramname"><em>outError</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -412,7 +433,7 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a05e409e06475fbd764e045c12c228456"></a>
+<a class="anchor" id="a0b52530d5ba77823d9ea6d106fb19afb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -421,7 +442,17 @@ Properties</h2></td></tr>
           <td></td>
           <td class="paramtype">(NSString *)&#160;</td>
           <td class="paramname"><em>localDocID</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">error:</td>
           <td></td>
+          <td class="paramtype">(NSError **)&#160;</td>
+          <td class="paramname"><em>outError</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -430,12 +461,12 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2e38c907f33a7a87870bc65fdfec3804"></a>
+<a class="anchor" id="a360d0a1226fd28a7691629dc8ac5af5d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (<a class="el" href="interfaceCBLQuery.html">CBLQuery</a>*) queryAllDocuments </td>
+          <td class="memname">- (<a class="el" href="interfaceCBLQuery.html">CBLQuery</a>*) createAllDocumentsQuery </td>
           <td></td>
           <td class="paramname"></td>
           <td></td>
@@ -448,14 +479,15 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="afbbb677df7000fba6bcba81d857e4b4f"></a>
+<a class="anchor" id="a4e6f4c6e7157a9ac73d0a85f672a39b6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">- (<a class="el" href="interfaceCBLQuery.html">CBLQuery</a>*) slowQueryWithMap: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(CBLMapBlock)&#160;</td>
+          <td class="paramname"><em>mapBlock</em></td>
           <td></td>
         </tr>
       </table>
@@ -466,14 +498,15 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a25f3f9ef31f9c2e8609d5816930f7834"></a>
+<a class="anchor" id="aef183b0ade463e4927634125a16fb00c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">- (<a class="el" href="interfaceCBLView.html">CBLView</a>*) viewNamed: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>name</em></td>
           <td></td>
         </tr>
       </table>
@@ -484,14 +517,15 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad0a13e308646bdf4132076a4c2274f65"></a>
+<a class="anchor" id="ad0b00dfedba2a1a27078262abbbedd71"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">- (<a class="el" href="interfaceCBLView.html">CBLView</a>*) existingViewNamed: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>name</em></td>
           <td></td>
         </tr>
       </table>
@@ -501,16 +535,26 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a37075ef42a07ea67b9a1a11309e69233"></a>
+<a class="anchor" id="af7b01f94fd8468ed143d05250bc5ae3b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (void) defineValidation: </td>
+          <td class="memname">- (void) setValidationNamed: </td>
           <td></td>
           <td class="paramtype">(NSString *)&#160;</td>
           <td class="paramname"><em>validationName</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">asBlock:</td>
           <td></td>
+          <td class="paramtype">(CBLValidationBlock)&#160;</td>
+          <td class="paramname"><em>validationBlock</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -520,14 +564,15 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a746fd307c37815b27688155b7a3995cb"></a>
+<a class="anchor" id="a992cb1cbe19091333b90460ad4b18c5b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">- (CBLValidationBlock) validationNamed: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>validationName</em></td>
           <td></td>
         </tr>
       </table>
@@ -538,16 +583,26 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a7f168010cd3f2df68bdff02b322cfa01"></a>
+<a class="anchor" id="a9b1d9e8714b35a3a056a73b25c03017b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (void) defineFilter: </td>
+          <td class="memname">- (void) setFilterNamed: </td>
           <td></td>
           <td class="paramtype">(NSString *)&#160;</td>
           <td class="paramname"><em>filterName</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">asBlock:</td>
           <td></td>
+          <td class="paramtype">(CBLFilterBlock)&#160;</td>
+          <td class="paramname"><em>filterBlock</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -557,14 +612,15 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a408f4e55f063f6e609f6ea62ae40cb15"></a>
+<a class="anchor" id="a36ddcad4a3f76a0bc158dbbf9b76a39a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">- (CBLFilterBlock) filterNamed: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>filterName</em></td>
           <td></td>
         </tr>
       </table>
@@ -610,14 +666,15 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab033d994608b7516d04affad9a777ac4"></a>
+<a class="anchor" id="a7054213967b153b8f9319cde68506f6d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">- (BOOL) inTransaction: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(void)&#160;</td>
+          <td class="paramname"><em>block</em></td>
           <td></td>
         </tr>
       </table>
@@ -625,6 +682,42 @@ Properties</h2></td></tr>
 
 <p>Runs the block within a transaction. </p>
 <p>If the block returns NO, the transaction is rolled back. Use this when performing bulk write operations like multiple inserts/updates; it saves the overhead of multiple SQLite commits, greatly improving performance. </p>
+
+</div>
+</div>
+<a class="anchor" id="a821229658d9d7ac1d6e82a1854db8e71"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) doAsync: </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Runs the block asynchronously on the database's dispatch queue or thread. </p>
+<p>Unlike the rest of the API, this can be called from any thread, and provides a limited form of multithreaded access to Couchbase Lite. </p>
+
+</div>
+</div>
+<a class="anchor" id="abd6ec866f9d06dc740c649c3a4834a6d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) doSync: </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Runs the block <em>synchronously</em> on the database's dispatch queue or thread: this method does not return until after the block has completed. </p>
+<p>Unlike the rest of the API, this can <em>only</em> be called from other threads/queues: If you call it from the same thread or dispatch queue that the database runs on, <b>it will deadlock!</b> </p>
 
 </div>
 </div>
@@ -645,14 +738,15 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="acdc7c9367522407dde7beb33e5a2740d"></a>
+<a class="anchor" id="a7c64510435202b7f6e76b623b766f7ee"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (<a class="el" href="interfaceCBLReplication.html">CBLReplication</a>*) pushToURL: </td>
+          <td class="memname">- (<a class="el" href="interfaceCBLReplication.html">CBLReplication</a>*) replicationToURL: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(NSURL *)&#160;</td>
+          <td class="paramname"><em>url</em></td>
           <td></td>
         </tr>
       </table>
@@ -663,14 +757,15 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9f67dcac6976fe2e7fc709ed0d302eb3"></a>
+<a class="anchor" id="a7147c9fbd58772df8bd5d621a9aafa6e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (<a class="el" href="interfaceCBLReplication.html">CBLReplication</a>*) pullFromURL: </td>
+          <td class="memname">- (<a class="el" href="interfaceCBLReplication.html">CBLReplication</a>*) replicationFromURL: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(NSURL *)&#160;</td>
+          <td class="paramname"><em>url</em></td>
           <td></td>
         </tr>
       </table>
@@ -681,12 +776,12 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2362525fbe2a5d1622e45efe6307d7a4"></a>
+<a class="anchor" id="a7be0ea4bb7e68d4b6e5bcbee04b02e21"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSArray*) replicateWithURL: </td>
+          <td class="memname">- (NSArray*) replicationsWithURL: </td>
           <td></td>
           <td class="paramtype">(NSURL *)&#160;</td>
           <td class="paramname"><em>otherDbURL</em></td>
@@ -868,6 +963,29 @@ Properties</h2></td></tr>
 
 <p>The URL of the database in the REST API. </p>
 <p>You can access this URL within this process, using NSURLConnection or other APIs that use that (such as XMLHTTPRequest inside a WebView), but it isn't available outside the process. This method is only available if you've linked with the CouchbaseLiteListener framework. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5ad6d7f24ee1de9dee373cfddf711da6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (NSUInteger) maxRevTreeDepth</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">atomic</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The maximum depth of a document's revision tree (or, max length of its revision history.) Revisions older than this limit will be deleted during a -compact: operation. </p>
+<p>Smaller values save space, at the expense of making document conflicts somewhat more likely. </p>
 
 </div>
 </div>

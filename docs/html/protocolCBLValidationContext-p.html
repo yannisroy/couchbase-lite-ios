@@ -128,27 +128,21 @@ Inheritance diagram for &lt;CBLValidationContext&gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:ad030cac0790a0dfd1209daf47346713b"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolCBLValidationContext-p.html#ad030cac0790a0dfd1209daf47346713b">allowChangesOnlyTo:</a></td></tr>
-<tr class="memdesc:ad030cac0790a0dfd1209daf47346713b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns YES if only the keys given in the 'allowedKeys' array have changed; else returns NO and sets a default error message naming the offending key.  <a href="#ad030cac0790a0dfd1209daf47346713b">More...</a><br/></td></tr>
-<tr class="separator:ad030cac0790a0dfd1209daf47346713b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73b7f2a55bb88317a496a58aee1004ac"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolCBLValidationContext-p.html#a73b7f2a55bb88317a496a58aee1004ac">disallowChangesTo:</a></td></tr>
-<tr class="memdesc:a73b7f2a55bb88317a496a58aee1004ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns YES if none of the keys given in the 'disallowedKeys' array have changed; else returns NO and sets a default error message naming the offending key.  <a href="#a73b7f2a55bb88317a496a58aee1004ac">More...</a><br/></td></tr>
-<tr class="separator:a73b7f2a55bb88317a496a58aee1004ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a11119640bf1c3d548a8479f05f24c2"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolCBLValidationContext-p.html#a8a11119640bf1c3d548a8479f05f24c2">enumerateChanges:</a></td></tr>
-<tr class="memdesc:a8a11119640bf1c3d548a8479f05f24c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls the 'enumerator' block for each key that's changed, passing both the old and new values.  <a href="#a8a11119640bf1c3d548a8479f05f24c2">More...</a><br/></td></tr>
-<tr class="separator:a8a11119640bf1c3d548a8479f05f24c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ca506fe6db09f8df1cc91d8cc70a242"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolCBLValidationContext-p.html#a0ca506fe6db09f8df1cc91d8cc70a242">reject</a></td></tr>
+<tr class="memdesc:a0ca506fe6db09f8df1cc91d8cc70a242"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rejects the proposed new revision.  <a href="#a0ca506fe6db09f8df1cc91d8cc70a242">More...</a><br/></td></tr>
+<tr class="separator:a0ca506fe6db09f8df1cc91d8cc70a242"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade39d8fcd3bab02ce20a1165bf485d4a"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolCBLValidationContext-p.html#ade39d8fcd3bab02ce20a1165bf485d4a">rejectWithMessage:</a></td></tr>
+<tr class="memdesc:ade39d8fcd3bab02ce20a1165bf485d4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rejects the proposed new revision.  <a href="#ade39d8fcd3bab02ce20a1165bf485d4a">More...</a><br/></td></tr>
+<tr class="separator:ade39d8fcd3bab02ce20a1165bf485d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60929da7453aaf567c0514e2603719e0"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolCBLValidationContext-p.html#a60929da7453aaf567c0514e2603719e0">validateChanges:</a></td></tr>
+<tr class="memdesc:a60929da7453aaf567c0514e2603719e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls the 'enumerator' block for each key that's changed, passing both the old and new values.  <a href="#a60929da7453aaf567c0514e2603719e0">More...</a><br/></td></tr>
+<tr class="separator:a60929da7453aaf567c0514e2603719e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a93abbedb7a22c5e2cd26f66ed638aeae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfaceCBLRevision.html">CBLRevision</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocolCBLValidationContext-p.html#a93abbedb7a22c5e2cd26f66ed638aeae">currentRevision</a></td></tr>
-<tr class="memdesc:a93abbedb7a22c5e2cd26f66ed638aeae"><td class="mdescLeft">&#160;</td><td class="mdescRight">The contents of the current revision of the document, or nil if this is a new document.  <a href="#a93abbedb7a22c5e2cd26f66ed638aeae">More...</a><br/></td></tr>
-<tr class="separator:a93abbedb7a22c5e2cd26f66ed638aeae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a687cc95358bee4bc417a9f5e6cfd1cf4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocolCBLValidationContext-p.html#a687cc95358bee4bc417a9f5e6cfd1cf4">errorType</a></td></tr>
-<tr class="memdesc:a687cc95358bee4bc417a9f5e6cfd1cf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of HTTP status to report, if the validate block returns NO.  <a href="#a687cc95358bee4bc417a9f5e6cfd1cf4">More...</a><br/></td></tr>
-<tr class="separator:a687cc95358bee4bc417a9f5e6cfd1cf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbeb30a5000a0262258ec15cad6c2470"><td class="memItemLeft" align="right" valign="top">NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocolCBLValidationContext-p.html#acbeb30a5000a0262258ec15cad6c2470">errorMessage</a></td></tr>
-<tr class="memdesc:acbeb30a5000a0262258ec15cad6c2470"><td class="mdescLeft">&#160;</td><td class="mdescRight">The error message to return in the HTTP response, if the validate block returns NO.  <a href="#acbeb30a5000a0262258ec15cad6c2470">More...</a><br/></td></tr>
-<tr class="separator:acbeb30a5000a0262258ec15cad6c2470"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe79cf75473becca6182f28ba60107cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfaceCBLSavedRevision.html">CBLSavedRevision</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocolCBLValidationContext-p.html#abe79cf75473becca6182f28ba60107cf">currentRevision</a></td></tr>
+<tr class="memdesc:abe79cf75473becca6182f28ba60107cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">The contents of the current revision of the document, or nil if this is a new document.  <a href="#abe79cf75473becca6182f28ba60107cf">More...</a><br/></td></tr>
+<tr class="separator:abe79cf75473becca6182f28ba60107cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62f72c76701fd6c29509daaea5e54023"><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocolCBLValidationContext-p.html#a62f72c76701fd6c29509daaea5e54023">changedKeys</a></td></tr>
 <tr class="memdesc:a62f72c76701fd6c29509daaea5e54023"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an array of all the keys whose values are different between the current and new revisions.  <a href="#a62f72c76701fd6c29509daaea5e54023">More...</a><br/></td></tr>
 <tr class="separator:a62f72c76701fd6c29509daaea5e54023"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,48 +150,48 @@ Properties</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Context passed into a CBLValidationBlock. </p>
 </div><h2 class="groupheader">Method Documentation</h2>
-<a class="anchor" id="ad030cac0790a0dfd1209daf47346713b"></a>
+<a class="anchor" id="a0ca506fe6db09f8df1cc91d8cc70a242"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (BOOL) allowChangesOnlyTo: </td>
+          <td class="memname">- (void) reject </td>
           <td></td>
-          <td class="paramtype">(NSArray *)&#160;</td>
-          <td class="paramname"><em>allowedKeys</em></td>
+          <td class="paramname"></td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns YES if only the keys given in the 'allowedKeys' array have changed; else returns NO and sets a default error message naming the offending key. </p>
+<p>Rejects the proposed new revision. </p>
 
 </div>
 </div>
-<a class="anchor" id="a73b7f2a55bb88317a496a58aee1004ac"></a>
+<a class="anchor" id="ade39d8fcd3bab02ce20a1165bf485d4a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (BOOL) disallowChangesTo: </td>
+          <td class="memname">- (void) rejectWithMessage: </td>
           <td></td>
-          <td class="paramtype">(NSArray *)&#160;</td>
-          <td class="paramname"><em>disallowedKeys</em></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>message</em></td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns YES if none of the keys given in the 'disallowedKeys' array have changed; else returns NO and sets a default error message naming the offending key. </p>
+<p>Rejects the proposed new revision. </p>
+<p>Any resulting error will contain the provided message; for example, if the change came from an external HTTP request, the message will be in the response status line. The default message is "invalid document". </p>
 
 </div>
 </div>
-<a class="anchor" id="a8a11119640bf1c3d548a8479f05f24c2"></a>
+<a class="anchor" id="a60929da7453aaf567c0514e2603719e0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (BOOL) enumerateChanges: </td>
+          <td class="memname">- (BOOL) validateChanges: </td>
           <td></td>
           <td class="paramtype">(CBLChangeEnumeratorBlock)&#160;</td>
           <td class="paramname"><em>enumerator</em></td>
@@ -207,12 +201,12 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calls the 'enumerator' block for each key that's changed, passing both the old and new values. </p>
-<p>If the block returns NO, the enumeration stops and sets a default error message, and the method returns NO; else the method returns YES. </p>
+<p>If the block returns NO, the enumeration stops and rejects the revision, and the method returns NO; else the method returns YES. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a class="anchor" id="a93abbedb7a22c5e2cd26f66ed638aeae"></a>
+<a class="anchor" id="abe79cf75473becca6182f28ba60107cf"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -220,7 +214,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">- (<a class="el" href="interfaceCBLRevision.html">CBLRevision</a>*) currentRevision</td>
+          <td class="memname">- (<a class="el" href="interfaceCBLSavedRevision.html">CBLSavedRevision</a>*) currentRevision</td>
         </tr>
       </table>
   </td>
@@ -231,52 +225,6 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The contents of the current revision of the document, or nil if this is a new document. </p>
-
-</div>
-</div>
-<a class="anchor" id="a687cc95358bee4bc417a9f5e6cfd1cf4"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (int) errorType</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">atomic</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The type of HTTP status to report, if the validate block returns NO. </p>
-<p>The default value is 403 ("Forbidden"). </p>
-
-</div>
-</div>
-<a class="anchor" id="acbeb30a5000a0262258ec15cad6c2470"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (NSString*) errorMessage</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">atomic</span><span class="mlabel">copy</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The error message to return in the HTTP response, if the validate block returns NO. </p>
-<p>The default value is "invalid document". </p>
 
 </div>
 </div>

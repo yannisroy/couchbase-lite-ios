@@ -132,39 +132,51 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a6dbe729f05e5b2e73da4ae92d7ff5703"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a6dbe729f05e5b2e73da4ae92d7ff5703">init</a></td></tr>
 <tr class="memdesc:a6dbe729f05e5b2e73da4ae92d7ff5703"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default initializer.  <a href="#a6dbe729f05e5b2e73da4ae92d7ff5703">More...</a><br/></td></tr>
 <tr class="separator:a6dbe729f05e5b2e73da4ae92d7ff5703"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdb4cf136955f8cff6dd10d2f38bdd9e"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#acdb4cf136955f8cff6dd10d2f38bdd9e">initWithDirectory:options:error:</a></td></tr>
-<tr class="memdesc:acdb4cf136955f8cff6dd10d2f38bdd9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a CouchbaseLite manager that stores its data at the given path.  <a href="#acdb4cf136955f8cff6dd10d2f38bdd9e">More...</a><br/></td></tr>
-<tr class="separator:acdb4cf136955f8cff6dd10d2f38bdd9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10bb63803233f418a25ef6b91f08d99e"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a10bb63803233f418a25ef6b91f08d99e">initWithDirectory:options:error:</a></td></tr>
+<tr class="memdesc:a10bb63803233f418a25ef6b91f08d99e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a CouchbaseLite manager that stores its data at the given path.  <a href="#a10bb63803233f418a25ef6b91f08d99e">More...</a><br/></td></tr>
+<tr class="separator:a10bb63803233f418a25ef6b91f08d99e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25ed27334996fc0512b4cdc5695492ee"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a25ed27334996fc0512b4cdc5695492ee">copy</a></td></tr>
+<tr class="memdesc:a25ed27334996fc0512b4cdc5695492ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a copy of this <a class="el" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a>, which can be used on a different thread.  <a href="#a25ed27334996fc0512b4cdc5695492ee">More...</a><br/></td></tr>
+<tr class="separator:a25ed27334996fc0512b4cdc5695492ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c239ed5a76947899839bc9448b7d296"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a6c239ed5a76947899839bc9448b7d296">close</a></td></tr>
 <tr class="memdesc:a6c239ed5a76947899839bc9448b7d296"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases all resources used by the <a class="el" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a> instance and closes all its databases.  <a href="#a6c239ed5a76947899839bc9448b7d296">More...</a><br/></td></tr>
 <tr class="separator:a6c239ed5a76947899839bc9448b7d296"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4289070a1c4c1e9fb29971365cbc7e4"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#af4289070a1c4c1e9fb29971365cbc7e4">databaseNamed:error:</a></td></tr>
-<tr class="memdesc:af4289070a1c4c1e9fb29971365cbc7e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the database with the given name, or nil if it doesn't exist.  <a href="#af4289070a1c4c1e9fb29971365cbc7e4">More...</a><br/></td></tr>
-<tr class="separator:af4289070a1c4c1e9fb29971365cbc7e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6b0032cff9c5a04c7747fe34cc876d6"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#ad6b0032cff9c5a04c7747fe34cc876d6">objectForKeyedSubscript:</a></td></tr>
-<tr class="memdesc:ad6b0032cff9c5a04c7747fe34cc876d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as -databaseNamed:.  <a href="#ad6b0032cff9c5a04c7747fe34cc876d6">More...</a><br/></td></tr>
-<tr class="separator:ad6b0032cff9c5a04c7747fe34cc876d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd7f485a26cbb7d5cc4e65a55a72ffc6"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#abd7f485a26cbb7d5cc4e65a55a72ffc6">createDatabaseNamed:error:</a></td></tr>
-<tr class="memdesc:abd7f485a26cbb7d5cc4e65a55a72ffc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the database with the given name, creating it if it didn't already exist.  <a href="#abd7f485a26cbb7d5cc4e65a55a72ffc6">More...</a><br/></td></tr>
-<tr class="separator:abd7f485a26cbb7d5cc4e65a55a72ffc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92975dcb84535cd49e5059a10321cc97"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a92975dcb84535cd49e5059a10321cc97">replaceDatabaseNamed:withDatabaseFile:withAttachments:error:</a></td></tr>
-<tr class="memdesc:a92975dcb84535cd49e5059a10321cc97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces or installs a database from a file.  <a href="#a92975dcb84535cd49e5059a10321cc97">More...</a><br/></td></tr>
-<tr class="separator:a92975dcb84535cd49e5059a10321cc97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9e99a765c225895ede1d11e3b3f63e3"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#ae9e99a765c225895ede1d11e3b3f63e3">asyncTellDatabaseNamed:to:</a></td></tr>
-<tr class="memdesc:ae9e99a765c225895ede1d11e3b3f63e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously dispatches a block to run on a background thread.  <a href="#ae9e99a765c225895ede1d11e3b3f63e3">More...</a><br/></td></tr>
-<tr class="separator:ae9e99a765c225895ede1d11e3b3f63e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ecf95e03e8594af200914a1170e252f"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a8ecf95e03e8594af200914a1170e252f">databaseNamed:error:</a></td></tr>
+<tr class="memdesc:a8ecf95e03e8594af200914a1170e252f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the database with the given name, creating it if it didn't already exist.  <a href="#a8ecf95e03e8594af200914a1170e252f">More...</a><br/></td></tr>
+<tr class="separator:a8ecf95e03e8594af200914a1170e252f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac79dda36ed6b9d0407edf5b5d6e5286d"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#ac79dda36ed6b9d0407edf5b5d6e5286d">existingDatabaseNamed:error:</a></td></tr>
+<tr class="memdesc:ac79dda36ed6b9d0407edf5b5d6e5286d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the database with the given name, or nil if it doesn't exist.  <a href="#ac79dda36ed6b9d0407edf5b5d6e5286d">More...</a><br/></td></tr>
+<tr class="separator:ac79dda36ed6b9d0407edf5b5d6e5286d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a068f9fcdeb48b49baa28794271552b67"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a068f9fcdeb48b49baa28794271552b67">objectForKeyedSubscript:</a></td></tr>
+<tr class="memdesc:a068f9fcdeb48b49baa28794271552b67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as -existingDatabaseNamed:.  <a href="#a068f9fcdeb48b49baa28794271552b67">More...</a><br/></td></tr>
+<tr class="separator:a068f9fcdeb48b49baa28794271552b67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6ac00c66002cf03ee341f8ece5dbb9d"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#ac6ac00c66002cf03ee341f8ece5dbb9d">replaceDatabaseNamed:withDatabaseFile:withAttachments:error:</a></td></tr>
+<tr class="memdesc:ac6ac00c66002cf03ee341f8ece5dbb9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces or installs a database from a file.  <a href="#ac6ac00c66002cf03ee341f8ece5dbb9d">More...</a><br/></td></tr>
+<tr class="separator:ac6ac00c66002cf03ee341f8ece5dbb9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab6428f4cae888da21bf5711743b8c77"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#aab6428f4cae888da21bf5711743b8c77">doAsync:</a></td></tr>
+<tr class="memdesc:aab6428f4cae888da21bf5711743b8c77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the block asynchronously on the database manager's dispatch queue or thread.  <a href="#aab6428f4cae888da21bf5711743b8c77">More...</a><br/></td></tr>
+<tr class="separator:aab6428f4cae888da21bf5711743b8c77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ecd7f70274206ba0750f0c0bf9015d9"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a1ecd7f70274206ba0750f0c0bf9015d9">backgroundTellDatabaseNamed:to:</a></td></tr>
+<tr class="memdesc:a1ecd7f70274206ba0750f0c0bf9015d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously dispatches a block to run on a background thread.  <a href="#a1ecd7f70274206ba0750f0c0bf9015d9">More...</a><br/></td></tr>
+<tr class="separator:a1ecd7f70274206ba0750f0c0bf9015d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ac1c1bd9d11f196ac1b31c9011228a2"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLManager.html#a2ac1c1bd9d11f196ac1b31c9011228a2">startPersistentReplications</a></td></tr>
+<tr class="memdesc:a2ac1c1bd9d11f196ac1b31c9011228a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the manager was instantiated with the noReplicator option, persistent replications won't run at startup.  <a href="#a2ac1c1bd9d11f196ac1b31c9011228a2">More...</a><br/></td></tr>
+<tr class="separator:a2ac1c1bd9d11f196ac1b31c9011228a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Class Methods</h2></td></tr>
 <tr class="memitem:a99bc0653f4e07b605ab416270891bc12"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceCBLManager.html#a99bc0653f4e07b605ab416270891bc12">sharedInstance</a></td></tr>
 <tr class="memdesc:a99bc0653f4e07b605ab416270891bc12"><td class="mdescLeft">&#160;</td><td class="mdescRight">A shared per-process instance.  <a href="#a99bc0653f4e07b605ab416270891bc12">More...</a><br/></td></tr>
 <tr class="separator:a99bc0653f4e07b605ab416270891bc12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a004b408926ceacc7a223a95632c1a6"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceCBLManager.html#a3a004b408926ceacc7a223a95632c1a6">isValidDatabaseName:</a></td></tr>
-<tr class="memdesc:a3a004b408926ceacc7a223a95632c1a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns YES if the given name is a valid database name.  <a href="#a3a004b408926ceacc7a223a95632c1a6">More...</a><br/></td></tr>
-<tr class="separator:a3a004b408926ceacc7a223a95632c1a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a324226d5a05df0b54f67217ab255e6e3"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceCBLManager.html#a324226d5a05df0b54f67217ab255e6e3">isValidDatabaseName:</a></td></tr>
+<tr class="memdesc:a324226d5a05df0b54f67217ab255e6e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns YES if the given name is a valid database name.  <a href="#a324226d5a05df0b54f67217ab255e6e3">More...</a><br/></td></tr>
+<tr class="separator:a324226d5a05df0b54f67217ab255e6e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af48ae92af310092c5338158896bfbbee"><td class="memItemLeft" align="right" valign="top">(NSString *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceCBLManager.html#af48ae92af310092c5338158896bfbbee">defaultDirectory</a></td></tr>
 <tr class="memdesc:af48ae92af310092c5338158896bfbbee"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default directory to use for a <a class="el" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a>.  <a href="#af48ae92af310092c5338158896bfbbee">More...</a><br/></td></tr>
 <tr class="separator:af48ae92af310092c5338158896bfbbee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90531df32bd6de01099b9100fdb29511"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceCBLManager.html#a90531df32bd6de01099b9100fdb29511">enableLogging:</a></td></tr>
+<tr class="memdesc:a90531df32bd6de01099b9100fdb29511"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables Couchbase Lite logging of the given type, process-wide.  <a href="#a90531df32bd6de01099b9100fdb29511">More...</a><br/></td></tr>
+<tr class="separator:a90531df32bd6de01099b9100fdb29511"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -175,13 +187,16 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 <tr class="memitem:ac8ceb154c7e6a854b4d1cb47e8a8388b"><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLManager.html#ac8ceb154c7e6a854b4d1cb47e8a8388b">allDatabaseNames</a></td></tr>
 <tr class="memdesc:ac8ceb154c7e6a854b4d1cb47e8a8388b"><td class="mdescLeft">&#160;</td><td class="mdescRight">An array of the names of all existing databases.  <a href="#ac8ceb154c7e6a854b4d1cb47e8a8388b">More...</a><br/></td></tr>
 <tr class="separator:ac8ceb154c7e6a854b4d1cb47e8a8388b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08b9f584d0473311bec04690af43b343"><td class="memItemLeft" align="right" valign="top">dispatch_queue_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLManager.html#a08b9f584d0473311bec04690af43b343">dispatchQueue</a></td></tr>
+<tr class="memdesc:a08b9f584d0473311bec04690af43b343"><td class="mdescLeft">&#160;</td><td class="mdescRight">The dispatch queue used to serialize access to the database manager (and its child objects.) Setting this is optional: by default the objects are bound to the thread on which the database manager was instantiated.  <a href="#a08b9f584d0473311bec04690af43b343">More...</a><br/></td></tr>
+<tr class="separator:a08b9f584d0473311bec04690af43b343"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa949c5be7c40d7c4b062788f17526a5e"><td class="memItemLeft" align="right" valign="top">NSURL *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLManager.html#aa949c5be7c40d7c4b062788f17526a5e">internalURL</a></td></tr>
 <tr class="memdesc:aa949c5be7c40d7c4b062788f17526a5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The base URL of the database manager's REST API.  <a href="#aa949c5be7c40d7c4b062788f17526a5e">More...</a><br/></td></tr>
 <tr class="separator:aa949c5be7c40d7c4b062788f17526a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does. </p>
-<p>A <a class="el" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a> and all the objects descending from it may only be used on a single thread. To work with databases on another thread, create a new <a class="el" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a> instance for that thread (and be sure to use the .noReplicator option.) The easist way to do this is simply to call -copy on the existing manager. </p>
+<p>A <a class="el" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a> and all the objects descending from it may only be used on a single thread. To work with databases on another thread, copy the database manager (by calling -copy) and use the copy on the other thread. </p>
 </div><h2 class="groupheader">Method Documentation</h2>
 <a class="anchor" id="a99bc0653f4e07b605ab416270891bc12"></a>
 <div class="memitem">
@@ -201,14 +216,15 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 
 </div>
 </div>
-<a class="anchor" id="a3a004b408926ceacc7a223a95632c1a6"></a>
+<a class="anchor" id="a324226d5a05df0b54f67217ab255e6e3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">+ (BOOL) isValidDatabaseName: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>name</em></td>
           <td></td>
         </tr>
       </table>
@@ -255,7 +271,7 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 
 </div>
 </div>
-<a class="anchor" id="acdb4cf136955f8cff6dd10d2f38bdd9e"></a>
+<a class="anchor" id="a10bb63803233f418a25ef6b91f08d99e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -269,7 +285,13 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
           <td class="paramkey">options:</td>
           <td></td>
           <td class="paramtype">(const <a class="el" href="structCBLManagerOptions.html">CBLManagerOptions</a> *)&#160;</td>
-          <td class="paramname"><em>options</em>&#160;</td>
+          <td class="paramname"><em>options</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">error:</td>
+          <td></td>
+          <td class="paramtype">(NSError **)&#160;</td>
+          <td class="paramname"><em>outError</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -291,6 +313,23 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 
 </div>
 </div>
+<a class="anchor" id="a25ed27334996fc0512b4cdc5695492ee"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (instancetype) copy </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a copy of this <a class="el" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a>, which can be used on a different thread. </p>
+
+</div>
+</div>
 <a class="anchor" id="a6c239ed5a76947899839bc9448b7d296"></a>
 <div class="memitem">
 <div class="memproto">
@@ -308,7 +347,7 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 
 </div>
 </div>
-<a class="anchor" id="af4289070a1c4c1e9fb29971365cbc7e4"></a>
+<a class="anchor" id="a8ecf95e03e8594af200914a1170e252f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -317,44 +356,17 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
           <td></td>
           <td class="paramtype">(NSString *)&#160;</td>
           <td class="paramname"><em>name</em></td>
-          <td></td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the database with the given name, or nil if it doesn't exist. </p>
-<p>Multiple calls with the same name will return the same <a class="el" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a> instance. </p>
-
-</div>
-</div>
-<a class="anchor" id="ad6b0032cff9c5a04c7747fe34cc876d6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">- (<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a>*) objectForKeyedSubscript: </td>
+          <td class="paramkey">error:</td>
           <td></td>
-          <td class="paramname"></td>
-          <td></td>
+          <td class="paramtype">(NSError **)&#160;</td>
+          <td class="paramname"><em>outError</em>&#160;</td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Same as -databaseNamed:. </p>
-<p>Enables "[]" access in Xcode 4.4+ </p>
-
-</div>
-</div>
-<a class="anchor" id="abd7f485a26cbb7d5cc4e65a55a72ffc6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">- (<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a>*) createDatabaseNamed: </td>
           <td></td>
-          <td class="paramtype">(NSString *)&#160;</td>
-          <td class="paramname"><em>name</em></td>
           <td></td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -364,7 +376,55 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 
 </div>
 </div>
-<a class="anchor" id="a92975dcb84535cd49e5059a10321cc97"></a>
+<a class="anchor" id="ac79dda36ed6b9d0407edf5b5d6e5286d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a>*) existingDatabaseNamed: </td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>name</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">error:</td>
+          <td></td>
+          <td class="paramtype">(NSError **)&#160;</td>
+          <td class="paramname"><em>outError</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the database with the given name, or nil if it doesn't exist. </p>
+<p>Multiple calls with the same name will return the same <a class="el" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a> instance. </p>
+
+</div>
+</div>
+<a class="anchor" id="a068f9fcdeb48b49baa28794271552b67"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="interfaceCBLDatabase.html">CBLDatabase</a>*) objectForKeyedSubscript: </td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>key</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Same as -existingDatabaseNamed:. </p>
+<p>Enables "[]" access in Xcode 4.4+ </p>
+
+</div>
+</div>
+<a class="anchor" id="ac6ac00c66002cf03ee341f8ece5dbb9d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -384,7 +444,13 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
           <td class="paramkey">withAttachments:</td>
           <td></td>
           <td class="paramtype">(NSString *)&#160;</td>
-          <td class="paramname"><em>attachmentsPath</em>&#160;</td>
+          <td class="paramname"><em>attachmentsPath</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">error:</td>
+          <td></td>
+          <td class="paramtype">(NSError **)&#160;</td>
+          <td class="paramname"><em>outError</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -409,12 +475,30 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 
 </div>
 </div>
-<a class="anchor" id="ae9e99a765c225895ede1d11e3b3f63e3"></a>
+<a class="anchor" id="aab6428f4cae888da21bf5711743b8c77"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (void) asyncTellDatabaseNamed: </td>
+          <td class="memname">- (void) doAsync: </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Runs the block asynchronously on the database manager's dispatch queue or thread. </p>
+<p>Unlike the rest of the API, this can be called from any thread, and provides a limited form of multithreaded access to Couchbase Lite. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1ecd7f70274206ba0750f0c0bf9015d9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) backgroundTellDatabaseNamed: </td>
           <td></td>
           <td class="paramtype">(NSString *)&#160;</td>
           <td class="paramname"><em>dbName</em></td>
@@ -434,7 +518,44 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 </div><div class="memdoc">
 
 <p>Asynchronously dispatches a block to run on a background thread. </p>
-<p>The block will be given a <a class="el" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a> instance to use; <em>it must use that database instead of any CBL objects that are in use on the surrounding code's thread.</em> Otherwise thread-safety will be violated, and Really Bad Things that are intermittent and hard to debug can happen. </p>
+<p>The block will be given a <a class="el" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a> instance to use; <em>it must use that database instead of any CBL objects that are in use on the surrounding code's thread.</em> Otherwise thread-safety will be violated, and Really Bad Things that are intermittent and hard to debug can happen. (Note: Unlike most of the API, this method is thread-safe.) </p>
+
+</div>
+</div>
+<a class="anchor" id="a2ac1c1bd9d11f196ac1b31c9011228a2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) startPersistentReplications </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>If the manager was instantiated with the noReplicator option, persistent replications won't run at startup. </p>
+<p>If you want to start them later, call this. </p>
+
+</div>
+</div>
+<a class="anchor" id="a90531df32bd6de01099b9100fdb29511"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (void) enableLogging: </td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>type</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables Couchbase Lite logging of the given type, process-wide. </p>
+<p>A partial list of types is here: <a href="http://docs.couchbase.com/couchbase-lite/cbl-ios/#useful-logging-channels">http://docs.couchbase.com/couchbase-lite/cbl-ios/#useful-logging-channels</a> It's usually more convenient to enable logging via command-line args, as discussed on that same page; but in some environments you may not have access to the args, or may want to use other criteria to enable logging. </p>
 
 </div>
 </div>
@@ -458,6 +579,29 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 </div><div class="memdoc">
 
 <p>An array of the names of all existing databases. </p>
+
+</div>
+</div>
+<a class="anchor" id="a08b9f584d0473311bec04690af43b343"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (dispatch_queue_t) dispatchQueue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">atomic</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The dispatch queue used to serialize access to the database manager (and its child objects.) Setting this is optional: by default the objects are bound to the thread on which the database manager was instantiated. </p>
+<p>By setting a dispatch queue, you can call the objects from within that queue no matter what the underlying thread is, and notifications will be posted on that queue as well. </p>
 
 </div>
 </div>

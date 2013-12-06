@@ -105,7 +105,6 @@ $(document).ready(function(){initNavTree('interfaceCBLAttachment.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Instance Methods</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="classCBLAttachment-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -126,20 +125,11 @@ Inheritance diagram for CBLAttachment:</div>
 </map>
  </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Instance Methods</h2></td></tr>
-<tr class="memitem:a1d3fd6070c3dc064573e498d94f36596"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLAttachment.html#a1d3fd6070c3dc064573e498d94f36596">initWithContentType:body:</a></td></tr>
-<tr class="memdesc:a1d3fd6070c3dc064573e498d94f36596"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new attachment that doesn't belong to any revision.  <a href="#a1d3fd6070c3dc064573e498d94f36596">More...</a><br/></td></tr>
-<tr class="separator:a1d3fd6070c3dc064573e498d94f36596"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8ea63438182678bbba792d281b25fb1"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceCBLRevision.html">CBLRevision</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLAttachment.html#ad8ea63438182678bbba792d281b25fb1">updateBody:contentType:error:</a></td></tr>
-<tr class="memdesc:ad8ea63438182678bbba792d281b25fb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the body, creating a new document revision in the process.  <a href="#ad8ea63438182678bbba792d281b25fb1">More...</a><br/></td></tr>
-<tr class="separator:ad8ea63438182678bbba792d281b25fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a5ea5e37cd6df0a0a78007f141e328793"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfaceCBLRevisionBase.html">CBLRevisionBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLAttachment.html#a5ea5e37cd6df0a0a78007f141e328793">revision</a></td></tr>
-<tr class="memdesc:a5ea5e37cd6df0a0a78007f141e328793"><td class="mdescLeft">&#160;</td><td class="mdescRight">The owning document revision.  <a href="#a5ea5e37cd6df0a0a78007f141e328793">More...</a><br/></td></tr>
-<tr class="separator:a5ea5e37cd6df0a0a78007f141e328793"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a014c6ad551e6a6ee85a3dce70b555ac8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfaceCBLRevision.html">CBLRevision</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLAttachment.html#a014c6ad551e6a6ee85a3dce70b555ac8">revision</a></td></tr>
+<tr class="memdesc:a014c6ad551e6a6ee85a3dce70b555ac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The owning document revision.  <a href="#a014c6ad551e6a6ee85a3dce70b555ac8">More...</a><br/></td></tr>
+<tr class="separator:a014c6ad551e6a6ee85a3dce70b555ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2be280864fd42d53b02ccde63608524"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfaceCBLDocument.html">CBLDocument</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLAttachment.html#ab2be280864fd42d53b02ccde63608524">document</a></td></tr>
 <tr class="memdesc:ab2be280864fd42d53b02ccde63608524"><td class="mdescLeft">&#160;</td><td class="mdescRight">The owning document.  <a href="#ab2be280864fd42d53b02ccde63608524">More...</a><br/></td></tr>
 <tr class="separator:ab2be280864fd42d53b02ccde63608524"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,88 +145,18 @@ Properties</h2></td></tr>
 <tr class="memitem:aaff1a393d343c254c2c14315a36d2a20"><td class="memItemLeft" align="right" valign="top">NSDictionary *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLAttachment.html#aaff1a393d343c254c2c14315a36d2a20">metadata</a></td></tr>
 <tr class="memdesc:aaff1a393d343c254c2c14315a36d2a20"><td class="mdescLeft">&#160;</td><td class="mdescRight">The CouchbaseLite metadata about the attachment, that lives in the document.  <a href="#aaff1a393d343c254c2c14315a36d2a20">More...</a><br/></td></tr>
 <tr class="separator:aaff1a393d343c254c2c14315a36d2a20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b536d15b8f25cfc1998409ede78b24d"><td class="memItemLeft" align="right" valign="top">NSData *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLAttachment.html#a4b536d15b8f25cfc1998409ede78b24d">body</a></td></tr>
-<tr class="memdesc:a4b536d15b8f25cfc1998409ede78b24d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The body data.  <a href="#a4b536d15b8f25cfc1998409ede78b24d">More...</a><br/></td></tr>
-<tr class="separator:a4b536d15b8f25cfc1998409ede78b24d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e1c88c3825e683f415412a96f592c9d"><td class="memItemLeft" align="right" valign="top">NSURL *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLAttachment.html#a2e1c88c3825e683f415412a96f592c9d">bodyURL</a></td></tr>
-<tr class="memdesc:a2e1c88c3825e683f415412a96f592c9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The URL of the file containing the body.  <a href="#a2e1c88c3825e683f415412a96f592c9d">More...</a><br/></td></tr>
-<tr class="separator:a2e1c88c3825e683f415412a96f592c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f8f23e8c7a54706becebc02d01117df"><td class="memItemLeft" align="right" valign="top">NSData *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLAttachment.html#a7f8f23e8c7a54706becebc02d01117df">content</a></td></tr>
+<tr class="memdesc:a7f8f23e8c7a54706becebc02d01117df"><td class="mdescLeft">&#160;</td><td class="mdescRight">The data of the attachment.  <a href="#a7f8f23e8c7a54706becebc02d01117df">More...</a><br/></td></tr>
+<tr class="separator:a7f8f23e8c7a54706becebc02d01117df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca54577bec888486cf2a7eeb2faaca70"><td class="memItemLeft" align="right" valign="top">NSURL *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLAttachment.html#aca54577bec888486cf2a7eeb2faaca70">contentURL</a></td></tr>
+<tr class="memdesc:aca54577bec888486cf2a7eeb2faaca70"><td class="mdescLeft">&#160;</td><td class="mdescRight">The URL of the file containing the contents.  <a href="#aca54577bec888486cf2a7eeb2faaca70">More...</a><br/></td></tr>
+<tr class="separator:aca54577bec888486cf2a7eeb2faaca70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A binary attachment to a document revision. </p>
-<p>Existing attachments can be gotten from -[<a class="el" href="interfaceCBLRevision.html" title="An existing revision of a CBLDocument. ">CBLRevision</a> attachmentNamed:]. To add a new attachment, call -initWithContentType:body: and then put the attachment object as a value in the "_attachments" dictionary of the properties when you create a new revision. </p>
-</div><h2 class="groupheader">Method Documentation</h2>
-<a class="anchor" id="a1d3fd6070c3dc064573e498d94f36596"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (instancetype) initWithContentType: </td>
-          <td></td>
-          <td class="paramtype">(NSString *)&#160;</td>
-          <td class="paramname"><em>contentType</em></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Creates a new attachment that doesn't belong to any revision. </p>
-<p>This object can then be added as a value in a new revision's _attachments dictionary; it will be converted to JSON when saved. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">contentType</td><td>The MIME type </td></tr>
-    <tr><td class="paramname">body</td><td>The attachment body; this can either be an NSData object, or an NSURL pointing to a (local) file. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ad8ea63438182678bbba792d281b25fb1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (<a class="el" href="interfaceCBLRevision.html">CBLRevision</a>*) updateBody: </td>
-          <td></td>
-          <td class="paramtype">(NSData *)&#160;</td>
-          <td class="paramname"><em>body</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">contentType:</td>
-          <td></td>
-          <td class="paramtype">(NSString *)&#160;</td>
-          <td class="paramname"><em>contentType</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">error:</td>
-          <td></td>
-          <td class="paramtype">(NSError **)&#160;</td>
-          <td class="paramname"><em>outError</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Updates the body, creating a new document revision in the process. </p>
-<p>If all you need to do to a document is update a single attachment this is an easy way to do it; but if you need to change multiple attachments, or change other body properties, do them in one step by calling -putProperties:error: on the revision or document. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">body</td><td>The new body, or nil to delete the attachment. </td></tr>
-    <tr><td class="paramname">contentType</td><td>The new content type, or nil to leave it the same. </td></tr>
-    <tr><td class="paramname">outError</td><td>On return, the error (if any). </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<h2 class="groupheader">Property Documentation</h2>
-<a class="anchor" id="a5ea5e37cd6df0a0a78007f141e328793"></a>
+<p>Existing attachments can be gotten from -[<a class="el" href="interfaceCBLRevision.html" title="A revision of a CBLDocument. ">CBLRevision</a> attachmentNamed:]. New attachments can be created by calling the -setAttachment:... methods of CBLNewRevision or <a class="el" href="interfaceCBLModel.html" title="Generic model class for CouchbaseLite documents. ">CBLModel</a>. </p>
+</div><h2 class="groupheader">Property Documentation</h2>
+<a class="anchor" id="a014c6ad551e6a6ee85a3dce70b555ac8"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -244,7 +164,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">- (<a class="el" href="interfaceCBLRevisionBase.html">CBLRevisionBase</a>*) revision</td>
+          <td class="memname">- (<a class="el" href="interfaceCBLRevision.html">CBLRevision</a>*) revision</td>
         </tr>
       </table>
   </td>
@@ -368,7 +288,7 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4b536d15b8f25cfc1998409ede78b24d"></a>
+<a class="anchor" id="a7f8f23e8c7a54706becebc02d01117df"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -376,7 +296,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSData*) body</td>
+          <td class="memname">- (NSData*) content</td>
         </tr>
       </table>
   </td>
@@ -386,11 +306,11 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The body data. </p>
+<p>The data of the attachment. </p>
 
 </div>
 </div>
-<a class="anchor" id="a2e1c88c3825e683f415412a96f592c9d"></a>
+<a class="anchor" id="aca54577bec888486cf2a7eeb2faaca70"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -398,7 +318,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSURL*) bodyURL</td>
+          <td class="memname">- (NSURL*) contentURL</td>
         </tr>
       </table>
   </td>
@@ -408,8 +328,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The URL of the file containing the body. </p>
-<p>This is read-only! DO NOT MODIFY OR DELETE THIS FILE. </p>
+<p>The URL of the file containing the contents. </p>
+<p>(This is always a '<a href="file:'">file:'</a> URL.) This file must be treated as read-only! DO NOT MODIFY OR DELETE IT. </p>
 
 </div>
 </div>

@@ -110,72 +110,71 @@ $(document).ready(function(){initNavTree('CBLView_8h_source.html','');});
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//  CouchbaseLite</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//  Created by Jens Alfke on 6/19/12.</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//  Copyright (c) 2012 Couchbase, Inc. All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//  Copyright (c) 2012-2013 Couchbase, Inc. All rights reserved.</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">@class</span> <a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a>, <a class="code" href="interfaceCBLQuery.html" title="Represents a query of a CouchbaseLite &#39;view&#39;, or of a view-like resource like _all_documents. ">CBLQuery</a>, <a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">@class</span> <a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a>, <a class="code" href="interfaceCBLQuery.html" title="Represents a query of a CouchbaseLite &#39;view&#39;, or of a view-like resource like _all_documents. ">CBLQuery</a>;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">typedef</span> void (^CBLMapEmitBlock)(<span class="keywordtype">id</span> key, <span class="keywordtype">id</span> value);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">typedef</span> void (^CBLMapBlock)(NSDictionary* doc, CBLMapEmitBlock emit);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">typedef</span> id (^CBLReduceBlock)(NSArray* keys, NSArray* values, BOOL rereduce);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">typedef</span> void (^CBLMapBlock)(NSDictionary* doc, CBLMapEmitBlock emit);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">typedef</span> id (^CBLReduceBlock)(NSArray* keys, NSArray* values, BOOL rereduce);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define MAPBLOCK(BLOCK) ^(NSDictionary* doc, void (^emit)(id key, id value)){BLOCK}</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define REDUCEBLOCK(BLOCK) ^id(NSArray* keys, NSArray* values, BOOL rereduce){BLOCK}</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="protocolCBLViewCompiler-p.html">   33</a></span>&#160;<span class="keyword">@protocol </span><a class="code" href="protocolCBLViewCompiler-p.html" title="An external object that knows how to map source code of some sort into executable functions...">CBLViewCompiler</a> &lt;NSObject&gt;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;- (CBLMapBlock) compileMapFunction: (NSString*)mapSource language: (NSString*)language;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;- (CBLReduceBlock) compileReduceFunction: (NSString*)reduceSource language: (NSString*)language;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">@end</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="interfaceCBLView.html">   41</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interfaceCBLView.html" title="A &quot;view&quot; in a CouchbaseLite database – essentially a persistent index managed by map/reduce. ">CBLView</a> : NSObject</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">@private</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    CBLDatabase* __weak _db;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    NSString* _name;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">int</span> _viewID;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    uint8_t _collation;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    uint8_t <span class="comment">/*CBLContentOptions*/</span> _mapContentOptions;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define MAPBLOCK(BLOCK) ^(NSDictionary* doc, void (^emit)(id key, id value)){BLOCK}</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define REDUCEBLOCK(BLOCK) ^id(NSArray* keys, NSArray* values, BOOL rereduce){BLOCK}</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">id</span> CBLTextKey(NSString* text);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="protocolCBLViewCompiler-p.html">   38</a></span>&#160;<span class="keyword">@protocol </span><a class="code" href="protocolCBLViewCompiler-p.html" title="An external object that knows how to map source code of some sort into executable functions...">CBLViewCompiler</a> &lt;NSObject&gt;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;- (CBLMapBlock) compileMapFunction: (NSString*)mapSource language: (NSString*)language;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;- (CBLReduceBlock) compileReduceFunction: (NSString*)reduceSource language: (NSString*)language;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="interfaceCBLView.html">   46</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interfaceCBLView.html" title="A &quot;view&quot; in a CouchbaseLite database – essentially a persistent index managed by map/reduce. ">CBLView</a> : NSObject</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="interfaceCBLView.html#ae8b25fbdafde7f03b1b12c01d2e158ec">   49</a></span>&#160;<span class="keyword">@property</span> (readonly) <a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a>* <a class="code" href="interfaceCBLView.html#ae8b25fbdafde7f03b1b12c01d2e158ec" title="The database that owns this view. ">database</a>;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="interfaceCBLView.html#ae8b25fbdafde7f03b1b12c01d2e158ec">   52</a></span>&#160;<span class="keyword">@property</span> (readonly) CBLDatabase* database;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="interfaceCBLView.html#aeccd0e3db8047111f0fdd5738c910a59">   52</a></span>&#160;<span class="keyword">@property</span> (readonly) NSString* <a class="code" href="interfaceCBLView.html#aeccd0e3db8047111f0fdd5738c910a59" title="The name of the view. ">name</a>;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="interfaceCBLView.html#aeccd0e3db8047111f0fdd5738c910a59">   55</a></span>&#160;<span class="keyword">@property</span> (readonly) NSString* name;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="interfaceCBLView.html#ab8f3671f29a616264f5aaff5d9ea0769">   55</a></span>&#160;<span class="keyword">@property</span> (readonly) CBLMapBlock <a class="code" href="interfaceCBLView.html#ab8f3671f29a616264f5aaff5d9ea0769" title="The map function that controls how index rows are created from documents. ">mapBlock</a>;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="interfaceCBLView.html#ab8f3671f29a616264f5aaff5d9ea0769">   58</a></span>&#160;<span class="keyword">@property</span> (readonly) CBLMapBlock mapBlock;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="interfaceCBLView.html#a6b68872edd92ff2b57f482c1f61f10b1">   58</a></span>&#160;<span class="keyword">@property</span> (readonly) CBLReduceBlock <a class="code" href="interfaceCBLView.html#a6b68872edd92ff2b57f482c1f61f10b1" title="The optional reduce function, which aggregates together multiple rows. ">reduceBlock</a>;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="interfaceCBLView.html#a6b68872edd92ff2b57f482c1f61f10b1">   61</a></span>&#160;<span class="keyword">@property</span> (readonly) CBLReduceBlock reduceBlock;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;- (BOOL) setMapBlock: (CBLMapBlock)mapBlock</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;         reduceBlock: (CBLReduceBlock)reduceBlock</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;             version: (NSString*)version                            __attribute__((nonnull(1,3)));</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;- (BOOL) setMapBlock: (CBLMapBlock)mapBlock</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;             version: (NSString*)version                            __attribute__((nonnull(1,2)));</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="interfaceCBLView.html#a9054cf28c3b8e4c2a0c25505b0169bb9">   78</a></span>&#160;<span class="keyword">@property</span> (readonly) BOOL stale;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="interfaceCBLView.html#a14c358544fd4c923bf79f07b93e51655">   81</a></span>&#160;<span class="keyword">@property</span> (readonly) SInt64 lastSequenceIndexed;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;- (void) removeIndex;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;- (void) deleteView;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;- (CBLQuery*) query;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;+ (NSNumber*) totalValues: (NSArray*)values;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;+ (void) setCompiler: (<span class="keywordtype">id</span>&lt;<a class="code" href="protocolCBLViewCompiler-p.html" title="An external object that knows how to map source code of some sort into executable functions...">CBLViewCompiler</a>&gt;)compiler;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;+ (id&lt;<a class="code" href="protocolCBLViewCompiler-p.html" title="An external object that knows how to map source code of some sort into executable functions...">CBLViewCompiler</a>&gt;) compiler;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;- (BOOL) setMapBlock: (CBLMapBlock)mapBlock</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;         reduceBlock: (CBLReduceBlock)reduceBlock</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;             version: (NSString*)version                            __attribute__((nonnull(1,3)));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;- (BOOL) setMapBlock: (CBLMapBlock)mapBlock</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;             version: (NSString*)version                            __attribute__((nonnull(1,2)));</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="interfaceCBLView.html#a9054cf28c3b8e4c2a0c25505b0169bb9">   79</a></span>&#160;<span class="keyword">@property</span> (readonly) BOOL <a class="code" href="interfaceCBLView.html#a9054cf28c3b8e4c2a0c25505b0169bb9" title="Is the view&#39;s index currently out of date? ">stale</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="code" href="interfaceCBLView.html#a14c358544fd4c923bf79f07b93e51655">   82</a></span>&#160;<span class="keyword">@property</span> (readonly) SInt64 <a class="code" href="interfaceCBLView.html#a14c358544fd4c923bf79f07b93e51655" title="The last sequence number indexed so far. ">lastSequenceIndexed</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;- (void) <a class="code" href="interfaceCBLView.html#afec142f17e2462cf10f824aea3f7326a" title="Deletes the view&#39;s persistent index. ">deleteIndex</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;- (void) <a class="code" href="interfaceCBLView.html#a327fc1988a559452f3341a07ac593946" title="Deletes the view, persistently. ">deleteView</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;- (CBLQuery*) <a class="code" href="interfaceCBLView.html#a3b2f10765a208278aa201b3b0e5a1dd6" title="Creates a new query object for this view. ">createQuery</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;+ (NSNumber*) totalValues: (NSArray*)values;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;+ (void) setCompiler: (<span class="keywordtype">id</span>&lt;<a class="code" href="protocolCBLViewCompiler-p.html" title="An external object that knows how to map source code of some sort into executable functions...">CBLViewCompiler</a>&gt;)compiler;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;+ (id&lt;<a class="code" href="protocolCBLViewCompiler-p.html" title="An external object that knows how to map source code of some sort into executable functions...">CBLViewCompiler</a>&gt;) compiler;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#ifdef CBL_DEPRECATED</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor"></span>- (void) removeIndex __attribute__((deprecated(&quot;renamed -<a class="code" href="interfaceCBLView.html#afec142f17e2462cf10f824aea3f7326a" title="Deletes the view&#39;s persistent index. ">deleteIndex</a>&quot;)));</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;- (CBLQuery*) query __attribute__((deprecated(&quot;renamed <a class="code" href="interfaceCBLView.html#a3b2f10765a208278aa201b3b0e5a1dd6" title="Creates a new query object for this view. ">createQuery</a>&quot;)));</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor"></span><span class="keyword">@end</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

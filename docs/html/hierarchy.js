@@ -3,13 +3,19 @@ var hierarchy =
     [ "CBLDatabase(CBLModel)", "categoryCBLDatabase_07CBLModel_08.html", null ],
     [ "CBLDatabase(CBLModelFactory)", "categoryCBLDatabase_07CBLModelFactory_08.html", null ],
     [ "CBLManagerOptions", "structCBLManagerOptions.html", null ],
+    [ "CBLQuery(FullTextSearch)", "categoryCBLQuery_07FullTextSearch_08.html", null ],
+    [ "CBLQuery(Geo)", "categoryCBLQuery_07Geo_08.html", null ],
     [ "MYDynamicObject", null, [
       [ "CBLModel", "interfaceCBLModel.html", [
         [ "CBLReplication", "interfaceCBLReplication.html", null ]
       ] ]
     ] ],
     [ "NSArray", null, [
+      [ "CBLLazyArrayOfJSON", "interfaceCBLLazyArrayOfJSON.html", null ],
       [ "CBLModelArray", "interfaceCBLModelArray.html", null ]
+    ] ],
+    [ "<NSArrayNSObject>", null, [
+      [ "<CBLJSONEncoding>", "protocolCBLJSONEncoding-p.html", null ]
     ] ],
     [ "<NSCopying>", null, [
       [ "CBLManager", "interfaceCBLManager.html", null ],
@@ -17,6 +23,9 @@ var hierarchy =
     ] ],
     [ "NSEnumerator", null, [
       [ "CBLQueryEnumerator", "interfaceCBLQueryEnumerator.html", null ]
+    ] ],
+    [ "NSJSONSerialization", null, [
+      [ "CBLJSON", "interfaceCBLJSON.html", null ]
     ] ],
     [ "NSObject", null, [
       [ "CBLAttachment", "interfaceCBLAttachment.html", null ],
@@ -27,10 +36,13 @@ var hierarchy =
       [ "CBLQuery", "interfaceCBLQuery.html", [
         [ "CBLLiveQuery", "interfaceCBLLiveQuery.html", null ]
       ] ],
-      [ "CBLQueryRow", "interfaceCBLQueryRow.html", null ],
-      [ "CBLRevisionBase", "interfaceCBLRevisionBase.html", [
-        [ "CBLNewRevision", "interfaceCBLNewRevision.html", null ],
-        [ "CBLRevision", "interfaceCBLRevision.html", null ]
+      [ "CBLQueryRow", "interfaceCBLQueryRow.html", [
+        [ "CBLFullTextQueryRow", "interfaceCBLFullTextQueryRow.html", null ],
+        [ "CBLGeoQueryRow", "interfaceCBLGeoQueryRow.html", null ]
+      ] ],
+      [ "CBLRevision", "interfaceCBLRevision.html", [
+        [ "CBLSavedRevision", "interfaceCBLSavedRevision.html", null ],
+        [ "CBLUnsavedRevision", "interfaceCBLUnsavedRevision.html", null ]
       ] ],
       [ "CBLUITableSource", "interfaceCBLUITableSource.html", null ],
       [ "CBLView", "interfaceCBLView.html", null ]

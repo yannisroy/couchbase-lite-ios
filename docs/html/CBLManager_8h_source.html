@@ -110,7 +110,7 @@ $(document).ready(function(){initNavTree('CBLManager_8h_source.html','');});
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//  CouchbaseLite</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//  Created by Jens Alfke on 6/19/12.</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//  Copyright (c) 2012 Couchbase, Inc. All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//  Copyright (c) 2012-2013 Couchbase, Inc. All rights reserved.</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
@@ -119,10 +119,10 @@ $(document).ready(function(){initNavTree('CBLManager_8h_source.html','');});
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="code" href="structCBLManagerOptions.html">   14</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structCBLManagerOptions.html" title="Option flags for CBLManager initialization. ">CBLManagerOptions</a> {</div>
 <div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="structCBLManagerOptions.html#a554d8ad608c1df1c5e8ecc02f406b280">   15</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structCBLManagerOptions.html#a554d8ad608c1df1c5e8ecc02f406b280" title="No modifications to databases are allowed. ">readOnly</a>;      </div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="structCBLManagerOptions.html#afcbb9d79bacba674e123fafa9f53d56f">   16</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structCBLManagerOptions.html#afcbb9d79bacba674e123fafa9f53d56f" title="Persistent replications will not run. ">noReplicator</a>;  </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;} <a class="code" href="structCBLManagerOptions.html" title="Option flags for CBLManager initialization. ">CBLManagerOptions</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="structCBLManagerOptions.html#afcbb9d79bacba674e123fafa9f53d56f">   16</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structCBLManagerOptions.html#afcbb9d79bacba674e123fafa9f53d56f" title="Persistent replications will not run (until/unless -startPersistentReplications is called...">noReplicator</a>;  </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;} <a class="code" href="structCBLManagerOptions.html" title="Option flags for CBLManager initialization. ">CBLManagerOptions</a>;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="interfaceCBLManager.html">   25</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interfaceCBLManager.html" title="Top-level CouchbaseLite object; manages a collection of databases as a CouchDB server does...">CBLManager</a> : NSObject &lt;NSCopying&gt;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;+ (instancetype) <a class="code" href="interfaceCBLManager.html#a99bc0653f4e07b605ab416270891bc12" title="A shared per-process instance. ">sharedInstance</a>;</div>
@@ -137,31 +137,56 @@ $(document).ready(function(){initNavTree('CBLManager_8h_source.html','');});
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                           options: (const <a class="code" href="structCBLManagerOptions.html" title="Option flags for CBLManager initialization. ">CBLManagerOptions</a>*)options</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                             error: (NSError**)outError                 __attribute__((nonnull(1)));</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;- (void) <a class="code" href="interfaceCBLManager.html#a6c239ed5a76947899839bc9448b7d296" title="Releases all resources used by the CBLManager instance and closes all its databases. ">close</a>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="interfaceCBLManager.html#a82ff30172b89284eb3ff564f623b39fd">   53</a></span>&#160;<span class="keyword">@property</span> (readonly) NSString* <a class="code" href="interfaceCBLManager.html#a82ff30172b89284eb3ff564f623b39fd" title="The root directory of this manager (as specified at initialization time.) ">directory</a>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;- (<a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a>*) databaseNamed: (NSString*)name</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                         error: (NSError**)outError                     __attribute__((nonnull(1)));</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;- (<a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a>*) objectForKeyedSubscript: (NSString*)key __attribute__((nonnull));</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;- (<a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a>*) createDatabaseNamed: (NSString*)name</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                               error: (NSError**)outError               __attribute__((nonnull(1)));</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="interfaceCBLManager.html#ac8ceb154c7e6a854b4d1cb47e8a8388b">   70</a></span>&#160;<span class="keyword">@property</span> (readonly) NSArray* <a class="code" href="interfaceCBLManager.html#ac8ceb154c7e6a854b4d1cb47e8a8388b" title="An array of the names of all existing databases. ">allDatabaseNames</a>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;- (BOOL) replaceDatabaseNamed: (NSString*)databaseName</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;             withDatabaseFile: (NSString*)databasePath</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;              withAttachments: (NSString*)attachmentsPath</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        error: (NSError**)outError                  __attribute__((nonnull(1,2)));</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;- (void) asyncTellDatabaseNamed: (NSString*)dbName to: (<span class="keywordtype">void</span> (^)(<a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a>*))block;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="interfaceCBLManager.html#aa949c5be7c40d7c4b062788f17526a5e">   94</a></span>&#160;<span class="keyword">@property</span> (readonly) NSURL* <a class="code" href="interfaceCBLManager.html#aa949c5be7c40d7c4b062788f17526a5e" title="The base URL of the database manager&#39;s REST API. ">internalURL</a>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;- (instancetype) <a class="code" href="interfaceCBLManager.html#a25ed27334996fc0512b4cdc5695492ee" title="Creates a copy of this CBLManager, which can be used on a different thread. ">copy</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;- (void) <a class="code" href="interfaceCBLManager.html#a6c239ed5a76947899839bc9448b7d296" title="Releases all resources used by the CBLManager instance and closes all its databases. ">close</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="interfaceCBLManager.html#a82ff30172b89284eb3ff564f623b39fd">   55</a></span>&#160;<span class="keyword">@property</span> (readonly) NSString* <a class="code" href="interfaceCBLManager.html#a82ff30172b89284eb3ff564f623b39fd" title="The root directory of this manager (as specified at initialization time.) ">directory</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#pragma mark - DATABASES:</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;- (<a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a>*) databaseNamed: (NSString*)name</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                         error: (NSError**)outError                     __attribute__((nonnull(1)));</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;- (<a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a>*) existingDatabaseNamed: (NSString*)name</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                 error: (NSError**)outError             __attribute__((nonnull(1)));</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;- (<a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a>*) objectForKeyedSubscript: (NSString*)key __attribute__((nonnull));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="interfaceCBLManager.html#ac8ceb154c7e6a854b4d1cb47e8a8388b">   74</a></span>&#160;<span class="keyword">@property</span> (readonly) NSArray* <a class="code" href="interfaceCBLManager.html#ac8ceb154c7e6a854b4d1cb47e8a8388b" title="An array of the names of all existing databases. ">allDatabaseNames</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;- (BOOL) replaceDatabaseNamed: (NSString*)databaseName</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;             withDatabaseFile: (NSString*)databasePath</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;              withAttachments: (NSString*)attachmentsPath</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        error: (NSError**)outError                  __attribute__((nonnull(1,2)));</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#pragma mark - CONCURRENCY:</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="interfaceCBLManager.html#a08b9f584d0473311bec04690af43b343">   95</a></span>&#160;<span class="keyword">@property</span> dispatch_queue_t <a class="code" href="interfaceCBLManager.html#a08b9f584d0473311bec04690af43b343" title="The dispatch queue used to serialize access to the database manager (and its child objects...">dispatchQueue</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;- (void) doAsync: (<span class="keywordtype">void</span> (^)())block;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;- (void) backgroundTellDatabaseNamed: (NSString*)dbName to: (<span class="keywordtype">void</span> (^)(<a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a>*))block;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#pragma mark - OTHER API:</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="code" href="interfaceCBLManager.html#aa949c5be7c40d7c4b062788f17526a5e">  115</a></span>&#160;<span class="keyword">@property</span> (readonly) NSURL* <a class="code" href="interfaceCBLManager.html#aa949c5be7c40d7c4b062788f17526a5e" title="The base URL of the database manager&#39;s REST API. ">internalURL</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;- (void) <a class="code" href="interfaceCBLManager.html#a2ac1c1bd9d11f196ac1b31c9011228a2" title="If the manager was instantiated with the noReplicator option, persistent replications won&#39;t run at st...">startPersistentReplications</a>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;+ (void) enableLogging: (NSString*)type;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#ifdef CBL_DEPRECATED</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor"></span>- (<a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a>*) createDatabaseNamed: (NSString*)name</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                               error: (NSError**)outError __attribute__((deprecated(&quot;use databaseNamed:error:&quot;)));</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor"></span><span class="keyword">@end</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword">extern</span> NSString* CBLVersionString( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="keyword">extern</span> NSString* <span class="keyword">const</span> CBLHTTPErrorDomain;</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

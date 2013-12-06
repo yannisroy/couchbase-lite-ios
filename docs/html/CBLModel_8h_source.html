@@ -110,7 +110,7 @@ $(document).ready(function(){initNavTree('CBLModel_8h_source.html','');});
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//  CouchbaseLite</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//  Created by Jens Alfke on 8/26/11.</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//  Copyright (c) 2011 Couchbase, Inc. All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//  Copyright (c) 2011-2013 Couchbase, Inc. All rights reserved.</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#import &quot;MYDynamicObject.h&quot;</span></div>
@@ -165,39 +165,49 @@ $(document).ready(function(){initNavTree('CBLModel_8h_source.html','');});
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;- (<a class="code" href="interfaceCBLAttachment.html" title="A binary attachment to a document revision. ">CBLAttachment</a>*) attachmentNamed: (NSString*)name                     __attribute__((nonnull));</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;- (void) addAttachment: (<a class="code" href="interfaceCBLAttachment.html" title="A binary attachment to a document revision. ">CBLAttachment</a>*)attachment</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                 named: (NSString*)name                                 __attribute__((nonnull(2)));</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;- (void) removeAttachmentNamed: (NSString*)name                         __attribute__((nonnull));</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#pragma mark - PROTECTED (FOR SUBCLASSES TO OVERRIDE)</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;- (instancetype) initWithDocument: (CBLDocument*)document;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;- (NSString*) idForNewDocumentInDatabase: (CBLDatabase*)db              __attribute__((nonnull));</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;- (void) <a class="code" href="interfaceCBLModel.html#a06f08eaa3d07b894a4dde5b2ab5b23da" title="Called when the model&#39;s properties are reloaded from the document. ">didLoadFromDocument</a>;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;- (CBLDatabase*) databaseForModelProperty: (NSString*)propertyName      __attribute__((nonnull));</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;- (void) <a class="code" href="interfaceCBLModel.html#a70d23afc60a86270573501a7402ff44b" title="Marks the model as having unsaved content, ensuring that it will get saved after a short interval (if...">markNeedsSave</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;- (void) setAttachmentNamed: (NSString*)name</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            withContentType: (NSString*)mimeType</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                    content: (NSData*)content                           __attribute__((nonnull));</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;- (void) setAttachmentNamed: (NSString*)name</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            withContentType: (NSString*)mimeType</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                 contentURL: (NSURL*)fileURL                            __attribute__((nonnull));</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;- (void) removeAttachmentNamed: (NSString*)name                         __attribute__((nonnull));</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#pragma mark - PROTECTED (FOR SUBCLASSES TO OVERRIDE)</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;- (instancetype) initWithDocument: (CBLDocument*)document;</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;+ (Class) itemClassForArrayProperty: (NSString*)property;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;- (NSString*) idForNewDocumentInDatabase: (CBLDatabase*)db              __attribute__((nonnull));</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;- (void) <a class="code" href="interfaceCBLModel.html#a06f08eaa3d07b894a4dde5b2ab5b23da" title="Called when the model&#39;s properties are reloaded from the document. ">didLoadFromDocument</a>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;- (CBLDatabase*) databaseForModelProperty: (NSString*)propertyName      __attribute__((nonnull));</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;- (void) <a class="code" href="interfaceCBLModel.html#a70d23afc60a86270573501a7402ff44b" title="Marks the model as having unsaved content, ensuring that it will get saved after a short interval (if...">markNeedsSave</a>;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00163"></a><span class="lineno"><a class="code" href="categoryCBLDatabase_07CBLModel_08.html">  163</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="categoryCBLDatabase_07CBLModel_08.html" title="CBLDatabase methods for use with CBLModel. ">CBLDatabase (CBLModel)</a></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
-<div class="line"><a name="l00166"></a><span class="lineno"><a class="code" href="interfaceCBLDatabase.html#aa91dd21496d2c5edbf9fb69a872acccf">  166</a></span>&#160;<span class="keyword">@property</span> (readonly) NSArray* unsavedModels;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;- (BOOL) saveAllModels: (NSError**)outError;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;- (BOOL) autosaveAllModels: (NSError**)outError;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;+ (Class) itemClassForArrayProperty: (NSString*)property;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">#ifdef CBL_DEPRECATED</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;- (void) addAttachment: (<a class="code" href="interfaceCBLAttachment.html" title="A binary attachment to a document revision. ">CBLAttachment</a>*)attachment</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                 named: (NSString*)name                                 __attribute__((nonnull(2)));</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor"></span><span class="keyword">@end</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="code" href="categoryCBLDatabase_07CBLModel_08.html">  187</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="categoryCBLDatabase_07CBLModel_08.html" title="CBLDatabase methods for use with CBLModel. ">CBLDatabase (CBLModel)</a></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="code" href="interfaceCBLDatabase.html#aa91dd21496d2c5edbf9fb69a872acccf">  190</a></span>&#160;<span class="keyword">@property</span> (readonly) NSArray* unsavedModels;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;- (BOOL) saveAllModels: (NSError**)outError;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;- (BOOL) autosaveAllModels: (NSError**)outError;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="keyword">@end</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

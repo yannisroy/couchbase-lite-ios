@@ -21,7 +21,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "CBLAttachment_8h_source.html",
-"interfaceCBLRevisionBase.html#a24cbb8e6e0cffe8dfba6f382f3658e4e"
+"interfaceCBLReplication.html#a2762b1ead186bfe1a948b760f7fc0aa5"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

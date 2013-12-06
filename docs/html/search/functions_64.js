@@ -1,18 +1,20 @@
 var searchData=
 [
-  ['databaseformodelproperty_3a',['databaseForModelProperty:',['../interfaceCBLModel.html#a8762c93748626129709edf0eaef0ba77',1,'CBLModel']]],
-  ['databasenamed_3aerror_3a',['databaseNamed:error:',['../interfaceCBLManager.html#af4289070a1c4c1e9fb29971365cbc7e4',1,'CBLManager']]],
+  ['databaseformodelproperty_3a',['databaseForModelProperty:',['../interfaceCBLModel.html#aba0c18f013184338d6768aa7d120d914',1,'CBLModel']]],
+  ['databasenamed_3aerror_3a',['databaseNamed:error:',['../interfaceCBLManager.html#a8ecf95e03e8594af200914a1170e252f',1,'CBLManager']]],
+  ['datawithbase64string_3a',['dataWithBase64String:',['../interfaceCBLJSON.html#a000cbf1530d7c10f89036373ce27cc0b',1,'CBLJSON']]],
+  ['datewithjsonobject_3a',['dateWithJSONObject:',['../interfaceCBLJSON.html#ac9d904fe799727c6c09b1898e545d2bd',1,'CBLJSON']]],
   ['defaultdirectory',['defaultDirectory',['../interfaceCBLManager.html#af48ae92af310092c5338158896bfbbee',1,'CBLManager']]],
-  ['definefilter_3aasblock_3a',['defineFilter:asBlock:',['../interfaceCBLDatabase.html#a7f168010cd3f2df68bdff02b322cfa01',1,'CBLDatabase']]],
-  ['definevalidation_3aasblock_3a',['defineValidation:asBlock:',['../interfaceCBLDatabase.html#a37075ef42a07ea67b9a1a11309e69233',1,'CBLDatabase']]],
   ['deletedatabase_3a',['deleteDatabase:',['../interfaceCBLDatabase.html#a8e6b7c966f7786ecee2b2e5480e64c59',1,'CBLDatabase']]],
-  ['deletedocument_3a',['deleteDocument:',['../interfaceCBLDocument.html#a4cabdf508a2c305ae094ebd45b558fb5',1,'CBLDocument::deleteDocument:()'],['../interfaceCBLModel.html#a54662b4ee1f06374a565cd73403db8bc',1,'CBLModel::deleteDocument:()'],['../interfaceCBLRevision.html#ae4782dabfe1aecfa2e8ff90b7303a1e9',1,'CBLRevision::deleteDocument:()']]],
-  ['deletedocuments_3aerror_3a',['deleteDocuments:error:',['../interfaceCBLUITableSource.html#a71092b82f501cb9f57c925fafcec64f0',1,'CBLUITableSource']]],
-  ['deletedocumentsatindexes_3aerror_3a',['deleteDocumentsAtIndexes:error:',['../interfaceCBLUITableSource.html#a65c1fb9ff25651b44ba3db358fb6988d',1,'CBLUITableSource']]],
-  ['deletelocaldocumentwithid_3aerror_3a',['deleteLocalDocumentWithID:error:',['../interfaceCBLDatabase.html#a05e409e06475fbd764e045c12c228456',1,'CBLDatabase']]],
+  ['deletedocument_3a',['deleteDocument:',['../interfaceCBLDocument.html#a4cabdf508a2c305ae094ebd45b558fb5',1,'CBLDocument::deleteDocument:()'],['../interfaceCBLModel.html#a54662b4ee1f06374a565cd73403db8bc',1,'CBLModel::deleteDocument:()'],['../interfaceCBLSavedRevision.html#a9fd295c80a363d4215bf63271a4c5123',1,'CBLSavedRevision::deleteDocument:()']]],
+  ['deletedocuments_3aerror_3a',['deleteDocuments:error:',['../interfaceCBLUITableSource.html#a1158c7cd844e60a9709f6e6f84ad5930',1,'CBLUITableSource']]],
+  ['deletedocumentsatindexes_3aerror_3a',['deleteDocumentsAtIndexes:error:',['../interfaceCBLUITableSource.html#adb00be06f812fd8338914b1f909472a9',1,'CBLUITableSource']]],
+  ['deleteindex',['deleteIndex',['../interfaceCBLView.html#afec142f17e2462cf10f824aea3f7326a',1,'CBLView']]],
+  ['deletelocaldocumentwithid_3aerror_3a',['deleteLocalDocumentWithID:error:',['../interfaceCBLDatabase.html#a0b52530d5ba77823d9ea6d106fb19afb',1,'CBLDatabase']]],
   ['deleteview',['deleteView',['../interfaceCBLView.html#a327fc1988a559452f3341a07ac593946',1,'CBLView']]],
   ['didloadfromdocument',['didLoadFromDocument',['../interfaceCBLModel.html#a06f08eaa3d07b894a4dde5b2ab5b23da',1,'CBLModel']]],
-  ['disallowchangesto_3a',['disallowChangesTo:',['../protocolCBLValidationContext-p.html#a73b7f2a55bb88317a496a58aee1004ac',1,'CBLValidationContext-p']]],
-  ['documentatindexpath_3a',['documentAtIndexPath:',['../interfaceCBLUITableSource.html#a7bfd70f01c5fa77e0f7fd5c970f2e393',1,'CBLUITableSource']]],
-  ['documentwithid_3a',['documentWithID:',['../interfaceCBLDatabase.html#a617d56f31aeeac548d08c7fa0a00d98a',1,'CBLDatabase']]]
+  ['doasync_3a',['doAsync:',['../interfaceCBLDatabase.html#a821229658d9d7ac1d6e82a1854db8e71',1,'CBLDatabase::doAsync:()'],['../interfaceCBLManager.html#aab6428f4cae888da21bf5711743b8c77',1,'CBLManager::doAsync:()']]],
+  ['documentatindexpath_3a',['documentAtIndexPath:',['../interfaceCBLUITableSource.html#a36e15a1a13949527f01876a8cb809089',1,'CBLUITableSource']]],
+  ['documentwithid_3a',['documentWithID:',['../interfaceCBLDatabase.html#a66748f94941562eb04004dae6f6aa420',1,'CBLDatabase']]],
+  ['dosync_3a',['doSync:',['../interfaceCBLDatabase.html#abd6ec866f9d06dc740c649c3a4834a6d',1,'CBLDatabase']]]
 ];

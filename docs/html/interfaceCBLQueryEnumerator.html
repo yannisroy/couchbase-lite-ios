@@ -135,6 +135,9 @@ Instance Methods</h2></td></tr>
 (<a class="el" href="interfaceCBLQueryRow.html">CBLQueryRow</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLQueryEnumerator.html#aeed3e6a7d4f497fc0b8acfdeaefc4903">rowAtIndex:</a></td></tr>
 <tr class="memdesc:aeed3e6a7d4f497fc0b8acfdeaefc4903"><td class="mdescLeft">&#160;</td><td class="mdescRight">Random access to a row in the result. <br/></td></tr>
 <tr class="separator:aeed3e6a7d4f497fc0b8acfdeaefc4903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19f70dd72e9fb1f65ee55749817acbc6"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceCBLQueryEnumerator.html#a19f70dd72e9fb1f65ee55749817acbc6">reset</a></td></tr>
+<tr class="memdesc:a19f70dd72e9fb1f65ee55749817acbc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the enumeration so the next call to -nextObject or -nextRow will return the first row.  <a href="#a19f70dd72e9fb1f65ee55749817acbc6">More...</a><br/></td></tr>
+<tr class="separator:a19f70dd72e9fb1f65ee55749817acbc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -145,9 +148,9 @@ NSUInteger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 <tr class="memitem:a54f8cb6aaef49abf53ccb1670557fdf9"><td class="memItemLeft" align="right" valign="top">UInt64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQueryEnumerator.html#a54f8cb6aaef49abf53ccb1670557fdf9">sequenceNumber</a></td></tr>
 <tr class="memdesc:a54f8cb6aaef49abf53ccb1670557fdf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The database's current sequenceNumber at the time the view was generated.  <a href="#a54f8cb6aaef49abf53ccb1670557fdf9">More...</a><br/></td></tr>
 <tr class="separator:a54f8cb6aaef49abf53ccb1670557fdf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9dfde86fdff31ffa3315607bee949df8"><td class="memItemLeft" align="right" valign="top">NSError *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQueryEnumerator.html#a9dfde86fdff31ffa3315607bee949df8">error</a></td></tr>
-<tr class="memdesc:a9dfde86fdff31ffa3315607bee949df8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error, if the query failed.  <a href="#a9dfde86fdff31ffa3315607bee949df8">More...</a><br/></td></tr>
-<tr class="separator:a9dfde86fdff31ffa3315607bee949df8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1477b1660935984c6ee695df6a257453"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceCBLQueryEnumerator.html#a1477b1660935984c6ee695df6a257453">stale</a></td></tr>
+<tr class="memdesc:a1477b1660935984c6ee695df6a257453"><td class="mdescLeft">&#160;</td><td class="mdescRight">YES if the database has changed since the view was generated.  <a href="#a1477b1660935984c6ee695df6a257453">More...</a><br/></td></tr>
+<tr class="separator:a1477b1660935984c6ee695df6a257453"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Enumerator on a <a class="el" href="interfaceCBLQuery.html" title="Represents a query of a CouchbaseLite &#39;view&#39;, or of a view-like resource like _all_documents. ">CBLQuery</a>'s result rows. </p>
@@ -168,6 +171,23 @@ NSUInteger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 
 <p>The next result row. </p>
 <p>This is the same as -nextObject but with a checked return type. </p>
+
+</div>
+</div>
+<a class="anchor" id="a19f70dd72e9fb1f65ee55749817acbc6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) reset </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resets the enumeration so the next call to -nextObject or -nextRow will return the first row. </p>
 
 </div>
 </div>
@@ -194,7 +214,7 @@ NSUInteger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 
 </div>
 </div>
-<a class="anchor" id="a9dfde86fdff31ffa3315607bee949df8"></a>
+<a class="anchor" id="a1477b1660935984c6ee695df6a257453"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -202,7 +222,7 @@ NSUInteger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">- (NSError*) error</td>
+          <td class="memname">- (BOOL) stale</td>
         </tr>
       </table>
   </td>
@@ -212,8 +232,7 @@ NSUInteger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 </table>
 </div><div class="memdoc">
 
-<p>Error, if the query failed. </p>
-<p>NOTE: This will only ever be set in an enumerator returned from an <em>asynchronous</em> query. The <a class="el" href="interfaceCBLQuery.html#a428d1e72f05e4f1941e74b4a7e448790" title="Sends the query to the server and returns an enumerator over the result rows (Synchronous). ">rows (CBLQuery)</a> method returns a nil enumerator on error.) </p>
+<p>YES if the database has changed since the view was generated. </p>
 
 </div>
 </div>

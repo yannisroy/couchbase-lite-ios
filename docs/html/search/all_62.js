@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['body',['body',['../interfaceCBLAttachment.html#a4b536d15b8f25cfc1998409ede78b24d',1,'CBLAttachment']]],
-  ['bodyurl',['bodyURL',['../interfaceCBLAttachment.html#a2e1c88c3825e683f415412a96f592c9d',1,'CBLAttachment']]]
+  ['backgroundtelldatabasenamed_3ato_3a',['backgroundTellDatabaseNamed:to:',['../interfaceCBLManager.html#a1ecd7f70274206ba0750f0c0bf9015d9',1,'CBLManager']]],
+  ['base64stringwithdata_3a',['base64StringWithData:',['../interfaceCBLJSON.html#a05fe812f90f63932f2cffef65805c6b6',1,'CBLJSON']]],
+  ['boundingbox',['boundingBox',['../categoryCBLQuery_07Geo_08.html#a0ffc3b9a3a144a635b360f02e314896e',1,'CBLQuery(Geo)::boundingBox()'],['../interfaceCBLGeoQueryRow.html#ac44f0ff1a91e8c9a7c3b069283c362d3',1,'CBLGeoQueryRow::boundingBox()'],['../interfaceCBLQuery.html#a0ffc3b9a3a144a635b360f02e314896e',1,'CBLQuery::boundingBox()']]]
 ];

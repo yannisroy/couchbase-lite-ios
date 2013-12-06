@@ -110,74 +110,82 @@ $(document).ready(function(){initNavTree('CBLDocument_8h_source.html','');});
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//  CouchbaseLite</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//  Created by Jens Alfke on 6/4/12.</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//  Copyright (c) 2012 Couchbase, Inc. All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//  Copyright (c) 2012-2013 Couchbase, Inc. All rights reserved.</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#import &quot;CBLDatabase.h&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">@class</span> <a class="code" href="interfaceCBLRevision.html" title="An existing revision of a CBLDocument. ">CBLRevision</a>, <a class="code" href="interfaceCBLNewRevision.html" title="An unsaved new revision. ">CBLNewRevision</a>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">@class</span> <a class="code" href="interfaceCBLSavedRevision.html" title="An existing revision of a CBLDocument. ">CBLSavedRevision</a>, <a class="code" href="interfaceCBLUnsavedRevision.html" title="An unsaved new revision. ">CBLUnsavedRevision</a>, CBLDatabaseChange;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">@protocol </span><a class="code" href="protocolCBLDocumentModel-p.html" title="Protocol that CBLDocument model objects must implement. ">CBLDocumentModel</a>;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html">   14</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a> : NSObject</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#aa876ef453465544696aa241930aca122">   17</a></span>&#160;<span class="keyword">@property</span> (readonly) <a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a>* <a class="code" href="interfaceCBLDocument.html#aa876ef453465544696aa241930aca122" title="The document&#39;s owning database. ">database</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#a88e1a6119e5ddb64708838373d2db5d2">   20</a></span>&#160;<span class="keyword">@property</span> (readonly) NSString* <a class="code" href="interfaceCBLDocument.html#a88e1a6119e5ddb64708838373d2db5d2" title="The document&#39;s ID. ">documentID</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#accc411b07104d09f88989ab3ef8e9302">   23</a></span>&#160;<span class="keyword">@property</span> (readonly) NSString* <a class="code" href="interfaceCBLDocument.html#accc411b07104d09f88989ab3ef8e9302" title="An abbreviated form of the the documentID that looks like &quot;xxxx..xxxx&quot;. ">abbreviatedID</a>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#a96ef80555a252dceeb73d350c8bd25e7">   26</a></span>&#160;<span class="keyword">@property</span> (readonly) BOOL <a class="code" href="interfaceCBLDocument.html#a96ef80555a252dceeb73d350c8bd25e7" title="Is this document deleted? (That is, does its current revision have the &#39;_deleted&#39; property...">isDeleted</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;- (BOOL) deleteDocument: (NSError**)outError;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;- (BOOL) purgeDocument: (NSError**)outError;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html">   15</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a> : NSObject</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#aa876ef453465544696aa241930aca122">   18</a></span>&#160;<span class="keyword">@property</span> (readonly) <a class="code" href="interfaceCBLDatabase.html" title="A CouchbaseLite database. ">CBLDatabase</a>* <a class="code" href="interfaceCBLDocument.html#aa876ef453465544696aa241930aca122" title="The document&#39;s owning database. ">database</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#a88e1a6119e5ddb64708838373d2db5d2">   21</a></span>&#160;<span class="keyword">@property</span> (readonly) NSString* <a class="code" href="interfaceCBLDocument.html#a88e1a6119e5ddb64708838373d2db5d2" title="The document&#39;s ID. ">documentID</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#accc411b07104d09f88989ab3ef8e9302">   24</a></span>&#160;<span class="keyword">@property</span> (readonly) NSString* <a class="code" href="interfaceCBLDocument.html#accc411b07104d09f88989ab3ef8e9302" title="An abbreviated form of the the documentID that looks like &quot;xxxx..xxxx&quot;. ">abbreviatedID</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#a96ef80555a252dceeb73d350c8bd25e7">   27</a></span>&#160;<span class="keyword">@property</span> (readonly) BOOL <a class="code" href="interfaceCBLDocument.html#a96ef80555a252dceeb73d350c8bd25e7" title="Is this document deleted? (That is, does its current revision have the &#39;_deleted&#39; property...">isDeleted</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#a04fa77032aeb6afab9a3b8fd23684482">   31</a></span>&#160;<span class="keyword">@property</span> (readonly) BOOL <a class="code" href="interfaceCBLDocument.html#a04fa77032aeb6afab9a3b8fd23684482" title="Has this document either been deleted or removed from available Sync Gateway channels? (That is, does its current revision have a &#39;_deleted&#39; or &#39;_removed&#39; property?) ">isGone</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;- (BOOL) deleteDocument: (NSError**)outError;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#pragma mark REVISIONS:</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#a011ee063d246f7a15a4d8f9d6870d2c8">   40</a></span>&#160;<span class="keyword">@property</span> (readonly, copy) NSString* <a class="code" href="interfaceCBLDocument.html#a011ee063d246f7a15a4d8f9d6870d2c8" title="The ID of the current revision (if known; else nil). ">currentRevisionID</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;- (BOOL) purgeDocument: (NSError**)outError;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#a36f39b31797b0d4c3f66db6ca2c4a2bc">   43</a></span>&#160;<span class="keyword">@property</span> (readonly) <a class="code" href="interfaceCBLRevision.html" title="An existing revision of a CBLDocument. ">CBLRevision</a>* <a class="code" href="interfaceCBLDocument.html#a36f39b31797b0d4c3f66db6ca2c4a2bc" title="The current/latest revision. ">currentRevision</a>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;- (<a class="code" href="interfaceCBLRevision.html" title="An existing revision of a CBLDocument. ">CBLRevision</a>*) revisionWithID: (NSString*)revisionID;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;- (NSArray*) getRevisionHistory: (NSError**)outError;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;- (NSArray*) getConflictingRevisions: (NSError**)outError;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;- (NSArray*) getLeafRevisions: (NSError**)outError;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;- (CBLNewRevision*) <a class="code" href="interfaceCBLDocument.html#ad3d336a0050fcd6b557baa3f1c93a882" title="Creates an unsaved new revision whose parent is the currentRevision, or which will be the first revis...">newRevision</a>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#pragma mark PROPERTIES:</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#ac130afe65a0a79cd540072aeee28f3ad">   71</a></span>&#160;<span class="keyword">@property</span> (readonly, copy) NSDictionary* <a class="code" href="interfaceCBLDocument.html#ac130afe65a0a79cd540072aeee28f3ad" title="The contents of the current revision of the document. ">properties</a>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#a9771fe1f072f2aecce69797e9a1924f8">   75</a></span>&#160;<span class="keyword">@property</span> (readonly, copy) NSDictionary* <a class="code" href="interfaceCBLDocument.html#a9771fe1f072f2aecce69797e9a1924f8" title="The user-defined properties, without the ones reserved by CouchDB. ">userProperties</a>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;- (id) propertyForKey: (NSString*)key                                   __attribute__((nonnull));</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;- (id)objectForKeyedSubscript:(NSString*)key                            __attribute__((nonnull));</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#pragma mark REVISIONS:</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#a011ee063d246f7a15a4d8f9d6870d2c8">   45</a></span>&#160;<span class="keyword">@property</span> (readonly, copy) NSString* <a class="code" href="interfaceCBLDocument.html#a011ee063d246f7a15a4d8f9d6870d2c8" title="The ID of the current revision (if known; else nil). ">currentRevisionID</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#a9485447b902b92852f1827dd1c36858a">   48</a></span>&#160;<span class="keyword">@property</span> (readonly) <a class="code" href="interfaceCBLSavedRevision.html" title="An existing revision of a CBLDocument. ">CBLSavedRevision</a>* <a class="code" href="interfaceCBLDocument.html#a9485447b902b92852f1827dd1c36858a" title="The current/latest revision. ">currentRevision</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;- (<a class="code" href="interfaceCBLSavedRevision.html" title="An existing revision of a CBLDocument. ">CBLSavedRevision</a>*) revisionWithID: (NSString*)revisionID;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;- (NSArray*) getRevisionHistory: (NSError**)outError;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;- (NSArray*) getConflictingRevisions: (NSError**)outError;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;- (NSArray*) getLeafRevisions: (NSError**)outError;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;- (CBLUnsavedRevision*) <a class="code" href="interfaceCBLDocument.html#acde3fb68d776f0c285458b3e21fce5be" title="Creates an unsaved new revision whose parent is the currentRevision, or which will be the first revis...">newRevision</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#pragma mark PROPERTIES:</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#ac130afe65a0a79cd540072aeee28f3ad">   77</a></span>&#160;<span class="keyword">@property</span> (readonly, copy) NSDictionary* <a class="code" href="interfaceCBLDocument.html#ac130afe65a0a79cd540072aeee28f3ad" title="The contents of the current revision of the document. ">properties</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#a9771fe1f072f2aecce69797e9a1924f8">   81</a></span>&#160;<span class="keyword">@property</span> (readonly, copy) NSDictionary* <a class="code" href="interfaceCBLDocument.html#a9771fe1f072f2aecce69797e9a1924f8" title="The user-defined properties, without the ones reserved by CouchDB. ">userProperties</a>;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;- (<a class="code" href="interfaceCBLRevision.html" title="An existing revision of a CBLDocument. ">CBLRevision</a>*) putProperties: (NSDictionary*)properties error: (NSError**)outError;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;- (id) propertyForKey: (NSString*)key                                   __attribute__((nonnull));</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#pragma mark MODEL:</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#a49df2d1c7852bedd67cb1db701c2cad5">   92</a></span>&#160;<span class="keyword">@property</span> (weak) <span class="keywordtype">id</span> <a class="code" href="interfaceCBLDocument.html#a49df2d1c7852bedd67cb1db701c2cad5" title="Optional reference to an application-defined model object representing this document. ">modelObject</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;- (id)objectForKeyedSubscript:(NSString*)key                            __attribute__((nonnull));</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;- (<a class="code" href="interfaceCBLSavedRevision.html" title="An existing revision of a CBLDocument. ">CBLSavedRevision</a>*) putProperties: (NSDictionary*)properties</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                              error: (NSError**)outError                __attribute__((nonnull(1)));</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">@end</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="code" href="protocolCBLDocumentModel-p.html">  100</a></span>&#160;<span class="keyword">@protocol </span><a class="code" href="protocolCBLDocumentModel-p.html" title="Protocol that CBLDocument model objects must implement. ">CBLDocumentModel</a> &lt;NSObject&gt;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;- (void) tdDocumentChanged: (<a class="code" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a>*)doc                           __attribute__((nonnull));</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">@end</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">extern</span> NSString* <span class="keyword">const</span> kCBLDocumentChangeNotification;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;- (<a class="code" href="interfaceCBLSavedRevision.html" title="An existing revision of a CBLDocument. ">CBLSavedRevision</a>*) update: (BOOL(^)(CBLUnsavedRevision*))block</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                       error: (NSError**)outError                    __attribute__((nonnull(1)));</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#pragma mark MODEL:</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="code" href="interfaceCBLDocument.html#a75e145014be08d14733679566d08e0e7">  114</a></span>&#160;<span class="keyword">@property</span> (weak) id&lt;CBLDocumentModel&gt; <a class="code" href="interfaceCBLDocument.html#a75e145014be08d14733679566d08e0e7" title="Optional reference to an application-defined model object representing this document. ">modelObject</a>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="protocolCBLDocumentModel-p.html">  122</a></span>&#160;<span class="keyword">@protocol </span><a class="code" href="protocolCBLDocumentModel-p.html" title="Protocol that CBLDocument model objects must implement. ">CBLDocumentModel</a> &lt;NSObject&gt;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;- (void) <a class="code" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a>: (<a class="code" href="interfaceCBLDocument.html" title="A CouchbaseLite document (as opposed to any specific revision of it.) ">CBLDocument</a>*)doc</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;           didChange: (CBLDatabaseChange*)change                        __attribute__((nonnull));</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keyword">extern</span> NSString* <span class="keyword">const</span> kCBLDocumentChangeNotification;</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -1,10 +1,10 @@
 var searchData=
 [
+  ['enablelogging_3a',['enableLogging:',['../interfaceCBLManager.html#a90531df32bd6de01099b9100fdb29511',1,'CBLManager']]],
   ['endkey',['endKey',['../interfaceCBLQuery.html#a6701e4e3a0766ca6f8648cc85c8989f1',1,'CBLQuery']]],
   ['endkeydocid',['endKeyDocID',['../interfaceCBLQuery.html#a8c92f9914bb10225136d962406f06f06',1,'CBLQuery']]],
-  ['enumeratechanges_3a',['enumerateChanges:',['../protocolCBLValidationContext-p.html#a8a11119640bf1c3d548a8479f05f24c2',1,'CBLValidationContext-p']]],
-  ['error',['error',['../interfaceCBLQuery.html#aff35cb50c8b2e2fe3deb0bc8e5c75692',1,'CBLQuery::error()'],['../interfaceCBLQueryEnumerator.html#a9dfde86fdff31ffa3315607bee949df8',1,'CBLQueryEnumerator::error()'],['../interfaceCBLReplication.html#a988c9933c4a9d7c5b22eed2d9a9af30f',1,'CBLReplication::error()']]],
-  ['errormessage',['errorMessage',['../protocolCBLValidationContext-p.html#acbeb30a5000a0262258ec15cad6c2470',1,'CBLValidationContext-p']]],
-  ['errortype',['errorType',['../protocolCBLValidationContext-p.html#a687cc95358bee4bc417a9f5e6cfd1cf4',1,'CBLValidationContext-p']]],
-  ['existingviewnamed_3a',['existingViewNamed:',['../interfaceCBLDatabase.html#ad0a13e308646bdf4132076a4c2274f65',1,'CBLDatabase']]]
+  ['existingdatabasenamed_3aerror_3a',['existingDatabaseNamed:error:',['../interfaceCBLManager.html#ac79dda36ed6b9d0407edf5b5d6e5286d',1,'CBLManager']]],
+  ['existingdocumentwithid_3a',['existingDocumentWithID:',['../interfaceCBLDatabase.html#a9483f82a5cc0677c46ab21fed54ad3a0',1,'CBLDatabase']]],
+  ['existinglocaldocumentwithid_3a',['existingLocalDocumentWithID:',['../interfaceCBLDatabase.html#a31912eba5c339a07355951180c82325d',1,'CBLDatabase']]],
+  ['existingviewnamed_3a',['existingViewNamed:',['../interfaceCBLDatabase.html#ad0b00dfedba2a1a27078262abbbedd71',1,'CBLDatabase']]]
 ];
