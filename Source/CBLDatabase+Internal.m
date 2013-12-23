@@ -1343,6 +1343,60 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
     return view;
 }
 
+- (CBLShowFunction*) compileShowFunctionNamed: (NSString*)cblShowName status: (CBLStatus*)outStatus {
+    CBLShowFunction* showFunction = [self existingShowFunctionNamed: cblShowName];
+    if (showFunction && showFunction.showFunctionBlock)
+        return showFunction;
+    
+    // No CouchbaseLite view is defined, or it hasn't had a map block assigned;
+    // see if there's a CouchDB view definition we can compile:
+    if (![CBLShowFunction compiler]) {
+        *outStatus = kCBLStatusNotFound;
+        return nil;
+    }
+    NSString* language;
+    NSString* showSource = $castIf(NSString, [self getDesignDocFunction: cblShowName
+                                                                    key: @"shows"
+                                                               language: &language]);
+    if (!showSource) {
+        *outStatus = kCBLStatusNotFound;
+        return nil;
+    }
+    showFunction = [self showFunctionNamed: cblShowName];
+    if (![showFunction compileFromSource:showSource language:language]) {
+        *outStatus = kCBLStatusCallbackError;
+        return nil;
+    }
+    return showFunction;
+}
+
+- (CBLListFunction*) compileListFunctionNamed: (NSString*)cblListName status: (CBLStatus*)outStatus {
+    CBLListFunction* listFunction = [self existingListFunctionNamed: cblListName];
+    if (listFunction && listFunction.listFunctionBlock)
+        return listFunction;
+    
+    // No CouchbaseLite list function is defined, or it hasn't had a map block assigned;
+    // see if there's a CouchDB view definition we can compile:
+    if (![CBLListFunction compiler]) {
+        *outStatus = kCBLStatusNotFound;
+        return nil;
+    }
+    NSString* language;
+    NSString* listSource = $castIf(NSString, [self getDesignDocFunction: cblListName
+                                                                    key: @"lists"
+                                                               language: &language]);
+    if (!listSource) {
+        *outStatus = kCBLStatusNotFound;
+        return nil;
+    }
+    listFunction = [self listFunctionNamed: cblListName];
+    if (![listFunction compileFromSource:listSource language:language]) {
+        *outStatus = kCBLStatusCallbackError;
+        return nil;
+    }
+    return listFunction;
+    
+}
 
 //FIX: This has a lot of code in common with -[CBLView queryWithOptions:status:]. Unify the two!
 - (NSArray*) getAllDocs: (const CBLQueryOptions*)options {

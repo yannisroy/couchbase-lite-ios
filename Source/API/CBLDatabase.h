@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CBLView.h"
-@class CBLManager, CBLDocument, CBLRevision, CBLSavedRevision, CBLView, CBLQuery, CBLReplication;
+@class CBLManager, CBLDocument, CBLRevision, CBLSavedRevision, CBLView, CBLQuery, CBLReplication, CBLShowFunction, CBLListFunction;
 @protocol CBLValidationContext;
 
 
@@ -139,6 +139,20 @@ typedef BOOL (^CBLFilterBlock) (CBLSavedRevision* revision, NSDictionary* params
 
 /** Returns the existing CBLView with the given name, or nil if none. */
 - (CBLView*) existingViewNamed: (NSString*)name                         __attribute__((nonnull));
+
+/** Returns a CBLShowFunction object for the show function with the given name.
+ (This succeeds even if the show function doesn't already exist */
+- (CBLShowFunction*) showFunctionNamed: (NSString*)name                         __attribute__((nonnull));
+
+/** Returns the existing CBLShowFunction with the given name, or nil if none. */
+- (CBLShowFunction*) existingShowFunctionNamed: (NSString*)name                 __attribute__((nonnull));
+
+/** Returns a CBLListFunction object for the list function with the given name.
+ (This succeeds even if the list function doesn't already exist */
+- (CBLListFunction*) listFunctionNamed: (NSString*)name                         __attribute__((nonnull));
+
+/** Returns the existing CBLListFunction with the given name, or nil if none. */
+- (CBLListFunction*) existingListFunctionNamed: (NSString*)name                 __attribute__((nonnull));
 
 /** Defines or clears a named document validation function.
     Before any change to the database, all registered validation functions are called and given a

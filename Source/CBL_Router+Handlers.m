@@ -1118,5 +1118,84 @@ static NSArray* parseJSONRevArrayQuery(NSString* queryStr) {
     }
 }
 
+#pragma mark - SHOW FUNCTION QUERIES:
+
+- (CBLStatus) do_GET: (CBLDatabase*)db designDocID: (NSString*)designDoc show: (NSString*)showName docID: (NSString *)docID {
+    NSString* revID = [self query: @"rev"];  // often nil
+    CBL_Revision* rev;
+    CBLStatus status;
+    
+    rev = [db getDocumentWithID: docID revisionID: revID options: NULL status: &status];
+    
+    NSDictionary *properties = rev.properties;
+    
+    NSString* cblShowName = $sprintf(@"%@/%@", designDoc, showName);
+    CBLShowFunction *showFunction = [_db compileShowFunctionNamed: cblShowName status: &status];
+    if (!showFunction)
+        return status;
+    
+    NSMutableDictionary *params = $mdict();
+    [params setValue:_request.allHTTPHeaderFields forKey:@"headers"];
+    [params setValue:self.unescapedQueries forKey:@"query"];
+    [params setValue:@"GET" forKey:@"method"];
+    [params setValue:_path forKey:@"path"];
+    
+    CBLShowFunctionResult *result = [showFunction runWithRevisionProperties:properties params:params];
+    if (!result)
+        return kCBLStatusCallbackError;
+    
+    _response.bodyObject = result.body;
+    [_response.headers addEntriesFromDictionary:result.headers];
+    
+    return result.status;
+}
+
+#pragma mark - LIST FUNCTION QUERIES:
+- (CBLStatus) do_GET: (CBLDatabase*)db designDocID: (NSString*)designDoc list: (NSString*)listName view: (NSString *)viewName {
+    CBLStatus status;
+    NSString* cblListName = $sprintf(@"%@/%@", designDoc, listName);
+    CBLListFunction* listFunction = [_db compileListFunctionNamed: cblListName status: &status];
+    if (!listFunction)
+        return status;
+    
+    NSString* cblViewName = $sprintf(@"%@/%@", designDoc, viewName);
+    CBLView* view = [_db compileViewNamed: cblViewName status: &status];
+    if (!view)
+        return status;
+    
+    CBLQueryOptions options;
+    if (![self getQueryOptions: &options])
+        return kCBLStatusBadRequest;
+    if (!view.reduceBlock)
+        options.reduce = false;
+    
+    status = [view updateIndex];
+    if (status >= kCBLStatusBadRequest)
+        return status;
+    
+    NSArray* rows = [view _queryWithOptions: &options status: &status];
+    if (!rows)
+        return status;
+    
+    id updateSeq = options.updateSeq ? @(view.lastSequenceIndexed) : nil;
+    NSDictionary *head = $dict({@"total_rows", @(rows.count)},
+                               {@"offset", @(options.skip)},
+                               {@"update_seq", updateSeq});
+    
+    NSDictionary *params = $dict({@"headers", _request.allHTTPHeaderFields},
+                                 {@"query", self.unescapedQueries},
+                                 {@"method", @"GET"},
+                                 {@"path", _path});
+    
+    CBLListFunctionResult *result = [listFunction runWithRows:rows head:head params:params];
+    if (!result)
+        return kCBLStatusCallbackError;
+    
+    _response.bodyObject = result.body;
+    [_response.headers addEntriesFromDictionary:result.headers];
+    
+    return result.status;
+    
+}
 
 @end

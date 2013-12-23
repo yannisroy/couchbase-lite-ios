@@ -25,6 +25,7 @@ typedef void (^OnFinishedBlock)();
     NSURLRequest* _request;
     NSMutableArray* _path;
     NSDictionary* _queries;
+    NSDictionary* _unescapedQueries;
     NSMutableArray* _queryRetainer;
     CBLResponse* _response;
     CBLDatabase* _db;
@@ -65,6 +66,8 @@ typedef void (^OnFinishedBlock)();
 
 
 @interface CBL_Router (Internal)
+- (NSDictionary*) queries;
+- (NSDictionary*) unescapedQueries;
 - (NSString*) query: (NSString*)param;
 - (BOOL) boolQuery: (NSString*)param;
 - (int) intQuery: (NSString*)param defaultValue: (int)defaultValue;

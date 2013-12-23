@@ -370,7 +370,7 @@
         if (!rows)
             return nil;
         _database = database;
-        _rows = [rows copy];
+        _rows = [rows copy]; // TODO: figure out why do we copying objects here, it doesn't seems to be necessary
         _sequenceNumber = sequenceNumber;
 
         // Fill in the rows' database reference now

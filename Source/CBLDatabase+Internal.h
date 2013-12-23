@@ -9,7 +9,7 @@
 #import "CBL_Revision.h"
 #import "CBLStatus.h"
 #import "CBLDatabase.h"
-@class CBL_FMDatabase, CBLView, CBL_BlobStore, CBLDocument, CBLCache, CBLDatabase, CBLDatabaseChange, CBL_Shared;
+@class CBL_FMDatabase, CBLView, CBLShowFunction, CBLListFunction, CBL_BlobStore, CBLDocument, CBLCache, CBLDatabase, CBLDatabaseChange, CBL_Shared;
 struct CBLQueryOptions;      // declared in CBLView+Internal.h
 
 
@@ -69,6 +69,8 @@ extern const CBLChangesOptions kDefaultCBLChangesOptions;
     dispatch_queue_t _dispatchQueue;    // One and only one of _thread or _dispatchQueue is set
     NSCache* _docIDs;
     NSMutableDictionary* _views;
+    NSMutableDictionary* _showFunctions;
+    NSMutableDictionary* _listFunctions;
     CBL_BlobStore* _attachments;
     NSMutableDictionary* _pendingAttachmentsByDigest;
     NSMutableArray* _activeReplicators;
@@ -217,6 +219,16 @@ extern const CBLChangesOptions kDefaultCBLChangesOptions;
 - (CBLView*) compileViewNamed: (NSString*)name status: (CBLStatus*)outStatus;
 
 - (NSString*) _indexedTextWithID: (UInt64)fullTextID;
+
+/** Returns the show function with the given name. If there is none, and the name is in CouchDB
+ format ("designdocname/showname"), it attempts to load the show function properties from the
+ design document and compile them with the CBLViewCompiler. */
+- (CBLShowFunction*) compileShowFunctionNamed: (NSString*)name status: (CBLStatus*)outStatus;
+
+/** Returns the list function with the given name. If there is none, and the name is in CouchDB
+ format ("designdocname/listname"), it attempts to load the show function properties from the
+ design document and compile them with the CBLListFunctionCompiler. */
+- (CBLListFunction*) compileListFunctionNamed: (NSString*)name status: (CBLStatus*)outStatus;
 
 //@property (readonly) NSArray* allViews;
 

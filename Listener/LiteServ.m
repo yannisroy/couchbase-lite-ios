@@ -23,6 +23,8 @@
 #import "CBLDatabase+Replication.h"
 #import "CBLMisc.h"
 #import "CBLJSViewCompiler.h"
+#import "CBLJSShowFunctionCompiler.h"
+#import "CBLJSListFunctionCompiler.h"
 #import <Security/Security.h>
 
 #if DEBUG
@@ -162,6 +164,8 @@ int main (int argc, const char * argv[])
 #endif
 
         [CBLView setCompiler: [[CBLJSViewCompiler alloc] init]];
+        [CBLShowFunction setCompiler: [CBLJSShowFunctionCompiler new]];
+        [CBLListFunction setCompiler: [CBLJSListFunctionCompiler new]];
 
         NSString* dataPath = nil;
         UInt16 port = kPortNumber;

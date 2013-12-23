@@ -385,6 +385,57 @@ static NSString* makeLocalDocID(NSString* docID) {
     return [[CBLQuery alloc] initWithDatabase: self mapBlock: mapBlock];
 }
 
+#pragma mark - SHOW FUNCTIONS:
+
+- (CBLShowFunction*) registerShowFunction: (CBLShowFunction*)showFunction {
+    if (!showFunction)
+        return nil;
+    if (!_showFunctions)
+        _showFunctions = [[NSMutableDictionary alloc] init];
+    _showFunctions[showFunction.name] = showFunction;
+    return showFunction;
+}
+
+- (CBLShowFunction*) existingShowFunctionNamed: (NSString*)name {
+    CBLShowFunction* showFunction = _showFunctions[name];
+    
+    return showFunction;
+}
+
+- (CBLShowFunction*) showFunctionNamed: (NSString*)name {
+    CBLShowFunction* showFunction = _showFunctions[name];
+    if (showFunction)
+        return showFunction;
+    showFunction = [[CBLShowFunction alloc] initWithDatabase: self name: name];
+    
+    return [self registerShowFunction:showFunction];
+}
+
+
+#pragma mark - LIST FUNCTIONS
+- (CBLListFunction*) registerListFunction: (CBLListFunction*)listFunction {
+    if (!listFunction)
+        return nil;
+    if (!_listFunctions)
+        _listFunctions = [[NSMutableDictionary alloc] init];
+    _listFunctions[listFunction.name] = listFunction;
+    return listFunction;
+}
+
+- (CBLListFunction*) existingListFunctionNamed: (NSString*)name {
+    CBLListFunction* listFunction = _listFunctions[name];
+    
+    return listFunction;
+}
+
+- (CBLListFunction*) listFunctionNamed: (NSString*)name {
+    CBLListFunction* listFunction = _listFunctions[name];
+    if (listFunction)
+        return listFunction;
+    listFunction = [[CBLListFunction alloc] initWithDatabase: self name: name];
+    
+    return [self registerListFunction:listFunction];
+}
 
 #pragma mark - VALIDATION & FILTERS:
 

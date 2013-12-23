@@ -1,8 +1,9 @@
 //
-//  CBLJSViewCompiler.h
+//  CBLJSListFunctionCompiler.h
 //  CouchbaseLite
 //
-//  Created by Jens Alfke on 1/4/13.
+//  Created by Igor Evsukov on 8/4/13.
+//
 //
 //  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
 //  except in compliance with the License. You may obtain a copy of the License at
@@ -14,14 +15,12 @@
 //
 
 #import "CBLJSFunction.h"
-#import <CouchbaseLite/CBLView.h>
+#import <CouchbaseLite/CBLListFunction.h>
 
+/** A show function compiler for CouchbaseLite that compiles and runs traditional JavaScript filter functions.
+ Requires the JavaScriptCore framework; this is a public system framework on Mac OS but private
+ on iOS; so on the latter platform you'll need to link your app with your own copy of
+ JavaScriptCore. See <https://github.com/phoboslab/JavaScriptCore-iOS>. */
+@interface CBLJSListFunctionCompiler : CBLJSCompiler<CBLListFunctionCompiler>
 
-/** A view compiler for CouchbaseLite that compiles and runs traditional JavaScript map/reduce functions.
-    Requires the JavaScriptCore framework; this is a public system framework on Mac OS but private
-    on iOS; so on the latter platform you'll need to link your app with your own copy of
-    JavaScriptCore. See <https://github.com/phoboslab/JavaScriptCore-iOS>. */
-@interface CBLJSViewCompiler : CBLJSCompiler <CBLViewCompiler>
 @end
-
-

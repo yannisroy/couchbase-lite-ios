@@ -107,6 +107,20 @@
     return _queries;
 }
 
+- (NSDictionary *) unescapedQueries {
+    if (!_unescapedQueries && self.queries.count) {
+        NSMutableDictionary* unescapedQueries = $mdict();
+        [_queries enumerateKeysAndObjectsUsingBlock: ^(NSString* param, NSString* value, BOOL *stop) {
+            NSString* unescapedParam = [[param stringByReplacingOccurrencesOfString:@"+" withString:@" "]
+                                        stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+            NSString* unescapedValue = [[value stringByReplacingOccurrencesOfString:@"+" withString:@" "]
+                                        stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+            unescapedQueries[unescapedParam] = unescapedValue;
+        }];
+        _unescapedQueries = [unescapedQueries copy];
+    }
+    return _unescapedQueries;
+}
 
 - (NSString*) query: (NSString*)param {
     return [[(self.queries)[param] stringByReplacingOccurrencesOfString:@"+" withString:@" "]
@@ -386,6 +400,7 @@ static NSArray* splitPath( NSURL* url ) {
     }
     
     NSString* attachmentName = nil;
+    NSString* attachmentParam = nil; // docid for show, view name for list function
     if (docID && pathLen > 2) {
         // Interpret attachment name:
         attachmentName = _path[2];
@@ -397,6 +412,17 @@ static NSArray* splitPath( NSURL* url ) {
             [message appendString: [attachmentName substringFromIndex: 1]];
             [message appendString: @":"];
             attachmentName = pathLen > 3 ? _path[3] : nil;
+            
+            if (pathLen > 4) {
+                NSString* ddocFuncType = [_path[2] substringFromIndex: 1];
+                if ([ddocFuncType isEqual:@"show"]) {
+                    attachmentParam = _path[4];
+                    [message appendString: @"docID:"];
+                } else if ([ddocFuncType isEqual:@"list"]) {
+                    attachmentParam = _path[4];
+                    [message appendString: @"view:"];
+                }
+            }
         } else {
             [message appendString: @"attachment:"];
             if (pathLen > 3)
@@ -425,9 +451,9 @@ static NSArray* splitPath( NSURL* url ) {
     
 #ifdef GNUSTEP
     IMP fn = objc_msg_lookup(self, sel);
-    return (CBLStatus) fn(self, sel, _db, docID, attachmentName);
+    return (CBLStatus) fn(self, sel, _db, docID, attachmentName, attachmentParam);
 #else
-    return (CBLStatus) objc_msgSend(self, sel, _db, docID, attachmentName);
+    return (CBLStatus) objc_msgSend(self, sel, _db, docID, attachmentName, attachmentParam);
 #endif
 }
 

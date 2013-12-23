@@ -228,6 +228,9 @@ typedef enum {
     or kCBLOnlyConflicts; otherwise it returns nil. */
 @property (readonly) NSArray* conflictingRevisions;
 
+/** Convinient helper used by HTTP router **/
+- (NSDictionary*) asJSONDictionary;
+
 #ifdef CBL_DEPRECATED
 @property (readonly) NSString* documentRevision __attribute__((deprecated("renamed documentRevisionID")));
 @property (readonly) UInt64 localSequence __attribute__((deprecated("renamed sequenceNumber")));

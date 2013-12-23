@@ -3,7 +3,6 @@
 //  CouchbaseLite
 //
 //  Created by Jens Alfke on 1/4/13.
-//  Copyright (c) 2013 Couchbase, Inc. All rights reserved.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
 //  except in compliance with the License. You may obtain a copy of the License at
@@ -15,7 +14,7 @@
 
 #import "CBLJSViewCompiler.h"
 #import "CBLJSFunction.h"
-#import "CBLRevision.h"
+#import <CouchbaseLite/CBLRevision.h>
 #import <JavaScriptCore/JavaScript.h>
 #import <JavaScriptCore/JSStringRefCF.h>
 
@@ -24,24 +23,6 @@
    with your own copy of it. See <https://github.com/phoboslab/JavaScriptCore-iOS>. */
 
 /* NOTE: This source file requires ARC. */
-
-
-// Converts a JSON-compatible JSValue to an NSObject.
-static id ValueToID(JSContextRef ctx, JSValueRef value) {
-    if (!value)
-        return nil;
-    //FIX: Going through JSON is inefficient.
-    JSStringRef jsStr = JSValueCreateJSONString(ctx, value, 0, NULL);
-    if (!jsStr)
-        return nil;
-    NSString* str = (NSString*)CFBridgingRelease(JSStringCopyCFString(NULL, jsStr));
-    JSStringRelease(jsStr);
-    str = [NSString stringWithFormat: @"[%@]", str];    // make it a valid JSON object
-    NSData* data = [str dataUsingEncoding: NSUTF8StringEncoding];
-    NSArray* result = [NSJSONSerialization JSONObjectWithData: data options: 0 error: NULL];
-    return [result objectAtIndex: 0];
-}
-
 
 @implementation CBLJSViewCompiler
 
@@ -130,35 +111,4 @@ static JSValueRef EmitCallback(JSContextRef ctx, JSObjectRef function, JSObjectR
 
 
 @end
-
-
-
-
-@implementation CBLJSFilterCompiler
-
-
-- (CBLFilterBlock) compileFilterFunction: (NSString*)filterSource language: (NSString*)language {
-    if (![language isEqualToString: @"javascript"])
-        return nil;
-
-    // Compile the function:
-    CBLJSFunction* fn = [[CBLJSFunction alloc] initWithCompiler: self
-                                                   sourceCode: filterSource
-                                                   paramNames: @[@"doc", @"req"]];
-    if (!fn)
-        return nil;
-
-    // Return the CBLMapBlock; the code inside will be called when CouchbaseLite wants to run the map fn:
-    JSContextRef ctx = self.context;
-    CBLFilterBlock block = ^BOOL(CBLSavedRevision* revision, NSDictionary* params) {
-        return JSValueToBoolean(ctx, [fn call: revision.properties, params]);
-    };
-    return [block copy];
-}
-
-
-@end
-
-
-
 

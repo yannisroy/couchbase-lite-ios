@@ -839,6 +839,107 @@ TestCase(API_ChangeUUID) {
     [mgr close];
 }
 
+#pragma mark - SHOW FUNCTIONS
+TestCase(API_ShowFunctions) {
+    CBLDatabase* db = createEmptyDB();
+    
+    CBLShowFunction *showFunction = [db showFunctionNamed:@"show_func1"];
+    CAssert(showFunction);
+    CAssertEq(showFunction.database, db);
+    CAssertEqual(showFunction.name, @"show_func1");
+    CAssert(showFunction.showFunctionBlock == NULL);
+    
+    showFunction.showFunctionBlock = ^CBLShowFunctionResult*(NSDictionary *doc, NSDictionary *params) {
+        CBLShowFunctionResult *result = [CBLShowFunctionResult new];
+        result.status = [doc[@"sequence"] unsignedIntegerValue];
+        result.headers = params;
+        result.body = doc;
+        
+        return result;
+    };
+    CAssert(showFunction.showFunctionBlock != NULL);
+    
+    static const NSUInteger kNDocs = 5;
+    createDocuments(db, kNDocs);
+    
+    CBLQuery* query = db.createAllDocumentsQuery;
+    CAssertEq(query.database, db);
+    CBLQueryEnumerator* rows = [query run:NULL];
+    CAssert(rows);
+    CAssertEq(rows.count, kNDocs);
+    
+    NSUInteger expectedSequence = 0;
+    for (CBLQueryRow* row in rows) {
+        CBLRevision* revision = row.document.currentRevision;
+        NSDictionary* params = @{ @"index": @(expectedSequence) };
+        CBLShowFunctionResult *result = [showFunction runWithRevision:revision params:params];
+        
+        CAssertEq(result.status, expectedSequence);
+        CAssertEqual(result.headers, params);
+        CAssertEqual(result.body, revision.properties);
+        ++expectedSequence;
+    }
+    closeTestDB(db);
+}
+
+#pragma mark - LIST FUNCTIONS
+TestCase(API_ListFunctions) {
+    CBLDatabase* db = createEmptyDB();
+    
+    // setting up sample view
+    CBLView* view = [db viewNamed: @"vu"];
+    [view setMapBlock:^(NSDictionary *doc, CBLMapEmitBlock emit) {
+        emit(doc[@"sequence"], nil);
+    } version: @"1"];
+    
+    static const NSUInteger kNDocs = 50;
+    createDocuments(db, kNDocs);
+    
+    CBLQuery* query = [view createQuery];
+    query.startKey = @23;
+    query.endKey = @33;
+    CBLQueryEnumerator* rows = [query run:NULL];
+    
+    // let the test begin!
+    CBLListFunction *listFunction = [db listFunctionNamed:@"list_func1"];
+    CAssert(listFunction);
+    CAssertEq(listFunction.database, db);
+    CAssertEqual(listFunction.name, @"list_func1");
+    CAssert(listFunction.listFunctionBlock == NULL);
+    
+    listFunction.listFunctionBlock = ^CBLListFunctionResult*(NSDictionary *head, NSDictionary *params, CBLListFunctionGetRowBlock getRowBlock) {
+        
+        CBLListFunctionResult *result = [CBLListFunctionResult new];
+        
+        NSMutableArray *items = [NSMutableArray new];
+        
+        CBLQueryRow *row = nil;
+        NSUInteger idx = 0;
+        while ((row = getRowBlock())) {
+            id item = @{ @"index": @(idx), @"row": row };
+            [items addObject:item];
+            ++idx;
+        }
+        
+        result.body = [items copy];
+        
+        return result;
+    };
+    CAssert(listFunction.listFunctionBlock != NULL);
+    
+    CBLListFunctionResult *result = [listFunction runWithQueryEnumenator:rows head:nil params:nil];
+    CAssertEqual([result.body class], [NSArray class]);
+    
+    [result.body enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
+        NSDictionary *item = obj;
+        CBLQueryRow *row = [rows rowAtIndex:idx];
+        
+        CAssertEqual(row, item[@"row"]);
+        CAssertEqual(@(idx), item[@"index"]);
+    }];
+    
+    closeTestDB(db);
+}
 
 TestCase(API) {
     RequireTestCase(API_Manager);
@@ -859,6 +960,8 @@ TestCase(API) {
     RequireTestCase(API_Model);
 
     RequireTestCase(API_Replicator);
+    RequireTestCase(API_ShowFunctions);
+    RequireTestCase(API_ListFunctions);
 }
 
 #endif // DEBUG

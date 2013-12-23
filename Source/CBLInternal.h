@@ -11,6 +11,8 @@
 #import "CBLDatabaseChange.h"
 #import "CBLManager+Internal.h"
 #import "CBLView+Internal.h"
+#import "CBLShowFunction+Internal.h"
+#import "CBLListFunction+Internal.h"
 #import "CBL_Server.h"
 #import "CBL_Router.h"
 #import "CBL_Replicator.h"

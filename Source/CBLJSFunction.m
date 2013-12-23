@@ -3,15 +3,8 @@
 //  CouchbaseLite
 //
 //  Created by Jens Alfke on 1/28/13.
-//  Copyright (c) 2013 Couchbase, Inc. All rights reserved.
 //
-//  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
-//  except in compliance with the License. You may obtain a copy of the License at
-//    http://www.apache.org/licenses/LICENSE-2.0
-//  Unless required by applicable law or agreed to in writing, software distributed under the
-//  License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
-//  either express or implied. See the License for the specific language governing permissions
-//  and limitations under the License.
+//
 
 #import "CBLJSFunction.h"
 #import <JavaScriptCore/JavaScript.h>
@@ -24,10 +17,7 @@
 /* NOTE: This source file requires ARC. */
 
 
-static JSValueRef IDToValue(JSContextRef ctx, id object);
-static void WarnJSException(JSContextRef context, NSString* warning, JSValueRef exception);
-
-
+#pragma mark - JS COMPILER
 @implementation CBLJSCompiler
 {
     JSGlobalContextRef _context;
@@ -58,7 +48,7 @@ static void WarnJSException(JSContextRef context, NSString* warning, JSValueRef 
 
 
 
-
+#pragma mark - JS FUNCTION
 @implementation CBLJSFunction
 {
     CBLJSCompiler* _compiler;
@@ -120,6 +110,26 @@ static void WarnJSException(JSContextRef context, NSString* warning, JSValueRef 
     return result;
 }
 
+- (JSValueRef) callWithParams: (NSArray*)params exception:(JSValueRef*)outException {
+    JSContextRef context = _compiler.context;
+    NSUInteger params_count = params.count;
+    JSValueRef jsParams[params_count];
+    for (NSUInteger idx = 0; idx < params_count; idx++) {
+        id obj = params[idx];
+        jsParams[idx] = IDToValue(context, obj);
+    }
+    
+    JSValueRef exception = NULL;
+    JSValueRef result = JSObjectCallAsFunction(context, _fn, NULL, _nParams, jsParams, &exception);
+    if (exception) {
+        WarnJSException(context, @"JS function threw exception", exception);
+        if (outException) // bloody pointers
+            *outException = exception;
+    }
+    
+    return result;
+}
+
 - (void)dealloc
 {
     if (_fn)
@@ -131,7 +141,7 @@ static void WarnJSException(JSContextRef context, NSString* warning, JSValueRef 
 
 
 // Converts a JSON-compatible NSObject to a JSValue.
-static JSValueRef IDToValue(JSContextRef ctx, id object) {
+JSValueRef IDToValue(JSContextRef ctx, id object) {
     if (object == nil) {
         return NULL;
     } else if (object == (id)kCFBooleanFalse || object == (id)kCFBooleanTrue) {
@@ -166,3 +176,21 @@ void WarnJSException(JSContextRef context, NSString* warning, JSValueRef excepti
     if (cfError)
         CFRelease(cfError);
 }
+
+// Converts a JSON-compatible JSValue to an NSObject.
+id ValueToID(JSContextRef ctx, JSValueRef value) {
+    if (!value)
+        return nil;
+    //FIX: Going through JSON is inefficient.
+    //TODO: steal idea from https://github.com/ddb/ParseKit/blob/master/jssrc/PKJSUtils.m
+    JSStringRef jsStr = JSValueCreateJSONString(ctx, value, 0, NULL);
+    if (!jsStr)
+        return nil;
+    NSString* str = (NSString*)CFBridgingRelease(JSStringCopyCFString(NULL, jsStr));
+    JSStringRelease(jsStr);
+    str = [NSString stringWithFormat: @"[%@]", str];    // make it a valid JSON object
+    NSData* data = [str dataUsingEncoding: NSUTF8StringEncoding];
+    NSArray* result = [NSJSONSerialization JSONObjectWithData: data options: 0 error: NULL];
+    return [result objectAtIndex: 0];
+}
+

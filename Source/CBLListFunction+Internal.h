@@ -1,8 +1,8 @@
 //
-//  CBLJSViewCompiler.h
+//  CBLListFunction+Internal.h
 //  CouchbaseLite
 //
-//  Created by Jens Alfke on 1/4/13.
+//  Created by Igor Evsukov on 7/28/13.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
 //  except in compliance with the License. You may obtain a copy of the License at
@@ -13,15 +13,19 @@
 //  and limitations under the License.
 //
 
-#import "CBLJSFunction.h"
-#import <CouchbaseLite/CBLView.h>
+#import "CBLListFunction.h"
+#import "CBLDatabase+Internal.h"
 
+@interface CBLListFunction ()
 
-/** A view compiler for CouchbaseLite that compiles and runs traditional JavaScript map/reduce functions.
-    Requires the JavaScriptCore framework; this is a public system framework on Mac OS but private
-    on iOS; so on the latter platform you'll need to link your app with your own copy of
-    JavaScriptCore. See <https://github.com/phoboslab/JavaScriptCore-iOS>. */
-@interface CBLJSViewCompiler : CBLJSCompiler <CBLViewCompiler>
+- (instancetype) initWithDatabase: (CBLDatabase*)db name: (NSString*)name;
+
 @end
 
+@interface CBLListFunction (Internal)
 
+/** Compiles a list function (using the registered CBLListFunctionCompiler) from the properties found in a CouchDB-style design document. */
+- (BOOL) compileFromSource: (NSString*)showSource
+                  language: (NSString*)language;
+
+@end
