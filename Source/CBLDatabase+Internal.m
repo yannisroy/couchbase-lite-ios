@@ -1378,7 +1378,15 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
         *outStatus = kCBLStatusNotFound;
         return nil;
     }
-    showFunction = [self showFunctionNamed: cblShowName];
+
+    // trying again, now among show functions from ddoc
+    NSString* showNameWithRev = $sprintf(@"%@-%@", cblShowName, revision);
+    showFunction = [self existingShowFunctionNamed: showNameWithRev];
+    if (showFunction && showFunction.showFunctionBlock)
+        return showFunction;
+
+    // well, compiling from source then
+    showFunction = [self showFunctionNamed: showNameWithRev];
     if (![showFunction compileFromSource:showSource language:language]) {
         *outStatus = kCBLStatusCallbackError;
         return nil;
