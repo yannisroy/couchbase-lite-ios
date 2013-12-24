@@ -42,7 +42,7 @@
         CBLShowFunctionResult* result = [CBLShowFunctionResult new];
         
         JSValueRef exception = NULL;
-        JSValueRef fnRes = [fn callWithParams:@[revision, params] exception:&exception];
+        JSValueRef fnRes = [fn callWithParams:@[revision ? revision : NSNull.null, params ? params : NSNull.null] exception:&exception];
         id obj = ValueToID(ctx, fnRes);
         if (exception) {
             NSMutableDictionary *body = [NSMutableDictionary dictionary];

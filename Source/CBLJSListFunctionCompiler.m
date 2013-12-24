@@ -79,7 +79,7 @@ static JSValueRef GetRowCallback(JSContextRef ctx, JSObjectRef function, JSObjec
         // way of doing it
         sCurrentGetRowBlock = getRowBlock;
         JSValueRef exception = NULL;
-        JSValueRef fnRes = [fn callWithParams:@[head, params] exception:&exception];
+        JSValueRef fnRes = [fn callWithParams:@[head ? head : NSNull.null, params ? params : NSNull.null] exception:&exception];
         sCurrentGetRowBlock = nil;
         
         id obj = ValueToID(ctx, fnRes);
