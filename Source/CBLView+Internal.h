@@ -75,7 +75,8 @@ typedef enum {
 
 /** Compiles a view (using the registered CBLViewCompiler) from the properties found in a CouchDB-style design document. */
 - (BOOL) compileFromProperties: (NSDictionary*)viewProps
-                      language: (NSString*)language;
+                      language: (NSString*)language
+                       version: (NSString*)version;
 
 /** Updates the view's index (incrementally) if necessary.
  @return  200 if updated, 304 if already up-to-date, else an error code */

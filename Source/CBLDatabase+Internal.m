@@ -1242,6 +1242,7 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
 - (id) getDesignDocFunction: (NSString*)fnName
                         key: (NSString*)key
                    language: (NSString**)outLanguage
+                   revision: (NSString**)outRevision
 {
     NSArray* path = [fnName componentsSeparatedByString: @"/"];
     if (path.count != 2)
@@ -1250,7 +1251,8 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
                                     revisionID: nil];
     if (!rev)
         return nil;
-    *outLanguage = rev[@"language"] ?: @"javascript";
+    if (outLanguage) *outLanguage = rev[@"language"] ?: @"javascript";
+    if (outRevision) *outRevision = rev.revID;
     NSDictionary* container = $castIf(NSDictionary, rev[key]);
     return container[path[1]];
 }
@@ -1268,7 +1270,8 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
     NSString* language;
     NSString* source = $castIf(NSString, [self getDesignDocFunction: filterName
                                                                 key: @"filters"
-                                                           language: &language]);
+                                                           language: &language
+                                                           revision: NULL]);
     if (!source) {
         *outStatus = kCBLStatusNotFound;
         return nil;
@@ -1328,18 +1331,29 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
         return nil;
     }
     NSString* language;
+    NSString* revision;
     NSDictionary* viewProps = $castIf(NSDictionary, [self getDesignDocFunction: tdViewName
                                                                            key: @"views"
-                                                                      language: &language]);
+                                                                      language: &language
+                                                                      revision: &revision]);
     if (!viewProps) {
         *outStatus = kCBLStatusNotFound;
         return nil;
     }
-    view = [self viewNamed: tdViewName];
-    if (![view compileFromProperties: viewProps language: language]) {
+    
+    // trying again, now among views from ddoc
+    NSString* viewNameWithRev = $sprintf(@"%@-%@", tdViewName, revision);
+    view = [self existingViewNamed: viewNameWithRev];
+    if (view && view.mapBlock)
+        return view;
+    
+    // no luck, creating a new view from code from ddoc
+    view = [self viewNamed: viewNameWithRev];
+    if (![view compileFromProperties: viewProps language: language version:revision]) {
         *outStatus = kCBLStatusCallbackError;
         return nil;
     }
+    // TODO: figure out a way to remove views from old ddoc revisions
     return view;
 }
 
@@ -1355,9 +1369,11 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
         return nil;
     }
     NSString* language;
+    NSString* revision;
     NSString* showSource = $castIf(NSString, [self getDesignDocFunction: cblShowName
                                                                     key: @"shows"
-                                                               language: &language]);
+                                                               language: &language
+                                                               revision: &revision]);
     if (!showSource) {
         *outStatus = kCBLStatusNotFound;
         return nil;
@@ -1382,9 +1398,11 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
         return nil;
     }
     NSString* language;
+    NSString* revision;
     NSString* listSource = $castIf(NSString, [self getDesignDocFunction: cblListName
                                                                     key: @"lists"
-                                                               language: &language]);
+                                                               language: &language
+                                                               revision: &revision]);
     if (!listSource) {
         *outStatus = kCBLStatusNotFound;
         return nil;

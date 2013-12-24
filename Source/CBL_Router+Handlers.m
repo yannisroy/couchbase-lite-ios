@@ -1105,7 +1105,7 @@ static NSArray* parseJSONRevArrayQuery(NSString* queryStr) {
         return kCBLStatusNotModified;
 
     CBLView* view = [_db viewNamed: @"@@TEMPVIEW@@"];
-    if (![view compileFromProperties: props language: @"javascript"])
+    if (![view compileFromProperties: props language: @"javascript" version:nil])
         return kCBLStatusBadRequest;
 
     @try {
@@ -1144,6 +1144,7 @@ static NSArray* parseJSONRevArrayQuery(NSString* queryStr) {
     if (!result)
         return kCBLStatusCallbackError;
     
+    // FIXME: will crash if result.body is not a dict/array
     _response.bodyObject = result.body;
     [_response.headers addEntriesFromDictionary:result.headers];
     
@@ -1191,6 +1192,7 @@ static NSArray* parseJSONRevArrayQuery(NSString* queryStr) {
     if (!result)
         return kCBLStatusCallbackError;
     
+    // FIXME: will crash if result.body is not a dict/array
     _response.bodyObject = result.body;
     [_response.headers addEntriesFromDictionary:result.headers];
     

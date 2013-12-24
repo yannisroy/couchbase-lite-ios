@@ -91,7 +91,7 @@ id CBLGeoJSONKey(NSDictionary* geoJSON) {
 //}
 
 
-- (BOOL) compileFromProperties: (NSDictionary*)viewProps language: (NSString*)language {
+- (BOOL) compileFromProperties: (NSDictionary*)viewProps language: (NSString*)language version: (NSString*)version {
     if (!language)
         language = @"javascript";
     NSString* mapSource = viewProps[@"map"];
@@ -113,7 +113,8 @@ id CBLGeoJSONKey(NSDictionary* geoJSON) {
     }
 
     // Version string is based on a digest of the properties:
-    NSString* version = CBLHexSHA1Digest([CBLCanonicalJSON canonicalData: viewProps]);
+    if (!version)
+        version = CBLHexSHA1Digest([CBLCanonicalJSON canonicalData: viewProps]);
 
     [self setMapBlock: mapBlock reduceBlock: reduceBlock version: version];
 
