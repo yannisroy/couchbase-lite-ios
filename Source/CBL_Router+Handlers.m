@@ -1134,12 +1134,7 @@ static NSArray* parseJSONRevArrayQuery(NSString* queryStr) {
     if (!showFunction)
         return status;
     
-    NSMutableDictionary *params = $mdict();
-    [params setValue:_request.allHTTPHeaderFields forKey:@"headers"];
-    [params setValue:self.unescapedQueries forKey:@"query"];
-    [params setValue:@"GET" forKey:@"method"];
-    [params setValue:_path forKey:@"path"];
-    
+    NSDictionary *params = [self requestObjectForDatabase:db docID:docID];
     CBLShowFunctionResult *result = [showFunction runWithRevisionProperties:properties params:params];
     if (!result)
         return kCBLStatusCallbackError;
@@ -1183,10 +1178,7 @@ static NSArray* parseJSONRevArrayQuery(NSString* queryStr) {
                                {@"offset", @(options.skip)},
                                {@"update_seq", updateSeq});
     
-    NSDictionary *params = $dict({@"headers", _request.allHTTPHeaderFields},
-                                 {@"query", self.unescapedQueries},
-                                 {@"method", @"GET"},
-                                 {@"path", _path});
+    NSDictionary *params = [self requestObjectForDatabase:db docID:nil];
     
     CBLListFunctionResult *result = [listFunction runWithRows:rows head:head params:params];
     if (!result)
@@ -1198,6 +1190,47 @@ static NSArray* parseJSONRevArrayQuery(NSString* queryStr) {
     
     return result.status;
     
+}
+
+#pragma mark - HELPERS
+- (NSDictionary*) requestObjectForDatabase: (CBLDatabase*)db docID: (NSString*)docID {
+    NSMutableDictionary* params = $mdict();
+    
+    NSString *body = @"";
+    if ([_request.HTTPMethod isEqual:@"GET"])
+        body = @"undefined";
+    else if (_request.HTTPBody)
+        body = [[NSString alloc] initWithData:_request.HTTPBody encoding:NSUTF8StringEncoding];
+    params[@"body"] = body;
+    
+    params[@"cookie"] = @{}; // TODO: get cookies for _request
+    
+    params[@"form"] = @{}; // TODO: implement form parsing if Content-Type: application/x-www-form-urlencoded
+    
+    params[@"headers"] = _request.allHTTPHeaderFields ? _request.allHTTPHeaderFields : @{};
+    params[@"id"] = docID ? docID : [NSNull null];
+    
+    // properties like doc_count requires db query which is very slow, omit for now
+    params[@"info"] =  $dict({@"db_name", db.name},
+                             {@"db_uuid", db.publicUUID},
+                             {@"doc_count", @(0)}, // TODO: implement
+                             {@"update_seq", @(0)}, // TODO: implement
+                             {@"committed_update_seq", @(0)},
+                             {@"purge_seq", @(0)}, // TODO: Implement
+                             {@"disk_size", @(db.totalDataSize)},
+                             {@"instance_start_time", @(0)}, // TODO: implement
+                             {@"disk_format_version", @(db.schemaVersion)});
+    
+    params[@"method"] = _request.HTTPMethod ? _request.HTTPMethod : @"";
+    params[@"path"] = _path ? _path : @[];
+    params[@"peer"] = [NSNull null]; // TODO: possible to get, but requires a lot of API changes
+    params[@"query"] = [self unescapedQueries] ? _unescapedQueries : @{};
+    params[@"requested_path"] = _path ? _path : @[];
+    params[@"raw_path"] = _path ? [_path componentsJoinedByString:@"/"] : @"";
+    // secObj and userCtx are skipped
+    params[@"uudi"] = [CBLDatabase generateDocumentID];
+    
+    return params;
 }
 
 @end
