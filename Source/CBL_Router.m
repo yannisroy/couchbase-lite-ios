@@ -413,16 +413,16 @@ static NSArray* splitPath( NSURL* url ) {
             [message appendString: @":"];
             attachmentName = pathLen > 3 ? _path[3] : nil;
             
-            if (pathLen > 4) {
+            if (pathLen > 3) {
                 NSString* ddocFuncType = [_path[2] substringFromIndex: 1];
                 if ([ddocFuncType isEqual:@"show"]) {
-                    attachmentParam = _path[4];
                     [message appendString: @"docID:"];
                 } else if ([ddocFuncType isEqual:@"list"]) {
-                    attachmentParam = _path[4];
                     [message appendString: @"view:"];
                 }
+                attachmentParam = pathLen > 4 ? _path[4] : nil;
             }
+
         } else {
             [message appendString: @"attachment:"];
             if (pathLen > 3)
