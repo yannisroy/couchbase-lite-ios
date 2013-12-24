@@ -75,18 +75,25 @@
 
 - (NSData*) asJSON {
     if (!_json && !_error) {
-        _json = [[CBLJSON dataWithJSONObject: _object options: 0 error: NULL] copy];
-        if (!_json) {
-            Warn(@"CBL_Body: couldn't convert to JSON");
-            _error = YES;
+        if ([CBLJSON isValidJSONObject:_object]) {
+            _json = [[CBLJSON dataWithJSONObject: _object options: 0 error: NULL] copy];
+            if (!_json) {
+                Warn(@"CBL_Body: couldn't convert to JSON");
+                _error = YES;
+            }
+        } else if ([_object isKindOfClass: [NSString class]]) {
+            _json = [(NSString *)_object dataUsingEncoding:NSUTF8StringEncoding];
+        } else {
+            _json = [[NSString stringWithFormat:@"%@", _object] dataUsingEncoding:NSUTF8StringEncoding];
         }
+        
     }
     return _json;
 }
 
 - (NSData*) asPrettyJSON {
     id props = self.asObject;
-    if (props) {
+    if (props && [CBLJSON isValidJSONObject:props]) {
         NSData* json = [CBLJSON dataWithJSONObject: props
                                           options: CBLJSONWritingPrettyPrinted
                                             error: NULL];
