@@ -1415,7 +1415,14 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
         *outStatus = kCBLStatusNotFound;
         return nil;
     }
-    listFunction = [self listFunctionNamed: cblListName];
+    
+    // trying again, now among show functions from ddoc
+    NSString* listNameWithRev = $sprintf(@"%@-%@", cblListName, revision);
+    listFunction = [self existingListFunctionNamed: listNameWithRev];
+    if (listFunction && listFunction.listFunctionBlock)
+        return listFunction;
+    
+    listFunction = [self listFunctionNamed: listNameWithRev];
     if (![listFunction compileFromSource:listSource language:language]) {
         *outStatus = kCBLStatusCallbackError;
         return nil;
