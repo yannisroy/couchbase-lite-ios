@@ -14,24 +14,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CBLStatus.h"
-@class CBLDatabase, CBLRevision;
+@class CBLDatabase, CBLRevision, CBLFunctionResult;
 
+typedef CBLFunctionResult* (^CBLShowFunctionBlock)(NSDictionary *revision, NSDictionary *params);
 
-
-/** Since show function is really designed to work over HTTP, the result includes HTTP status code, headers and body.
- body can be string and any JSON serializable object */
-@interface CBLShowFunctionResult : NSObject
-
-@property (readwrite) CBLStatus status;
-@property (strong) NSDictionary *headers;
-@property (strong) id body;
-
-@end
-
-typedef CBLShowFunctionResult* (^CBLShowFunctionBlock)(NSDictionary *revision, NSDictionary *params);
-
-#define SHOWBLOCK(BLOCK) ^CBLShowFunctionResult(NSDictionary *revision, NSDictionary *params){BLOCK}
+#define SHOWBLOCK(BLOCK) ^CBLFunctionResult(NSDictionary *revision, NSDictionary *params){BLOCK}
 
 /**  An external object that knows how to map source code of some sort into executable functions. Similar to the CBLViewCompiler */
 @protocol CBLShowFunctionCompiler <NSObject>
@@ -59,9 +46,9 @@ typedef CBLShowFunctionResult* (^CBLShowFunctionBlock)(NSDictionary *revision, N
 @property (readwrite) CBLShowFunctionBlock showFunctionBlock;
 
 /** Invokes showFunctionBlock with revision properties, params will be passed as a second parameter */
-- (CBLShowFunctionResult*)runWithRevision: (CBLRevision *)revision params: (NSDictionary *)params;
+- (CBLFunctionResult*)runWithRevision: (CBLRevision *)revision params: (NSDictionary *)params;
 
-- (CBLShowFunctionResult*)runWithRevisionProperties: (NSDictionary *)revisionProperties params: (NSDictionary *)params;
+- (CBLFunctionResult*)runWithRevisionProperties: (NSDictionary *)revisionProperties params: (NSDictionary *)params;
 
 /** Registers an object that can compile map/reduce functions from source code. */
 + (void) setCompiler: (id<CBLShowFunctionCompiler>)compiler;

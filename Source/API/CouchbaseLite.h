@@ -25,6 +25,7 @@
 #import "CBLQuery.h"
 #import "CBLQuery+FullTextSearch.h"
 #import "CBLQuery+Geo.h"
+#import "CBLFunctionResult.h"
 #import "CBLShowFunction.h"
 #import "CBLListFunction.h"
 #import "CBLReplication.h"

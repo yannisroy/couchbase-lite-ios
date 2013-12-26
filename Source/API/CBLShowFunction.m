@@ -19,32 +19,8 @@
 #import "CBLShowFunction+Internal.h"
 #import "CBL_Shared.h"
 #import "CBLRevision.h"
+#import "CBLFunctionResult.h"
 
-#pragma mark - SHOW FUNCTION RESULT
-@implementation CBLShowFunctionResult
-
-@synthesize status = _status;
-@synthesize headers = _headers;
-@synthesize body = _body;
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        _status = kCBLStatusOK;
-    }
-    return self;
-}
-
-- (NSString*) description {
-    return [NSString stringWithFormat:@"<%@: %p, %@ %@, %@ >",
-            NSStringFromClass(self.class),self,
-            [NSNumber numberWithInteger:_status], _headers, _body];
-}
-
-@end
-
-
-#pragma mark - SHOW FUNCTION
 @implementation CBLShowFunction
 
 - (instancetype) initWithDatabase: (CBLDatabase*)db name: (NSString*)name {
@@ -79,13 +55,13 @@
 }
 
 #pragma mark invoking show function
-- (CBLShowFunctionResult*) runWithRevision: (CBLRevision *)revision params: (NSDictionary *)params {
+- (CBLFunctionResult*) runWithRevision: (CBLRevision *)revision params: (NSDictionary *)params {
     NSDictionary *properties = revision.properties;
     return [self runWithRevisionProperties:properties params:params];
 }
 
-- (CBLShowFunctionResult*)runWithRevisionProperties: (NSDictionary *)revisionProperties params: (NSDictionary *)params {
-    CBLShowFunctionResult* result = self.showFunctionBlock(revisionProperties, params);
+- (CBLFunctionResult*)runWithRevisionProperties: (NSDictionary *)revisionProperties params: (NSDictionary *)params {
+    CBLFunctionResult* result = self.showFunctionBlock(revisionProperties, params);
     return result;
 }
 

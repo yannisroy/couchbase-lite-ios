@@ -621,6 +621,10 @@
 		A972B8DE186C69A800833EFE /* CBLJSShowFunctionCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DD5F861868B13600DA3C3A /* CBLJSShowFunctionCompiler.m */; };
 		A972B8DF186C69A800833EFE /* CBLJSFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 792867CC178DE03E00248AF0 /* CBLJSFunction.m */; };
 		A972B8E0186C69A800833EFE /* CBLJSViewCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 792867CF178DE03E00248AF0 /* CBLJSViewCompiler.m */; };
+		A972B8E3186C866300833EFE /* CBLFunctionResult.h in Headers */ = {isa = PBXBuildFile; fileRef = A972B8E1186C866300833EFE /* CBLFunctionResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A972B8E4186C866300833EFE /* CBLFunctionResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A972B8E2186C866300833EFE /* CBLFunctionResult.m */; };
+		A972B8E5186C866300833EFE /* CBLFunctionResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A972B8E2186C866300833EFE /* CBLFunctionResult.m */; };
+		A972B8E6186C956900833EFE /* CBLFunctionResult.h in Headers */ = {isa = PBXBuildFile; fileRef = A972B8E1186C866300833EFE /* CBLFunctionResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9AB721E186C581D00B19EB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F0745C11CD50A600E9A2AB /* Foundation.framework */; };
 		A9AB7226186C581D00B19EB0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9AB7224186C581D00B19EB0 /* InfoPlist.strings */; };
 		A9AB7228186C581D00B19EB0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9AB7227186C581D00B19EB0 /* main.m */; };
@@ -1390,6 +1394,8 @@
 		A972B8D5186C650800833EFE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		A972B8D7186C651100833EFE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		A972B8D9186C651C00833EFE /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
+		A972B8E1186C866300833EFE /* CBLFunctionResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBLFunctionResult.h; sourceTree = "<group>"; };
+		A972B8E2186C866300833EFE /* CBLFunctionResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBLFunctionResult.m; sourceTree = "<group>"; };
 		A9AB721D186C581D00B19EB0 /* LiteServ-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LiteServ-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9AB7223186C581D00B19EB0 /* LiteServ-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LiteServ-iOS-Info.plist"; sourceTree = "<group>"; };
 		A9AB7225186C581D00B19EB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2285,6 +2291,8 @@
 				27E2E5A2159383E9005B9234 /* CBLAttachment.m */,
 				27DA434815912AFD00F9E7B5 /* CBLView.h */,
 				27DA434915912AFD00F9E7B5 /* CBLView.m */,
+				A972B8E1186C866300833EFE /* CBLFunctionResult.h */,
+				A972B8E2186C866300833EFE /* CBLFunctionResult.m */,
 				A9DD5F901868B38D00DA3C3A /* CBLShowFunction.h */,
 				A9DD5F911868B38D00DA3C3A /* CBLShowFunction.m */,
 				A9DD5F8E1868B38D00DA3C3A /* CBLListFunction.h */,
@@ -2541,6 +2549,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A972B8E3186C866300833EFE /* CBLFunctionResult.h in Headers */,
 				A9DD5F921868B38D00DA3C3A /* CBLListFunction.h in Headers */,
 				A9DD5F971868B38D00DA3C3A /* CBLShowFunction.h in Headers */,
 				270B3E201489390000E0A926 /* CouchbaseLite.h in Headers */,
@@ -2695,6 +2704,7 @@
 				A9DD5F9F1868B76100DA3C3A /* CBLShowFunction+Internal.h in Headers */,
 				275A29031649A11A00B0D8EE /* CouchbaseLitePrivate.h in Headers */,
 				27B945AA1768E63200B2DF2D /* CBLModelArray.h in Headers */,
+				A972B8E6186C956900833EFE /* CBLFunctionResult.h in Headers */,
 				27F5B18916519F8F00126D0D /* MYDynamicObject.h in Headers */,
 				27E41530154F6E9C00771FC5 /* CBLStatus.h in Headers */,
 				27B0B7FB1492BDE800A817AD /* CBLDatabase+Internal.h in Headers */,
@@ -3347,6 +3357,7 @@
 				277EF47A17F4DF3700F7B7F7 /* stem_UTF_8_romanian.c in Sources */,
 				277EF46517F4DF3700F7B7F7 /* stem_UTF_8_french.c in Sources */,
 				277EF48017F4DF3700F7B7F7 /* stem_UTF_8_spanish.c in Sources */,
+				A972B8E4186C866300833EFE /* CBLFunctionResult.m in Sources */,
 				A9DD5F941868B38D00DA3C3A /* CBLListFunction.m in Sources */,
 				277EF46E17F4DF3700F7B7F7 /* stem_UTF_8_italian.c in Sources */,
 				277EF43217F4DF3700F7B7F7 /* stem_ISO_8859_1_english.c in Sources */,
@@ -3506,6 +3517,7 @@
 				2776A63216A9BCBC006FF199 /* CBLDatabaseChange.m in Sources */,
 				271C2AD616FA176300B8C9DB /* CBL_Shared.m in Sources */,
 				27FFE20617BBF20D0040AE60 /* CBLReplicator_Tests.m in Sources */,
+				A972B8E5186C866300833EFE /* CBLFunctionResult.m in Sources */,
 				27B0B7DE1492B8C100A817AD /* ExceptionUtils.m in Sources */,
 				A9DD5F961868B38D00DA3C3A /* CBLListFunction.m in Sources */,
 				27B0B7DF1492B8C100A817AD /* Logging.m in Sources */,

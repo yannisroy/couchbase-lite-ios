@@ -15,6 +15,7 @@
 
 #import "CBLJSShowFunctionCompiler.h"
 #import <CouchbaseLite/CBLRevision.h>
+#import <CouchbaseLite/CBLFunctionResult.h>
 #import <JavaScriptCore/JavaScript.h>
 #import <JavaScriptCore/JSStringRefCF.h>
 
@@ -38,13 +39,15 @@
     
     // Return the CBLMapBlock; the code inside will be called when CouchbaseLite wants to run the map fn:
     JSContextRef ctx = self.context;
-    CBLShowFunctionBlock block = ^CBLShowFunctionResult*(NSDictionary *revision, NSDictionary *params){
-        CBLShowFunctionResult* result = [CBLShowFunctionResult new];
+    CBLShowFunction* block = ^CBLFunctionResult*(NSDictionary *revision, NSDictionary *params){
+        CBLFunctionResult* result = nil;
         
         JSValueRef exception = NULL;
         JSValueRef fnRes = [fn callWithParams:@[revision ? revision : NSNull.null, params ? params : NSNull.null] exception:&exception];
         id obj = ValueToID(ctx, fnRes);
         if (exception) {
+            result = [CBLFunctionResult new];
+            
             NSMutableDictionary *body = [NSMutableDictionary dictionary];
 
             JSStringRef error = JSValueToStringCopy(ctx, exception, NULL);
@@ -56,18 +59,7 @@
             result.body = body;
             result.status = kCBLStatusException;
         } else {
-            if ([obj isKindOfClass:[NSDictionary class]]) {
-                NSDictionary* resDict = (NSDictionary*)obj;
-                result.body = resDict[@"body"];
-                
-                if (resDict[@"status"])
-                    result.status = [resDict[@"status"] unsignedIntegerValue];
-                
-                if ([resDict[@"headers"] isKindOfClass:[NSDictionary class]])
-                    result.headers = resDict[@"headers"];
-            } else if ([obj isKindOfClass:[NSString class]]) {
-                result.body = obj;
-            }
+            result = [[CBLFunctionResult alloc] initWithResultObject: obj];
         }
         
         return result;
