@@ -1217,7 +1217,7 @@ static NSArray* parseJSONRevArrayQuery(NSString* queryStr) {
                              {@"update_seq", @(0)}, // TODO: implement
                              {@"committed_update_seq", @(0)},
                              {@"purge_seq", @(0)}, // TODO: Implement
-                             {@"disk_size", @(db.totalDataSize)},
+                             {@"disk_size", @(0)}, // FIXME: put db.totalDataSize back, very slow on db with large number of attachments
                              {@"instance_start_time", @(0)}, // TODO: implement
                              {@"disk_format_version", @(db.schemaVersion)});
     
