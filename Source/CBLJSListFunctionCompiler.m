@@ -15,6 +15,7 @@
 
 #import "CBLJSListFunctionCompiler.h"
 #import <CouchbaseLite/CBLQuery.h>
+#import <CouchbaseLite/CBLFunctionResult.h>
 #import <JavaScriptCore/JavaScript.h>
 #import <JavaScriptCore/JSStringRefCF.h>
 
@@ -71,8 +72,8 @@ static JSValueRef GetRowCallback(JSContextRef ctx, JSObjectRef function, JSObjec
         return nil;
     
     JSContextRef ctx = self.context;
-    CBLListFunctionBlock block = ^CBLListFunctionResult*(NSDictionary *head, NSDictionary *params, CBLListFunctionGetRowBlock getRowBlock) {
-        CBLListFunctionResult* result = [CBLListFunctionResult new];
+    CBLListFunctionBlock block = ^CBLFunctionResult*(NSDictionary *head, NSDictionary *params, CBLListFunctionGetRowBlock getRowBlock) {
+        CBLFunctionResult* result = nil;
         
         // using the same trick for the getRow function as for the emit in view
         // using global variable isn't the best idea, there should be a better
@@ -84,6 +85,8 @@ static JSValueRef GetRowCallback(JSContextRef ctx, JSObjectRef function, JSObjec
         
         id obj = ValueToID(ctx, fnRes);
         if (exception) {
+            result = [CBLFunctionResult new];
+            
             NSMutableDictionary *body = [NSMutableDictionary dictionary];
             
             JSStringRef error = JSValueToStringCopy(ctx, exception, NULL);
@@ -95,18 +98,7 @@ static JSValueRef GetRowCallback(JSContextRef ctx, JSObjectRef function, JSObjec
             result.body = body;
             result.status = kCBLStatusException;
         } else {
-            if ([obj isKindOfClass:[NSDictionary class]]) {
-                NSDictionary* resDict = (NSDictionary*)obj;
-                result.body = resDict[@"body"];
-                
-                if (resDict[@"status"])
-                    result.status = [resDict[@"status"] unsignedIntegerValue];
-                
-                if ([resDict[@"headers"] isKindOfClass:[NSDictionary class]])
-                    result.headers = resDict[@"headers"];
-            } else if ([obj isKindOfClass:[NSString class]]) {
-                result.body = obj;
-            }
+            result = [[CBLFunctionResult alloc] initWithResultObject: obj];
         }
         
         return result;

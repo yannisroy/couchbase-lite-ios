@@ -18,31 +18,8 @@
 #import "CBLDatabase.h"
 #import "CBL_Shared.h"
 #import "CBLQuery.h"
+#import "CBLFunctionResult.h"
 
-#pragma mark - LIST FUNCTION RESULT
-@implementation CBLListFunctionResult
-
-@synthesize status = _status;
-@synthesize headers = _headers;
-@synthesize body = _body;
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        _status = kCBLStatusOK;
-    }
-    return self;
-}
-
-- (NSString*) description {
-    return [NSString stringWithFormat:@"<%@: %p, %@ %@, %@ >",
-            NSStringFromClass(self.class),self,
-            [NSNumber numberWithInteger:_status], _headers, _body];
-}
-
-@end
-
-#pragma mark - LIST FUNCTION
 @implementation CBLListFunction
 
 - (instancetype) initWithDatabase: (CBLDatabase*)db name: (NSString*)name {
@@ -76,19 +53,19 @@
                  forType: @"listfunc" name: _name inDatabaseNamed: db.name];
 }
 
-- (CBLListFunctionResult*) runWithQueryEnumenator: (CBLQueryEnumerator *)queryEnumenator head: (NSDictionary*)head params: (NSDictionary*)params {
+- (CBLFunctionResult*) runWithQueryEnumenator: (CBLQueryEnumerator *)queryEnumenator head: (NSDictionary*)head params: (NSDictionary*)params {
     
     CBLListFunctionGetRowBlock getRowBlock = ^CBLQueryRow*(){
         CBLQueryRow *row = [queryEnumenator nextRow];
         return row;
     };
     
-    CBLListFunctionResult *resut = self.listFunctionBlock(head, params, getRowBlock);
+    CBLFunctionResult *resut = self.listFunctionBlock(head, params, getRowBlock);
     
     return resut;
 }
 
-- (CBLListFunctionResult*) runWithRows: (NSArray*)rows head: (NSDictionary*)head params: (NSDictionary*)params {
+- (CBLFunctionResult*) runWithRows: (NSArray*)rows head: (NSDictionary*)head params: (NSDictionary*)params {
     
     NSUInteger count = rows.count;
     __block NSUInteger idx = 0;
@@ -102,7 +79,7 @@
         }
     };
     
-    CBLListFunctionResult *resut = self.listFunctionBlock(head, params, getRowBlock);
+    CBLFunctionResult *resut = self.listFunctionBlock(head, params, getRowBlock);
     
     return resut;
 }

@@ -1179,11 +1179,10 @@ static NSArray* parseJSONRevArrayQuery(NSString* queryStr) {
     
     NSDictionary *params = [self requestObjectForDatabase:db docID:nil];
     
-    CBLListFunctionResult *result = [listFunction runWithRows:rows head:head params:params];
+    CBLFunctionResult *result = [listFunction runWithRows:rows head:head params:params];
     if (!result)
         return kCBLStatusCallbackError;
     
-    // FIXME: will crash if result.body is not a dict/array
     _response.bodyObject = result.body;
     [_response.headers addEntriesFromDictionary:result.headers];
     

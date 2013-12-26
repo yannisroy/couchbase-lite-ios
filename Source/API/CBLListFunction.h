@@ -15,26 +15,14 @@
 
 #import <Foundation/Foundation.h>
 #import "CBLStatus.h"
-@class CBLDatabase, CBLQueryRow, CBLQueryEnumerator;
-
-#pragma mark - LIST FUNCTION RESULT
-/** Since list function is really designed to work over HTTP, the result includes HTTP status code, headers and body.
- body can be string and any JSON serializable object */
-// TODO: investigate if we really need two different classes for show and list functions
-@interface CBLListFunctionResult : NSObject
-
-@property (readwrite) CBLStatus status;
-@property (strong) NSDictionary *headers;
-@property (strong) id body;
-
-@end
+@class CBLDatabase, CBLQueryRow, CBLQueryEnumerator, CBLFunctionResult;
 
 #pragma mark - BLOCK DEFINITIONS
 typedef CBLQueryRow* (^CBLListFunctionGetRowBlock)();
 
-typedef CBLListFunctionResult* (^CBLListFunctionBlock)(NSDictionary *head, NSDictionary *params, CBLListFunctionGetRowBlock getRowBlock);
+typedef CBLFunctionResult* (^CBLListFunctionBlock)(NSDictionary *head, NSDictionary *params, CBLListFunctionGetRowBlock getRowBlock);
 
-#define LISTBLOCK(BLOCK) ^CBLListFunctionResult(NSDictionary *head, NSDictionary *params, CBLListFunctionGetRowBlock getRowBlock){BLOCK}
+#define LISTBLOCK(BLOCK) ^CBLFunctionResult*(NSDictionary *head, NSDictionary *params, CBLListFunctionGetRowBlock getRowBlock){BLOCK}
 
 #pragma mark - COMPILER PROTOCOL
 /**  An external object that knows how to map source code of some sort into executable functions. Similar to the CBLViewCompiler */
@@ -63,12 +51,12 @@ typedef CBLListFunctionResult* (^CBLListFunctionBlock)(NSDictionary *head, NSDic
 /** The block that controls how view output it gets changed */
 @property (readwrite) CBLListFunctionBlock listFunctionBlock;
 
-- (CBLListFunctionResult*) runWithQueryEnumenator: (CBLQueryEnumerator*)queryEnumenator head: (NSDictionary*)head params: (NSDictionary*)params;
+- (CBLFunctionResult*) runWithQueryEnumenator: (CBLQueryEnumerator*)queryEnumenator head: (NSDictionary*)head params: (NSDictionary*)params;
 
 /**
  * @rows array for CBLQueryRow objects
  */
-- (CBLListFunctionResult*) runWithRows: (NSArray*)rows head: (NSDictionary*)head params: (NSDictionary*)params;
+- (CBLFunctionResult*) runWithRows: (NSArray*)rows head: (NSDictionary*)head params: (NSDictionary*)params;
 
 /** Registers an object that can compile map/reduce functions from source code. */
 + (void) setCompiler: (id<CBLListFunctionCompiler>)compiler;
