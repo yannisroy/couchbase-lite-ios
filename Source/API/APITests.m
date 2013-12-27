@@ -849,8 +849,8 @@ TestCase(API_ShowFunctions) {
     CAssertEqual(showFunction.name, @"show_func1");
     CAssert(showFunction.showFunctionBlock == NULL);
     
-    showFunction.showFunctionBlock = ^CBLShowFunctionResult*(NSDictionary *doc, NSDictionary *params) {
-        CBLShowFunctionResult *result = [CBLShowFunctionResult new];
+    showFunction.showFunctionBlock = ^CBLFunctionResult*(NSDictionary *doc, NSDictionary *params) {
+        CBLFunctionResult *result = [CBLFunctionResult new];
         result.status = [doc[@"sequence"] unsignedIntegerValue];
         result.headers = params;
         result.body = doc;
@@ -872,7 +872,7 @@ TestCase(API_ShowFunctions) {
     for (CBLQueryRow* row in rows) {
         CBLRevision* revision = row.document.currentRevision;
         NSDictionary* params = @{ @"index": @(expectedSequence) };
-        CBLShowFunctionResult *result = [showFunction runWithRevision:revision params:params];
+        CBLFunctionResult *result = [showFunction runWithRevision:revision params:params];
         
         CAssertEq(result.status, expectedSequence);
         CAssertEqual(result.headers, params);
@@ -907,9 +907,9 @@ TestCase(API_ListFunctions) {
     CAssertEqual(listFunction.name, @"list_func1");
     CAssert(listFunction.listFunctionBlock == NULL);
     
-    listFunction.listFunctionBlock = ^CBLListFunctionResult*(NSDictionary *head, NSDictionary *params, CBLListFunctionGetRowBlock getRowBlock) {
+    listFunction.listFunctionBlock = ^CBLFunctionResult*(NSDictionary *head, NSDictionary *params, CBLListFunctionGetRowBlock getRowBlock) {
         
-        CBLListFunctionResult *result = [CBLListFunctionResult new];
+        CBLFunctionResult *result = [CBLFunctionResult new];
         
         NSMutableArray *items = [NSMutableArray new];
         
@@ -927,7 +927,7 @@ TestCase(API_ListFunctions) {
     };
     CAssert(listFunction.listFunctionBlock != NULL);
     
-    CBLListFunctionResult *result = [listFunction runWithQueryEnumenator:rows head:nil params:nil];
+    CBLFunctionResult *result = [listFunction runWithQueryEnumenator:rows head:nil params:nil];
     CAssertEqual([result.body class], [NSArray class]);
     
     [result.body enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
