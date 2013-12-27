@@ -34,6 +34,8 @@ __thread
 #endif
 __unsafe_unretained CBLListFunctionGetRowBlock sCurrentGetRowBlock;
 
+static NSString* const kCBLCurrentFunctionResultKey = @"FunctionResult";
+
 // This is the body of the JavaScript "getRow()" function.
 static JSValueRef GetRowCallback(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject,
                                  size_t argumentCount, const JSValueRef arguments[],
@@ -43,18 +45,72 @@ static JSValueRef GetRowCallback(JSContextRef ctx, JSObjectRef function, JSObjec
     return IDToValue(ctx, [row asJSONDictionary]);
 }
 
+// This is the body of the JavaScript "start()" function.
+static JSValueRef StartCallback(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject,
+                                 size_t argumentCount, const JSValueRef arguments[],
+                                 JSValueRef* exception)
+{
+    CBLFunctionResult* currentFunctionResult = [NSThread currentThread].threadDictionary[kCBLCurrentFunctionResultKey];
+    // by this we're limiting start() to be only called once
+    if (!currentFunctionResult && argumentCount > 0) {
+        NSDictionary* startDict = ValueToID(ctx, arguments[0]);
+        currentFunctionResult = [[CBLFunctionResult alloc] initWithResultObject: startDict];
+        [NSThread currentThread].threadDictionary[kCBLCurrentFunctionResultKey] = currentFunctionResult;
+    }
+    
+    return JSValueMakeUndefined(ctx);
+}
+
+// This is the body of the JavaScript "send()" function.
+static JSValueRef SendCallback(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject,
+                                size_t argumentCount, const JSValueRef arguments[],
+                                JSValueRef* exception)
+{
+    if (argumentCount > 0) {
+        NSString* chunk = ValueToID(ctx, arguments[0]);
+        
+        CBLFunctionResult* currentFunctionResult = [NSThread currentThread].threadDictionary[kCBLCurrentFunctionResultKey];
+        if (!currentFunctionResult) {
+            currentFunctionResult = [[CBLFunctionResult alloc] initWithResultObject: chunk];
+            [NSThread currentThread].threadDictionary[kCBLCurrentFunctionResultKey] = currentFunctionResult;
+        } else {
+            // check if it's actually a string
+            [currentFunctionResult appendChunkToBody: chunk];
+        }
+    }
+    return JSValueMakeUndefined(ctx);
+}
+
 - (instancetype) init {
     self = [super init];
     if (self) {
         JSGlobalContextRef context = self.context;
         // Install the "getRow" function in the context's namespace:
-        JSStringRef name = JSStringCreateWithCFString(CFSTR("getRow"));
-        JSObjectRef fn = JSObjectMakeFunctionWithCallback(context, name, &GetRowCallback);
+        JSStringRef getRowName = JSStringCreateWithCFString(CFSTR("getRow"));
+        JSObjectRef getRowFn = JSObjectMakeFunctionWithCallback(context, getRowName, &GetRowCallback);
         JSObjectSetProperty(context, JSContextGetGlobalObject(context),
-                            name, fn,
+                            getRowName, getRowFn,
                             kJSPropertyAttributeReadOnly | kJSPropertyAttributeDontDelete,
                             NULL);
-        JSStringRelease(name);
+        JSStringRelease(getRowName);
+        
+        // Installing "start" function in the context's namespace:
+        JSStringRef startName = JSStringCreateWithCFString(CFSTR("start"));
+        JSObjectRef startFn = JSObjectMakeFunctionWithCallback(context, startName, &StartCallback);
+        JSObjectSetProperty(context, JSContextGetGlobalObject(context),
+                            startName, startFn,
+                            kJSPropertyAttributeReadOnly | kJSPropertyAttributeDontDelete,
+                            NULL);
+        JSStringRelease(startName);
+        
+        // Installing "start" function in the context's namespace:
+        JSStringRef sendName = JSStringCreateWithCFString(CFSTR("send"));
+        JSObjectRef sendFn = JSObjectMakeFunctionWithCallback(context, sendName, &SendCallback);
+        JSObjectSetProperty(context, JSContextGetGlobalObject(context),
+                            sendName, sendFn,
+                            kJSPropertyAttributeReadOnly | kJSPropertyAttributeDontDelete,
+                            NULL);
+        JSStringRelease(sendName);
     }
     return self;
 }
@@ -81,6 +137,10 @@ static JSValueRef GetRowCallback(JSContextRef ctx, JSObjectRef function, JSObjec
         sCurrentGetRowBlock = getRowBlock;
         JSValueRef exception = NULL;
         JSValueRef fnRes = [fn callWithParams:@[head ? head : NSNull.null, params ? params : NSNull.null] exception:&exception];
+        if ([NSThread currentThread].threadDictionary[kCBLCurrentFunctionResultKey]) {
+            result = [NSThread currentThread].threadDictionary[kCBLCurrentFunctionResultKey];
+            [[NSThread currentThread].threadDictionary removeObjectForKey:kCBLCurrentFunctionResultKey];
+        }
         sCurrentGetRowBlock = nil;
         
         id obj = ValueToID(ctx, fnRes);
@@ -97,7 +157,9 @@ static JSValueRef GetRowCallback(JSContextRef ctx, JSObjectRef function, JSObjec
             [body setValue:obj forKey:@"result"];
             result.body = body;
             result.status = kCBLStatusException;
-        } else {
+        } else if ([obj isKindOfClass:[NSString class]] && result) {
+            [result appendChunkToBody:obj];
+        } else if ([obj isKindOfClass:[NSDictionary class]]) { // optimization, vanilla couchdb doesn't support response object for list functions
             result = [[CBLFunctionResult alloc] initWithResultObject: obj];
         }
         

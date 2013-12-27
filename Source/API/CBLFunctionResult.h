@@ -26,4 +26,7 @@
 /** creates new object from JS func result, acts smartly depending if it's a string, array or an object */
 - (id) initWithResultObject: (id)object;
 
+/** smartly appends string chunk passed to send() function http://docs.couchdb.org/en/latest/query-server/javascript.html#send or to return */
+- (BOOL) appendChunkToBody: (NSString*)chunk;
+
 @end

@@ -20,7 +20,7 @@
         if ([object isKindOfClass:[NSDictionary class]]) {
             id code = object[@"code"];
             if ([code respondsToSelector:@selector(unsignedIntegerValue)])
-                _status = [code unsignedIntegerValue];
+                _status = (CBLStatus)[code unsignedIntegerValue];
             
             id headers = object[@"headers"];
             if ([headers isKindOfClass:[NSDictionary class]])
@@ -50,10 +50,26 @@
             
             // TODO: parse base64 and stop properties
         } else if ([object isKindOfClass:[NSString class]]) {
-            _body = object;
+            [self appendChunkToBody:object];
         }
     }
     return self;
+}
+
+#pragma mark helpers
+- (BOOL) appendChunkToBody: (NSString*)chunk {
+    if (!chunk || ![chunk isKindOfClass:[NSString class]])
+        return NO;
+    
+    if (!_body || ![_body isKindOfClass:[NSMutableString class]]) {
+        if ([_body isKindOfClass:[NSString class]])
+            _body = [NSMutableString stringWithString:_body];
+        else
+            _body = [NSMutableString new];
+    }
+    
+    [_body appendString:chunk];
+    return YES;
 }
 
 - (NSString*) description {
