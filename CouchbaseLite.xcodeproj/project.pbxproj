@@ -681,6 +681,11 @@
 		A9CF473C186F28AD004DB55E /* yajl_lex.c in Sources */ = {isa = PBXBuildFile; fileRef = 277B5C881821A8370088881E /* yajl_lex.c */; };
 		A9CF473D186F28AD004DB55E /* yajl_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 277B5C8A1821A8370088881E /* yajl_parser.c */; };
 		A9CF473E186F28AD004DB55E /* yajl_version.c in Sources */ = {isa = PBXBuildFile; fileRef = 277B5C8D1821A8370088881E /* yajl_version.c */; };
+		A9CF4740186F35C7004DB55E /* CBLJSFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = A9DD5F7E1868B0E900DA3C3A /* CBLJSFunction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9CF4741186F35C7004DB55E /* CBLJSViewCompiler.h in Headers */ = {isa = PBXBuildFile; fileRef = A9DD5F871868B13600DA3C3A /* CBLJSViewCompiler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9CF4742186F35C7004DB55E /* CBLJSFilterCompiler.h in Headers */ = {isa = PBXBuildFile; fileRef = A9DD5F7C1868B0E900DA3C3A /* CBLJSFilterCompiler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9CF4743186F35C7004DB55E /* CBLJSListFunctionCompiler.h in Headers */ = {isa = PBXBuildFile; fileRef = A9DD5F801868B0E900DA3C3A /* CBLJSListFunctionCompiler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9CF4744186F35C7004DB55E /* CBLJSShowFunctionCompiler.h in Headers */ = {isa = PBXBuildFile; fileRef = A9DD5F851868B13600DA3C3A /* CBLJSShowFunctionCompiler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9DD5F821868B0E900DA3C3A /* CBLJSFilterCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DD5F7D1868B0E900DA3C3A /* CBLJSFilterCompiler.m */; };
 		A9DD5F831868B0E900DA3C3A /* CBLJSFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DD5F7F1868B0E900DA3C3A /* CBLJSFunction.m */; };
 		A9DD5F841868B0E900DA3C3A /* CBLJSListFunctionCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DD5F811868B0E900DA3C3A /* CBLJSListFunctionCompiler.m */; };
@@ -2825,6 +2830,11 @@
 				A9CF4706186F1CA0004DB55E /* MYDynamicObject.h in Headers */,
 				A9CF4707186F1CD2004DB55E /* CBLGeometry.h in Headers */,
 				A9CF4708186F1D1A004DB55E /* CBLUITableSource.h in Headers */,
+				A9CF4740186F35C7004DB55E /* CBLJSFunction.h in Headers */,
+				A9CF4741186F35C7004DB55E /* CBLJSViewCompiler.h in Headers */,
+				A9CF4742186F35C7004DB55E /* CBLJSFilterCompiler.h in Headers */,
+				A9CF4743186F35C7004DB55E /* CBLJSListFunctionCompiler.h in Headers */,
+				A9CF4744186F35C7004DB55E /* CBLJSShowFunctionCompiler.h in Headers */,
 				A9CF4709186F1D23004DB55E /* CouchbaseLitePrivate.h in Headers */,
 				A9CF470A186F1D31004DB55E /* CBLStatus.h in Headers */,
 				A9CF470B186F1D4C004DB55E /* CBLModel_Internal.h in Headers */,
