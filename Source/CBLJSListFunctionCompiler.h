@@ -15,7 +15,8 @@
 //
 
 #import "CBLJSFunction.h"
-#import <CouchbaseLite/CBLListFunction.h>
+//#import <CouchbaseLite/CBLListFunction.h>
+#import "CBLListFunction.h"
 
 /** A show function compiler for CouchbaseLite that compiles and runs traditional JavaScript filter functions.
  Requires the JavaScriptCore framework; this is a public system framework on Mac OS but private
