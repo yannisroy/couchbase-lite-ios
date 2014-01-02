@@ -15,7 +15,7 @@
 //
 
 #import "CBLJSFilterCompiler.h"
-#import <CouchbaseLite/CBLRevision.h>
+#import "CBLRevision.h"
 #import <JavaScriptCore/JavaScript.h>
 #import <JavaScriptCore/JSStringRefCF.h>
 

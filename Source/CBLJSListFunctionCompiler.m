@@ -14,8 +14,8 @@
 //
 
 #import "CBLJSListFunctionCompiler.h"
-#import <CouchbaseLite/CBLQuery.h>
-#import <CouchbaseLite/CBLFunctionResult.h>
+#import "CBLQuery.h"
+#import "CBLFunctionResult.h"
 #import <JavaScriptCore/JavaScript.h>
 #import <JavaScriptCore/JSStringRefCF.h>
 

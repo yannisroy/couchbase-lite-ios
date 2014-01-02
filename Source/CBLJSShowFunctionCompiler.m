@@ -14,8 +14,8 @@
 //
 
 #import "CBLJSShowFunctionCompiler.h"
-#import <CouchbaseLite/CBLRevision.h>
-#import <CouchbaseLite/CBLFunctionResult.h>
+#import "CBLRevision.h"
+#import "CBLFunctionResult.h"
 #import <JavaScriptCore/JavaScript.h>
 #import <JavaScriptCore/JSStringRefCF.h>
 

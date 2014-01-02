@@ -14,7 +14,6 @@
 //
 
 #import "CBLJSFunction.h"
-//#import <CouchbaseLite/CBLShowFunction.h>
 #import "CBLShowFunction.h"
 
 /** A show function compiler for CouchbaseLite that compiles and runs traditional JavaScript filter functions.

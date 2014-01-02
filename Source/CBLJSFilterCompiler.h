@@ -15,7 +15,7 @@
 //
 
 #import "CBLJSFunction.h"
-#import <CouchbaseLite/CBLDatabase.h>
+#import "CBLDatabase.h"
 
 /** A filter compiler for CouchbaseLite that compiles and runs traditional JavaScript filter functions.
  Requires the JavaScriptCore framework; this is a public system framework on Mac OS but private
