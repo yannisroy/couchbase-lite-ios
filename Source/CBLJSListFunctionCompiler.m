@@ -26,22 +26,19 @@
 
 @implementation CBLJSListFunctionCompiler
 
-// This is a kludge that remembers the emit block passed to the currently active map block.
-// It's valid only while a map block is running its JavaScript function.
-static
-#if !TARGET_OS_IPHONE   /* iOS doesn't support __thread ? */
-__thread
-#endif
-__unsafe_unretained CBLListFunctionGetRowBlock sCurrentGetRowBlock;
-
 static NSString* const kCBLCurrentFunctionResultKey = @"FunctionResult";
+static NSString* const kCBLCurrentGetRowBlockKey = @"GetRowBlock";
 
 // This is the body of the JavaScript "getRow()" function.
 static JSValueRef GetRowCallback(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject,
                                  size_t argumentCount, const JSValueRef arguments[],
                                  JSValueRef* exception)
 {
-    CBLQueryRow *row = sCurrentGetRowBlock();
+    CBLListFunctionGetRowBlock getRowBlock = NSThread.currentThread.threadDictionary[kCBLCurrentGetRowBlockKey];
+    if (!getRowBlock)
+        return JSValueMakeUndefined(ctx);
+    
+    CBLQueryRow *row = getRowBlock();
     return IDToValue(ctx, [row asJSONDictionary]);
 }
 
@@ -50,12 +47,12 @@ static JSValueRef StartCallback(JSContextRef ctx, JSObjectRef function, JSObject
                                  size_t argumentCount, const JSValueRef arguments[],
                                  JSValueRef* exception)
 {
-    CBLFunctionResult* currentFunctionResult = [NSThread currentThread].threadDictionary[kCBLCurrentFunctionResultKey];
+    CBLFunctionResult* currentFunctionResult = NSThread.currentThread.threadDictionary[kCBLCurrentFunctionResultKey];
     // by this we're limiting start() to be only called once
     if (!currentFunctionResult && argumentCount > 0) {
         NSDictionary* startDict = ValueToID(ctx, arguments[0]);
         currentFunctionResult = [[CBLFunctionResult alloc] initWithResultObject: startDict];
-        [NSThread currentThread].threadDictionary[kCBLCurrentFunctionResultKey] = currentFunctionResult;
+        NSThread.currentThread.threadDictionary[kCBLCurrentFunctionResultKey] = currentFunctionResult;
     }
     
     return JSValueMakeUndefined(ctx);
@@ -69,10 +66,10 @@ static JSValueRef SendCallback(JSContextRef ctx, JSObjectRef function, JSObjectR
     if (argumentCount > 0) {
         NSString* chunk = ValueToID(ctx, arguments[0]);
         
-        CBLFunctionResult* currentFunctionResult = [NSThread currentThread].threadDictionary[kCBLCurrentFunctionResultKey];
+        CBLFunctionResult* currentFunctionResult = NSThread.currentThread.threadDictionary[kCBLCurrentFunctionResultKey];
         if (!currentFunctionResult) {
             currentFunctionResult = [[CBLFunctionResult alloc] initWithResultObject: chunk];
-            [NSThread currentThread].threadDictionary[kCBLCurrentFunctionResultKey] = currentFunctionResult;
+            NSThread.currentThread.threadDictionary[kCBLCurrentFunctionResultKey] = currentFunctionResult;
         } else {
             // check if it's actually a string
             [currentFunctionResult appendChunkToBody: chunk];
@@ -131,17 +128,14 @@ static JSValueRef SendCallback(JSContextRef ctx, JSObjectRef function, JSObjectR
     CBLListFunctionBlock block = ^CBLFunctionResult*(NSDictionary *head, NSDictionary *params, CBLListFunctionGetRowBlock getRowBlock) {
         CBLFunctionResult* result = nil;
         
-        // using the same trick for the getRow function as for the emit in view
-        // using global variable isn't the best idea, there should be a better
-        // way of doing it
-        sCurrentGetRowBlock = getRowBlock;
+        [NSThread.currentThread.threadDictionary setValue:getRowBlock forKey:kCBLCurrentGetRowBlockKey];
         JSValueRef exception = NULL;
         JSValueRef fnRes = [fn callWithParams:@[head ? head : NSNull.null, params ? params : NSNull.null] exception:&exception];
-        if ([NSThread currentThread].threadDictionary[kCBLCurrentFunctionResultKey]) {
-            result = [NSThread currentThread].threadDictionary[kCBLCurrentFunctionResultKey];
-            [[NSThread currentThread].threadDictionary removeObjectForKey:kCBLCurrentFunctionResultKey];
+        if (NSThread.currentThread.threadDictionary[kCBLCurrentFunctionResultKey]) {
+            result = NSThread.currentThread.threadDictionary[kCBLCurrentFunctionResultKey];
+            [NSThread.currentThread.threadDictionary removeObjectForKey:kCBLCurrentFunctionResultKey];
         }
-        sCurrentGetRowBlock = nil;
+        [NSThread.currentThread.threadDictionary removeObjectForKey:kCBLCurrentGetRowBlockKey];
         
         id obj = ValueToID(ctx, fnRes);
         if (exception) {
@@ -167,6 +161,5 @@ static JSValueRef SendCallback(JSContextRef ctx, JSObjectRef function, JSObjectR
     };
     return [block copy];
 }
-
 
 @end
