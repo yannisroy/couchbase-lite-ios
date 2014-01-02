@@ -3306,7 +3306,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# source \"$SCRIPT_INPUT_FILE_0\"";
+			shellScript = "source \"$SCRIPT_INPUT_FILE_0\"";
 			showEnvVarsInLog = 0;
 		};
 		27B0B8061492BE2100A817AD /* Copy Library */ = {
@@ -3382,7 +3382,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# source \"$SCRIPT_INPUT_FILE_0\"";
+			shellScript = "source \"$SCRIPT_INPUT_FILE_0\"";
 			showEnvVarsInLog = 0;
 		};
 		DA147C3214BCAC3B0052DA4D /* Copy Library */ = {
