@@ -9,15 +9,83 @@
 #import "CBLJSFunction.h"
 #import <JavaScriptCore/JavaScript.h>
 #import <JavaScriptCore/JSStringRefCF.h>
-
+#import "Logging.h"
 
 /* NOTE: JavaScriptCore is not a public system framework on iOS, so you'll need to link your iOS app
    with your own copy of it. See <https://github.com/phoboslab/JavaScriptCore-iOS>. */
 
 /* NOTE: This source file requires ARC. */
 
+NSString* const kCBLJSFunctionCurrentRequireContextKey = @"kCBLJSFunctionCurrentRequireContext";
 
 #pragma mark - JS COMPILER
+// This is the body of the JavaScript "require()" function.
+static JSValueRef RequireCallback(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject,
+                                  size_t argumentCount, const JSValueRef arguments[],
+                                  JSValueRef* exception)
+{
+    if (argumentCount < 1)
+        return JSValueMakeUndefined(ctx);
+    
+    NSDictionary* currentRequireContext = NSThread.currentThread.threadDictionary[kCBLJSFunctionCurrentRequireContextKey];
+    
+    NSString* moduleName = ValueToID(ctx, arguments[0]);
+    if (!moduleName || ![moduleName isKindOfClass: [NSString class]])
+        return JSValueMakeUndefined(ctx);
+    
+    // module name is expected as lib/foo/bar, so what we're going to do here
+    // is to replace / with . and use valueForKeyPath: to perform module code lookup
+    
+    // safety first, if first char is @ valueForKeyPath: will treat is as built-in function like @sum
+    if ([moduleName hasPrefix:@"@"])
+        moduleName = [moduleName substringFromIndex: 1];
+    
+    // if there's a . in filename – then we obviously screwed
+    NSString* moduleLookupKeyPath = [moduleName stringByReplacingOccurrencesOfString: @"/" withString: @"."];
+    
+    NSString* moduleSourceCode = [currentRequireContext valueForKeyPath:moduleLookupKeyPath];
+    if (!moduleSourceCode || ![moduleSourceCode isKindOfClass:[NSString class]])
+        return JSValueMakeUndefined(ctx);
+    
+    // since require isn't implemented in JSC, we will emulate it by wrapping source into anonynous function which returns exports
+    // this is a common practice when pre-compiling CommonJS extensions for browsers.
+    // obsiously if you have global variable defined in module it's going to leak into global namespace
+    // also, requiring module multiple times will re-evaluate code same number of times
+    NSString* wrappedSourceCode = [NSString stringWithFormat:@"var module={exports:{}};var exports=module.exports;\n%@;\nreturn exports;",moduleSourceCode];
+    
+    LogTo(JSVerbose, @"executing require('%@') as\n%@", moduleName, wrappedSourceCode);
+    
+    JSStringRef jsBody = JSStringCreateWithCFString((__bridge CFStringRef)wrappedSourceCode);
+    JSObjectRef fn = JSObjectMakeFunction(ctx, NULL, 0, NULL, jsBody, NULL, 1, exception);
+    JSStringRelease(jsBody);
+    if (!fn || *exception) {
+        WarnJSException(ctx, @"JS function compile failed", *exception);
+        return JSValueMakeUndefined(ctx);
+    }
+    JSValueRef result = JSObjectCallAsFunction(ctx, fn, thisObject, 0, NULL, exception);
+    if (*exception) {
+        WarnJSException(ctx, @"exception in foojs", *exception);
+    }
+    
+    return result;
+}
+
+// This is the body of the JavaScript "log()" function.
+static JSValueRef LogCallback(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject,
+                              size_t argumentCount, const JSValueRef arguments[],
+                              JSValueRef* exception)
+{
+    NSMutableString *logStr = [NSMutableString string];
+    
+    for (size_t i = 0; i < argumentCount; i++) {
+        JSValueRef argument = arguments[i];
+        id arg = ValueToID(ctx, argument);
+        [logStr appendFormat:@"%@", arg];
+    }
+    LogTo(CBLJS, @"%@", logStr);
+    return JSValueMakeUndefined(ctx);
+}
+
 @implementation CBLJSCompiler
 {
     JSGlobalContextRef _context;
@@ -33,6 +101,24 @@
         _context = JSGlobalContextCreate(NULL);
         if (!_context)
             return nil;
+        
+        // callback for log
+        JSStringRef logName = JSStringCreateWithCFString(CFSTR("log"));
+        JSObjectRef logFn = JSObjectMakeFunctionWithCallback(_context, logName, &LogCallback);
+        JSObjectSetProperty(_context, JSContextGetGlobalObject(_context),
+                            logName, logFn,
+                            kJSPropertyAttributeReadOnly | kJSPropertyAttributeDontDelete,
+                            NULL);
+        JSStringRelease(logName);
+        
+        // callback for require
+        JSStringRef requireName = JSStringCreateWithCFString(CFSTR("require"));
+        JSObjectRef requireFn = JSObjectMakeFunctionWithCallback(_context, requireName, &RequireCallback);
+        JSObjectSetProperty(_context, JSContextGetGlobalObject(_context),
+                            requireName, requireFn,
+                            kJSPropertyAttributeReadOnly | kJSPropertyAttributeDontDelete,
+                            NULL);
+        JSStringRelease(requireName);
     }
     return self;
 }
@@ -54,16 +140,31 @@
     CBLJSCompiler* _compiler;
     unsigned _nParams;
     JSObjectRef _fn;
+    NSDictionary *_requireContext;
 }
+
+@synthesize requireContext=_requireContext;
 
 - (instancetype) initWithCompiler: (CBLJSCompiler*)compiler
                        sourceCode: (NSString*)source
                        paramNames: (NSArray*)paramNames
 {
+    return [self initWithCompiler: compiler 
+                       sourceCode: source 
+                       paramNames:paramNames 
+                   requireContext:nil];
+}
+
+- (instancetype) initWithCompiler: (CBLJSCompiler*)compiler
+                       sourceCode: (NSString*)source
+                       paramNames: (NSArray*)paramNames
+                   requireContext: (NSDictionary*)requireContext
+{
     self = [super init];
     if (self) {
         _compiler = compiler;
         _nParams = (unsigned)paramNames.count;
+        _requireContext = requireContext;
 
         // The source code given is a complete function, like "function(doc){....}".
         // But JSObjectMakeFunction wants the source code of the _body_ of a function.
@@ -93,6 +194,8 @@
 }
 
 - (JSValueRef) call: (id)param1, ... {
+    if (_requireContext) // because nil will cause exception
+        NSThread.currentThread.threadDictionary[kCBLJSFunctionCurrentRequireContextKey] = _requireContext;
     JSContextRef context = _compiler.context;
     JSValueRef jsParams[_nParams];
     jsParams[0] = IDToValue(context, param1);
@@ -107,10 +210,14 @@
     JSValueRef result = JSObjectCallAsFunction(context, _fn, NULL, _nParams, jsParams, &exception);
     if (!result)
         WarnJSException(context, @"JS function threw exception", exception);
+    if (_requireContext)
+        [NSThread.currentThread.threadDictionary removeObjectForKey:kCBLJSFunctionCurrentRequireContextKey];
     return result;
 }
 
-- (JSValueRef) callWithParams: (NSArray*)params exception:(JSValueRef*)outException {
+- (JSValueRef) callWithParams: (NSArray*)params exception: (JSValueRef*)outException {
+    if (_requireContext) // because nil will cause exception
+        NSThread.currentThread.threadDictionary[kCBLJSFunctionCurrentRequireContextKey] = _requireContext;
     JSContextRef context = _compiler.context;
     NSUInteger params_count = params.count;
     JSValueRef jsParams[params_count];
@@ -118,7 +225,6 @@
         id obj = params[idx];
         jsParams[idx] = IDToValue(context, obj);
     }
-    
     JSValueRef exception = NULL;
     JSValueRef result = JSObjectCallAsFunction(context, _fn, NULL, _nParams, jsParams, &exception);
     if (exception) {
@@ -126,7 +232,8 @@
         if (outException) // bloody pointers
             *outException = exception;
     }
-    
+    if (_requireContext)
+        [NSThread.currentThread.threadDictionary removeObjectForKey:kCBLJSFunctionCurrentRequireContextKey];
     return result;
 }
 

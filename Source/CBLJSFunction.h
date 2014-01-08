@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScript.h>
 
-JSValueRef IDToValue(JSContextRef ctx, id object);
-id ValueToID(JSContextRef ctx, JSValueRef value);
-void WarnJSException(JSContextRef context, NSString* warning, JSValueRef exception);
+extern JSValueRef IDToValue(JSContextRef ctx, id object);
+extern id ValueToID(JSContextRef ctx, JSValueRef value);
+extern void WarnJSException(JSContextRef context, NSString* warning, JSValueRef exception);
+
+extern NSString* const kCBLJSFunctionCurrentRequireContextKey;
 
 /** Abstract base class for JavaScript-based CBL*Compilers */
 @interface CBLJSCompiler : NSObject
@@ -25,6 +27,13 @@ void WarnJSException(JSContextRef context, NSString* warning, JSValueRef excepti
 - (instancetype) initWithCompiler: (CBLJSCompiler*)compiler
                        sourceCode: (NSString*)source
                        paramNames: (NSArray*)paramNames;
+
+- (instancetype) initWithCompiler: (CBLJSCompiler*)compiler
+                       sourceCode: (NSString*)source
+                       paramNames: (NSArray*)paramNames
+                   requireContext: (NSDictionary*)requireContext;
+
+@property (readonly) NSDictionary* requireContext;
 
 - (JSValueRef) call: (id)param1, ...;
 
