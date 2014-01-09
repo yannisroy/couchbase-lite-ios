@@ -35,11 +35,14 @@ static JSValueRef RequireCallback(JSContextRef ctx, JSObjectRef function, JSObje
     
     // module name is expected as lib/foo/bar, so what we're going to do here
     // is to replace / with . and use valueForKeyPath: to perform module code lookup
-    // TODO: handle case where module name starts as ./
     
     // safety first, if first char is @ valueForKeyPath: will treat is as built-in function like @sum
     if ([moduleName hasPrefix:@"@"])
         moduleName = [moduleName substringFromIndex: 1];
+    
+    // FIXME: evil hack to fix my project
+    if ([moduleName hasPrefix:@"./"])
+        moduleName = [NSString stringWithFormat: @"lib/%@", [moduleName substringFromIndex: 2]];
     
     // if there's a . in filename – then we obviously screwed
     NSString* moduleLookupKeyPath = [moduleName stringByReplacingOccurrencesOfString: @"/" withString: @"."];
