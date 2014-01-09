@@ -756,7 +756,6 @@
 		A932B2EF1875F265001B540A /* HTTPFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2753156914ACEFC90065964D /* HTTPFileResponse.m */; };
 		A932B2F01875F265001B540A /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2753156D14ACEFC90065964D /* WebSocket.m */; };
 		A932B2F11875F265001B540A /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 275315A914ACF00B0065964D /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-Wno-undeclared-selector -Wno-deprecated-declarations"; }; };
-		A932B2F21875F2F2001B540A /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 275315B814ACF0330065964D /* DDLog.m */; settings = {COMPILER_FLAGS = "-Wno-deprecated-declarations"; }; };
 		A932B2F41875F3FC001B540A /* CouchbaseLite.h in Headers */ = {isa = PBXBuildFile; fileRef = 270B3E1F148938D800E0A926 /* CouchbaseLite.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A932B2F51875F3FC001B540A /* CBLManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DA4343159125B500F9E7B5 /* CBLManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A932B2F61875F3FC001B540A /* CBLDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DA42FB158E7D3500F9E7B5 /* CBLDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -3960,7 +3959,6 @@
 				A932B2EC1875F265001B540A /* HTTPMessage.m in Sources */,
 				A932B2ED1875F265001B540A /* HTTPServer.m in Sources */,
 				A932B2F11875F265001B540A /* GCDAsyncSocket.m in Sources */,
-				A932B2F21875F2F2001B540A /* DDLog.m in Sources */,
 				A932B2E71875F265001B540A /* DDData.m in Sources */,
 				A932B2E81875F265001B540A /* DDNumber.m in Sources */,
 				A932B2E91875F265001B540A /* DDRange.m in Sources */,

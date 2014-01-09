@@ -34,8 +34,8 @@
 static NSArray* GetIPv4Addresses(void);
 
 
-@interface CBLDDLogger : DDAbstractLogger
-@end
+//@interface CBLDDLogger : DDAbstractLogger
+//@end
 
 
 @implementation CBLListener
@@ -51,13 +51,13 @@ static NSArray* GetIPv4Addresses(void);
 }
 
 
-+ (void) initialize {
-    if (self == [CBLListener class]) {
-        if (WillLogTo(CBLListener)) {
-            [DDLog addLogger:[[CBLDDLogger alloc] init]];
-        }
-    }
-}
+//+ (void) initialize {
+//    if (self == [CBLListener class]) {
+//        if (WillLogTo(CBLListener)) {
+//            [DDLog addLogger:[[CBLDDLogger alloc] init]];
+//        }
+//    }
+//}
 
 
 @synthesize readOnly=_readOnly, requiresAuth=_requiresAuth, realm=_realm,
@@ -149,14 +149,14 @@ static NSArray* GetIPv4Addresses(void);
 
 
 
-// Adapter to output DDLog messages (from CocoaHTTPServer) via MYUtilities logging.
-@implementation CBLDDLogger
-
-- (void) logMessage:(DDLogMessage *)logMessage {
-    Log(@"%@", logMessage->logMsg);
-}
-
-@end
+//// Adapter to output DDLog messages (from CocoaHTTPServer) via MYUtilities logging.
+//@implementation CBLDDLogger
+//
+//- (void) logMessage:(DDLogMessage *)logMessage {
+//    Log(@"%@", logMessage->logMsg);
+//}
+//
+//@end
 
 
 
