@@ -1147,6 +1147,15 @@ static NSArray* parseJSONRevArrayQuery(NSString* queryStr) {
 
 #pragma mark - LIST FUNCTION QUERIES:
 - (CBLStatus) do_GET: (CBLDatabase*)db designDocID: (NSString*)designDoc list: (NSString*)listName view: (NSString *)viewName {
+    return [self queryDb: db designDocID: designDoc list: listName view: viewName keys: nil];
+}
+
+- (CBLStatus) do_POST: (CBLDatabase*)db designDocID: (NSString*)designDoc list: (NSString*)listName view: (NSString *)viewName {
+    NSArray* keys = $castIf(NSArray, (self.bodyAsDictionary)[@"keys"]);
+    return [self queryDb: db designDocID: designDoc list: listName view: viewName keys: keys];
+}
+
+- (CBLStatus) queryDb: (CBLDatabase*)db designDocID: (NSString*)designDoc list: (NSString*)listName view: (NSString *)viewName keys: (NSArray*)keys {
     CBLStatus status;
     NSString* cblListName = $sprintf(@"%@/%@", designDoc, listName);
     CBLListFunction* listFunction = [_db compileListFunctionNamed: cblListName status: &status];
@@ -1161,6 +1170,8 @@ static NSArray* parseJSONRevArrayQuery(NSString* queryStr) {
     CBLQueryOptions options;
     if (![self getQueryOptions: &options])
         return kCBLStatusBadRequest;
+    if (keys)
+        options.keys = keys;
     if (!view.reduceBlock)
         options.reduce = false;
     
@@ -1187,7 +1198,6 @@ static NSArray* parseJSONRevArrayQuery(NSString* queryStr) {
     [_response.headers addEntriesFromDictionary:result.headers];
     
     return result.status;
-    
 }
 
 #pragma mark - HELPERS
