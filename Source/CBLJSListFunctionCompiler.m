@@ -152,8 +152,11 @@ static JSValueRef SendCallback(JSContextRef ctx, JSObjectRef function, JSObjectR
             [body setValue:obj forKey:@"result"];
             result.body = body;
             result.status = kCBLStatusException;
-        } else if ([obj isKindOfClass:[NSString class]] && result) {
-            [result appendChunkToBody:obj];
+        } else if ([obj isKindOfClass:[NSString class]]) {
+            if (!result)
+                result = [[CBLFunctionResult alloc] initWithResultObject: obj];
+            else
+                [result appendChunkToBody:obj];
         } else if ([obj isKindOfClass:[NSDictionary class]]) { // optimization, vanilla couchdb doesn't support response object for list functions
             result = [[CBLFunctionResult alloc] initWithResultObject: obj];
         }
