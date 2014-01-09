@@ -179,6 +179,17 @@ static NSString* normalizeHostname( NSString* hostname ) {
     }
     
     NSThread* loaderThread = [NSThread currentThread];
+    
+    // I don't really know why did this fixed my problem and if it actually fixed it
+    // and didn't introduced new issues, but anyways
+    // in cases when we have a webpage in UIWebView which requests data using NSURLProtocol
+    // in synchronous mode (without callbacks), our callbacks such as onResponseReady:
+    // will never be called.
+    NSString* currentMode = [NSRunLoop currentRunLoop].currentMode;
+    if (!currentMode)
+        currentMode = (__bridge NSString *)kCFRunLoopCommonModes;
+    NSArray* runLoopModes = @[currentMode];
+    
     _router = [[CBL_Router alloc] initWithServer: server request: self.request isLocal: YES];
     
     __weak id weakSelf = self;
@@ -188,21 +199,24 @@ static NSString* normalizeHostname( NSString* hostname ) {
         [strongSelf performSelector: @selector(onResponseReady:)
                            onThread: loaderThread
                          withObject: routerResponse
-                      waitUntilDone: NO];
+                      waitUntilDone: NO
+                              modes: runLoopModes];
     };
     _router.onDataAvailable = ^(NSData* data, BOOL finished) {
         id strongSelf = weakSelf;
         [strongSelf performSelector: @selector(onDataAvailable:)
                            onThread: loaderThread
                          withObject: data
-                      waitUntilDone: NO];
+                      waitUntilDone: NO
+                              modes: runLoopModes];
     };
     _router.onFinished = ^{
         id strongSelf = weakSelf;
         [strongSelf performSelector: @selector(onFinished)
                            onThread: loaderThread
                          withObject: nil
-                      waitUntilDone: NO];
+                      waitUntilDone: NO
+                              modes: runLoopModes];
     };
     [_router start];
 }
