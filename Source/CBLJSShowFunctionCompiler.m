@@ -26,14 +26,15 @@
 
 @implementation CBLJSShowFunctionCompiler
 
-- (CBLShowFunctionBlock) compileShowFunction: (NSString*)showSource language: (NSString*)language {
+- (CBLShowFunctionBlock) compileShowFunction: (NSString*)showSource language: (NSString*)language userInfo:(NSDictionary *)userInfo {
     if (![language isEqualToString: @"javascript"])
         return nil;
     
     // Compile the function:
     CBLJSFunction* fn = [[CBLJSFunction alloc] initWithCompiler: self
                                                      sourceCode: showSource
-                                                     paramNames: @[@"doc", @"req"]];
+                                                     paramNames: @[@"doc", @"req"]
+                                                 requireContext: userInfo];
     if (!fn)
         return nil;
     

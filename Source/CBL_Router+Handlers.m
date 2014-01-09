@@ -1105,7 +1105,7 @@ static NSArray* parseJSONRevArrayQuery(NSString* queryStr) {
         return kCBLStatusNotModified;
 
     CBLView* view = [_db viewNamed: @"@@TEMPVIEW@@"];
-    if (![view compileFromProperties: props language: @"javascript" version:nil])
+    if (![view compileFromProperties: props language: @"javascript" version: nil userInfo: nil])
         return kCBLStatusBadRequest;
 
     @try {

@@ -37,7 +37,9 @@ id CBLTextKey(NSString* text);
 /** An external object that knows how to map source code of some sort into executable functions. */
 @protocol CBLViewCompiler <NSObject>
 - (CBLMapBlock) compileMapFunction: (NSString*)mapSource language: (NSString*)language;
+- (CBLMapBlock) compileMapFunction: (NSString*)mapSource language: (NSString*)language userInfo: (NSDictionary*)userInfo;
 - (CBLReduceBlock) compileReduceFunction: (NSString*)reduceSource language: (NSString*)language;
+- (CBLReduceBlock) compileReduceFunction: (NSString*)reduceSource language: (NSString*)language userInfo: (NSDictionary*)userInfo;
 @end
 
 

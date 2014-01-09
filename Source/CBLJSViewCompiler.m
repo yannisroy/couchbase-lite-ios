@@ -69,15 +69,19 @@ static JSValueRef EmitCallback(JSContextRef ctx, JSObjectRef function, JSObjectR
     return self;
 }
 
-
 - (CBLMapBlock) compileMapFunction: (NSString*)mapSource language: (NSString*)language {
+    return [self compileMapFunction: mapSource language: language userInfo: nil];
+}
+
+- (CBLMapBlock) compileMapFunction: (NSString*)mapSource language: (NSString*)language userInfo: (NSDictionary*)userInfo {
     if (![language isEqualToString: @"javascript"])
         return nil;
 
     // Compile the function:
     CBLJSFunction* fn = [[CBLJSFunction alloc] initWithCompiler: self
                                                    sourceCode: mapSource
-                                                   paramNames: @[@"doc"]];
+                                                   paramNames: @[@"doc"]
+                                               requireContext: userInfo];
     if (!fn)
         return nil;
 
@@ -90,15 +94,19 @@ static JSValueRef EmitCallback(JSContextRef ctx, JSObjectRef function, JSObjectR
     return [mapBlock copy];
 }
 
-
 - (CBLReduceBlock) compileReduceFunction: (NSString*)reduceSource language: (NSString*)language {
+    return [self compileReduceFunction: reduceSource language: language userInfo: nil];
+}
+
+- (CBLReduceBlock) compileReduceFunction: (NSString*)reduceSource language: (NSString*)language userInfo: (NSDictionary*)userInfo {
     if (![language isEqualToString: @"javascript"])
         return nil;
 
     // Compile the function:
     CBLJSFunction* fn = [[CBLJSFunction alloc] initWithCompiler: self
                                                    sourceCode: reduceSource
-                                                   paramNames: @[@"keys", @"values", @"rereduce"]];
+                                                   paramNames: @[@"keys", @"values", @"rereduce"]
+                                               requireContext: userInfo];
     if (!fn)
         return nil;
 

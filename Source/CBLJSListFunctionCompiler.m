@@ -113,14 +113,15 @@ static JSValueRef SendCallback(JSContextRef ctx, JSObjectRef function, JSObjectR
 }
 
 
-- (CBLListFunctionBlock) compileListFunction: (NSString*)listSource language: (NSString*)language {
+- (CBLListFunctionBlock) compileListFunction: (NSString*)listSource language: (NSString*)language userInfo:(NSDictionary *)userInfo {
     if (![language isEqualToString: @"javascript"])
         return nil;
     
     // Compile the function:
     CBLJSFunction* fn = [[CBLJSFunction alloc] initWithCompiler: self
                                                      sourceCode: listSource
-                                                     paramNames: @[@"head", @"req"]];
+                                                     paramNames: @[@"head", @"req"]
+                                                 requireContext: userInfo];
     if (!fn)
         return nil;
     

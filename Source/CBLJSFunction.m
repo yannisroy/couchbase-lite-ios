@@ -35,6 +35,7 @@ static JSValueRef RequireCallback(JSContextRef ctx, JSObjectRef function, JSObje
     
     // module name is expected as lib/foo/bar, so what we're going to do here
     // is to replace / with . and use valueForKeyPath: to perform module code lookup
+    // TODO: handle case where module name starts as ./
     
     // safety first, if first char is @ valueForKeyPath: will treat is as built-in function like @sum
     if ([moduleName hasPrefix:@"@"])
@@ -82,7 +83,7 @@ static JSValueRef LogCallback(JSContextRef ctx, JSObjectRef function, JSObjectRe
         id arg = ValueToID(ctx, argument);
         [logStr appendFormat:@"%@", arg];
     }
-    LogTo(CBLJS, @"%@", logStr);
+    LogTo(JS, @"%@", logStr);
     return JSValueMakeUndefined(ctx);
 }
 

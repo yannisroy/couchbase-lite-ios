@@ -20,11 +20,14 @@
 @implementation CBLShowFunction (Internal)
 
 - (BOOL) compileFromSource: (NSString*)showSource
-                  language: (NSString*)language {
+                  language: (NSString*)language
+                  userInfo: (NSDictionary*)userInfo {
     if (!language)
         language = @"javascript";
     
-    CBLShowFunctionBlock showFunctionBlock = [[CBLShowFunction compiler] compileShowFunction: showSource language: language];
+    CBLShowFunctionBlock showFunctionBlock = [CBLShowFunction.compiler compileShowFunction: showSource 
+                                                                                  language: language 
+                                                                                  userInfo: userInfo];
     if (!showFunctionBlock) {
         Warn(@"Show function %@ has unknown source function: %@", _name, showSource);
         return NO;

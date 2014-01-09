@@ -91,13 +91,13 @@ id CBLGeoJSONKey(NSDictionary* geoJSON) {
 //}
 
 
-- (BOOL) compileFromProperties: (NSDictionary*)viewProps language: (NSString*)language version: (NSString*)version {
+- (BOOL) compileFromProperties: (NSDictionary*)viewProps language: (NSString*)language version: (NSString*)version userInfo: (NSDictionary*)userInfo {
     if (!language)
         language = @"javascript";
     NSString* mapSource = viewProps[@"map"];
     if (!mapSource)
         return NO;
-    CBLMapBlock mapBlock = [[CBLView compiler] compileMapFunction: mapSource language: language];
+    CBLMapBlock mapBlock = [[CBLView compiler] compileMapFunction: mapSource language: language userInfo: userInfo];
     if (!mapBlock) {
         Warn(@"View %@ has unknown map function: %@", _name, mapSource);
         return NO;
@@ -105,7 +105,7 @@ id CBLGeoJSONKey(NSDictionary* geoJSON) {
     NSString* reduceSource = viewProps[@"reduce"];
     CBLReduceBlock reduceBlock = NULL;
     if (reduceSource) {
-        reduceBlock =[[CBLView compiler] compileReduceFunction: reduceSource language: language];
+        reduceBlock =[[CBLView compiler] compileReduceFunction: reduceSource language: language userInfo: userInfo];
         if (!reduceBlock) {
             Warn(@"View %@ has unknown reduce function: %@", _name, reduceSource);
             return NO;

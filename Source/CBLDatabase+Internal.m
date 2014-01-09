@@ -1243,6 +1243,7 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
                         key: (NSString*)key
                    language: (NSString**)outLanguage
                    revision: (NSString**)outRevision
+                  designDoc: (NSDictionary**)outDesignDoc
 {
     NSArray* path = [fnName componentsSeparatedByString: @"/"];
     if (path.count != 2)
@@ -1253,6 +1254,7 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
         return nil;
     if (outLanguage) *outLanguage = rev[@"language"] ?: @"javascript";
     if (outRevision) *outRevision = rev.revID;
+    if (outDesignDoc) *outDesignDoc = rev.properties;
     NSDictionary* container = $castIf(NSDictionary, rev[key]);
     return container[path[1]];
 }
@@ -1271,7 +1273,8 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
     NSString* source = $castIf(NSString, [self getDesignDocFunction: filterName
                                                                 key: @"filters"
                                                            language: &language
-                                                           revision: NULL]);
+                                                           revision: NULL
+                                                          designDoc: NULL]);
     if (!source) {
         *outStatus = kCBLStatusNotFound;
         return nil;
@@ -1332,10 +1335,12 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
     }
     NSString* language;
     NSString* revision;
+    NSDictionary* designDoc;
     NSDictionary* viewProps = $castIf(NSDictionary, [self getDesignDocFunction: tdViewName
                                                                            key: @"views"
                                                                       language: &language
-                                                                      revision: &revision]);
+                                                                      revision: &revision
+                                                                     designDoc: &designDoc]);
     if (!viewProps) {
         *outStatus = kCBLStatusNotFound;
         return nil;
@@ -1349,7 +1354,7 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
     
     // no luck, creating a new view from code from ddoc
     view = [self viewNamed: viewNameWithRev];
-    if (![view compileFromProperties: viewProps language: language version:revision]) {
+    if (![view compileFromProperties: viewProps language: language version: revision userInfo: designDoc]) {
         *outStatus = kCBLStatusCallbackError;
         return nil;
     }
@@ -1370,10 +1375,12 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
     }
     NSString* language;
     NSString* revision;
+    NSDictionary *designDoc;
     NSString* showSource = $castIf(NSString, [self getDesignDocFunction: cblShowName
                                                                     key: @"shows"
                                                                language: &language
-                                                               revision: &revision]);
+                                                               revision: &revision
+                                                              designDoc: &designDoc]);
     if (!showSource) {
         *outStatus = kCBLStatusNotFound;
         return nil;
@@ -1387,7 +1394,7 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
 
     // well, compiling from source then
     showFunction = [self showFunctionNamed: showNameWithRev];
-    if (![showFunction compileFromSource:showSource language:language]) {
+    if (![showFunction compileFromSource: showSource language: language userInfo: designDoc]) {
         *outStatus = kCBLStatusCallbackError;
         return nil;
     }
@@ -1407,10 +1414,12 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
     }
     NSString* language;
     NSString* revision;
+    NSDictionary* designDoc;
     NSString* listSource = $castIf(NSString, [self getDesignDocFunction: cblListName
                                                                     key: @"lists"
                                                                language: &language
-                                                               revision: &revision]);
+                                                               revision: &revision
+                                                              designDoc: &designDoc]);
     if (!listSource) {
         *outStatus = kCBLStatusNotFound;
         return nil;
@@ -1423,7 +1432,7 @@ const CBLChangesOptions kDefaultCBLChangesOptions = {UINT_MAX, 0, NO, NO, YES};
         return listFunction;
     
     listFunction = [self listFunctionNamed: listNameWithRev];
-    if (![listFunction compileFromSource:listSource language:language]) {
+    if (![listFunction compileFromSource: listSource language: language userInfo: designDoc]) {
         *outStatus = kCBLStatusCallbackError;
         return nil;
     }

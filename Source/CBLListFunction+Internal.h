@@ -26,6 +26,7 @@
 
 /** Compiles a list function (using the registered CBLListFunctionCompiler) from the properties found in a CouchDB-style design document. */
 - (BOOL) compileFromSource: (NSString*)showSource
-                  language: (NSString*)language;
+                  language: (NSString*)language
+                  userInfo: (NSDictionary*)userInfo;
 
 @end

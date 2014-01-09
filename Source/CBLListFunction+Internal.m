@@ -19,11 +19,13 @@
 
 - (BOOL) compileFromSource: (NSString*)listSource
                   language: (NSString*)language
-{
+                  userInfo: (NSDictionary*)userInfo {
     if (!language)
         language = @"javascript";
     
-    CBLListFunctionBlock listFunctionBlock = [[CBLListFunction compiler] compileListFunction: listSource language: language];
+    CBLListFunctionBlock listFunctionBlock = [CBLListFunction.compiler compileListFunction: listSource
+                                                                                  language: language
+                                                                                  userInfo: userInfo];
     if (!listFunctionBlock) {
         Warn(@"List function %@ has unknown source function: %@", _name, listSource);
         return NO;

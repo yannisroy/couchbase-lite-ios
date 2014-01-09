@@ -27,7 +27,8 @@ typedef CBLFunctionResult* (^CBLListFunctionBlock)(NSDictionary *head, NSDiction
 #pragma mark - COMPILER PROTOCOL
 /**  An external object that knows how to map source code of some sort into executable functions. Similar to the CBLViewCompiler */
 @protocol CBLListFunctionCompiler <NSObject>
-- (CBLListFunctionBlock) compileListFunction: (NSString*)showSource language: (NSString*)language;
+@required
+- (CBLListFunctionBlock) compileListFunction: (NSString*)showSource language: (NSString*)language userInfo: (NSDictionary*)userInfo;
 @end
 
 #pragma mark - LIST FUNCTION

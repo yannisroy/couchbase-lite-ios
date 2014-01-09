@@ -22,7 +22,8 @@ typedef CBLFunctionResult* (^CBLShowFunctionBlock)(NSDictionary *revision, NSDic
 
 /**  An external object that knows how to map source code of some sort into executable functions. Similar to the CBLViewCompiler */
 @protocol CBLShowFunctionCompiler <NSObject>
-- (CBLShowFunctionBlock) compileShowFunction: (NSString*)showSource language: (NSString*)language;
+@required
+- (CBLShowFunctionBlock) compileShowFunction: (NSString*)showSource language: (NSString*)language userInfo: (NSDictionary*)userInfo;
 @end
 
 
