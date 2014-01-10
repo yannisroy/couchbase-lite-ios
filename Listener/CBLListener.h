@@ -70,4 +70,7 @@
 /** Stops the listener. */
 - (void) stop;
 
+/** Returns YES if listener is running */
+- (BOOL) isRunning;
+
 @end

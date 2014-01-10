@@ -105,6 +105,9 @@ static NSArray* GetIPv4Addresses(void);
     [_httpServer stop];
 }
 
+- (BOOL) isRunning {
+    return [_httpServer isRunning];
+}
 
 - (UInt16) port {
     return _httpServer.listeningPort;
