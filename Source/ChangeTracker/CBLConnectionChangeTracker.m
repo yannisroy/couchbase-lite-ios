@@ -67,6 +67,7 @@
     
     _connection = [NSURLConnection connectionWithRequest: request delegate: self];
     _startTime = CFAbsoluteTimeGetCurrent();
+    [_connection start];
     LogTo(ChangeTracker, @"%@: Started... <%@>", self, request.URL);
     return YES;
 }

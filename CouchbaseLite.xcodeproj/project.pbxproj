@@ -612,7 +612,6 @@
 		A932B24E1875ED4B001B540A /* CBLModel+Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B945B117692E2000B2DF2D /* CBLModel+Properties.m */; };
 		A932B24F1875ED4B001B540A /* CBLView+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EB2CD149140DE00E74185 /* CBLView+Internal.m */; };
 		A932B2501875ED4B001B540A /* CBL_Body.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F074AA11CD5D7A00E9A2AB /* CBL_Body.m */; };
-		A932B2511875ED4B001B540A /* CBLJSONReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 277B5DCD1821AE990088881E /* CBLJSONReader.m */; };
 		A932B2521875ED4B001B540A /* CBL_Revision.m in Sources */ = {isa = PBXBuildFile; fileRef = 270B3E3814898DF200E0A926 /* CBL_Revision.m */; };
 		A932B2531875ED4B001B540A /* CBL_Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C706411486BBD500F0F099 /* CBL_Server.m */; };
 		A932B2541875ED4B001B540A /* CBLCollateJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EB2DA1491C34300E74185 /* CBLCollateJSON.m */; };
@@ -662,7 +661,6 @@
 		A932B2801875ED4B001B540A /* CBLReplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E2E5CC159533A5005B9234 /* CBLReplication.m */; };
 		A932B2811875ED4B001B540A /* CBLModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B945A81768E63200B2DF2D /* CBLModelArray.m */; };
 		A932B2821875ED4B001B540A /* CBLView+Querying.m in Sources */ = {isa = PBXBuildFile; fileRef = 277EF49317F5F3CB00F7B7F7 /* CBLView+Querying.m */; };
-		A932B2831875ED4B001B540A /* CBLSocketStreamingChangeTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D6FC0164484190081812D /* CBLSocketStreamingChangeTracker.m */; };
 		A932B2841875ED4B001B540A /* CBLListFunction+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DD5FA41868B79400DA3C3A /* CBLListFunction+Internal.m */; };
 		A932B2851875ED4B001B540A /* CBLBulkDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BDA81D181973EF00F27A11 /* CBLBulkDownloader.m */; };
 		A932B2861875ED4B001B540A /* CBLQuery+Geo.m in Sources */ = {isa = PBXBuildFile; fileRef = 277EF39C17F4DEDD00F7B7F7 /* CBLQuery+Geo.m */; };
@@ -695,14 +693,6 @@
 		A932B2A11875ED4B001B540A /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F12868156ABE24008465C2 /* OAToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A932B2A21875ED4B001B540A /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F128A7156ABFE0008465C2 /* NSMutableURLRequest+Parameters.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A932B2A31875ED4B001B540A /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F12847156ABE24008465C2 /* NSString+URLEncoding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A932B2A41875ED4B001B540A /* yajl.c in Sources */ = {isa = PBXBuildFile; fileRef = 277B5C7D1821A8370088881E /* yajl.c */; };
-		A932B2A51875ED4B001B540A /* yajl_alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 277B5C801821A8370088881E /* yajl_alloc.c */; };
-		A932B2A61875ED4B001B540A /* yajl_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = 277B5C821821A8370088881E /* yajl_buf.c */; };
-		A932B2A71875ED4B001B540A /* yajl_encode.c in Sources */ = {isa = PBXBuildFile; fileRef = 277B5C851821A8370088881E /* yajl_encode.c */; };
-		A932B2A81875ED4B001B540A /* yajl_gen.c in Sources */ = {isa = PBXBuildFile; fileRef = 277B5C871821A8370088881E /* yajl_gen.c */; };
-		A932B2A91875ED4B001B540A /* yajl_lex.c in Sources */ = {isa = PBXBuildFile; fileRef = 277B5C881821A8370088881E /* yajl_lex.c */; };
-		A932B2AA1875ED4B001B540A /* yajl_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 277B5C8A1821A8370088881E /* yajl_parser.c */; };
-		A932B2AB1875ED4B001B540A /* yajl_version.c in Sources */ = {isa = PBXBuildFile; fileRef = 277B5C8D1821A8370088881E /* yajl_version.c */; };
 		A932B2AC1875ED4B001B540A /* fts3_unicodesn.c in Sources */ = {isa = PBXBuildFile; fileRef = 277EF3AC17F4DF3700F7B7F7 /* fts3_unicodesn.c */; };
 		A932B2AD1875ED4B001B540A /* api_sq3.c in Sources */ = {isa = PBXBuildFile; fileRef = 277EF3C317F4DF3700F7B7F7 /* api_sq3.c */; };
 		A932B2AE1875ED4B001B540A /* stem_UTF_8_swedish.c in Sources */ = {isa = PBXBuildFile; fileRef = 277EF40117F4DF3700F7B7F7 /* stem_UTF_8_swedish.c */; };
@@ -4002,7 +3992,6 @@
 				A932B24E1875ED4B001B540A /* CBLModel+Properties.m in Sources */,
 				A932B24F1875ED4B001B540A /* CBLView+Internal.m in Sources */,
 				A932B2501875ED4B001B540A /* CBL_Body.m in Sources */,
-				A932B2511875ED4B001B540A /* CBLJSONReader.m in Sources */,
 				A932B2521875ED4B001B540A /* CBL_Revision.m in Sources */,
 				A932B2531875ED4B001B540A /* CBL_Server.m in Sources */,
 				A932B2541875ED4B001B540A /* CBLCollateJSON.m in Sources */,
@@ -4052,7 +4041,6 @@
 				A932B2801875ED4B001B540A /* CBLReplication.m in Sources */,
 				A932B2811875ED4B001B540A /* CBLModelArray.m in Sources */,
 				A932B2821875ED4B001B540A /* CBLView+Querying.m in Sources */,
-				A932B2831875ED4B001B540A /* CBLSocketStreamingChangeTracker.m in Sources */,
 				A932B2841875ED4B001B540A /* CBLListFunction+Internal.m in Sources */,
 				A932B2851875ED4B001B540A /* CBLBulkDownloader.m in Sources */,
 				A932B2861875ED4B001B540A /* CBLQuery+Geo.m in Sources */,
@@ -4085,14 +4073,6 @@
 				A932B2A11875ED4B001B540A /* OAToken.m in Sources */,
 				A932B2A21875ED4B001B540A /* NSMutableURLRequest+Parameters.m in Sources */,
 				A932B2A31875ED4B001B540A /* NSString+URLEncoding.m in Sources */,
-				A932B2A41875ED4B001B540A /* yajl.c in Sources */,
-				A932B2A51875ED4B001B540A /* yajl_alloc.c in Sources */,
-				A932B2A61875ED4B001B540A /* yajl_buf.c in Sources */,
-				A932B2A71875ED4B001B540A /* yajl_encode.c in Sources */,
-				A932B2A81875ED4B001B540A /* yajl_gen.c in Sources */,
-				A932B2A91875ED4B001B540A /* yajl_lex.c in Sources */,
-				A932B2AA1875ED4B001B540A /* yajl_parser.c in Sources */,
-				A932B2AB1875ED4B001B540A /* yajl_version.c in Sources */,
 				A932B2AC1875ED4B001B540A /* fts3_unicodesn.c in Sources */,
 				A932B2AD1875ED4B001B540A /* api_sq3.c in Sources */,
 				A932B2AE1875ED4B001B540A /* stem_UTF_8_swedish.c in Sources */,

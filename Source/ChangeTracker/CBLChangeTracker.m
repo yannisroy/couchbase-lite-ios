@@ -16,13 +16,12 @@
 // <http://wiki.apache.org/couchdb/HTTP_database_API#Changes>
 
 #import "CBLChangeTracker.h"
-#import "CBLSocketStreamingChangeTracker.h"
-#import "CBLConnectionChangeTracker.h"
-#import "CBLSocketChangeTracker.h"
+//#import "CBLSocketStreamingChangeTracker.h"
+//#import "CBLConnectionChangeTracker.h"
+//#import "CBLSocketChangeTracker.h"
 #import "CBLAuthorizer.h"
 #import "CBLMisc.h"
 #import "CBLStatus.h"
-#import "CBLJSONReader.h"
 
 
 #define kDefaultHeartbeat (5 * 60.0)
@@ -31,22 +30,12 @@
 #define kMaxRetryDelay (10*60.0)    // ...but will never get longer than this
 
 
-typedef void (^CBLChangeMatcherClient)(id sequence, NSString* docID, NSArray* revs, bool deleted);
-
-@interface CBLChangeMatcher : CBLJSONDictMatcher
-+ (CBLJSONMatcher*) changesFeedMatcherWithClient: (CBLChangeMatcherClient)client;
-@end
-
-
 @interface CBLChangeTracker ()
 @property (readwrite, copy, nonatomic) id lastSequenceID;
 @end
 
 
 @implementation CBLChangeTracker
-{
-    CBLJSONReader* _parser;
-}
 
 @synthesize lastSequenceID=_lastSequenceID, databaseURL=_databaseURL, mode=_mode;
 @synthesize limit=_limit, heartbeat=_heartbeat, error=_error, continuous=_continuous;
@@ -67,31 +56,33 @@ typedef void (^CBLChangeMatcherClient)(id sequence, NSString* docID, NSArray* re
         if([self class] == [CBLChangeTracker class]) {
             // CBLChangeTracker is abstract; instantiate a concrete subclass instead.
             
-            if ([CBLSocketStreamingChangeTracker class]) {
-                return [[CBLSocketStreamingChangeTracker alloc] initWithDatabaseURL: databaseURL
+            Class CBLSocketStreamingChangeTrackerClass = NSClassFromString(@"CBLSocketStreamingChangeTracker");
+            if (CBLSocketStreamingChangeTrackerClass) {
+                return [[CBLSocketStreamingChangeTrackerClass alloc] initWithDatabaseURL: databaseURL
+                                                                                    mode: mode
+                                                                               conflicts: includeConflicts
+                                                                            lastSequence: lastSequenceID
+                                                                                  client: client];
+            }
+            
+            NSURLConnection-base due the underlying implementation can only handle normal _change feed
+            Class CBLConnectionChangeTrackerClass = NSClassFromString(@"CBLConnectionChangeTracker");
+            if (mode == kOneShot && CBLConnectionChangeTrackerClass) {
+                return [[CBLConnectionChangeTrackerClass alloc] initWithDatabaseURL: databaseURL
                                                                                mode: mode
                                                                           conflicts: includeConflicts
                                                                        lastSequence: lastSequenceID
                                                                              client: client];
             }
             
-            // NSURLConnection-base due the underlying implementation can only handle normal _change feed
-            if (mode == kOneShot && [CBLConnectionChangeTracker class]) {
-                return [[CBLConnectionChangeTracker alloc] initWithDatabaseURL: databaseURL
-                                                                          mode: mode
-                                                                     conflicts: includeConflicts
-                                                                  lastSequence: lastSequenceID
-                                                                        client: client];
-            }
-            
-            // falling back to the latest available subclass
-            //CBLSocketChangeTracker
-            if ([CBLSocketChangeTracker class]) {
-                return [[CBLSocketChangeTracker alloc] initWithDatabaseURL: databaseURL
-                                                                      mode: mode
-                                                                 conflicts: includeConflicts
-                                                              lastSequence: lastSequenceID
-                                                                    client: client];
+            // falling back to the latest available subclass CBLSocketChangeTracker
+            Class CBLSocketChangeTrackerClass = NSClassFromString(@"CBLSocketChangeTracker");
+            if (CBLSocketChangeTrackerClass) {
+                return [[CBLSocketChangeTrackerClass alloc] initWithDatabaseURL: databaseURL
+                                                                           mode: mode
+                                                                      conflicts: includeConflicts
+                                                                   lastSequence: lastSequenceID
+                                                                         client: client];
             }
         }
         _databaseURL = databaseURL;
@@ -174,18 +165,6 @@ typedef void (^CBLChangeMatcherClient)(id sequence, NSString* docID, NSArray* re
 
 - (BOOL) start {
     self.error = nil;
-    __weak CBLChangeTracker* weakSelf = self;
-    CBLJSONMatcher* root = [CBLChangeMatcher changesFeedMatcherWithClient:
-        ^(id sequence, NSString *docID, NSArray *revs, bool deleted) {
-            // Callback when the parser reads another change from the feed:
-            CBLChangeTracker* strongSelf = weakSelf;
-            strongSelf.lastSequenceID = sequence;
-            [strongSelf.client changeTrackerReceivedSequence: sequence
-                                                       docID: docID
-                                                      revIDs: revs
-                                                     deleted: deleted];
-    }];
-    _parser = [[CBLJSONReader alloc] initWithMatcher: root];
     return NO;
 }
 
@@ -197,7 +176,6 @@ typedef void (^CBLChangeMatcherClient)(id sequence, NSString* docID, NSArray* re
 
 - (void) stopped {
     _retryCount = 0;
-    _parser = nil;
     // Clear client ref so its -changeTrackerStopped: won't be called again during -dealloc
     id<CBLChangeTrackerClient> client = _client;
     _client = nil;
@@ -235,25 +213,6 @@ typedef void (^CBLChangeMatcherClient)(id sequence, NSString* docID, NSArray* re
     }
 }
 
-- (BOOL) parseBytes: (const void*)bytes length: (size_t)length {
-    LogTo(ChangeTracker, @"%@: read %ld bytes", self, (long)length);
-    if (![_parser parseBytes: bytes length: length]) {
-        Warn(@"JSON error parsing _changes feed: %@", _parser.errorString);
-        [self failedWithError: [NSError errorWithDomain: @"CBLChangeTracker"
-                                                   code: kCBLStatusBadChangesFeed userInfo: nil]];
-        return NO;
-    }
-    return YES;
-}
-
-- (BOOL) endParsingData {
-    if (![_parser finish]) {
-        Warn(@"Truncated changes feed");
-        return NO;
-    }
-    return YES;
-}
-
 - (BOOL) receivedChanges: (NSArray*)changes errorMessage: (NSString**)errorMessage {
     __block id lastSequence = nil;
     [changes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
@@ -273,7 +232,7 @@ typedef void (^CBLChangeMatcherClient)(id sequence, NSString* docID, NSArray* re
             return;
         
         NSArray *changes = [change objectForKey: @"changes"];
-        if (!changes || [changes isKindOfClass: [NSArray class]])
+        if (!changes || ![changes isKindOfClass: [NSArray class]])
             return;
         
         NSMutableArray* revIDs = [NSMutableArray new];
@@ -331,110 +290,3 @@ typedef void (^CBLChangeMatcherClient)(id sequence, NSString* docID, NSArray* re
 
 
 @end
-
-
-
-
-#pragma mark - PARSER
-
-
-@interface CBLRevInfoMatcher : CBLJSONDictMatcher
-@end
-
-@implementation CBLRevInfoMatcher
-{
-    NSMutableArray* _revIDs;
-}
-
-- (id)initWithArray: (NSMutableArray*)revIDs
-{
-    self = [super init];
-    if (self) {
-        _revIDs = revIDs;
-    }
-    return self;
-}
-
-- (bool) matchValue:(id)value forKey:(NSString *)key {
-    if ([key isEqualToString: @"rev"])
-        [_revIDs addObject: value];
-    return true;
-}
-
-@end
-
-
-
-@implementation CBLChangeMatcher
-{
-    id _sequence;
-    NSString* _docID;
-    NSMutableArray* _revs;
-    bool _deleted;
-    CBLTemplateMatcher* _revsMatcher;
-    CBLChangeMatcherClient _client;
-}
-
-+ (CBLJSONMatcher*) changesFeedMatcherWithClient: (CBLChangeMatcherClient)client {
-    CBLChangeMatcher* changeMatcher = [[CBLChangeMatcher alloc] initWithClient: client];
-    id template = @[ @{@"results": @[changeMatcher]} ];
-    return [[CBLTemplateMatcher alloc] initWithTemplate: template];
-}
-
-- (id) initWithClient: (CBLChangeMatcherClient)client {
-    self = [super init];
-    if (self) {
-        _client = client;
-        _revs = $marray();
-        CBLRevInfoMatcher* m = [[CBLRevInfoMatcher alloc] initWithArray: _revs];
-        _revsMatcher = [[CBLTemplateMatcher alloc] initWithTemplate: @[m]];
-    }
-    return self;
-}
-
-- (bool) matchValue:(id)value forKey:(NSString *)key {
-    if ([key isEqualToString: @"deleted"])
-        _deleted = [value boolValue];
-    else if ([key isEqualToString: @"seq"])
-        _sequence = value;
-    else if ([self.key isEqualToString: @"id"])
-        _docID = value;
-    return true;
-}
-
-- (CBLJSONArrayMatcher*) startArray {
-    if ([self.key isEqualToString: @"changes"])
-        return (CBLJSONArrayMatcher*)_revsMatcher;
-    return [super startArray];
-}
-
-- (id) end {
-    //Log(@"Ended ChangeMatcher with seq=%@, id='%@', deleted=%d, revs=%@", _sequence, _docID, _deleted, _revs);
-    if (!_sequence || !_docID || _revs.count == 0)
-        return nil;
-    _client(_sequence, _docID, [_revs copy], _deleted);
-    _sequence = nil;
-    _docID = nil;
-    _deleted = false;
-    [_revs removeAllObjects];
-    return self;
-}
-
-@end
-
-
-TestCase(CBLChangeMatcher) {
-    NSString* kJSON = @"{\"results\":[\
-    {\"seq\":1,\"id\":\"1\",\"changes\":[{\"rev\":\"2-751ac4eebdc2a3a4044723eaeb0fc6bd\"}],\"deleted\":true},\
-    {\"seq\":2,\"id\":\"10\",\"changes\":[{\"rev\":\"2-566bffd5785eb2d7a79be8080b1dbabb\"}],\"deleted\":true},\
-    {\"seq\":3,\"id\":\"100\",\"changes\":[{\"rev\":\"2-ec2e4d1833099b8a131388b628fbefbf\"}],\"deleted\":true}]}";
-    NSMutableArray* docIDs = $marray();
-    CBLJSONMatcher* root = [CBLChangeMatcher changesFeedMatcherWithClient:
-        ^(id sequence, NSString *docID, NSArray *revs, bool deleted) {
-            [docIDs addObject: docID];
-        }];
-    CBLJSONReader* parser = [[CBLJSONReader alloc] initWithMatcher: root];
-    CAssert([parser parseData: [kJSON dataUsingEncoding: NSUTF8StringEncoding]]);
-    CAssert([parser finish]);
-    CAssertEqual(docIDs, (@[@"1", @"10", @"100"]));
-}

@@ -8,6 +8,7 @@
 
 #import "CBLChangeTracker.h"
 
+@class CBLJSONReader;
 
 /** CBLChangeTracker implementation that uses a raw TCP socket to read the chunk-mode HTTP response. */
 @interface CBLSocketStreamingChangeTracker : CBLChangeTracker
@@ -23,5 +24,6 @@
     bool _gotResponseHeaders;
     bool _inputAvailable;
     bool _atEOF;
+    CBLJSONReader* _parser;
 }
 @end
