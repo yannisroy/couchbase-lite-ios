@@ -602,6 +602,11 @@
 		A902068718882B4100B6B6B4 /* CBLConnectionChangeTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A902068418882B4100B6B6B4 /* CBLConnectionChangeTracker.m */; };
 		A902068818882B4100B6B6B4 /* CBLConnectionChangeTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A902068418882B4100B6B6B4 /* CBLConnectionChangeTracker.m */; };
 		A902068918882B4100B6B6B4 /* CBLConnectionChangeTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A902068418882B4100B6B6B4 /* CBLConnectionChangeTracker.m */; };
+		A902068C188847AA00B6B6B4 /* CBLSocketChangeTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = A902068A188847AA00B6B6B4 /* CBLSocketChangeTracker.h */; };
+		A902068D188847AA00B6B6B4 /* CBLSocketChangeTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = A902068A188847AA00B6B6B4 /* CBLSocketChangeTracker.h */; };
+		A902068E188847AA00B6B6B4 /* CBLSocketChangeTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A902068B188847AA00B6B6B4 /* CBLSocketChangeTracker.m */; };
+		A902068F188847AA00B6B6B4 /* CBLSocketChangeTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A902068B188847AA00B6B6B4 /* CBLSocketChangeTracker.m */; };
+		A9020690188847AA00B6B6B4 /* CBLSocketChangeTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A902068B188847AA00B6B6B4 /* CBLSocketChangeTracker.m */; };
 		A932B24C1875ED4B001B540A /* CBLDatabase+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F0744711CD4B6D00E9A2AB /* CBLDatabase+Internal.m */; };
 		A932B24D1875ED4B001B540A /* ModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B945A41767E06B00B2DF2D /* ModelTests.m */; };
 		A932B24E1875ED4B001B540A /* CBLModel+Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B945B117692E2000B2DF2D /* CBLModel+Properties.m */; };
@@ -1592,6 +1597,8 @@
 		792867DA178E021F00248AF0 /* CBLRegisterJSViewCompiler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBLRegisterJSViewCompiler.m; sourceTree = "<group>"; };
 		A902068318882B4100B6B6B4 /* CBLConnectionChangeTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBLConnectionChangeTracker.h; sourceTree = "<group>"; };
 		A902068418882B4100B6B6B4 /* CBLConnectionChangeTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBLConnectionChangeTracker.m; sourceTree = "<group>"; };
+		A902068A188847AA00B6B6B4 /* CBLSocketChangeTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBLSocketChangeTracker.h; sourceTree = "<group>"; };
+		A902068B188847AA00B6B6B4 /* CBLSocketChangeTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBLSocketChangeTracker.m; sourceTree = "<group>"; };
 		A932B2D91875ED4B001B540A /* libCouchbaseLite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCouchbaseLite.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A972B8CB186C5E6900833EFE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		A972B8CD186C5E7600833EFE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -2376,6 +2383,8 @@
 				270D6FC0164484190081812D /* CBLSocketStreamingChangeTracker.m */,
 				A902068318882B4100B6B6B4 /* CBLConnectionChangeTracker.h */,
 				A902068418882B4100B6B6B4 /* CBLConnectionChangeTracker.m */,
+				A902068A188847AA00B6B6B4 /* CBLSocketChangeTracker.h */,
+				A902068B188847AA00B6B6B4 /* CBLSocketChangeTracker.m */,
 			);
 			path = ChangeTracker;
 			sourceTree = "<group>";
@@ -2838,6 +2847,7 @@
 				27F94120176A64BA007BAEBE /* CBLJSONValidator.h in Headers */,
 				275315CC14ACF0330065964D /* DDTTYLogger.h in Headers */,
 				27A073EC14C0BB6200F52FE7 /* CBLMisc.h in Headers */,
+				A902068C188847AA00B6B6B4 /* CBLSocketChangeTracker.h in Headers */,
 				277B5DC91821A8B60088881E /* yajl_parse.h in Headers */,
 				279CE3B814D4A885009F3FA6 /* MYBlockUtils.h in Headers */,
 				279CE40014D749A7009F3FA6 /* CBLMultipartReader.h in Headers */,
@@ -2979,6 +2989,7 @@
 				A932B30A1875F47C001B540A /* CBLJSFunction.h in Headers */,
 				A932B30B1875F47C001B540A /* CBLJSViewCompiler.h in Headers */,
 				A932B30C1875F47C001B540A /* CBLJSFilterCompiler.h in Headers */,
+				A902068D188847AA00B6B6B4 /* CBLSocketChangeTracker.h in Headers */,
 				A932B30D1875F47C001B540A /* CBLJSListFunctionCompiler.h in Headers */,
 				A932B30E1875F47C001B540A /* CBLJSShowFunctionCompiler.h in Headers */,
 				A932B30F1875F497001B540A /* CouchbaseLitePrivate.h in Headers */,
@@ -3600,6 +3611,7 @@
 				277EF3A117F4DEDD00F7B7F7 /* CBLQuery+Geo.m in Sources */,
 				27B945B417692E2000B2DF2D /* CBLModel+Properties.m in Sources */,
 				27B945A51767E06B00B2DF2D /* ModelTests.m in Sources */,
+				A902068E188847AA00B6B6B4 /* CBLSocketChangeTracker.m in Sources */,
 				270D6FC2164484190081812D /* CBLSocketStreamingChangeTracker.m in Sources */,
 				27B15517164A118100DF5E2C /* CBL_Database_Tests.m in Sources */,
 				A9DD5FA01868B76100DA3C3A /* CBLShowFunction+Internal.m in Sources */,
@@ -3788,6 +3800,7 @@
 				277EF39F17F4DEDD00F7B7F7 /* CBLQuery+FullTextSearch.m in Sources */,
 				272A690F17B2CCF0000722FA /* CBLFacebookAuthorizer.m in Sources */,
 				27CF5D2E152F514A0015D7A9 /* CBLStatus.m in Sources */,
+				A902068F188847AA00B6B6B4 /* CBLSocketChangeTracker.m in Sources */,
 				A9DD5FA21868B76100DA3C3A /* CBLShowFunction+Internal.m in Sources */,
 				27F128B3156AC1CA008465C2 /* CBLOAuth1Authorizer.m in Sources */,
 				270F5707156AE0BF000FEB8F /* CBLAuthorizer.m in Sources */,
@@ -3964,6 +3977,7 @@
 				A932B2DC1875EDDD001B540A /* CBLJSViewCompiler.m in Sources */,
 				A932B2DD1875EDDD001B540A /* CBLJSFilterCompiler.m in Sources */,
 				A932B2DE1875EDDD001B540A /* CBLJSListFunctionCompiler.m in Sources */,
+				A9020690188847AA00B6B6B4 /* CBLSocketChangeTracker.m in Sources */,
 				A932B2DF1875EDDD001B540A /* CBLJSShowFunctionCompiler.m in Sources */,
 				A932B2EE1875F265001B540A /* HTTPDataResponse.m in Sources */,
 				A932B2EF1875F265001B540A /* HTTPFileResponse.m in Sources */,

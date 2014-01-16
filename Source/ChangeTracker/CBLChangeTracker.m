@@ -18,6 +18,7 @@
 #import "CBLChangeTracker.h"
 #import "CBLSocketStreamingChangeTracker.h"
 #import "CBLConnectionChangeTracker.h"
+#import "CBLSocketChangeTracker.h"
 #import "CBLAuthorizer.h"
 #import "CBLMisc.h"
 #import "CBLStatus.h"
@@ -83,6 +84,15 @@ typedef void (^CBLChangeMatcherClient)(id sequence, NSString* docID, NSArray* re
                                                                         client: client];
             }
             
+            // falling back to the latest available subclass
+            //CBLSocketChangeTracker
+            if ([CBLSocketChangeTracker class]) {
+                return [[CBLSocketChangeTracker alloc] initWithDatabaseURL: databaseURL
+                                                                      mode: mode
+                                                                 conflicts: includeConflicts
+                                                              lastSequence: lastSequenceID
+                                                                    client: client];
+            }
         }
         _databaseURL = databaseURL;
         _client = client;
