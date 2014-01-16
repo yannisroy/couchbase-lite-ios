@@ -101,4 +101,7 @@ typedef enum CBLChangeTrackerMode {
 - (BOOL) parseBytes: (const void*)bytes length: (size_t)length;
 - (BOOL) endParsingData;
 
+- (NSInteger) receivedPollResponse: (NSData*)body errorMessage: (NSString**)errorMessage;
+- (BOOL) receivedChanges: (NSArray*)changes errorMessage: (NSString**)errorMessage;
+
 @end

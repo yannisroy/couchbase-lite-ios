@@ -10,7 +10,7 @@
 
 
 /** CBLChangeTracker implementation that uses a raw TCP socket to read the chunk-mode HTTP response. */
-@interface CBLSocketChangeTracker : CBLChangeTracker
+@interface CBLSocketStreamingChangeTracker : CBLChangeTracker
 {
     @private
     NSInputStream* _trackingInput;

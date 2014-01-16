@@ -15,7 +15,7 @@
 //
 // <http://wiki.apache.org/couchdb/HTTP_database_API#Changes>
 
-#import "CBLSocketChangeTracker.h"
+#import "CBLSocketStreamingChangeTracker.h"
 #import "CBLRemoteRequest.h"
 #import "CBLAuthorizer.h"
 #import "CBLStatus.h"
@@ -28,7 +28,7 @@
 #define kReadLength 4096u
 
 
-@implementation CBLSocketChangeTracker
+@implementation CBLSocketStreamingChangeTracker
 
 
 - (BOOL) start {

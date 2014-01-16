@@ -16,7 +16,8 @@
 // <http://wiki.apache.org/couchdb/HTTP_database_API#Changes>
 
 #import "CBLChangeTracker.h"
-#import "CBLSocketChangeTracker.h"
+#import "CBLSocketStreamingChangeTracker.h"
+#import "CBLConnectionChangeTracker.h"
 #import "CBLAuthorizer.h"
 #import "CBLMisc.h"
 #import "CBLStatus.h"
@@ -64,11 +65,24 @@ typedef void (^CBLChangeMatcherClient)(id sequence, NSString* docID, NSArray* re
     if (self) {
         if([self class] == [CBLChangeTracker class]) {
             // CBLChangeTracker is abstract; instantiate a concrete subclass instead.
-            return [[CBLSocketChangeTracker alloc] initWithDatabaseURL: databaseURL
-                                                                 mode: mode
-                                                            conflicts: includeConflicts
-                                                         lastSequence: lastSequenceID
-                                                               client: client];
+            
+            if ([CBLSocketStreamingChangeTracker class]) {
+                return [[CBLSocketStreamingChangeTracker alloc] initWithDatabaseURL: databaseURL
+                                                                               mode: mode
+                                                                          conflicts: includeConflicts
+                                                                       lastSequence: lastSequenceID
+                                                                             client: client];
+            }
+            
+            // NSURLConnection-base due the underlying implementation can only handle normal _change feed
+            if (mode == kOneShot && [CBLConnectionChangeTracker class]) {
+                return [[CBLConnectionChangeTracker alloc] initWithDatabaseURL: databaseURL
+                                                                          mode: mode
+                                                                     conflicts: includeConflicts
+                                                                  lastSequence: lastSequenceID
+                                                                        client: client];
+            }
+            
         }
         _databaseURL = databaseURL;
         _client = client;
@@ -228,6 +242,81 @@ typedef void (^CBLChangeMatcherClient)(id sequence, NSString* docID, NSArray* re
         return NO;
     }
     return YES;
+}
+
+- (BOOL) receivedChanges: (NSArray*)changes errorMessage: (NSString**)errorMessage {
+    __block id lastSequence = nil;
+    [changes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
+        // being very careful on what we have received from _changes feed
+        // no-one likes crashes in production
+        
+        NSDictionary* change = (NSDictionary*)obj;
+        if (![change isKindOfClass: [NSDictionary class]])
+            return;
+        
+        id sequence = [change objectForKey: @"seq"];
+        if (!sequence)
+            return;
+        
+        NSString* docID = [change objectForKey: @"id"];
+        if (!docID || ![docID isKindOfClass: [NSString class]])
+            return;
+        
+        NSArray *changes = [change objectForKey: @"changes"];
+        if (!changes || [changes isKindOfClass: [NSArray class]])
+            return;
+        
+        NSMutableArray* revIDs = [NSMutableArray new];
+        [changes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
+            NSDictionary* change = (NSDictionary*)obj;
+            if (![change isKindOfClass: [NSDictionary class]])
+                return;
+            
+            NSString* revID = [change objectForKey: @"rev"];
+            if (!revID || ![revID isKindOfClass: [NSString class]])
+                return;
+            
+            [revIDs addObject: revID];
+        }];
+        
+        BOOL deleted = NO;
+        if ([[change objectForKey: @"deleted"] respondsToSelector: @selector(boolValue)])
+            deleted = [[change objectForKey: @"deleted"] boolValue];
+        
+        [self.client changeTrackerReceivedSequence:sequence docID:docID revIDs:revIDs deleted:deleted];
+        
+        lastSequence = sequence;
+    }];
+    
+    if (lastSequence)
+        self.lastSequenceID = lastSequence;
+    
+    return YES;
+}
+
+- (NSInteger) receivedPollResponse: (NSData*)body errorMessage: (NSString**)errorMessage {
+    if (!body) {
+        if (errorMessage)
+            *errorMessage = @"No body in response";
+        return -1;
+    }
+    NSError* error;
+    id changeObj = [CBLJSON JSONObjectWithData: body options: 0 error: &error];
+    if (!changeObj) {
+        if (errorMessage)
+            *errorMessage = $sprintf(@"JSON parse error: %@", error.localizedDescription);
+        return -1;
+    }
+    NSDictionary* changeDict = $castIf(NSDictionary, changeObj);
+    NSArray* changes = $castIf(NSArray, changeDict[@"results"]);
+    if (!changes) {
+        if (errorMessage)
+            *errorMessage = @"No 'changes' array in response";
+        return -1;
+    }
+    if (![self receivedChanges: changes errorMessage: errorMessage])
+        return -1;
+    return changes.count;
 }
 
 
