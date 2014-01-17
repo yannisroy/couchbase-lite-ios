@@ -65,7 +65,7 @@
                                                                                   client: client];
             }
             
-            NSURLConnection-base due the underlying implementation can only handle normal _change feed
+            // NSURLConnection-base due the underlying implementation can only handle normal _change feed
             Class CBLConnectionChangeTrackerClass = NSClassFromString(@"CBLConnectionChangeTracker");
             if (mode == kOneShot && CBLConnectionChangeTrackerClass) {
                 return [[CBLConnectionChangeTrackerClass alloc] initWithDatabaseURL: databaseURL
