@@ -245,11 +245,12 @@
         restart = [self checkInvalidResponse: input];
         if (!restart)
             [self setUpstreamError: errorMessage];
-    } else {
-        // Poll again if there was no error, and either we're in longpoll mode or it looks like we
-        // ran out of changes due to a _limit rather than because we hit the end.
-        restart = _mode == kLongPoll || numChanges == (NSInteger)_limit;
     }
+    //else {
+    //    // Poll again if there was no error, and either we're in longpoll mode or it looks like we
+    //    // ran out of changes due to a _limit rather than because we hit the end.
+    //    restart = _mode == kLongPoll || numChanges == (NSInteger)_limit;
+    //}
     
     [self clearConnection];
     
